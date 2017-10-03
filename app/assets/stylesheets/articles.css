@@ -1,4 +1,77 @@
-/*
-  Place all the styles related to the matching controller here.
-  They will automatically be included in application.css.
-*/
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+
+/* Base styling */
+
+.search__container {
+  width: 430px;
+  margin: 0 auto;
+  font-family: 'Raleway', sans-serif;
+}
+
+.search__container {
+  padding-top: 64px;
+}
+
+.search__title {
+  font-size: 22px;
+  font-weight: 900;
+  text-align: center;
+  color: #ff8b88;
+}
+
+.search__input {
+  width: 100%;
+  padding: 12px 24px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 18px;
+  color: #575756;
+  background-color: transparent;
+  background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg);
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  background-position: 95% center;
+  border-radius: 50px;
+  border: 1px solid #575756;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.search__input::placeholder {
+  color: rgba(87, 87, 86, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.search__input:hover,
+    .search__input:focus {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
+}
+
+.credits__container {
+  margin-top: 24px;
+}
+
+.credits__text {
+  text-align: center;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.credits__link {
+  color: #ff8b88;
+  text-decoration: none;
+  transition: color 250ms ease-in;
+}
+
+.credits__link:hover,
+    .credits__link:focus {
+  color: rgb(191, 137, 135);
+}

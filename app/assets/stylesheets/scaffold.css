@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
 body {
   background-color: #fff;
-  color: #333;
-  margin: 33px;
+  color: #484848;
 }
 
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+body, ol, td {
   font-size: 13px;
   line-height: 18px;
 }
-
+body, ul {
+  margin: 0;
+}
 pre {
   background-color: #eee;
   padding: 10px;
@@ -18,15 +19,6 @@ pre {
 
 a {
   color: #000;
-}
-
-a:visited {
-  color: #666;
-}
-
-a:hover {
-  color: #fff;
-  background-color: #000;
 }
 
 th {
@@ -77,4 +69,28 @@ div.actions {
 
 label {
   display: block;
+}
+ul {
+  display: table;
+  height: 48px;
+}
+li {
+  height: 100%;
+  line-height: 46px;
+  display: table-cell;
+  font-family: 'Raleway', sans-serif;
+}
+.a-item-content {
+  padding: 8px 0;
+  display: inline-block;
+  cursor: pointer;
+}
+.a-center-content {
+  padding: 0 16px;
+  border-bottom: 2px solid transparent;
+  vertical-align: middle;
+  line-height: 30px;
+}
+.a-center-content:hover {
+  border-bottom: 2px solid #484848;
 }
