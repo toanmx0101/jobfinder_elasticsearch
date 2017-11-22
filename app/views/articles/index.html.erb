@@ -2,24 +2,601 @@
     <p class="search__title">
         Go ahead, hover over search
     </p>
-    <input class="search__input" type="text" placeholder="Search">
+    <%= form_tag search_articles_path, method: 'get' do %>
+    <%= text_field_tag :q, params[:q] , class: 'search__input', placeholder: 'Search'  %>
+  <% end %>
 </div>
 
 <p id="notice"><%= notice %></p>
 
-<h1>Articles</h1>
+<div class="container" >
+  <div class="result-list-container">
+    <div class="filter-result">
+      <div class="filters">
+        <div class="filter-title-div">
+          <h3><span>Filters</span></h3>
+        </div>
+        <div class="clear-filter-div">
+          <div>
+            <span>Clear all filters</span>
+          </div>
+        </div>  
+      </div>
+      <div class="skills">
+        <div class="skills-header">
+          <div class="filter-title-div"> 
+            <h4>Skills</h4>
+          </div>
+          <div class="clear-filter-div">
+            <span>Clear</span>
+          </div>
 
-  <hr>
+        </div>
+        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+          <option value="AL">Alabama</option>
+          <option value="WY">Wyoming</option>
+          <option value="HA">HAfadsfe</option>
+          <option value="FU">Fuckyoming</option>
+          <option value="CK">Cklhe</option>
+        </select>
+      </div>
+      <div class="locations">
+        <div class="skills-header">
+          <div class="filter-title-div"> 
+            <h4>Location</h4>
+          </div>
+          <div class="clear-filter-div">
+            <span>Clear</span>
+          </div>
 
-  <%= form_tag search_articles_path, method: 'get' do %>
-    <%= label_tag :query %>
-    <%= text_field_tag :q, params[:q] %>
-    <%= submit_tag :search %>
-  <% end %>
+        </div>
+        <div>
+          <input type="text" name="locations" class="input--text">
+        </div>
+      </div>
+      <div class="Experience level">
+        <div class="skills-header">
+          <div class="filter-title-div"> 
+            <h4>Experience level</h4>
+          </div>
+          <div class="clear-filter-div">
+            <span>Clear</span>
+          </div>
+        </div>
+        <select class="js-example-basic-single" name="state">
+            <option value="Y1">1 year</option>
+            <option value="Y2">2 years</option>
+            <option value="Y2">3 - 5 years</option>
+            <option value="Y2">5 - 7 years</option>
+            <option value="Y2">7 -10 years</option>
+            <option value="Y2">> 10 years</option>
+          </select>
+      </div>
+      <div class="Languages">
+        <div class="skills-header">
+          <div class="filter-title-div"> 
+            <h4>Languages</h4>
+          </div>
+          <div class="clear-filter-div">
+            <span>Clear</span>
+          </div>
+        </div>
+        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+          <option value="AL">English</option>
+          <option value="WY">Chinese</option>
+          <option value="HA">France</option>
+          <option value="FU">Vietnamese</option>
+          <option value="CK">Japanese</option>
+        </select>
+      </div>
+    </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-single').select2();
+        $( ".filter-icon").click(function() {
+          if ($(this).hasClass("grid-choice")) {
+            $('.job-resul-card').addClass("grid")
+            $('.job-resul-card').removeClass("map");
+            $('.job-resul-card').removeClass("list");
+          }
+          if ($(this).hasClass("list-choice")) {
+            $('.job-resul-card').addClass("list")
+            $('.job-resul-card').removeClass("map");
+            $('.job-resul-card').removeClass("grid");
+          }
+          if ($(this).hasClass("map-choice")) {
+            $('.job-resul-card').addClass("map")
+            $('.job-resul-card').removeClass("grid");
+            $('.job-resul-card').removeClass("list");
+          }
+        });
+      });
+    </script>
+    <div class="results-list-card">
+      <div class="filter-wireframe">
+        <div class="solf-by">
+          <div>
+            <h3>Price</h3>
+          </div>
+        </div>
+        <div class="filter-wireframe-icons-list">
+          <div class="filter-icon list-choice filter-choice-active">
+            <i class="fa fa-th-list" aria-hidden="true"></i>
+          </div>
+          <div class="filter-icon grid-choice">
+            <i class="fa fa-th-large" aria-hidden="true"></i>
+          </div>
+          <div class="filter-icon map-choice">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="list-cards">
+        <div class="list-center-content">
+          <div class="job-resul-card list">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+                <div class="social-list-buttons">
+                  <div class="m--social-list-buttons">
+                    <div>
+                      <span>
+                        <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div>
+                      <span>
+                        <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div>
+                      <span>
+                        <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+              <div class="left-content">
+                <div class="m--left-content">
+                  <div class="job-location">
+                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                    <span>Duy Tan, Cau Giay</span>
+                  </div>
+                  <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Require skills</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>PHP</span>
+                      <span>ASW</span>
+                      <span>HTML, CSS</span>
+                      <span>ASW</span>
+                      <span>ASW</span>
+                      <span>HTML, CSS</span>
+                      <span>HTML, CSS</span>
+                    </div>
+                  </div>
+                   <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Languages</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>Vietnamese</span>
+                      <span>English</span>
+                    </div>
+                  </div>
 
-  <hr>
+                  <div class="job-salary">
+                    <h3>Salary</h3>
+                    <h3>500 - 1000$</h3>
+                  </div>
+                  <div class="view-detail-button">
+                    <div class="m--view-detail-button" style="margin-left: 10px;">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <span>View Details</span>  
+                    </div>
+                    <div class="m--view-detail-button">
+                      <i class="fa fa-comment" aria-hidden="true"></i>
+                      <span>Send mess</span>  
+                    </div>
+                  </div>
+                </div>
+                
+               
+              </div>
+            </div>
+          </div>
+          <div class="job-resul-card list">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+              <div class="left-content">
+                <div class="m--left-content">
+                  <div class="job-location">
+                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                    <span>Duy Tan, Cau Giay</span>
+                  </div>
+                  <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Require skills</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>PHP</span>
+                      <span>ASW</span>
+                      <span>HTML, CSS</span>
+                    </div>
+                  </div>
+                   <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Languages</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>Vietnamese</span>
+                      <span>English</span>
+                    </div>
+                  </div>
 
+                  <div class="job-salary">
+                    <h3>Salary</h3>
+                    <h3>500 - 1000$</h3>
+                  </div>
+                  <div class="view-detail-button">
+                    <div class="m--view-detail-button">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <span>View Details</span>  
+                    </div>
+                  </div>
+                </div>
+                <div class="social-list-buttons">
+                  <div class="m--social-list-buttons">
+                    <div>
+                      <span>
+                        <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div>
+                      <span>
+                        <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div>
+                      <span>
+                        <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="job-resul-card list">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+              <div class="left-content">
+                <div class="m--left-content">
+                  <div class="job-location">
+                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                    <span>Duy Tan, Cau Giay</span>
+                  </div>
+                  <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Require skills</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>PHP</span>
+                      <span>ASW</span>
+                      <span>HTML, CSS</span>
+                    </div>
+                  </div>
+                   <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Languages</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>Vietnamese</span>
+                      <span>English</span>
+                    </div>
+                  </div>
 
+                  <div class="job-salary">
+                    <h3>Salary</h3>
+                    <h3>500 - 1000$</h3>
+                  </div>
+                  <div class="view-detail-button">
+                    <div class="m--view-detail-button">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <span>View Details</span>  
+                    </div>
+                  </div>
+                </div>
+                
+               
+              </div>
+            </div>
+          </div>
+          <div class="job-resul-card list">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+              <div class="left-content">
+                <div class="m--left-content">
+                  <div class="job-location">
+                    <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                    <span>Duy Tan, Cau Giay</span>
+                  </div>
+                  <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Require skills</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>PHP</span>
+                      <span>ASW</span>
+                      <span>HTML, CSS</span>
+                    </div>
+                  </div>
+                   <div class="job-require-skills">
+                    <div class="job-require-skills-title">
+                      <div>
+                        <h3>Languages</h3>
+                      </div>
+                    </div>
+                    <div class="job-require-skills-list">
+                      <span>Vietnamese</span>
+                      <span>English</span>
+                    </div>
+                  </div>
+
+                  <div class="job-salary">
+                    <h3>Salary</h3>
+                    <h3>500 - 1000$</h3>
+                  </div>
+                  <div class="view-detail-button">
+                    <div class="m--view-detail-button">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                      <span>View Details</span>  
+                    </div>
+                  </div>
+                </div>
+                
+               
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="list-center-content">
+          <div class="job-resul-card grid">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="job-resul-card grid">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="job-resul-card grid">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+          <div class="job-resul-card grid">
+            <div class="m__job-result-card">
+              <div class="content">
+                <div class="job-type">
+                  <span>Hourly</span>
+                </div>  
+                <div class="job-title">
+                  <h3>Senior PHP</h3>
+                </div>
+                <div class="job-description">
+                  <span>Yeu cau mot thanh nien to khoe, co the dap ung 5 lan mot ngay</span>
+                </div>
+                <div class="job-location">
+                  <i class="fa fa-map-marker" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-salary">
+                  <span>Salary</span>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>View Details</span>  
+                  </div>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>  
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  
+</script>
 <table>
   <thead>
     <tr>
@@ -31,16 +608,18 @@
   </thead>
 
   <tbody>
-    <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.content %></td>
-        <td><%= article.published_on %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <% if !@articles.nil? %>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.content %></td>
+          <td><%= article.published_on %></td>
+          <td><%= link_to 'Show', article %></td>
+          <td><%= link_to 'Edit', edit_article_path(article) %></td>
+          <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% end %>  
   </tbody>
 </table>
 
@@ -48,3 +627,6 @@
 
 <%= link_to 'New Article', new_article_path %>  <%= link_to 'All Articles', articles_path if params[:q] %>
 
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>

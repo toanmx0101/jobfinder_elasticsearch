@@ -2,6 +2,7 @@
 body {
   background-color: #fff;
   color: #484848;
+  font-family: 'Raleway', sans-serif;
 }
 
 body, ol, td {
@@ -11,6 +12,7 @@ body, ol, td {
 body, ul {
   margin: 0;
 }
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -33,7 +35,10 @@ div.field,
 div.actions {
   margin-bottom: 10px;
 }
-
+.container {
+  width: 1080px;
+  margin: 0 auto;
+}
 #notice {
   color: green;
 }
@@ -90,6 +95,18 @@ li {
   border-bottom: 2px solid transparent;
   vertical-align: middle;
   line-height: 30px;
+}
+.app-icon {
+  float: left;
+}
+.app-icon img {
+  width: 30px;
+  height: 30px;
+}
+nav {
+  display: table-cell;
+  vertical-align: middle;
+  float: right;
 }
 .a-center-content:hover {
   border-bottom: 2px solid #484848;
