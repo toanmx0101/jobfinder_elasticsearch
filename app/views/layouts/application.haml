@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Searchapp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+  %body
+    = render 'partials/header'
+    = yield
+    = render 'partials/footer', 'data-turbolinks-track': 'true'
+
