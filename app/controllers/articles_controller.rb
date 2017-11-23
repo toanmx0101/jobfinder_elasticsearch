@@ -10,6 +10,10 @@ class ArticlesController < ApplicationController
     
   end
 
+  def new_recruitment 
+
+  end
+  
   # GET /articles/search
   def search
     @articles = Article.search(params[:q]).records
