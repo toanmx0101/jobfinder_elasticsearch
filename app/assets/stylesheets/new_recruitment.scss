@@ -34,10 +34,35 @@
 		}
 	}
 
-
+}
+.header-job-create {
+	margin: 30px 0;
+	border-bottom: 2px solid ;
+}
+.x1--form-create-recruitment {
+	input {
+		width: 100%;
+		border: 0;
+		padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+		&:focus {
+			outline: none;
+		}
+	}
+	textarea {
+		width: 100%;
+		border: 0;
+		padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    resize: none;
+    font-family: 'Raleway', sans-serif;
+    &:focus {
+			outline: none;
+		}
+	}
 }
 .step-content {
-	margin-top: 30px;
+	margin-top: 10px;
 	display: inline-block;
 	width: 100%;
 	.st-left-content {
@@ -57,13 +82,9 @@
 				right: 15px;
 				cursor: pointer;
 				&:hover {
-					i {
-						color: #484848;
-					}
+					i {	color: #484848;	}
 				}
-				i {
-					color: rgba(72, 72, 72, 0.54);
-				}
+				i { color: rgba(72, 72, 72, 0.54); }
 			}
 		}
 	}
