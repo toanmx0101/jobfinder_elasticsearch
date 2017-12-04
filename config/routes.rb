@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  resources :articles do
-    collection { get :search }
-  end
 
-  resources :articles do
-    collection { get :search }
-  end
-
-  root to: 'articles#index'
+  root to: 'home#index'
   resources :articles do
     collection { get :search }
   end

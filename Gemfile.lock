@@ -98,6 +98,7 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashie (3.5.6)
+    hirb (0.7.3)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -233,6 +234,7 @@ DEPENDENCIES
   elasticsearch-rails!
   font-awesome-rails
   haml
+  hirb
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
