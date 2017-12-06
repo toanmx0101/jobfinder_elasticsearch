@@ -1,18 +1,18 @@
 .x-container {
 	background-color: rgba(253, 253, 253, 0.48);
-  background-image: url(https://assets-cdn.github.com/images/modules/site/heroes/simple-codelines.svg);
+  /*background-image: url(https://assets-cdn.github.com/images/modules/site/heroes/simple-codelines.svg);*/
   background-repeat: no-repeat;
   background-size: cover;
   border-bottom: 1px solid #eee;	
   .container {
-  	height: 600px;
+  	height: 550px;
   }
 }
 
 .home-center {
 	z-index: 1;
 	section {
-		padding-top: 140px;
+		padding-top: 100px;
 		form {
 			input {
 				padding: 10px;
@@ -50,6 +50,9 @@
 			color: #8FD5FE;
 			background: rgba(221, 221, 221, 0.21);
 		}
+	}
+	p {
+		padding-top: 12px;
 	}
 }
 .home-image {
