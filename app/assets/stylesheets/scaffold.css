@@ -188,3 +188,38 @@ li {
 .asd form  input:focus { 
   border-bottom: 2px solid #717274;
 }
+.c-nav {
+  border-top: 1px solid #ebebeb;
+  width: 100%;
+  margin-top: 60px;
+  padding: 0;
+}
+.c-nav--footer__menu {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.o-content-container {
+  max-width: 76.875rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  box-sizing: inherit;
+}
+.c-nav-footer__list {
+  display: grid;
+  padding: 0; 
+}
+.c-nav-footer__block span{
+  font-weight: 600;
+  font-size: 16px;
+}
+.c-nav-footer__listitem a {
+  text-decoration: none;
+  font-size: 14px;
+}
+.footer-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15)
+}

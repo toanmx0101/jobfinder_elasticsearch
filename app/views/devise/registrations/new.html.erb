@@ -19,7 +19,7 @@
             </div>
           </div>
         </div>
-        <div class="step-one">
+        <div class="step-two">
           <div class="step-icon step-completed">
             <span>
               <i class="fa fa-check fa-2x" aria-hidden="true"></i>
@@ -34,7 +34,7 @@
             </div>
           </div>
         </div>
-        <div class="step-one">
+        <div class="step-three">
           <div class="step-icon">
             <span>
               <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
@@ -51,23 +51,50 @@
         </div>
       </div>
       <div class="right-step-menu">
-        <h2>Setup your personal account</h2>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-          <%= devise_error_messages! %>
+          <div class="m--step-one">
+            <h2>Setup your personal account</h2>
+            <%= devise_error_messages! %>
+            <div class="field">
+              <%= f.label :username %><br />
+              <%= f.text_field :username, autofocus: true, class: 'form-control' %>
+              <span>This will be your username.</span>
+            </div>
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, class: 'form-control' %>
+              <span >We'll occasionally send updates about your account to this inbox. We'll never share your email address with anyone.</span>
+            </div>
 
-          <div class="field">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
-            <span >We'll occasionally send updates about your account to this inbox. We'll never share your email address with anyone.</span>
+            <div class="field">
+              <%= f.label :password %>
+              <% if @minimum_password_length %>
+              <!-- <em>(<%= @minimum_password_length %> characters minimum)</em> -->
+              <% end %><br />
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+              <span>Use at least one lowercase letter, one numeral, and seven characters.</span>
+            </div>
+            <div class="continue-signup">
+              <span>Continue</span>
+            </div>
           </div>
+          <div class="m--step-two">
+            <h2>Choose your plan</h2>
+            <div>
+              <input type="radio" id="contactChoice1"
+               name="contact" value="email">
+              <label for="contactChoice1">Email</label>
 
-          <div class="field">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-            <!-- <em>(<%= @minimum_password_length %> characters minimum)</em> -->
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
-            <span>Use at least one lowercase letter, one numeral, and seven characters.</span>
+              <input type="radio" id="contactChoice2"
+               name="contact" value="phone">
+              <label for="contactChoice2">Phone</label>
+
+              <input type="radio" id="contactChoice3"
+               name="contact" value="mail">
+              <label for="contactChoice3">Mail</label>
+            </div>
+            <hr>
+            <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
           </div>
           <div class="actions">
             <%= f.submit "Create an account" %>

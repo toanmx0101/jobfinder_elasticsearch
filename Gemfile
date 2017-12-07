@@ -5,9 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+
 gem 'devise'
 gem 'rails', '~> 5.1.4'
-gem 'sqlite3'
 gem 'haml'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
@@ -28,6 +28,7 @@ group :development, :test do
 end
 
 group :development do
+	gem 'sqlite3'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
@@ -41,3 +42,7 @@ gem 'rails-controller-testing', group: 'test'
 gem 'elasticsearch', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+group :production do
+	gem 'pg'
+	gem 'rails_12factor'
+end
