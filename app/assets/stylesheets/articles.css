@@ -67,3 +67,6 @@
     .credits__link:focus {
   color: rgb(191, 137, 135);
 }
+.search-title {
+  margin-top: 14px;
+}

@@ -16,12 +16,13 @@ class ArticlesController < ApplicationController
   
   # GET /articles/search
   def search
-    @articles = Article.search(params[:q]).records
+    s = escape_characters_in_string(params[:q])
+    @articles = Article.search(s).records
 
     render action: "index"
   end
 
-
+  
   # GET /articles/1
   # GET /articles/1.json
   def show
@@ -78,6 +79,10 @@ class ArticlesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def escape_characters_in_string(string)
+      pattern = /(\'|\"|\.|\*|\/|\-|\+|\]|\[|\)|\(|\\)/
+      string.gsub(pattern){|match|"\\"  + match} # <-- Trying to take the currently found match and add a \ before it I have no idea how to do that).
+    end
     def set_article
       @article = Article.find(params[:id])
     end
