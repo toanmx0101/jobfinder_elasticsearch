@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'devise'
 gem 'rails', '~> 5.1.4'
 gem 'sqlite3'
 gem 'haml'
@@ -20,8 +20,6 @@ gem 'vuejs-rails'
 gem 'font-awesome-rails'
 gem 'select2-rails'
 gem 'jquery-rails'
-
-gem "hirb"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

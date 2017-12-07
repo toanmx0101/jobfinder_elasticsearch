@@ -72,6 +72,12 @@
 		.m--new-recruitment {
 			text-align: center;
 	    line-height: 228px;
+	    &:hover {
+	    	span {
+		    	background: #8FD5FE;
+		    	color: #FFF;
+		    }
+		  }
 	    a {
 	    	text-decoration: none;
 	    }
@@ -84,10 +90,7 @@
 		    border-radius: 23px;
 		    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
 		    transition: all .6s ease;
-		    &:hover {
-		    	background: #8FD5FE;
-		    	color: #FFF;
-		    }
+		    
 	    }
 	    
 		}

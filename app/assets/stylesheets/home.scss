@@ -1,3 +1,77 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.x-container {
+	background-color: rgba(253, 253, 253, 0.48);
+  /*background-image: url(https://assets-cdn.github.com/images/modules/site/heroes/simple-codelines.svg);*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid #eee;	
+  .container {
+  	height: 550px;
+  }
+}
+
+.home-center {
+	z-index: 1;
+	section {
+		padding-top: 100px;
+		form {
+			input {
+				padding: 10px;
+		    width: 40%;
+		    font-size: 20px;
+		    transition: all .6s ease;
+		    border-radius: 3px;
+		    border: 2px solid #484848;
+		    &:focus {
+		    	width: 55%;
+		    	border: 2px solid #484848;
+		    	outline: none;
+		    }
+			}
+		}
+	}
+	h2 {
+		line-height: 35px;    
+		font-size: xx-large;
+		color: #8FD5FE;
+	}
+}
+.get-started {
+	position: absolute;
+	bottom: 45px;
+	left: 0px;
+	span {
+		padding: 15px 30px;
+		font-size: 18px;
+		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+		cursor: pointer;
+		font-weight: bold;
+		color: #8FD5FE;
+		&:hover {
+			color: #8FD5FE;
+			background: rgba(221, 221, 221, 0.21);
+		}
+	}
+	p {
+		padding-top: 12px;
+	}
+}
+.home-image {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	img {
+		float: right;
+		width: 67%;
+	}
+}
+.x-culture {
+	margin: 50px 80px;
+	.culture {
+		padding: 40px;
+		box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+		h2 {
+			margin-top: 0;
+			color: #8FD5FE;
+		}
+	}
+}

@@ -1,5 +1,5 @@
 .job-resul-card {
-	cursor: pointer;
+	
 	transition: all .6s ease;
 }
 .filter-result {
@@ -232,6 +232,7 @@
 	display: inline-block;
 }
 .m--view-detail-button {
+	cursor: pointer;
 	float: right;
   padding: 5px;
   margin-top: 10px;
@@ -280,10 +281,13 @@
 	left: 10px;
 	.m--social-list-buttons {
 		div {
+			cursor: pointer;
 			display: inline-block;
-			padding: 10px;
+			padding: 6px;
+			width: 11px;
+			border-bottom: 2px solid transparent;
 			&:hover {
-				background: #eee;
+    		border-bottom: 2px solid;
 			}
 		}
 	}

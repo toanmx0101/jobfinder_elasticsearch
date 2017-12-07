@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/elasticsearch/elasticsearch-rails.git
-  revision: 64f31b41c073f05eac7d089aeea07c4366b7adca
+  revision: 7815039c0f78ed0b9b896936875ee4d01855390e
   specs:
     elasticsearch-model (6.0.0.alpha1)
       activesupport (> 3)
@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: git://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: d2803e7baad1c7baf75f1e5fdb5e6ff0da5f8804
+  revision: 37c26388adccd6f41ce5a9ab2929dcccc600f365
   specs:
     elasticsearch (7.0.0.pre)
       elasticsearch-api (= 7.0.0.pre)
@@ -64,10 +64,11 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     arel (8.0.0)
+    bcrypt (3.1.11)
     bindex (0.5.0)
     builder (3.2.3)
     byebug (9.1.0)
-    capybara (2.16.0)
+    capybara (2.16.1)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
@@ -85,6 +86,12 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
+    devise (4.3.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.2)
+      responders
+      warden (~> 1.2.3)
     erubi (1.7.0)
     execjs (2.7.0)
     faraday (0.13.1)
@@ -98,7 +105,6 @@ GEM
       temple (>= 0.8.0)
       tilt
     hashie (3.5.6)
-    hirb (0.7.3)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -130,10 +136,11 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
+    orm_adapter (0.5.0)
     public_suffix (3.0.1)
-    puma (3.10.0)
+    puma (3.11.0)
     rack (2.0.3)
-    rack-test (0.7.1)
+    rack-test (0.8.2)
       rack (>= 1.0, < 3)
     rails (5.1.4)
       actioncable (= 5.1.4)
@@ -167,6 +174,9 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     ref (2.0.0)
+    responders (2.4.0)
+      actionpack (>= 4.2.0, < 5.3)
+      railties (>= 4.2.0, < 5.3)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.3)
@@ -182,7 +192,7 @@ GEM
       tilt (>= 1.1, < 3)
     select2-rails (4.0.3)
       thor (~> 0.14)
-    selenium-webdriver (3.7.0)
+    selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     spring (2.0.2)
@@ -211,6 +221,8 @@ GEM
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
     vuejs-rails (2.4.2)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.5.1)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -229,12 +241,12 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  devise
   elasticsearch!
   elasticsearch-model!
   elasticsearch-rails!
   font-awesome-rails
   haml
-  hirb
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

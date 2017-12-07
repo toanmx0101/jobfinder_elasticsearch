@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="x-signup">
+
+    <div class="auth-form">
+      <div class="web-logo">
+        <img src="/assets/logo">
+      </div>
+      <h2>Log in to Jobfinder</h2>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+        <div class="auth-form-body">
+          <div class="field">
+            <%= f.label :email, class: 'login_field' %>
+            <%= f.email_field :email, autofocus: true, class: 'input-block form-control ' %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password, class: 'login_field' %>
+            <%= f.password_field :password, autocomplete: "off", class: 'input-block form-control ' %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Log in" %>
+          </div>
+        </div>
+        
+      <% end %>
+      <span class="sign-up-invite">
+        New to Jobfinder? 
+        <a href="/join">Create an account.</a>
+      </span>
+      <div class="terms-and-conditions">
+        <span class="forgot-password">Forgot password?</span>
+        <span class="term-condition">Terms and Condition</span>
+      </div>
+    </div>
+  </div>  
+</div>

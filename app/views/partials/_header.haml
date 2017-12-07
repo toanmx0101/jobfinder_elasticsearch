@@ -1,26 +1,74 @@
 %header
   .header-content
     .web-logo
-      %img{ src: 'assets/logo'}
+      %a{href:'/'}
+        %img{ src: '/assets/logo'}
+    .form-search-header
+      .asd
+        = form_tag search_path, method: 'get' do
+          = text_field_tag :q, params[:q], placeholder: 'Search job by keyword'
+
+
     %nav
       %ul
-        %li
-          %a
+        - unless user_signed_in?
+          %li
             .a-item-content
               .a-center-content
-                %span Sign up
-        %li
-          %a
+                %a{href: '/login'}
+                  %span.li-title Why Jobfinder?
+          %li
             .a-item-content
               .a-center-content
-                %span Login
-        %li
-          %a
+                %a{href: '/login'}
+                  %span.li-title Pricing
+          %li
             .a-item-content
               .a-center-content
-                %span Become a employ
-        %li
-          %a
+                %a{href: '/login'}
+                  %span.li-title About Us
+          %li
             .a-item-content
               .a-center-content
-                %span Help
+                %a{href: '/login'} 
+                  %span.li-title Become A Employ
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %span.li-title Signin
+        - else
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %i.fa.fa-plus.fa-lg{"aria-hidden" => "true"}
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %i.fa.fa-tasks.fa-lg{"aria-hidden" => "true"}
+                    %span 3
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %i.fa.fa-envelope-o.fa-lg{"aria-hidden" => "true"}
+                    %span 7
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %i.fa.fa-flag-o.fa-lg{"aria-hidden" => "true"}
+                    %span 12
+          %li
+            .a-item-content
+              .a-center-content
+                %a{href: '/login'}
+                  %i.fa.fa-user-circle-o.fa-lg{"aria-hidden" => "true", style: 'color: #8FD5FE'}
+          %li
+            .a-item-content
+              .a-center-content
+                = link_to(destroy_user_session_path, method: :delete) do
+                  %span Signout
+
