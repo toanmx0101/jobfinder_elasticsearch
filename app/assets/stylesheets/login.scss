@@ -124,7 +124,7 @@
 			    height: 100%;
 			    padding: 10px;
     		}
-    		.step-one-content {
+    		.step-one-content, .step-two-content, .step-three-content {
     			display: inline-block;
    				font-size: 14px;
     			.step-status {
@@ -188,4 +188,22 @@
 }
 .c-nav-footer__block {
   flex: 1 1 auto;
+}
+.radio-choice {
+  input, label {
+    display: inline-block;
+  }
+  input {
+    margin-top: -2px;
+    vertical-align: middle;
+  }
+  label {
+    padding: 10px;
+  }
+}
+.send-mails-jobfinder {
+  margin: 30px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 14px 0 20px 0;
 }

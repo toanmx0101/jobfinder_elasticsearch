@@ -6,9 +6,7 @@
       <div class="left-step-menu">
         <div class="step-one">
           <div class="step-icon step-active">
-            <span>
               <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
-            </span>
           </div>
           <div class="step-one-content">
             <div class="step-status">
@@ -20,14 +18,14 @@
           </div>
         </div>
         <div class="step-two">
-          <div class="step-icon step-completed">
+          <div class="step-icon">
             <span>
-              <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
             </span>
           </div>
-          <div class="step-one-content">
+          <div class="step-two-content">
             <div class="step-status">
-              Completed
+              Step2
             </div>
             <div class="step-title">
               Choose your plan
@@ -40,7 +38,7 @@
               <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
             </span>
           </div>
-          <div class="step-one-content">
+          <div class="step-three-content">
             <div class="step-status">
               Step 3
             </div>
@@ -75,26 +73,56 @@
               <span>Use at least one lowercase letter, one numeral, and seven characters.</span>
             </div>
             <div class="continue-signup">
-              <span>Continue</span>
+              <a href="#step-two">Continue</a>
             </div>
           </div>
+          <script type="text/javascript">
+            $(".continue-signup a").click(function(e){
+              e.preventDefault();
+              $('.step-one-content .step-status').text('Completed');
+              $('.step-one .step-icon .fa').removeClass('fa-user-circle-o');
+              $('.step-one .step-icon .fa').addClass('fa-check');
+              $('.step-one .step-icon').removeClass('step-active');
+              $('.step-one .step-icon').addClass('step-completed');
+              $('.step-two .step-icon').addClass('step-active');
+              $('.m--step-one').hide();
+              $('.m--step-two').show();
+            });
+
+            $('.continue-signup').click(function(){
+              $('.step-one-content .step-status').text('Completed');
+              $('.step-one .step-icon .fa').removeClass('fa-user-circle-o');
+              $('.step-one .step-icon .fa').addClass('fa-check');
+              $('.step-one .step-icon').removeClass('step-active');
+              $('.step-one .step-icon').addClass('step-completed');
+              $('.step-two .step-icon').addClass('step-active');
+              $('.m--step-one').hide();
+              $('.m--step-two').show();
+            });
+          </script>
           <div class="m--step-two">
             <h2>Choose your plan</h2>
             <div>
-              <input type="radio" id="contactChoice1"
-               name="contact" value="email">
-              <label for="contactChoice1">Email</label>
-
-              <input type="radio" id="contactChoice2"
-               name="contact" value="phone">
-              <label for="contactChoice2">Phone</label>
-
-              <input type="radio" id="contactChoice3"
-               name="contact" value="mail">
-              <label for="contactChoice3">Mail</label>
+              <div class="radio-choice">
+                <input type="radio" id="contactChoice1" name="contact" value="email" checked="checked">
+                <label for="contactChoice1">Employ seek jobs</label>  
+              </div>
+              <div class="radio-choice">
+                 <input type="radio" id="contactChoice2" name="contact" value="phone">
+                <label for="contactChoice2">Company create recruiment</label>
+              </div>              
             </div>
-            <hr>
-            <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
+            <div class="radio-choice send-mails-jobfinder" style="margin: 30px 0;border-top: 1px solid;">
+              <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
+              <label style="font-weight: bold;">
+                Send me update from Jobfinder News
+              </label> 
+              <br>
+              <span style="margin-left: 32px;">Unsubcribe anytime in your email preferences</span>
+            </div>
+            <div class="continue-signup">
+              <a href="#step-two">Continue</a>
+            </div>
           </div>
           <div class="actions">
             <%= f.submit "Create an account" %>
