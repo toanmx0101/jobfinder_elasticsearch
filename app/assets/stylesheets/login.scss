@@ -137,7 +137,7 @@
     	}
     }
     .right-step-menu {
-    	width: 70%;
+    	width: calc(70% - 70px);
     	margin-left: 70px;
     	h2 {
     		font-weight: inherit;
@@ -219,4 +219,15 @@
   display: inline-block;
   width: 50%;
   margin-left: 20px; 
+}
+.c--step__experience {
+  width: 50%;
+  display: inline-block;
+  .form-multi {
+    border: 0;
+    border-bottom: 1px dashed;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }

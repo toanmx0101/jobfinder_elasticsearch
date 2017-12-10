@@ -1,5 +1,5 @@
 <div class="step-one">
-  <div class="step-icon">
+  <div class="step-icon step-active">
       <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
   </div>
   <div class="c-step-content">
@@ -41,12 +41,3 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  $('.<%= raw step_active%> .step-icon').addClass('step-active');
-  if ('<%= raw step_complete %>' == 'step-one') {
-    $('.step-one .step-icon .fa').removeClass('fa-user-circle-o').addClass('fa-check').addClass('step-completed');
-  }
-  else if ('<%= raw step_complete %>' == 'step-three') {
-    $('.step-two .step-icon .fa').removeClass('fa-paper-plane-o').addClass('fa-check').addClass('step-completed'); 
-  }
-</script>

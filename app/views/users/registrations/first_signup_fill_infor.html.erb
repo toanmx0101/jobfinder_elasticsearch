@@ -9,23 +9,19 @@
 				      <i class="fa fa-check fa-2x" aria-hidden="true"></i>
 				  </div>
 				  <div class="c-step-content">
-				    <div class="step-status">
-				      Step 1
-				    </div>
-				    <div class="step-title">
-				      Setup your personal account
-				    </div>
+				    <div class="step-status">Completed</div>
+				    <div class="step-title">Setup your personal account</div>
 				  </div>
 				</div>
 				<div class="step-two">
-				  <div class="step-icon step-active">
+				  <div class="step-icon step-completed">
 				    <span>
-				      <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
+				      <i class="fa fa-check fa-2x" aria-hidden="true"></i>
 				    </span>
 				  </div>
 				  <div class="c-step-content">
 				    <div class="step-status">
-				      Step2
+				      Completed
 				    </div>
 				    <div class="step-title">
 				      Choose your plan
@@ -33,7 +29,7 @@
 				  </div>
 				</div>
 				<div class="step-three">
-				  <div class="step-icon">
+				  <div class="step-icon step-active">
 				    <span>
 				      <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
 				    </span>
@@ -49,31 +45,51 @@
 				</div>
       </div>
       <div class="right-step-menu">
-      	<%= form_for(current_user, as: current_user, url: user_registration_path(current_user), html: { method: :put }) do |f| %>
-				  <div class="m--step-two">
-						<h2>Choose your plan</h2>
-						<div>
-						  <div class="radio-choice">
-						    <input type="radio" id="contactChoice1" name="contact" value="email" checked="checked">
-						    <label for="contactChoice1">Employ seek jobs</label>  
-						  </div>
-						  <div class="radio-choice">
-						     <input type="radio" id="contactChoice2" name="contact" value="phone">
-						    <label for="contactChoice2">Company create recruiment</label>
-						  </div>              
-						</div>
-						<div class="radio-choice send-mails-jobfinder" style="margin: 30px 0;border-top: 1px solid;">
-						  <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
-						  <label style="font-weight: bold;">
-						    Send me update from Jobfinder News
-						  </label> 
-						  <br>
-						  <span style="margin-left: 32px;">Unsubcribe anytime in your email preferences</span>
-						</div>
-						<div class="actions">
-					    <%= f.submit "Continue", style: 'cursor: pointer' %>
-					  </div>
+      	<%= form_for(current_user, as: resource_name, url: registration_path(:user), html: { method: :put, style: 'width: 100%;'} ) do |f| %>
+					<h2>Tell us your experience</h2>
+				  <div class="m--step-three" style="display: flex">
+				  	<div class="c--step__experience" style="float: left;margin-right: 15px;">
+				  		<div class="field">
+	              <%= f.label "Your Position"%><br />
+	              <%= f.text_field :work_position, class: 'form-control' %>
+	            </div>
+	            <div class="field">
+	              <%= f.label "About you" %><br />
+	              <%= f.text_area :description, class: 'form-control', rows: '4' %>
+	            </div>
+	            <div class="field">
+	              <%= f.label "Your Past Experiences" %><br />
+	              <%= f.text_area :experience, class: 'form-control', rows: '4' %>
+	            </div>
+	            <div class="field">
+	              <%= f.label "Linkedin ( optional )"%><br />
+	              <%= f.text_field :work_position, class: 'form-control' %>
+	            </div>
+				  	</div>
+
+				  	<div class="c--step__experience" style="float: right;margin-left: 15px;">
+				  		<div class="field">
+	              <%= f.label "Your Skills"%>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	            </div>
+	            <div class="field">
+	              <%= f.label "Your education"%>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
+	            </div>
+	            <div class="field">
+	              <%= f.label "Linkedin ( optional )"%><br />
+	              <%= f.text_field :work_position, class: 'form-control' %>
+	            </div>
+				  	</div>
+						
 					</div>
+					<div class="actions">
+				    <%= f.submit "Continue", style: 'cursor: pointer' %>
+				  </div>
 				<% end %>
 			</div>
     </div>

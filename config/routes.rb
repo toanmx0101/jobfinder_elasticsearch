@@ -5,11 +5,14 @@ Rails.application.routes.draw do
     get 'login', to: 'users/sessions#new' 
 	  get 'join', to: 'users/registrations#new'
     get '/join/plan', to: 'users/registrations#plan'
-
+    get '/join/finish', to: 'users/registrations#first_signup_fill_infor'
+    put '/user_update', to: 'users/registrations#update'
+    as :user do
+      get 'users/profile', :to => 'devise/registrations#edit', :as => :user_root
+    end
 	end
   root to: 'home#index'
   resources :articles
-
   get '/search', to: 'articles#search'
   get '/dashboard', to: 'articles#dashboard'
   get '/new_recruitment', to: 'articles#new_recruitment'

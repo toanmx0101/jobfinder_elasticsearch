@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207105751) do
+ActiveRecord::Schema.define(version: 20171210164902) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20171207105751) do
     t.string "experience_level"
     t.string "website"
     t.boolean "subcribe_jobfinder"
+    t.string "work_position"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
