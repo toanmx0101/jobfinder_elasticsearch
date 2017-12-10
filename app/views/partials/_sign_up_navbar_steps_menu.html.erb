@@ -1,0 +1,52 @@
+<div class="step-one">
+  <div class="step-icon">
+      <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
+  </div>
+  <div class="c-step-content">
+    <div class="step-status">
+      Step 1
+    </div>
+    <div class="step-title">
+      Setup your personal account
+    </div>
+  </div>
+</div>
+<div class="step-two">
+  <div class="step-icon">
+    <span>
+      <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
+    </span>
+  </div>
+  <div class="c-step-content">
+    <div class="step-status">
+      Step2
+    </div>
+    <div class="step-title">
+      Choose your plan
+    </div>
+  </div>
+</div>
+<div class="step-three">
+  <div class="step-icon">
+    <span>
+      <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
+    </span>
+  </div>
+  <div class="c-step-content">
+    <div class="step-status">
+      Step 3
+    </div>
+    <div class="step-title">
+      Tell us your experience
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.<%= raw step_active%> .step-icon').addClass('step-active');
+  if ('<%= raw step_complete %>' == 'step-one') {
+    $('.step-one .step-icon .fa').removeClass('fa-user-circle-o').addClass('fa-check').addClass('step-completed');
+  }
+  else if ('<%= raw step_complete %>' == 'step-three') {
+    $('.step-two .step-icon .fa').removeClass('fa-paper-plane-o').addClass('fa-check').addClass('step-completed'); 
+  }
+</script>

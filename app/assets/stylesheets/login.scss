@@ -39,7 +39,8 @@
 	
 }
 .actions {
-  display: none;
+  cursor: pointer;
+  display: block;
 	input {
 		width: 100%;
 		display: block;
@@ -124,7 +125,7 @@
 			    height: 100%;
 			    padding: 10px;
     		}
-    		.step-one-content, .step-two-content, .step-three-content {
+    		.c-step-content {
     			display: inline-block;
    				font-size: 14px;
     			.step-status {
@@ -149,7 +150,7 @@
     				font-size: 14px;
     				font-weight: bold;
     			}
-    			input {
+    			input, textarea {
     				width: 100%;
     				box-sizing: border-box;
     				margin-bottom: 15px;
@@ -162,7 +163,7 @@
     }
 	}
 }
-.continue-signup {
+.continue-signup, .finish-step-two {
   width: 100%;
   cursor: pointer;
   display: block;
@@ -175,8 +176,7 @@
   padding: 10px 0 ; 
   text-align: center;
 }
-.m--step-two {
-  display: none;
+.m--step-two, .m--step-three {
 }
 .c-footer-wrap {
   grid-template-columns: repeat(4,1fr);
@@ -206,4 +206,17 @@
   border-top: 1px solid;
   border-bottom: 1px solid;
   padding: 14px 0 20px 0;
+}
+.o--step-three {
+  display: flex;
+}
+.o-step-three-left {
+  display: inline-block;
+  width: 50%;
+  margin-right: 20px;
+}
+.o-step-three-right {
+  display: inline-block;
+  width: 50%;
+  margin-left: 20px; 
 }
