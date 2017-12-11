@@ -109,7 +109,7 @@
     	width: 30%;
     	.step-one, .step-two, .step-three {
     		margin-top: 30px;
-    		display: inline-block;
+    		display: block;
         border-left: 2px solid tranparent;
     		.step-completed {
 			    color: #33CBA1;
@@ -124,16 +124,17 @@
 			    text-align: center;
 			    height: 100%;
 			    padding: 10px;
+          
     		}
     		.c-step-content {
-    			display: inline-block;
-   				font-size: 14px;
-    			.step-status {
-    				font-weight: bold;
-    				font-size: 15px;
-    				padding-bottom: 6px;
-    			}
-    		}
+          display: inline-block;
+          font-size: 14px;
+          .step-status {
+            font-weight: bold;
+            font-size: 15px;
+            padding-bottom: 6px;
+          }
+        }
     	}
     }
     .right-step-menu {
