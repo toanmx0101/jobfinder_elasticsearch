@@ -1,0 +1,82 @@
+	<div class="container">
+  <div class="zz-signup-content">
+    <h2 class="sign-up-header-title">Join with Jobfinder</h2>
+    <span style="font-size: 15px;">Create your awesome profile and connect to employ</span>
+    <div class="zz-steps-signup">
+      <div class="left-step-menu">
+        <div class="step-one">
+				  <div class="step-icon step-completed">
+				      <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+				  </div>
+				  <div class="c-step-content">
+				    <div class="step-status">
+				      Completed
+				    </div>
+				    <div class="step-title">
+				      Setup your personal account
+				    </div>
+				  </div>
+				</div>
+				<div class="step-two">
+				  <div class="step-icon step-active">
+				    <span>
+				      <i class="fa fa-paper-plane-o fa-2x" aria-hidden="true"></i>
+				    </span>
+				  </div>
+				  <div class="c-step-content">
+				    <div class="step-status">
+				      Step2
+				    </div>
+				    <div class="step-title">
+				      Choose your plan
+				    </div>
+				  </div>
+				</div>
+				<div class="step-three">
+				  <div class="step-icon">
+				    <span>
+				      <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
+				    </span>
+				  </div>
+				  <div class="c-step-content">
+				    <div class="step-status">
+				      Step 3
+				    </div>
+				    <div class="step-title">
+				      Tell us your experience
+				    </div>
+				  </div>
+				</div>
+      </div>
+      <div class="right-step-menu">
+      	<%= form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+				  <div class="m--step-two">
+						<h2>Choose your plan</h2>
+						<div>
+						  <div class="radio-choice">
+						  	<%= f.radio_button :user_type, 'candidate', :checked => true %> 
+						    <label for="contactChoice1">Candidate: just seek jobs</label>  
+						  </div>
+						  <div class="radio-choice">
+						  	<%= f.radio_button :user_type, 'employer' %> 
+						    <label for="contactChoice2">Employers: Company create recruiment</label>
+						  </div>              
+						</div>
+						<div class="radio-choice send-mails-jobfinder" style="margin: 30px 0;border-top: 1px solid;">
+						  <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
+						  <label style="font-weight: bold;">
+						    Send me update from Jobfinder News
+						  </label> 
+						  <br>
+						  <span style="margin-left: 32px;">Unsubcribe anytime in your email preferences</span>
+						</div>
+						<div class="actions">
+					    <%= f.submit "Continue", style: 'cursor: pointer' %>
+					  </div>
+					</div>
+				<% end %>
+			</div>
+    </div>
+  </div>
+</div>
+

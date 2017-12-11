@@ -39,6 +39,8 @@
 	
 }
 .actions {
+  cursor: pointer;
+  display: block;
 	input {
 		width: 100%;
 		display: block;
@@ -94,6 +96,7 @@
 }
 .zz-signup-content {
 	margin-top: 80px;
+  margin-bottom: 50px;
 	.sign-up-header-title {
 		font-size: 40px;
 	}
@@ -104,14 +107,16 @@
     .left-step-menu {
     	margin-top: 40px;
     	width: 30%;
-    	.step-one {
+    	.step-one, .step-two, .step-three {
     		margin-top: 30px;
     		display: inline-block;
+        border-left: 2px solid tranparent;
     		.step-completed {
 			    color: #33CBA1;
     		}
     		.step-active {
     			color: #8FD5FE;
+          border-left: 2px solid #8FD5FE;
     		}
     		.step-icon {
     			display: inline-block;
@@ -120,7 +125,7 @@
 			    height: 100%;
 			    padding: 10px;
     		}
-    		.step-one-content {
+    		.c-step-content {
     			display: inline-block;
    				font-size: 14px;
     			.step-status {
@@ -132,7 +137,7 @@
     	}
     }
     .right-step-menu {
-    	width: 70%;
+    	width: calc(70% - 70px);
     	margin-left: 70px;
     	h2 {
     		font-weight: inherit;
@@ -145,7 +150,7 @@
     				font-size: 14px;
     				font-weight: bold;
     			}
-    			input {
+    			input, textarea {
     				width: 100%;
     				box-sizing: border-box;
     				margin-bottom: 15px;
@@ -157,4 +162,75 @@
     	}
     }
 	}
+}
+.continue-signup, .finish-step-two {
+  width: 100%;
+  cursor: pointer;
+  display: block;
+  border: 0;
+  background: #8FD5FE;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #FFF;
+  padding: 10px 0 ; 
+  text-align: center;
+}
+.m--step-two, .m--step-three {
+}
+.c-footer-wrap {
+  grid-template-columns: repeat(4,1fr);
+  width: 65.85365854%;
+  margin-bottom: 1rem;
+  margin-top: 0;
+  display: grid;
+  grid-gap: 1rem;
+}
+.c-nav-footer__block {
+  flex: 1 1 auto;
+}
+.radio-choice {
+  input, label {
+    display: inline-block;
+  }
+  input {
+    margin-top: -2px;
+    vertical-align: middle;
+  }
+  label {
+    padding: 10px;
+  }
+}
+.send-mails-jobfinder {
+  margin: 30px 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 14px 0 20px 0;
+}
+.o--step-three {
+  display: flex;
+}
+.o-step-three-left {
+  display: inline-block;
+  width: 50%;
+  margin-right: 20px;
+}
+.o-step-three-right {
+  display: inline-block;
+  width: 50%;
+  margin-left: 20px; 
+}
+.c--step__experience {
+  width: 50%;
+  display: inline-block;
+  .form-multi {
+    border: 0;
+    border-bottom: 1px dashed #aaa;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .sub-form-multi {
+    display: inline-block;
+  }
 }
