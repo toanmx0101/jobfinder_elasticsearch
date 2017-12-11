@@ -5,93 +5,104 @@
     <div class="zz-steps-signup">
       <div class="left-step-menu">
         <div class="step-one">
-				  <div class="step-icon step-completed">
-				      <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-				  </div>
-				  <div class="c-step-content">
-				    <div class="step-status">Completed</div>
-				    <div class="step-title">Setup your personal account</div>
-				  </div>
-				</div>
-				<div class="step-two">
-				  <div class="step-icon step-completed">
-				    <span>
-				      <i class="fa fa-check fa-2x" aria-hidden="true"></i>
-				    </span>
-				  </div>
-				  <div class="c-step-content">
-				    <div class="step-status">
-				      Completed
-				    </div>
-				    <div class="step-title">
-				      Choose your plan
-				    </div>
-				  </div>
-				</div>
-				<div class="step-three">
-				  <div class="step-icon step-active">
-				    <span>
-				      <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
-				    </span>
-				  </div>
-				  <div class="c-step-content">
-				    <div class="step-status">
-				      Step 3
-				    </div>
-				    <div class="step-title">
-				      Tell us your experience
-				    </div>
-				  </div>
-				</div>
+          <div class="step-icon step-completed">
+              <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+          </div>
+          <div class="c-step-content">
+            <div class="step-status">Completed</div>
+            <div class="step-title">Setup your personal account</div>
+          </div>
+        </div>
+        <div class="step-two">
+          <div class="step-icon step-completed">
+            <span>
+              <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="c-step-content">
+            <div class="step-status">
+              Completed
+            </div>
+            <div class="step-title">
+              Choose your plan
+            </div>
+          </div>
+        </div>
+        <div class="step-three">
+          <div class="step-icon step-active">
+            <span>
+              <i class="fa fa-terminal fa-2x" aria-hidden="true"></i>
+            </span>
+          </div>
+          <div class="c-step-content">
+            <div class="step-status">
+              Step 3
+            </div>
+            <div class="step-title">
+              Tell us your experience
+            </div>
+          </div>
+        </div>
       </div>
       <div class="right-step-menu">
-      	<%= form_for(current_user, as: resource_name, url: registration_path(:user), html: { method: :put, style: 'width: 100%;'} ) do |f| %>
-					<h2>Tell us your experience</h2>
-				  <div class="m--step-three" style="display: flex">
-				  	<div class="c--step__experience" style="float: left;margin-right: 15px;">
-				  		<div class="field">
-	              <%= f.label "Your Position"%><br />
-	              <%= f.text_field :work_position, class: 'form-control' %>
-	            </div>
-	            <div class="field">
-	              <%= f.label "About you" %><br />
-	              <%= f.text_area :description, class: 'form-control', rows: '4' %>
-	            </div>
-	            <div class="field">
-	              <%= f.label "Your Past Experiences" %><br />
-	              <%= f.text_area :experience, class: 'form-control', rows: '4' %>
-	            </div>
-	            <div class="field">
-	              <%= f.label "Linkedin ( optional )"%><br />
-	              <%= f.text_field :work_position, class: 'form-control' %>
-	            </div>
-				  	</div>
+        <%= form_for(current_user, as: resource_name, url: registration_path(:user), html: { method: :put, style: 'width: 100%;'} ) do |f| %>
+          <h2>Tell us your experience</h2>
+          <div class="m--step-three" style="display: flex">
+            <div class="c--step__experience" style="float: left;margin-right: 15px;">
+              <div class="field">
+                <%= f.label "Your Position"%><br />
+                <%= f.text_field :work_position, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "About you" %><br />
+                <%= f.text_area :description, class: 'form-control', rows: '4' %>
+              </div>
+              <div class="field">
+                <%= f.label "Your Past Experiences" %><br />
+                <%= f.text_area :experience, class: 'form-control', rows: '4' %>
+              </div>
+              <div class="field">
+                <%= f.label "Linkedin ( optional )"%><br />
+                <%= f.text_field :website, class: 'form-control' %>
+              </div>
+            </div>
 
-				  	<div class="c--step__experience" style="float: right;margin-left: 15px;">
-				  		<div class="field">
-	              <%= f.label "Your Skills"%>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	            </div>
-	            <div class="field">
-	              <%= f.label "Your education"%>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	              <%= f.text_field :specialities, class: 'form-control form-multi' %>
-	            </div>
-	            <div class="field">
-	              <%= f.label "Linkedin ( optional )"%><br />
-	              <%= f.text_field :work_position, class: 'form-control' %>
-	            </div>
-				  	</div>
-						
-					</div>
-					<div class="actions">
-				    <%= f.submit "Continue", style: 'cursor: pointer' %>
-				  </div>
-				<% end %>
-			</div>
+            <div class="c--step__experience" style="float: right;margin-left: 15px;">
+              <div class="field">
+                <div class="field-header" style="display: flex">
+                  <%= f.label "Your Skills", style: 'width: 100%' %>
+                  <i class="fa fa-plus fa-lg" aria-hidden="true" style="margin-top: 2px; cursor: pointer;"></i>                  
+                </div>
+                <div style="margin-left: 25px;">
+                  <%= f.text_field :specialities, class: 'form-control form-multi'%>
+                </div>
+              </div>
+              <div class="field">
+                <div class="field-header" style="display: flex">
+                  <%= f.label "Your education", style: 'width: 100%' %>
+                  <i class="fa fa-plus fa-lg" aria-hidden="true" style="margin-top: 2px; cursor: pointer;"></i>                  
+                </div>
+                <div style="margin-left: 25px;">
+                  <div class="sub-field" style="display: flex;">
+                    <%= f.text_field :education, class: 'form-control form-multi sub-form-multi' %>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <%= f.label "Experience level"%><br />
+                <%= f.text_field :experience_level, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "Your language"%><br />
+                <%= f.text_field :language, class: 'form-control' %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Continue", style: 'cursor: pointer' %>
+              </div>
+            </div>
+          </div>  
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

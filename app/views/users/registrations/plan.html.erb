@@ -1,4 +1,4 @@
-<div class="container">
+	<div class="container">
   <div class="zz-signup-content">
     <h2 class="sign-up-header-title">Join with Jobfinder</h2>
     <span style="font-size: 15px;">Create your awesome profile and connect to employ</span>
@@ -54,12 +54,12 @@
 						<h2>Choose your plan</h2>
 						<div>
 						  <div class="radio-choice">
-						    <input type="radio" id="contactChoice1" name="contact" value="email" checked="checked">
-						    <label for="contactChoice1">Employ seek jobs</label>  
+						  	<%= f.radio_button :user_type, 'candidate', :checked => true %> 
+						    <label for="contactChoice1">Candidate: just seek jobs</label>  
 						  </div>
 						  <div class="radio-choice">
-						     <input type="radio" id="contactChoice2" name="contact" value="phone">
-						    <label for="contactChoice2">Company create recruiment</label>
+						  	<%= f.radio_button :user_type, 'employer' %> 
+						    <label for="contactChoice2">Employers: Company create recruiment</label>
 						  </div>              
 						</div>
 						<div class="radio-choice send-mails-jobfinder" style="margin: 30px 0;border-top: 1px solid;">
