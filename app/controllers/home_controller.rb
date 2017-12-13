@@ -4,4 +4,8 @@ class HomeController < ApplicationController
 			 render :dashboard
 		end
 	end
+
+	def message_thread
+		
+	end
 end
