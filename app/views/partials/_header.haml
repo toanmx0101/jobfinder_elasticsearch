@@ -62,13 +62,38 @@
                   %i.fa.fa-flag-o.fa-lg{"aria-hidden" => "true"}
                     %span 12
           %li
-            .a-item-content
+            .a-item-content.account-link
               .a-center-content
-                %a{href: '/login'}
+                %a{href: 'javascript:;'}
                   %i.fa.fa-user-circle-o.fa-lg{"aria-hidden" => "true", style: 'color: #8FD5FE'}
+              .account-dropdown
+                %ul
+                  %li
+                    %a{href: '/profile'} My Profile
+                  %li{style: 'border-bottom: 1px solid #EEE;'}
+                    %a Activity 
+                  %li{style: 'margin-top: 6px;'}
+                    %a Setting
+                  %li
+                    %a Help Center
+                  %li
+                    %a Language  
+
           %li
             .a-item-content
               .a-center-content
                 = link_to(destroy_user_session_path, method: :delete) do
                   %span Signout
 
+:javascript
+  $('.account-link').click(function(){
+    $('.account-dropdown').toggle();
+    //return false;
+  });
+  //window.onclick = function(event) {
+  //  if (!event.target.matches('.account-dropdown')) {
+  //    if (!$("#toggle_div").is(":hidden")) {
+  //      $('.account-dropdown').hide();
+  //    }
+  //  }
+  //}

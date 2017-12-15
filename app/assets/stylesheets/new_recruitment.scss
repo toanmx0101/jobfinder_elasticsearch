@@ -67,7 +67,7 @@
 	width: 100%;
 	.st-left-content {
 		float: left;
-		width: 60%;
+		width: 65%;
 		.tip-of-recruitment {
 			position: relative;
 			padding: 12px 15px 15px 12px;
@@ -89,13 +89,13 @@
 		}
 	}
 	.st-right-content {
-		width: 40%;
+		width: 35%;
 		float: right;
 		.x-st-right-content {
-			padding: 0 40px;
+			padding-left: 55px;
 			.fill-company-informantion {
 				position: relative;
-				padding: 12px 15px 15px 12px;
+				padding: 12px 15px 5px 12px;
 				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
 				margin-bottom: 25px;
 				h3 {
@@ -107,7 +107,7 @@
     			width: 100%;
 					cursor: pointer;
 					span {
-						margin-top: 13px;
+						margin-top: 20px;
 						float: right;
 						padding: 0 7	px;
 						i {
@@ -131,8 +131,9 @@
 				}
 			}
 			.progress-status {
+				margin-bottom: 20px;
 				text-align: center;
-				padding: 12px 15px 15px 12px;
+				padding: 25px 15px 20px 12px;
 				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
 				.prec{
 				    top: 40px;
@@ -170,5 +171,55 @@
 				}
 			}
 		}
+	}
+}
+.x2--form-create-recruitment {
+	display: flex;
+  width: 100%;
+  .left-form-group, .right-form-group {
+  	width: 50%;
+  }
+  .c--left-form-group {
+  	margin-right: 13px;
+  }
+  .form-require-skills {
+  	margin-bottom: 11px;
+    display: flex;
+    .fa {
+    	vertical-align: bottom;
+	    margin-top: 7px;
+	    margin-left: 15px;
+	    margin-right: 15px;
+    }
+    input {
+    	border-bottom: 1px dashed #DDD;
+    }
+  }
+
+}
+.form-job-submit {
+	.submit, .cancel {
+		float: right;
+    padding: 11px 30px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+	}
+	.cancel {
+		background: #f9f9f9;
+		color: #484848;
+		margin-right: 12px;
+		&:hover {
+    	background: #EEE;
+    }
+	}
+	.submit {
+    background: #8FD5FE;
+    color: #FFF;
+    
+    &:hover {
+    	background: #8fe5fe;;
+    }
 	}
 }

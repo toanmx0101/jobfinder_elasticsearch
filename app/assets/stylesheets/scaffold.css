@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,300,400,700,900');
 body, input {
   background-color: #fff;
   color: #484848;
@@ -89,8 +89,39 @@ li {
   font-family: 'Raleway', sans-serif;
 }
 .a-item-content {
+  position: relative;
   display: inline-block;
   cursor: pointer;
+}
+.a-item-content .account-dropdown {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  z-index: 1000;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 20px rgba(0,0,0,.1);
+}
+
+.account-dropdown ul {
+  padding: 0;
+  padding-top: 7px;
+  width: 200px;
+  height: 200px;
+}
+.account-dropdown ul li { 
+  height: 38px;
+  line-height: 38px;
+  display: block;
+}
+.account-dropdown ul li:hover {
+  background: #f9f9f9;
+}
+.account-dropdown ul li a {
+  padding: 0 17px;
+  text-decoration: none;
+  width: 100%;
 }
 .a-center-content {
   vertical-align: middle;
@@ -223,3 +254,4 @@ li {
   border-radius: 50%;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15)
 }
+.show {display:block;}

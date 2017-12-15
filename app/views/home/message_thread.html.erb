@@ -8,6 +8,9 @@
   					<!-- <span class="tooltiptext">Create new message</span> -->
   				</i>
 				</div>
+				<div class="message-search-form" >
+					<input type="text" name="" placeholder="Search message">
+				</div>
 				<div class="sender-listitem">
 					<div class="sender-item active-sender-item">
 						<div class="sender-header">
@@ -41,8 +44,11 @@
 			<div class="c-message-thread c-message-thread__right-content">
 				<div class="o-message-thread_list-mess">
 					<div class="message-search">
-						<div class="message-search-form">
-							<input type="text" name="" placeholder="Search message">
+						<div class="message-search-form" style="display: flow-root;font-size: 20px;">
+							<i class="fa fa-cog " aria-hidden="true" style="    float: right;width: 43px;cursor: pointer;
+    text-align: right;
+    border-bottom: 2px solid;
+    padding-bottom: 7px;"></i>
 						</div>
 					</div>
 					<div id="thread_content" class="message-thread-content" style="">
@@ -55,7 +61,15 @@
 								<div class="sender-mess-item__text short-mess-text">
 									Hello Toàn,
 								</div>
-								
+								<div class="sender-mess-item__text short-mess-text">
+									Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+								</div>
+								<div class="sender-mess-item__text short-mess-text">
+									Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+								</div>
+								<div class="sender-mess-item__text short-mess-text">
+									Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+								</div>
 							</div>
 							<div class="sender-mess-item__content" style="">
 								<div class="sender-mess-item__content_right">
@@ -117,6 +131,7 @@
 	</div>
 </div>
 <script type="text/javascript">
+	$('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
 	$('.sender-item').click(function(){
 		$('.sender-item').removeClass('active-sender-item');
 		$(this).addClass('active-sender-item')

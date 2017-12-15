@@ -54,17 +54,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:work_position, :description, :experience, :website, :specialities, :education, :experience_level, :language])
   end
 
-  # The path used after sign up.
+  # Update resource without password.
   def update_resource(resource, params)
     resource.update_without_password(params)
   end
 
+  # The path used after signup.
   def after_sign_up_path_for(resource)
     '/join/plan'
   end
 
+  # The path used after sign update.
   def after_update_path_for(resource)
-    (resource.work_position == nil ? '/join/finish' : root_path)
+    resource.work_position == nil ? '/join/finish' : root_path
   end
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

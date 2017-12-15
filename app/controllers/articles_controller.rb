@@ -7,11 +7,9 @@ class ArticlesController < ApplicationController
   end
 
   def dashboard
-    
   end
 
   def new_recruitment 
-
   end
   
   # GET /articles/search
@@ -21,7 +19,6 @@ class ArticlesController < ApplicationController
 
     render action: "index"
   end
-
   
   # GET /articles/1
   # GET /articles/1.json
@@ -81,8 +78,9 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def escape_characters_in_string(string)
       pattern = /(\'|\"|\.|\*|\/|\-|\+|\]|\[|\)|\(|\\)/
-      string.gsub(pattern){|match|"\\"  + match} # <-- Trying to take the currently found match and add a \ before it I have no idea how to do that).
+      string.gsub(pattern){|match|"\\"  + match}
     end
+
     def set_article
       @article = Article.find(params[:id])
     end

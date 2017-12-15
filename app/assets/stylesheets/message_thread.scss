@@ -1,3 +1,4 @@
+
 .message-threads {
 	padding-top: 60px;
 }
@@ -7,7 +8,7 @@
 		width: 30%;
 		.c-message-thread__header {
 			display: flex;
-    	margin: 14px 0;
+    	margin: 0;
     	h2 {
     		width: 100%;
     		margin: 0;
@@ -63,13 +64,20 @@
 		}
 	}
 	.message-search {
-		margin-bottom: 23px;
+		margin-bottom: 8px;
 	}
 	.message-thread-content {
 		height: 550px;
-		overflow-y: scroll;
+		overflow-y: hidden;
+		border-top: 1px solid #EEE;
+		&:hover, &:active, &:focus {
+			overflow-y: scroll;
+	    .sender-mess-item {
+	    	margin-right: 6px;
+	    }
+		}
 		&::-webkit-scrollbar {
-	    width: 10px;
+	    width: 8px;
 	    height: 10px
 	  }
 	  &::-webkit-scrollbar-thumb {
@@ -78,7 +86,7 @@
 	    background: #DDDDDD; 
 	  }
 	  .sender-mess-item {
-	  	margin-right: 4px;
+	  	margin-right: 14px;
 	  }
 		.sender-mess-item__avatar {
 			margin-bottom: 7px;
@@ -109,16 +117,18 @@
 
 		input {
 			box-sizing: border-box;
-			width: 100%;
-			font-size: 15px;
-			padding: 11px 0px 11px 30px;
-			border: 0;
-			border-bottom: 1px solid #EEE;
-			outline: none;
-			background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg);
-      background-repeat: no-repeat;
-      background-size: 18px 18px;
-      background-position: 0% center;
+	    width: 100%;
+	    margin: 18px 0;
+	    font-size: 15px;
+	    border-radius: 4px;
+	    padding: 7px 0px 7px 11px;
+	    border: 0;
+	    border: 1px solid #EEE;
+	    outline: none;
+	    background-image: url(http://mihaeltomic.com/codepen/input-search/ic_search_black_24px.svg);
+	    background-repeat: no-repeat;
+	    background-size: 18px 18px;
+	    background-position: 96% center;
 		}
 	}
 	.sender-mess-name {
@@ -153,7 +163,6 @@
 .message-form {
 	padding-top: 12px;
 	border-top: 1px solid #EEE;
-	margin-right: 14px;
 	input {
 		width: 100%;
     border: 0;
