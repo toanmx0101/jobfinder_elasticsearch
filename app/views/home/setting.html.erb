@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="settings">
+    <div class="settings-menu">
+      <div class="settings-menu-header">
+        <h2>Settings</h2>
+      </div>
+      <div class="setting profile-setting">
+        <i aria-hidden="true" class="fa fa-user-circle-o fa-2x" style=";"></i>
+        <div class="c-profile-setting">
+          <h3>Profile</h3>
+          <span>Change the name,update your skills, education</span>
+        </div>
+      </div>
+      <div class="setting profile-setting is-active ">
+        <i aria-hidden="true" class="fa fa-shield fa-2x" style="width: 17px;margin-left: 3PX;"></i>
+        <div class="c-profile-setting">
+          <h3>Password</h3>
+          <span>Change your password</span>
+        </div>
+      </div>
+      <div class="setting profile-setting">
+        <i aria-hidden="true" class="fa fa-flag fa-2x" style=";"></i>
+        <div class="c-profile-setting">
+          <h3>Notifications</h3>
+          <span>Change the name,update your skills, education</span>
+        </div>
+      </div>
+      <div class="setting profile-setting">
+        <i aria-hidden="true" class="fa fa-paper-plane fa-2x" style=";"></i>
+        <div class="c-profile-setting">
+          <h3>Plan</h3>
+          <span>Change the name,update your skills, education</span>
+        </div>
+      </div>
+      
+       <div class="setting profile-setting">
+        <i aria-hidden="true" class="fa fa-envelope-o fa-2x" style=";"></i>
+        <div class="c-profile-setting">
+          <h3>Messages</h3>
+          <span>Change the name,update your skills, education</span>
+        </div>
+      </div>
+    </div>
+    <div class="settings-content">
+    
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('.setting').click(function(){
+    $('.setting').removeClass('is-active');
+    $(this).addClass('is-active');
+  });
+</script>

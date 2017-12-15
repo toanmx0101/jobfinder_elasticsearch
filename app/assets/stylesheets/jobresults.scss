@@ -1,121 +1,102 @@
-.job-resul-card {
-	
-	transition: all .6s ease;
-}
-.filter-result {
-	width: 25%;
-}
-.results-list-card {
-	width: 75%;
-}
+.job-resul-card { transition: all .6s ease; }
+.filter-result { width: 25%; }
+.results-list-card { width: 75%; }
 .m__job-result-card {
   margin: 0 5px;
   padding: 10px;
   position: relative;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-	display: inherit;
-	transition: all 0.3s linear 0s;
-	&:hover {
-		box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-	}
+  display: inherit;
+  transition: all 0.3s linear 0s;
+  &:hover { box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3); }
 }
 .result-list-container {
-	display: -webkit-inline-box;
-	width: 100%;
+  display: -webkit-inline-box;
+  width: 100%;
 }
 .filter-title-div {
-	float: left;
-	h3, h4 {
-		margin: 0;
-	}
+  float: left;
+  h3, h4 { margin: 0; }
 }
 .clear-filter-div {
-	float: right;
-	cursor: pointer;
+  float: right;
+  cursor: pointer;
 }
 .filters {
-	border-bottom: 2px solid #484848;
-	display: inline-block;
+  border-bottom: 2px solid #484848;
+  display: inline-block;
   width: 100%;
   padding: 5px 0;
 }
 .filter-wireframe {
-	margin-left: 20px;
-	margin-bottom: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 .filter-wireframe-icons-list {
-	display: inline-block;
-	float: right;
+  display: inline-block;
+  float: right;
 }
 .solf-by {
-	display: inline-block;
-	ul {
-		padding: 0;
-		li {
-			line-height: 18px;
-		}
-	}
-	h3, h4 {
-		margin: 0;
-	}
-	padding: 5px 0;
-	border-bottom: 2px solid #484848;
+  display: inline-block;
+  ul {
+    padding: 0;
+    li { line-height: 18px; }
+  }
+  h3, h4 { margin: 0; }
+  padding: 5px 0;
+  border-bottom: 2px solid #484848;
 }
 .filter-icon {
-	display: inline-block;
-	padding: 5px 0;
-	border-radius: 2px;
-	cursor: pointer;
-	i {
-		padding: 0 8px;
-	}
+  display: inline-block;
+  padding: 5px 0;
+  border-radius: 2px;
+  cursor: pointer;
+  i { padding: 0 8px; }
 }
 .list-cards {
-	width: calc(100% - 15px);
-	margin-left: 15px;
+  width: calc(100% - 15px);
+  margin-left: 15px;
 }
 .select2-selection--multiple {
-	border-radius: 0px!important;
-	border: 1px solid #484848!important;
+  border-radius: 0px!important;
+  border: 1px solid #484848!important;
 }
 .list-center-content {
-	display: table;
-	width: 100%;
-	margin-bottom: 20px;
+  display: table;
+  width: 100%;
+  margin-bottom: 20px;
 }
 .select2-results__options {
-	width: 100%;
+  width: 100%;
 }
 .select2-selection__choice {
-	height: initial;
-	padding: 5px!important;
-	line-height: 18px;
-	background-color: #FFF!important;
-	border-radius: 0!important;
+  height: initial;
+  padding: 5px!important;
+  line-height: 18px;
+  background-color: #FFF!important;
+  border-radius: 0!important;
 }
 .select2-results__option {
-	display: block;
-	height: 24px;
-	padding-left: 8px!important;
-	line-height: 25px!important;
+  display: block;
+  height: 24px;
+  padding-left: 8px!important;
+  line-height: 25px!important;
 }
-.select2-selection {
-	height: 80px;
-}
+.select2-selection { height: 80px; }
 .select2-selection--multiple {
-	.select2-selection__rendered {
-		overflow: overlay!important;
-		height: 100%;
-		&::-webkit-scrollbar {
-	    width: 12px;
-	    height: 10px
-	  }
-	  &::-webkit-scrollbar-thumb {
-	    -webkit-border-radius: 10px;
-	    border-radius: 10px;
-	    background: #DDDDDD; 
-	  }
-	}
+  .select2-selection__rendered {
+    overflow: overlay!important;
+    height: 100%;
+    &::-webkit-scrollbar {
+      width: 12px;
+      height: 10px
+    }
+    &::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: #DDDDDD; 
+    }
+  }
 }
 .skills-header {
   display: inline-block;
@@ -124,172 +105,140 @@
   margin-top: 15px;
 }
 .input--text {
-	width: 100%;
-	border: solid 1px #484848;
-	padding: 5px;
-	box-sizing: border-box;
+  width: 100%;
+  border: solid 1px #484848;
+  padding: 5px;
+  box-sizing: border-box;
 }
 .select2-container {
-	width: 100%!important;
-	font-size: 14px;
+  width: 100%!important;
+  font-size: 14px;
 }
 .select2-selection__choice__remove {
-	float: right;
+  float: right;
   font-size: 20px;
   margin-left: 7px;
   line-height: 16px;
 
 }
 .select2-selection--single {
-	border-radius: 0px!important;
-	border: 1px solid #484848!important;
+  border-radius: 0px!important;
+  border: 1px solid #484848!important;
 }
 .grid {
-	width: 25%;
-	display: inline-block;
+  width: 25%;
+  display: inline-block;
 }
 .list {
-	width: 100%;
-	display: block;
-	margin-bottom: 20px;
-	.company-icon {
-		display: block;
-	}
-	.m__job-result-card {
-		display: flow-root;
-	}
-	.content {
-		width: 50%;
-		float: left;
-		.job-location, .job-salary, .view-detail-button {
-			display: none;
-		}
-		.job-description {
-			margin-bottom: 40px;
-		}
-	}
-	.left-content {
-		display: inline-block;
-		width: 50%;
-		float: right;
-		.m--left-content {
-			padding: 0 10px;
-		}
-	}
-	.social-list-buttons {
-		display: block;
-	}
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+  .company-icon { display: block; }
+  .m__job-result-card { display: flow-root; }
+  .content {
+    width: 50%;
+    float: left;
+    .job-location, .job-salary, .view-detail-button { display: none; }
+    .job-description { margin-bottom: 40px; }
+  }
+  .left-content {
+    display: inline-block;
+    width: 50%;
+    float: right;
+    .m--left-content { padding: 0 10px; }
+  }
+  .social-list-buttons { display: block; }
 }
 .map {
-	width: 50%;
-	display: block;
-	margin-bottom: 20px;
+  width: 50%;
+  display: block;
+  margin-bottom: 20px;
 }
 .job-type {
   float: right;
   width: 100%;
   margin-bottom: 10px;
   span {
-	  padding: 2px 11px;
-	  float: right;
-	  border: 1px solid;
+    padding: 2px 11px;
+    float: right;
+    border: 1px solid;
   }
 }
 .job-title {
   box-sizing: border-box;
   display: -webkit-inline-box;
-	margin-bottom: 10px;
+  margin-bottom: 10px;
   padding-bottom: 5px;
-	h3 {
-		margin: 0;
-	}
+  h3 {
+    margin: 0;
+  }
 }
 .require-skills {
-	ul {
-		padding: 0;
-		height: 18px;
-	}
-	li {
-		line-height: 18px;
-		display: inline-block;
-	}
+  ul {
+    padding: 0;
+    height: 18px;
+  }
+  li {
+    line-height: 18px;
+    display: inline-block;
+  }
 }
-.job-description {
-	margin-bottom: 5px;
-}
+.job-description { margin-bottom: 5px; }
 .job-location {
-	margin-bottom: 8px;
-	i {
-		margin-right: 5px;
-	}
+  margin-bottom: 8px;
+  i { margin-right: 5px; }
 }
 .job-salary {
-	h3 {
-		margin: 0;
-	}
+  h3 { margin: 0; }
 }
 .content {
-	width: 100%;
-	display: inline-block;
+  width: 100%;
+  display: inline-block;
 }
 .m--view-detail-button {
-	cursor: pointer;
-	float: right;
+  cursor: pointer;
+  float: right;
   padding: 5px;
   margin-top: 10px;
   margin-bottom: 4px;
   border: 1px solid #484848;
   &:hover {
-  	background-color: #8FD5FE ;
-  	border: 1px solid #8FD5FE;
-  	transition: all .6s ease;
-  	span, i {
-  		color: #FFF;
-  	}
+    background-color: #8FD5FE ;
+    border: 1px solid #8FD5FE;
+    transition: all .6s ease;
+    span, i {
+      color: #FFF;
+    }
   }
-  i {
-  	margin-right: 5px;
-  }
+  i { margin-right: 5px; }
 }
-.company-icon, .left-content {
-	display: none;
-}
-.job-require-skills-list {
-	padding: 10px 0;
-}
+.company-icon, .left-content { display: none; }
+.job-require-skills-list { padding: 10px 0; }
 .job-require-skills {
-	margin-bottom: 6px;
-	.job-require-skills-title {
-		margin-bottom: 6px;
-	}
-	h3 {
-		margin: 0;
-	}
-	span {
-		margin-top: 4px;
-		display: inline-block;
-		padding: 8px 15px;
+  margin-bottom: 6px;
+  .job-require-skills-title { margin-bottom: 6px; }
+  h3 { margin: 0; }
+  span {
+    margin-top: 4px;
+    display: inline-block;
+    padding: 8px 15px;
     border: 1px solid #484848;
-	}
+  }
 }
-.filter-choice-active {
-	background: #eee;
-}
+.filter-choice-active { background: #eee; }
 .social-list-buttons {
-	display: none;
-	position: absolute;
-	bottom: 10px;
-	left: 10px;
-	.m--social-list-buttons {
-		div {
-			cursor: pointer;
-			display: inline-block;
-			padding: 6px;
-			width: 11px;
-			border-bottom: 2px solid transparent;
-			&:hover {
-    		border-bottom: 2px solid;
-			}
-		}
-	}
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  .m--social-list-buttons {
+    div {
+      cursor: pointer;
+      display: inline-block;
+      padding: 6px;
+      width: 11px;
+      border-bottom: 2px solid transparent;
+      &:hover { border-bottom: 2px solid; }
+    }
+  }
 }

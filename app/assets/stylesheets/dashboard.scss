@@ -1,109 +1,91 @@
-.m--recruitment-content {
-	padding-top: 60px;
-}
+.m--recruitment-content { padding-top: 60px; }
 .recruitments {
-	width: 100%;
+  width: 100%;
   display: flex;
-	.recruitment {
-		display: inline-block;
-		width: 25%;
-		.m--recruitment, .new-recruitment {
-			position: relative;
-			height: 228px;
-			margin: 13px;
-			padding: 10px;
-			padding-left: 14px;
-			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-			cursor: pointer;
-			border-radius: 4px;
-			&:hover {
-				.recruitment-infor {
-					visibility: visible;
-  				opacity: 1;
-				}
-			}
-			.candidates {
-				margin: 10px 0;
-				.candidate {
-					display: inline-block;
-					width: 30px;
-			    height: 30px;
-			    border-radius: 50%;
-			    margin-right: 3px;
-			    img {
-			    	width: 30px;
-				    height: 30px;
-				    border-radius: 50%;
-				    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.32)
-			    }
-				}
-			}
-			.recruitment-infor {
-				visibility: visible;
-  			opacity: 1;
-				position: absolute;
-				bottom: 10px;
-				left: 13px;
-				transition: visibility 0s, opacity 0.7s linear;
-				.recruitment-bookmark, .recruitment-location {
-					span {
-						padding: 5px 7px;
-					}
-				}
-				div {
-					display: inline-block;
-				}
-				span {
-					padding: 5px;
-					&:hover {
-						background: #eee;
-					}	
-				}
-			}
-		}
-		.new-recruitment {
-			background: #F7F8F9;
-
-		}
-		.job-require-skills-list {
-			span {
-				display: inline-block;
-				padding: 8px 15px;
-		    border: 1px solid #484848;
-		    margin-top: 4px;
-			}
-		}
-		.m--new-recruitment {
-			text-align: center;
-	    line-height: 228px;
-	    &:hover {
-	    	span {
-		    	background: #8FD5FE;
-		    	color: #FFF;
-		    }
-		  }
-	    a {
-	    	text-decoration: none;
-	    }
-	    span {
-			  padding: 10px 25px;
-		    font-weight: bold;
-		    font-size: 15px;
-		    background: #FFF;
-		    /* color: #FFF; */
-		    border-radius: 23px;
-		    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		    transition: all .6s ease;
-		    
-	    }
-	    
-		}
-		.recruitment-title {
-			margin-top: 5px;
-
-			h3 {
-				margin: 0;
-			}
-		}
-	}
+  .recruitment {
+    display: inline-block;
+    width: 25%;
+    .m--recruitment, .new-recruitment {
+      position: relative;
+      height: 228px;
+      margin: 13px;
+      padding: 10px;
+      padding-left: 14px;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      border-radius: 4px;
+      &:hover {
+        .recruitment-infor {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+      .candidates {
+        margin: 10px 0;
+        .candidate {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-right: 3px;
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.32)
+          }
+        }
+      }
+      .recruitment-infor {
+        visibility: visible;
+        opacity: 1;
+        position: absolute;
+        bottom: 10px;
+        left: 13px;
+        transition: visibility 0s, opacity 0.7s linear;
+        .recruitment-bookmark, .recruitment-location {
+          span { padding: 5px 7px; }
+        }
+        div { display: inline-block; }
+        span {
+          padding: 5px;
+          &:hover { background: #eee; } 
+        }
+      }
+    }
+    .new-recruitment { background: #F7F8F9; }
+    .job-require-skills-list {
+      span {
+        display: inline-block;
+        padding: 8px 15px;
+        border: 1px solid #484848;
+        margin-top: 4px;
+      }
+    }
+    .m--new-recruitment {
+      text-align: center;
+      line-height: 228px;
+      &:hover {
+        span {
+          background: #8FD5FE;
+          color: #FFF;
+        }
+      }
+      a { text-decoration: none; }
+      span {
+        padding: 10px 25px;
+        font-weight: bold;
+        font-size: 15px;
+        background: #FFF;
+        /* color: #FFF; */
+        border-radius: 23px;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        transition: all .6s ease;
+      }
+    }
+    .recruitment-title {
+      margin-top: 5px;
+      h3 { margin: 0;   }
+    }
+  }
 }

@@ -1,57 +1,53 @@
 .x-signup {
-	display: flex;
-	justify-content: center;
-	margin-top: 47px;	
+  display: flex;
+  justify-content: center;
+  margin-top: 47px; 
 }
 .auth-form {
-	width: 310px;
-	font-size: 14px;
-	h2 {
-		text-align: center;
-	}
-	.auth-form-body {
-		padding: 18px 16px 16px 16px;
+  width: 310px;
+  font-size: 14px;
+  h2 { text-align: center; }
+  .auth-form-body {
+    padding: 18px 16px 16px 16px;
     margin-top: 30px;
     border: 1px solid rgba(72, 72, 72, 0.29);;
     border-radius: 6px;
-    
-	}
-	.web-logo {
-		display: flex;
-		justify-content: center;
-		img {
-			border-radius: 50%;
-			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-		}
-	}
-	.login_field {
-		display: block;
-		margin-bottom: 7px;
-		font-weight: 600;
-	}
-	.input-block {
-		width: 100%;
-		display: block;
-		margin-top: 5px;
+  }
+  .web-logo {
+    display: flex;
+    justify-content: center;
+    img {
+      border-radius: 50%;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    }
+  }
+  .login_field {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+  }
+  .input-block {
+    width: 100%;
+    display: block;
+    margin-top: 5px;
     margin-bottom: 15px;
     box-sizing: border-box;
-	}
-	
+  }
 }
 .actions {
   cursor: pointer;
   display: block;
-	input {
-		width: 100%;
-		display: block;
-		border: 0;
-		background: #8FD5FE;
-		border-radius: 4px;
-		font-weight: bold;
-		font-size: 14px;
-		color: #FFF;
-		padding: 10px 0 ;
-	}
+  input {
+    width: 100%;
+    display: block;
+    border: 0;
+    background: #8FD5FE;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #FFF;
+    padding: 10px 0 ;
+  }
 }
 .form-control {
   padding: 6px 8px;
@@ -67,66 +63,60 @@
   outline: none;
   box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
   &:focus {
-  	border-color: #2188ff;
+    border-color: #2188ff;
     outline: none;
     box-shadow: inset 0 1px 2px rgba(27,31,35,0.075), 0 0 0 0.2em rgba(3,102,214,0.3);
   }
 }
 .sign-up-invite {
-	width: 100%;
-	display: block;
-	margin-top: 20px;
-	padding: 12px 0;
-	border: 1px solid rgba(72, 72, 72, 0.29);
-	border-radius: 3px;
-	text-align: center;
+  width: 100%;
+  display: block;
+  margin-top: 20px;
+  padding: 12px 0;
+  border: 1px solid rgba(72, 72, 72, 0.29);
+  border-radius: 3px;
+  text-align: center;
 }
 .forgot-password {
-	float: left;
-	font-weight: bold;
-	cursor: pointer;
+  float: left;
+  font-weight: bold;
+  cursor: pointer;
 }
 .term-condition {
-	float: right;
-	text-decoration: underline;
-	cursor: pointer;
+  float: right;
+  text-decoration: underline;
+  cursor: pointer;
 }
-.terms-and-conditions {
-	margin-top: 34px;
-}
+.terms-and-conditions { margin-top: 34px; }
 .zz-signup-content {
-	margin-top: 80px;
+  margin-top: 80px;
   margin-bottom: 50px;
-	.sign-up-header-title {
-		font-size: 40px;
-	}
-	.zz-steps-signup {
-		display: -webkit-inline-box;
+  .sign-up-header-title { font-size: 40px; }
+  .zz-steps-signup {
+    display: -webkit-inline-box;
     width: 100%;
     margin-top: 30px;
     .left-step-menu {
-    	margin-top: 40px;
-    	width: 30%;
-    	.step-one, .step-two, .step-three {
-    		margin-top: 30px;
-    		display: block;
+      margin-top: 40px;
+      width: 30%;
+      .step-one, .step-two, .step-three {
+        margin-top: 30px;
+        display: block;
         border-left: 2px solid tranparent;
-    		.step-completed {
-			    color: #33CBA1;
-    		}
-    		.step-active {
-    			color: #8FD5FE;
+        .step-completed { color: #33CBA1; }
+        .step-active {
+          color: #8FD5FE;
           border-left: 2px solid #8FD5FE;
-    		}
-    		.step-icon {
-    			display: inline-block;
-			    align-items: center;
-			    text-align: center;
-			    height: 100%;
-			    padding: 10px;
+        }
+        .step-icon {
+          display: inline-block;
+          align-items: center;
+          text-align: center;
+          height: 100%;
+          padding: 10px;
           
-    		}
-    		.c-step-content {
+        }
+        .c-step-content {
           display: inline-block;
           font-size: 14px;
           .step-status {
@@ -135,34 +125,32 @@
             padding-bottom: 6px;
           }
         }
-    	}
+      }
     }
     .right-step-menu {
-    	width: calc(70% - 70px);
-    	margin-left: 70px;
-    	h2 {
-    		font-weight: inherit;
-    		margin-bottom: 25px;
-    	}
-    	form {
-    		width: 50%;
-    		.field {
-    			label {
-    				font-size: 14px;
-    				font-weight: bold;
-    			}
-    			input, textarea {
-    				width: 100%;
-    				box-sizing: border-box;
-    				margin-bottom: 15px;
-    			}
-    		}
-    	}
-    	.benefit-sig-up {
-    		height: 200px;
-    	}
+      width: calc(70% - 70px);
+      margin-left: 70px;
+      h2 {
+        font-weight: inherit;
+        margin-bottom: 25px;
+      }
+      form {
+        width: 50%;
+        .field {
+          label {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          input, textarea {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+          }
+        }
+      }
+      .benefit-sig-up { height: 200px; }
     }
-	}
+  }
 }
 .continue-signup, .finish-step-two {
   width: 100%;
@@ -177,8 +165,6 @@
   padding: 10px 0 ; 
   text-align: center;
 }
-.m--step-two, .m--step-three {
-}
 .c-footer-wrap {
   grid-template-columns: repeat(4,1fr);
   width: 65.85365854%;
@@ -187,20 +173,14 @@
   display: grid;
   grid-gap: 1rem;
 }
-.c-nav-footer__block {
-  flex: 1 1 auto;
-}
+.c-nav-footer__block { flex: 1 1 auto; }
 .radio-choice {
-  input, label {
-    display: inline-block;
-  }
+  input, label { display: inline-block; }
   input {
     margin-top: -2px;
     vertical-align: middle;
   }
-  label {
-    padding: 10px;
-  }
+  label { padding: 10px; }
 }
 .send-mails-jobfinder {
   margin: 30px 0;
@@ -208,9 +188,7 @@
   border-bottom: 1px solid;
   padding: 14px 0 20px 0;
 }
-.o--step-three {
-  display: flex;
-}
+.o--step-three { display: flex; }
 .o-step-three-left {
   display: inline-block;
   width: 50%;
@@ -231,7 +209,5 @@
     box-shadow: none;
     border-radius: 0;
   }
-  .sub-form-multi {
-    display: inline-block;
-  }
+  .sub-form-multi { display: inline-block; }
 }

@@ -1,225 +1,194 @@
 .x-new-recruiments {
-	padding-top: 60px;
-	.step-active {
-		border-bottom: 2px solid;
-	}
-	.recruitment-step {
-		padding: 10px 20px 10px 0;
+  padding-top: 60px;
+  .step-active { border-bottom: 2px solid; }
+  .recruitment-step {
+    padding: 10px 20px 10px 0;
     margin-right: 50px;
     width: 20px;
     cursor: pointer;
-		display: inline-block;
-		position: relative;
-
-		h3 {
-			margin: 0;
-		}
-		.recruitment-step-checked-require, .recruitment-step-checked, .recruitment-step-checked-des {
-			position: absolute;
-			i {
-				color: #33CBA1;
-			}
-		}
-		.recruitment-step-checked-require {
-			top: -6px;
-    	right: -37px;
-		}
-		.recruitment-step-checked-des {
-			top: -6px;
-    	right: -44px;
-		}
-		.recruitment-step-checked {
-			top: -10px;
-			right: -20px;
-		}
-	}
+    display: inline-block;
+    position: relative;
+    h3 { margin: 0; }
+    .recruitment-step-checked-require, .recruitment-step-checked, .recruitment-step-checked-des {
+      position: absolute;
+      i { color: #33CBA1; }
+    }
+    .recruitment-step-checked-require {
+      top: -6px;
+      right: -37px;
+    }
+    .recruitment-step-checked-des {
+      top: -6px;
+      right: -44px;
+    }
+    .recruitment-step-checked {
+      top: -10px;
+      right: -20px;
+    }
+  }
 
 }
 .header-job-create {
-	margin: 30px 0;
-	border-bottom: 2px solid ;
+  margin: 30px 0;
+  border-bottom: 2px solid ;
 }
 .x1--form-create-recruitment {
-	input {
-		width: 100%;
-		border: 0;
-		padding-bottom: 8px;
+  input {
+    width: 100%;
+    border: 0;
+    padding-bottom: 8px;
     border-bottom: 1px solid #ddd;
-		&:focus {
-			outline: none;
-		}
-	}
-	textarea {
-		width: 100%;
-		border: 0;
-		padding-bottom: 8px;
+    &:focus { outline: none; }
+  }
+  textarea {
+    width: 100%;
+    border: 0;
+    padding-bottom: 8px;
     border-bottom: 1px solid #ddd;
     resize: none;
     font-family: 'Raleway', sans-serif;
-    &:focus {
-			outline: none;
-		}
-	}
+    &:focus { outline: none; }
+  }
 }
 .step-content {
-	margin-top: 10px;
-	display: inline-block;
-	width: 100%;
-	.st-left-content {
-		float: left;
-		width: 65%;
-		.tip-of-recruitment {
-			position: relative;
-			padding: 12px 15px 15px 12px;
-			box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-			h3 {
-				margin: 0;
-				margin-bottom: 14px;
-			}
-			.close-tip-button {
-				position: absolute;
-				top: 12px;
-				right: 15px;
-				cursor: pointer;
-				&:hover {
-					i {	color: #484848;	}
-				}
-				i { color: rgba(72, 72, 72, 0.54); }
-			}
-		}
-	}
-	.st-right-content {
-		width: 35%;
-		float: right;
-		.x-st-right-content {
-			padding-left: 55px;
-			.fill-company-informantion {
-				position: relative;
-				padding: 12px 15px 5px 12px;
-				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-				margin-bottom: 25px;
-				h3 {
-					margin: 0;
-					margin-bottom: 14px;
-				}
-				.fill-button {
-					display: inline-block;
-    			width: 100%;
-					cursor: pointer;
-					span {
-						margin-top: 20px;
-						float: right;
-						padding: 0 7	px;
-						i {
-							margin-right: 5px;
-						}
-					}
-				}
-				.company-infor-button {
-					position: absolute;
-					top: 12px;
-					right: 15px;
-					cursor: pointer;
-					&:hover {
-						i {
-							color: #484848;
-						}
-					}
-					i {
-						color: rgba(72, 72, 72, 0.54);
-					}
-				}
-			}
-			.progress-status {
-				margin-bottom: 20px;
-				text-align: center;
-				padding: 25px 15px 20px 12px;
-				box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-				.prec{
-				    top: 40px;
-				    position: relative;
-				    font-size: 30px;
-				}
+  margin-top: 10px;
+  display: inline-block;
+  width: 100%;
+  .st-left-content {
+    float: left;
+    width: 65%;
+    .tip-of-recruitment {
+      position: relative;
+      padding: 12px 15px 15px 12px;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      h3 {
+        margin: 0;
+        margin-bottom: 14px;
+      }
+      .close-tip-button {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        cursor: pointer;
+        &:hover {
+          i { color: #484848; }
+        }
+        i { color: rgba(72, 72, 72, 0.54); }
+      }
+    }
+  }
+  .st-right-content {
+    width: 35%;
+    float: right;
+    .x-st-right-content {
+      padding-left: 55px;
+      .fill-company-informantion {
+        position: relative;
+        padding: 12px 15px 5px 12px;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        margin-bottom: 25px;
+        h3 {
+          margin: 0;
+          margin-bottom: 14px;
+        }
+        .fill-button {
+          display: inline-block;
+          width: 100%;
+          cursor: pointer;
+          span {
+            margin-top: 20px;
+            float: right;
+            padding: 0 7  px;
+            i { margin-right: 5px; }
+          }
+        }
+        .company-infor-button {
+          position: absolute;
+          top: 12px;
+          right: 15px;
+          cursor: pointer;
+          &:hover {
+            i { color: #484848; }
+          }
+          i { color: rgba(72, 72, 72, 0.54); }
+        }
+      }
+      .progress-status {
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 25px 15px 20px 12px;
+        box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        .prec{
+          top: 40px;
+          position: relative;
+          font-size: 30px;
+        }
+        .circle{
+          position: relative;
+          top: 2px;
+          left: 2px;
+          text-align: center;
+          width: 106px;
+          height: 106px;
+          border-radius: 100%;
+          background-color: #FFF;
+        }
 
-				.circle{
-				  position: relative;
-			    top: 2px;
-			    left: 2px;
-			    text-align: center;
-			    width: 106px;
-			    height: 106px;
-			    border-radius: 100%;
-			    background-color: #FFF;
-				}
-
-				.active-border{
-						margin: 0 auto;
-				    position: relative;
-				    text-align: center;
-				    width: 110px;
-				    height: 110px;
-				    border-radius: 100%;
-
-				    background-color:#FFF;
-				    background-image:
-				        linear-gradient(91deg, transparent 50%, #eee 50%),
-				        linear-gradient(90deg, #eee 50%, transparent 50%);
-				    
-				}
-				h3 {
-					margin: 10px 0;
-				}
-			}
-		}
-	}
+        .active-border{
+          margin: 0 auto;
+          position: relative;
+          text-align: center;
+          width: 110px;
+          height: 110px;
+          border-radius: 100%;
+          background-color:#FFF;
+          background-image:
+          linear-gradient(91deg, transparent 50%, #eee 50%),
+          linear-gradient(90deg, #eee 50%, transparent 50%);
+        }
+        h3 { margin: 10px 0; }
+      }
+    }
+  }
 }
 .x2--form-create-recruitment {
-	display: flex;
+  display: flex;
   width: 100%;
-  .left-form-group, .right-form-group {
-  	width: 50%;
-  }
-  .c--left-form-group {
-  	margin-right: 13px;
-  }
+  .left-form-group, .right-form-group { width: 50%; }
+  .c--left-form-group { margin-right: 13px; }
   .form-require-skills {
-  	margin-bottom: 11px;
+    margin-bottom: 11px;
     display: flex;
     .fa {
-    	vertical-align: bottom;
-	    margin-top: 7px;
-	    margin-left: 15px;
-	    margin-right: 15px;
+      vertical-align: bottom;
+      margin-top: 7px;
+      margin-left: 15px;
+      margin-right: 15px;
     }
-    input {
-    	border-bottom: 1px dashed #DDD;
-    }
+    input {border-bottom: 1px dashed #DDD; }
   }
-
 }
 .form-job-submit {
-	.submit, .cancel {
-		float: right;
+  .submit, .cancel {
+    float: right;
     padding: 11px 30px;
     border-radius: 3px;
     cursor: pointer;
     font-size: 15px;
     font-weight: 600;
-	}
-	.cancel {
-		background: #f9f9f9;
-		color: #484848;
-		margin-right: 12px;
-		&:hover {
-    	background: #EEE;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  }
+  .cancel {
+    background: #f9f9f9;
+    color: #484848;
+    margin-right: 12px;
+    &:hover {
+      background: #EEE;
     }
-	}
-	.submit {
+  }
+  .submit {
     background: #8FD5FE;
     color: #FFF;
-    
-    &:hover {
-    	background: #8fe5fe;;
-    }
-	}
+    &:hover { background: #8fe5fe; }
+  }
 }

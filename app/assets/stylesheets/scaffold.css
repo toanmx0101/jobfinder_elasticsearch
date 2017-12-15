@@ -22,29 +22,19 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
-}
+a { color: #000; }
 
-th {
-  padding-bottom: 5px;
-}
+th { padding-bottom: 5px; }
 
-td {
-  padding: 0 5px 7px;
-}
+td { padding: 0 5px 7px; }
 
 div.field,
-div.actions {
-  margin-bottom: 10px;
-}
+div.actions { margin-bottom: 10px; }
 .container {
   width: 1080px;
   margin: 0 auto;
 }
-#notice {
-  color: green;
-}
+#notice { color: green; }
 
 .field_with_errors {
   padding: 2px;
@@ -75,9 +65,7 @@ div.actions {
   list-style: square;
 }
 
-label {
-  display: block;
-}
+label { display: block; }
 ul {
   display: table;
   height: 48px;

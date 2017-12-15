@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get '/join/details_infor', to: 'user#details_infor'
   get '/messages', to: 'home#message_thread'
   get '/profile', to: 'home#user_profile'
+  get '/setting', to: 'home#setting'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

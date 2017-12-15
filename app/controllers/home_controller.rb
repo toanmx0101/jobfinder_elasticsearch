@@ -12,4 +12,8 @@ class HomeController < ApplicationController
   def user_profile
 
   end
+
+  def setting
+  	
+  end
 end

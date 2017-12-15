@@ -1,0 +1,42 @@
+.settings {
+	display: flex;
+	.settings-menu {
+		padding: 60px 0 0 0px;
+    box-shadow: 4px 0 5px -3px rgba(0, 0, 0, 0.15);
+    width: 25%;
+    .settings-menu-header {
+    	margin-top: 0;
+	    margin-bottom: 30px;
+	    font-size: 32px;
+    }
+    
+    .setting {
+    	height: 55px;
+    	padding-left: 3px;
+	    border-right: 4px solid transparent;
+	    display: flex;
+	    padding-bottom: 15px;
+	    cursor: pointer;
+	    .c-profile-setting {
+	    	padding-left: 12px;
+	    }
+	    .fa {
+	    	color: #484848;
+    		margin-top: 13px;
+    		font-size: 21px;
+	    }
+	    h3 {
+	    	margin: 0;
+	    	font-size: 16px;
+	    	margin-bottom: 2px;
+	    }
+    }
+    .is-active {
+    	border-right: 4px solid #8FD5FE;
+    	h3, .fa {
+    		color: #5AACFB
+    	}
+    }
+	}
+
+}
