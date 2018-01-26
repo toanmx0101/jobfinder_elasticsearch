@@ -10,4 +10,18 @@
     = render 'partials/header'
     = yield
     = render 'partials/footer', 'data-turbolinks-track': 'true'
+    .widget-container 
+      .small-chat
+        .layout-small-icon
+        .layout-expand
+          .messenger
+            .messenger-header
+              %h3 How can we help you?
+              .icon-messenger-close
+                %i.fa.fa-times.fa-lg
+            .messenger-content
+              .messages
+              .message-input
+                %input{placeholder: 'Send a message'}
+                %i.fa.fa-paper-plane-o.fa-lg{"aria-hidden" => "true"}
 
