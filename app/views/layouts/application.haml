@@ -19,9 +19,13 @@
               %h3 How can we help you?
               .icon-messenger-close
                 %i.fa.fa-times.fa-lg
+              :javascript
+                $('.small-chat').hide()
+                $('.icon-messenger-close').click(function(){
+                  $('.small-chat').hide()
+                });
             .messenger-content
               .messages
               .message-input
                 %input{placeholder: 'Send a message'}
                 %i.fa.fa-paper-plane-o.fa-lg{"aria-hidden" => "true"}
-

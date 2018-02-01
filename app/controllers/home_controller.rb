@@ -16,4 +16,8 @@ class HomeController < ApplicationController
   def setting
   	
   end
+
+  def appropriate_jobs
+    @appropricate_jobs = Article.search(current_user.work_position).records
+  end
 end
