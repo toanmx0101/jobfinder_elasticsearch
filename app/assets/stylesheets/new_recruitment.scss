@@ -171,15 +171,23 @@
 .form-job-submit {
   .submit, .cancel {
     float: right;
-    padding: 11px 30px;
     border-radius: 3px;
-    cursor: pointer;
     font-size: 15px;
     font-weight: 600;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    input {
+      background: transparent;
+      border: 0;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 11px 30px;
+    }
   }
   .cancel {
     background: #f9f9f9;
+    padding: 11px 30px;
+    cursor: pointer;
     color: #484848;
     margin-right: 12px;
     &:hover {

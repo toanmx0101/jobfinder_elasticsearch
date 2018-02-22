@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create, :destroy, :update, :edit]
   # GET /articles
   # GET /articles.json
   def index
@@ -8,21 +8,18 @@ class ArticlesController < ApplicationController
 
   def dashboard
   end
-
-  def new_recruitment 
-  end
   
   # GET /articles/search
   def search
     s = escape_characters_in_string(params[:q])
     @articles = Article.search(s).records
-
     render action: "index"
   end
   
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @random_jobs = Article.order("RANDOM()").limit(4)
   end
 
   # GET /articles/new
@@ -37,11 +34,11 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.build(article_params)
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -87,6 +84,6 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :content, :published_on)
+      params.require(:article).permit(:title, :content, :published_on, :location, :experience_level, :language, :job_type, :pay_rate)
     end
 end

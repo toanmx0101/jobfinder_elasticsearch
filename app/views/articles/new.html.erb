@@ -1,5 +1,14 @@
-<h1>New Article</h1>
-
-<%= render 'form', article: @article %>
-
-<%= link_to 'Back', articles_path %>
+<div class="container">
+	<div class="x-new-recruiments">
+		<h2 style="margin: 0;font-size: xx-large;">Post a new job</h2>
+		<div class="create-recruitment-steps">
+		</div>
+	</div>
+	<%= render 'form', article: @article  %>
+	
+</div>
+<script type="text/javascript">
+	$('.close-tip-button span .fa').click(function(){
+		$('.tip-of-recruitment').hide();
+	});
+</script>

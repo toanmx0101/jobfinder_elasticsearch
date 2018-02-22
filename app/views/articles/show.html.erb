@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Title:</strong>
@@ -17,3 +17,169 @@
 
 <%= link_to 'Edit', edit_article_path(@article) %> |
 <%= link_to 'Back', articles_path %>
+ -->
+<div class="container">
+	<div class="c-job-details" style="display: flex;margin-top: 60px;border: 1px solid #DDD;">
+		<div class="l-content-jds" style="float: left;width: 664px;">
+			<div class="company-images" style="">
+				<img src="https://unsplash.it/1600/800/?image=929" style="height: inherit;width: 664px;margin-left: -20px;margin-top: -20px;">
+				<div class="job-title" style="/* position: absolute; *//* bottom: 0; */margin-top: 20px;margin-bottom: 18px;margin-left: 25px;display: block;">
+					<h3 style="font-size: 24px;/* color: white; */font-weight: 500;"><%= @article.title %></h3>
+					<span style="display: inline-block;">
+						<%= @article.created_at.strftime("%b %e") %> BY 
+						<a style="display: inherit; color: #8FD5FE;">
+							<%= @article.user.username%>
+						</a> 
+						- 
+						<p style="display: inherit;color: #8FD5FE;">SPIT COMPANY</p>
+					</span>
+					<span style="display: block;margin-right: 20px;"><%= @article.content %></span>
+				</div>
+			</div>
+		</div>
+		<div class="r-content-jds" style="float: right;width: calc(100% - 664px);margin: 25px;">
+			<span style="font-weight: 700;font-size: 24px;">Location:</span>
+			<div  style="margin-top: 4px;">
+				<span><%= @article.location %></span>
+			</div>
+			<br>
+			<span style="font-weight: 700;font-size: 24px;">Require skills</span>
+			<div style="margin-top: 4px;">
+				<span>PHP</span>
+				<span>HTML</span>
+				<span>CSS</span>
+			</div>
+			<br>
+			<% if !@article.experience_level.nil?%>
+				<span style="font-weight: 700;font-size: 24px;">Experience level require:</span>
+				<div style="margin-top: 4px;">
+					<span><%= @article.experience_level %></span>
+				</div>
+				<br>
+			<% end %>
+			<span style="font-weight: 700;font-size: 24px;">Language:</span>
+			<div style="margin-top: 4px;">
+				<span><%= @article.language %></span>
+			</div><br>
+			<div style="font-weight: 700;font-size: 24px;margin-bottom: 12px;">About you:</div>
+				<ul>
+					<li style="display: list-item;line-height: initial;margin-bottom: 5px;">Proven track record and enthusiasm for complex problem solving utilizing financial modeling and analysis, including great Excel skills</li>
+					<li style="display: list-item;line-height: initial;margin-bottom: 5px;">Strong capabilities for crafting and presenting analyses and insights to senior executives</li>
+					<li style="display: list-item;line-height: initial;margin-bottom: 5px;">History of self starting initiatives and an enthusiasm for creating their own work</li> 
+					<li style="display: list-item;line-height: initial;margin-bottom: 5px;">International experience a plus; you are enthusiastic about working with our partners in both Asia and the US</li> 
+				</ul>
+		</div>
+		<div style="position: absolute;">
+			<span style="padding: 9px 22px;border-radius: 22px;color: #FFF;font-size: 14px;font-weight: 700;background-color: #8FD5FE;cursor: pointer;">Apply now!</span>
+		</div>
+	</div>
+	<div class="relate-jobs">
+		<h3 style="font-size: 24px;font-weight: 500;">Relate Jobs</h3>
+		<div class="list-center-content">
+			<% @random_jobs.each do |job| %>
+	      <div class="job-resul-card grid">
+	        <div class="m__job-result-card">
+	          <div class="content">
+	          	<% if !job.job_type.nil?%>
+		            <div class="job-type">
+		              <span><%= job.job_type%></span>
+		            </div>  
+		          <% end %>
+	            <div class="job-title">
+	              <h3><%= job.title %></h3>
+	            </div>
+	            <div class="job-description">
+	              <span><%= job.content %></span>
+	            </div>
+	            <div class="job-location">
+	              <i class="fa fa-map-marker" aria-hidden="true"></i>
+	              <span><%= job.location %></span>
+	            </div>
+	            <div class="job-salary">
+	              <span>Salary</span>
+	              <h3><%= job.pay_rate %></h3>
+	            </div>
+	            <div class="view-detail-button">
+	              <div class="m--view-detail-button">
+	                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+	                <span>View Details</span>  
+	              </div>
+	            </div>
+	            <div class="social-list-buttons">
+	              <div class="m--social-list-buttons">
+	                <div>
+	                  <span>
+	                    <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+	                  </span>
+	                </div>
+	                <div>
+	                  <span>
+	                    <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+	                  </span>
+	                </div>
+	                <div>
+	                  <span>
+	                    <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+	                  </span>
+	                </div>
+	              </div>
+	            </div>
+	          </div>  
+	          <div class="left-content">
+	            <div class="m--left-content">
+	              <div class="job-location">
+	                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+	                <span>Duy Tan, Cau Giay</span>
+	              </div>
+	              <div class="job-require-skills">
+	                <div class="job-require-skills-title">
+	                  <div>
+	                    <h3>Require skills</h3>
+	                  </div>
+	                </div>
+	                <div class="job-require-skills-list">
+	                  <span>PHP</span>
+	                  <span>ASW</span>
+	                  <span>HTML, CSS</span>
+	                  <span>ASW</span>
+	                  <span>ASW</span>
+	                  <span>HTML, CSS</span>
+	                  <span>HTML, CSS</span>
+	                </div>
+	              </div>
+	               <div class="job-require-skills">
+	                <div class="job-require-skills-title">
+	                  <div>
+	                    <h3>Languages</h3>
+	                  </div>
+	                </div>
+	                <div class="job-require-skills-list">
+	                  <span>Vietnamese</span>
+	                  <span>English</span>
+	                </div>
+	              </div>
+
+	              <div class="job-salary">
+	                <h3>Salary</h3>
+	                <h3>500 - 1000$</h3>
+	              </div>
+	              <div class="view-detail-button">
+	                <div class="m--view-detail-button" style="margin-left: 10px;">
+	                  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+	                  <span>View Details</span>  
+	                </div>
+	                <div class="m--view-detail-button">
+	                  <i class="fa fa-comment" aria-hidden="true"></i>
+	                  <span>Send mess</span>  
+	                </div>
+	              </div>
+	            </div>
+	            
+	           
+	          </div>
+	        </div>
+	      </div>
+      <% end %>
+    </div>
+	</div>
+</div> 
