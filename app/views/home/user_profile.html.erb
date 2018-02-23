@@ -5,175 +5,136 @@
         <img src="/images/profile_image.jpg">
       </div>
       <div class="c-text">
-        <h2>Cai Nguyen   <span>( Android Developer )</span></h2>
-        <span style="
-    font-size: inherit;
-    font-weight: normal;
-    margin-left: 3px;
-"><i class="fa fa-map-marker" aria-hidden="true" style="
-    margin-right: 2px;
-"></i> Hanoi</span>
-<span style="
-    width: 82px;
-    display: block;
-    margin-top: 19px;
-    /* border-bottom: 1px solid; */
-    padding-bottom: 3px;
-    margin-bottom: 4px;
-">About</span>
-<span style="
-    width: 63%;
-    display: block;
-    font-size: inherit;
-    font-weight: normal;
-">I want to share some of my everyday life. Present, I live in Ha Noi. I live near West Lake. I work part time at there. I study at Academy of Finance. The school is about 7 kilometers from my place. Everyday, I go to school by bus. It's a little inconvenience. But I still feel happy. I love my life.</span>
-<div style="
-    margin-top: 23px;
-"><i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="
-    font-size: 20px;
-    margin-right: 8px;
-    color: #FFF;cursor: pointer;
-"></i>
-<i class="fa fa-instagram fa-lg" aria-hidden="true" style="
-    font-size: 20px;
-    margin-right: 8px;
-    color: #FFF;cursor: pointer;
-"></i>
-
-<i class="fa fa-linkedin fa-lg" aria-hidden="true" style="
-    font-size: 20px;
-    margin-right: 9px;
-    color: #FFF;cursor: pointer;
-"></i><i class="fa fa-slack fa-lg" aria-hidden="true" style="
-    font-size: 20px;
-    margin-right: 8px;
-    color: #FFF;cursor: pointer;
-"></i><i class="fa fa-github fa-lg" aria-hidden="true" style="
-    font-size: 20px;
-    margin-right: 4px;
-    color: #FFF;cursor: pointer;
-"></i>
-
-
-
-
-</div>
+        <h2><%= current_user.username %>   <span>( <%= current_user.work_position %> )</span></h2>
+        <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
+          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i> 
+          <%= current_user.city %>
+        </span>
+        <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
+        <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
+          <%= current_user.description %>
+        </span>
+        <div style="margin-top: 23px;">
+          <i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 8px;color: #FFF;cursor: pointer;"></i>
+          <i class="fa fa-instagram fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 8px;color: #FFF;cursor: pointer;"></i>
+          <i class="fa fa-linkedin fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 9px;color: #FFF;cursor: pointer;"></i>
+          <i class="fa fa-slack fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 8px;color: #FFF;cursor: pointer;"></i>
+          <i class="fa fa-github fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 4px;color: #FFF;cursor: pointer;"></i>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container">
-
   <div class="details-user-profile">
-      <div class="c-details-user-profile">
-        <div class="o-profile" style="margin-top: -45px;">
-          <div class="profile">
-            <div class="c-of--profile">
-              <h3>Experience</h3>
-              <div style="position: relative;">
-                <span class="ex-company-name">Merrill Lynch</span>
-                <span class="ex-position">Solutions for Business</span>
-                <span class="ex-timeline"></span>
-                <span class="ex-join-time">Mar 2010</span>
-                <span class="ex-quit-time">Feb 2013</span>
+    <div class="c-details-user-profile">
+      <div class="o-profile" style="margin-top: -45px;">
+        <div class="profile">
+          <div class="c-of--profile">
+            <h3>Experience</h3>
+            <div style="position: relative;">
+              <span class="ex-company-name">Merrill Lynch</span>
+              <span class="ex-position">Solutions for Business</span>
+              <span class="ex-timeline"></span>
+              <span class="ex-join-time">Mar 2010</span>
+              <span class="ex-quit-time">Feb 2013</span>
+            </div>
+            <div style="position: relative;">
+              <span class="ex-company-name">Teledyne Technologies Incorporated</span>
+              <span class="ex-position">Android Intership</span>
+              <span class="ex-timeline"></span>
+              <span class="ex-join-time">Jan 2013</span>
+              <span class="ex-quit-time">Feb 2016</span>
+            </div>
+            <div style="position: relative;">
+              <span class="ex-company-name">HPE Software</span>
+              <span class="ex-position">Agile Manager</span>
+              <span class="ex-timeline"></span>
+              <span class="ex-join-time">Arpl 2016</span>
+              <span class="ex-quit-time">Now</span>
+            </div>
+            
+            <h3 class="user-skills">Skills</h3>
+            <div style="display: flex;">
+              <div style="width: 50%;">
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  HTML, CSS, Jquery
+                </span>
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  Kibana
+                </span>
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  Elasticsearch
+                </span>
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  Logtash
+                </span>
               </div>
-              <div style="position: relative;">
-                <span class="ex-company-name">Teledyne Technologies Incorporated</span>
-                <span class="ex-position">Android Intership</span>
-                <span class="ex-timeline"></span>
-                <span class="ex-join-time">Jan 2013</span>
-                <span class="ex-quit-time">Feb 2016</span>
-              </div>
-              <div style="position: relative;">
-                <span class="ex-company-name">HPE Software</span>
-                <span class="ex-position">Agile Manager</span>
-                <span class="ex-timeline"></span>
-                <span class="ex-join-time">Arpl 2016</span>
-                <span class="ex-quit-time">Now</span>
-              </div>
-              
-              <h3 class="user-skills">Skills</h3>
-              <div style="display: flex;">
-                <div style="width: 50%;">
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    HTML, CSS, Jquery
-                  </span>
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    Kibana
-                  </span>
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    Elasticsearch
-                  </span>
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    Logtash
-                  </span>
-                </div>
-                <div style="width: 50%;">
-                  <span class="ex-position" style="">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    Vue.js
-                  </span>
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    Agile
-                  </span>
-                  <span class="ex-position">
-                    <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
-                    AWS
-                  </span>
-                </div>
+              <div style="width: 50%;">
+                <span class="ex-position" style="">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  Vue.js
+                </span>
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  Agile
+                </span>
+                <span class="ex-position">
+                  <i class="fa fa-paw" aria-hidden="true" style="margin-right: 10px;"></i>
+                  AWS
+                </span>
               </div>
             </div>
           </div>
-
         </div>
-        <div class="o-profile" style="padding-bottom: 17px;">
-          <div class="profile">
-            <div class="c-of--profile" style="">
-              <h3>Education</h3>
-              <div>
-                <span class="ex-company-name">Teledyne Technologies Incorporated</span>
-                <span class="ex-position">Android Intership</span>
-              </div>
-              <div>
-                <span class="ex-company-name">HPE Software</span>
-                <span class="ex-position">Agile Manager</span>
-              </div>
-              <div>
-                <span class="ex-company-name">Merrill Lynch</span>
-                <span class="ex-position">Solutions for Business</span>
-              </div>
-            </div>
-          </div>
 
-        </div>
       </div>
-        
-      <div class="c-contact-user-profile">
-        <div class="contact-text">
-          <h2 style="margin: 0;margin-bottom: 22px;">Contact</h2>
-          <div style="margin-bottom: 3px;">
-            <i class="fa fa-globe" aria-hidden="true" style="margin-right: 10px;"></i>
-            <span style="font-weight: bold;">Webpage</span>
+      <div class="o-profile" style="padding-bottom: 17px;">
+        <div class="profile">
+          <div class="c-of--profile" style="">
+            <h3>Education</h3>
+            <div>
+              <span class="ex-company-name">Teledyne Technologies Incorporated</span>
+              <span class="ex-position">Android Intership</span>
+            </div>
+            <div>
+              <span class="ex-company-name">HPE Software</span>
+              <span class="ex-position">Agile Manager</span>
+            </div>
+            <div>
+              <span class="ex-company-name">Merrill Lynch</span>
+              <span class="ex-position">Solutions for Business</span>
+            </div>
           </div>
-          <span style="margin-left: 25px;color: #2ca5ec;">https://cainguyen.heroku.com</span>
-          <div style="margin-top: 12px;margin-bottom: 3px;">
-            <i class="fa fa-birthday-cake" aria-hidden="true" style="margin-right: 10px;"></i>
-            <span style="font-weight: bold;">Birthday</span>
-          </div>
-          <span style="margin-left: 25px;color: #2ca5ec;">September 30</span>
-          <div style="margin-top: 12px;margin-bottom: 3px;">
-            <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 10px;"></i>
-            <span style="font-weight: bold;cursor: pointer;">Send love to me</span>
-          </div>
-          <span style="margin-left: 25px;color: #2ca5ec;cursor: pointer;">Mess with me</span>
         </div>
+
       </div>
     </div>
+    <div class="c-contact-user-profile">
+      <div class="contact-text">
+        <h2 style="margin: 0;margin-bottom: 22px;">Contact</h2>
+        <div style="margin-bottom: 3px;">
+          <i class="fa fa-globe" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;">Webpage</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;">https://cainguyen.heroku.com</span>
+        <div style="margin-top: 12px;margin-bottom: 3px;">
+          <i class="fa fa-birthday-cake" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;">Birthday</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;">September 30</span>
+        <div style="margin-top: 12px;margin-bottom: 3px;">
+          <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;cursor: pointer;">Send love to me</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;cursor: pointer;">Mess with me</span>
+      </div>
+    </div>
+  </div>
   <div class="details-user-profile">
   </div>
 </div>

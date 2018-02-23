@@ -21,6 +21,7 @@ gem 'font-awesome-rails'
 gem 'select2-rails'
 gem 'jquery-rails'
 gem 'pry'
+gem 'ckeditor'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require select2
 //= require vue
+//= require ckeditor/init
 //= require_tree .

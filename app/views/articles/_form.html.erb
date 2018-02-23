@@ -59,39 +59,22 @@
                 <h3>Expertience Level  *</h3>
                 <%= form.text_field :experience_level, id: :article_experience_level, placeholder: 'Enter require expertience level' %>
               </div>
+              
+            </div>
+          </div>
+          
+          <div class="right-form-group">
+            <div class="c--right-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3>Language  ( optional )</h3>
                 <%= form.text_field :language, id: :article_language, placeholder: 'Enter require expertience level' %>
               </div>
             </div>
-          </div>
-          <div class="right-form-group">
-            <div class="c--right-form-group">
-              <div class="x1--form-create-recruitment"> 
-                <h3>Require Skills *</h3>
-                <div class="form-require-skills">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  <input type="text" name="" placeholder="Enter skills that jobs needed">
-                </div>
-                <div class="form-require-skills">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  <input type="text" name="" placeholder="Enter skills that jobs needed">
-                </div>
-                <div class="form-require-skills">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  <input type="text" name="" placeholder="Enter skills that jobs needed">
-                </div>
-                <div class="form-require-skills">
-                  <i class="fa fa-plus" aria-hidden="true"></i>
-                  <input type="text" name="" placeholder="Enter skills that jobs needed">
-                </div>
-                <div class="x1--form-create-recruitment"> 
-                  <h3>Aditional Skills  ( optional )</h3>
-                  <textarea rows="4" placeholder="Example: 1. GAT"></textarea>
-                </div>
-              </div>
-            </div>
           </div>  
+        </div>
+        <div class="x1--form-create-recruitment"> 
+          <h3>About candidate</h3>
+          <%= form.cktext_area :about_candidate, value: '', id: 'sometext'%>
         </div>
         <div class="header-job-create">
           <h3>THAT DOES THIS JOB PAY?</h3>

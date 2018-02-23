@@ -1,0 +1,88 @@
+.c-job-details {
+	display: flex;
+	margin-top: 60px;
+	border: 1px solid #DDD;
+	.l-content-jds {
+		float: left;
+		width: 664px;
+	}
+	.company-images {
+		img {
+			height: inherit;
+			width: 664px;
+			margin-left: -20px;
+			margin-top: -20px;
+		}
+		.job-title {
+			margin-top: 20px;
+			margin-bottom: 18px;
+			margin-left: 25px;
+			display: block;
+			h3 {
+				font-size: 24px;
+				font-weight: 500;
+			}
+			.js-user-name {
+				display: inherit; 
+				color: #8FD5FE;
+				cursor: pointer;
+			}
+			.js-chat-or-viewprofile {
+				display: none;
+				position: absolute;
+				background: #FFF;
+				top: 34px;
+				left: 32px;
+				box-shadow: 0 0 20px rgba(0,0,0,.1);
+				ul {
+					height: inherit;
+					padding: 0;
+					li {
+						display: block;
+						line-height: normal;
+						a {
+							padding: 12px 15px;
+							text-decoration: none;
+						}
+						&:hover {
+							background: #f9f9f9;
+						}
+					}
+				}
+			}
+			.company-name {
+				display: inherit;
+				color: #8FD5FE;
+			}
+			.job-description {
+				display: block;
+				margin-right: 20px;
+			}
+		}
+	}
+}
+.r-content-jds {
+	float: right;
+	width: calc(100% - 664px);
+	margin: 25px;
+	.cc-title-jds {
+		font-weight: 700;
+		font-size: 24px;
+	}
+	.cc-content-jds {
+		margin-top: 4px;
+	}
+	li {
+			display: list-item;
+			line-height: initial;
+			margin-bottom: 5px;
+		}
+}
+.apply-now-btn {
+	padding: 9px 22px;
+	border-radius: 22px;
+	color: #FFF;font-size: 14px;
+	font-weight: 700;
+	background-color: #8FD5FE;
+	cursor: pointer;
+}

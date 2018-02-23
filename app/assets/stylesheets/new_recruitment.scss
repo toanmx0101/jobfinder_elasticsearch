@@ -182,14 +182,15 @@
       font-weight: 600;
       cursor: pointer;
       padding: 11px 30px;
+       color: #FFF;
     }
   }
   .cancel {
     background: #f9f9f9;
     padding: 11px 30px;
     cursor: pointer;
-    color: #484848;
     margin-right: 12px;
+
     &:hover {
       background: #EEE;
     }
