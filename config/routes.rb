@@ -12,11 +12,11 @@ Rails.application.routes.draw do
     end
 	end
   root to: 'home#index'
-  resources :articles
+  resources :jobs
 
-  get '/search', to: 'articles#search'
-  get '/dashboard', to: 'articles#dashboard'
-  get '/new_recruitment', to: 'articles#new'
+  get '/search', to: 'jobs#search'
+  get '/dashboard', to: 'jobs#dashboard'
+  get '/new_recruitment', to: 'jobs#new'
   get '/join/details_infor', to: 'user#details_infor'
   get '/messages', to: 'home#message_thread'
   get '/profile', to: 'home#user_profile'

@@ -10,22 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180223065210) do
+ActiveRecord::Schema.define(version: 20171212093342) do
 
-  create_table "articles", force: :cascade do |t|
+  create_table "jobs", force: :cascade do |t|
     t.string "title"
-    t.text "content"
-    t.date "published_on"
+    t.text "description"
+    t.text "about_candidate"
+    t.string "state"
+    t.string "location"
+    t.string "slug"
+    t.integer "user_id"
+    t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.string "location"
-    t.integer "company_id"
-    t.string "experience_level"
-    t.string "language"
-    t.string "job_type"
-    t.string "pay_rate"
-    t.text "about_candidate"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,12 +40,11 @@ ActiveRecord::Schema.define(version: 20180223065210) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "phone"
-    t.string "city"
+    t.string "location"
     t.integer "user_type"
     t.string "linkedin"
     t.string "education"
     t.string "description"
-    t.string "specialities"
     t.string "experience"
     t.string "language"
     t.string "experience_level"

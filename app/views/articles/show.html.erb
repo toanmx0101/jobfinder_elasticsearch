@@ -4,10 +4,10 @@
 			<div class="company-images">
 				<img src="https://unsplash.it/1600/800/?image=927">
 				<div class="job-title" >
-					<h3><%= @article.title %></h3>
+					<h3><%= @job.title %></h3>
 					<span style="display: inline-block;position: relative;">
-						<%= @article.created_at.strftime("%b %e") %> BY 
-						<div class="js-user-name"><%= @article.user.username%></div> 
+						<%= @job.created_at.strftime("%b %e") %> BY 
+						<div class="js-user-name"><%= @job.user.username%></div> 
 						<div class="js-chat-or-viewprofile">
 							<ul>
 								<li>
@@ -26,14 +26,14 @@
 						- 
 						<p class="company-name">SPIT COMPANY</p>
 					</span>
-					<div class="job-description"><%= @article.content %></div>
+					<div class="job-description"><%= @job.content %></div>
 				</div>
 			</div>
 		</div>
 		<div class="r-content-jds">
 			<span class="cc-title-jds">Location:</span>
 			<div class="cc-content-jds">
-				<span><%= @article.location %></span>
+				<span><%= @job.location %></span>
 			</div>
 			<br>
 			<span style="f">Require skills</span>
@@ -43,16 +43,16 @@
 				<span>CSS</span>
 			</div>
 			<br>
-			<% if !@article.experience_level.nil?%>
+			<% if !@job.experience_level.nil?%>
 				<span class="cc-title-jds">Experience level require:</span>
 				<div class="cc-content-jds">
-					<span><%= @article.experience_level %></span>
+					<span><%= @job.experience_level %></span>
 				</div>
 				<br>
 			<% end %>
 			<span class="cc-title-jds"">Language:</span>
 			<div class="cc-content-jds">
-				<span><%= @article.language %></span>
+				<span><%= @job.language %></span>
 			</div><br>
 			<div class="cc-title-jds" style="margin-bottom: 12px;">About you:</div>
 			<ul>

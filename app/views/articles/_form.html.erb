@@ -1,10 +1,10 @@
-<%= form_with(model: article, local: true) do |form| %>
-  <% if article.errors.any? %>
+<%= form_with(model: job, local: true) do |form| %>
+  <% if job.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
 
       <ul>
-      <% article.errors.full_messages.each do |message| %>
+      <% job.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -33,15 +33,15 @@
           <div class="c--form-create-recruitment">
             <div class="x1--form-create-recruitment"> 
               <h3>Job title  *</h3>
-              <%= form.text_field :title, id: :article_title, placeholder: 'Enter your type of your work or job title you hiring for' %>
+              <%= form.text_field :title, id: :job_title, placeholder: 'Enter your type of your work or job title you hiring for' %>
             </div>
             <div class="x1--form-create-recruitment"> 
               <h3>Describe your job  *</h3>
-              <%= form.text_area :content, id: :article_content, placeholder: 'Example:  We need Ruby on Rails warriors', row: 4 %>
+              <%= form.text_area :content, id: :job_content, placeholder: 'Example:  We need Ruby on Rails warriors', row: 4 %>
             </div>
             <div class="x1--form-create-recruitment"> 
               <h3>Location  *</h3>
-              <%= form.text_field :location, id: :article_location, placeholder: 'Enter  work\'s location' %>
+              <%= form.text_field :location, id: :job_location, placeholder: 'Enter  work\'s location' %>
             </div>
             <div class="x1--form-create-recruitment"> 
               <h3>Company  *</h3>
@@ -57,7 +57,7 @@
             <div class="c--left-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3>Expertience Level  *</h3>
-                <%= form.text_field :experience_level, id: :article_experience_level, placeholder: 'Enter require expertience level' %>
+                <%= form.text_field :experience_level, id: :job_experience_level, placeholder: 'Enter require expertience level' %>
               </div>
               
             </div>
@@ -67,7 +67,7 @@
             <div class="c--right-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3>Language  ( optional )</h3>
-                <%= form.text_field :language, id: :article_language, placeholder: 'Enter require expertience level' %>
+                <%= form.text_field :language, id: :job_language, placeholder: 'Enter require expertience level' %>
               </div>
             </div>
           </div>  
@@ -84,7 +84,7 @@
             <div class="c--left-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3>Job type</h3>
-                <%= form.text_field :job_type, id: :article_job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
+                <%= form.text_field :job_type, id: :job_job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
               </div>
             </div>
           </div>
@@ -92,7 +92,7 @@
             <div class="c--right-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3>Payrate *</h3>
-                <%= form.text_field :pay_rate, id: :article_payrate, placeholder: 'Payrate for work'%>
+                <%= form.text_field :pay_rate, id: :job_payrate, placeholder: 'Payrate for work'%>
               </div>
             </div>
           </div>  

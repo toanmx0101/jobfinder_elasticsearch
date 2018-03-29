@@ -1,29 +1,25 @@
+require 'json'
 
-contents = [
-'Lorem ipsum dolor sit amet.',
-'Consectetur adipisicing elit, sed do eiusmod tempor incididunt.',
-'Labore et dolore magna aliqua.',
-'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-'Excepteur sint occaecat cupidatat non proident.'
-]
-
-puts "Deleting all articles..."
-Article.delete_all
-
-unless ENV['COUNT']
-
-  puts "Creating articles..."
-  %w[ One Two Three Four Five ].each_with_index do |title, i|
-    Article.create title: title, content: contents[i], published_on: i.days.ago.utc
-  end
-
-else
-
-  print "Generating articles..."
-  (1..ENV['COUNT'].to_i).each_with_index do |title, i|
-    Article.create title: "Title #{title}", content: 'Lorem ipsum dolor', published_on: i.days.ago.utc
-    print '.' if i % ENV['COUNT'].to_i/10 == 0
-  end
-  puts "\n"
-
+puts "Deleting all jobs..."
+Job.delete_all
+# 20000.times do
+#   job = Job.new
+#   job.title = Faker::Job.title
+#   job.about_candidate = Faker::Job.key_skill
+#   job.employment_type = Faker::Job.employment_type
+#   job.education_level = Faker::Job.education_level
+#   job.city = Faker::Address.city
+# end
+puts "Generate jobs from json"
+User.create(email: 'zinza1@gmail.com', password: 'zinza123@', password_confirmation: 'zinza123@')
+file = File.read('lib/assets/jobs.json')
+data_hash = JSON.parse(file)
+user = User.first
+data_hash.each do |job|
+  x = Job.create(title: job['text'], description: job['description'], about_candidate: job['search_text'], user_id: user.id, location: job['location'], state: 'published', view_count: Faker::Number.between(100, 1000))
 end
+
+puts "Deleting all companies"
+puts "Generate companies from json"
+
+

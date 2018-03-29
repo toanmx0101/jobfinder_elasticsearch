@@ -58,12 +58,12 @@
       </div>
     </div>
     <div class="recruitments">
-      <% @articles.each  do |article| %>
-        <%= link_to article, class: 'recruitment' do %>
+      <% @jobs.each  do |job| %>
+        <%= link_to job, class: 'recruitment' do %>
           <div class="m--recruitment">
             <div class="recruitment-title">
-                <h3><%= article.title%></h3>
-                <span><%= article.created_at%></span>
+                <h3><%= job.title%></h3>
+                <span><%= job.created_at%></span>
             </div>
             <div class="job-require-skills-list">
               <span>PHP</span>
