@@ -9,6 +9,6 @@ task read_jobs_file: :environment do
   data_hash.each do |job|
     user = User.first
     x = Job.create(title: job['text'], description: job['description'], about_candidate: job['search_text'], user_id: user.id,location: job['location'], state: 'published', view_count: Faker::Number.between(100, 1000))
-    binding.pry
+    
   end
 end
