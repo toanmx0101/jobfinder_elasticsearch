@@ -10,8 +10,6 @@
   %body
     = render 'partials/header'
     = yield
-    - unless user_signed_in?
-      = render 'partials/footer', 'data-turbolinks-track': 'true'
     .widget-container 
       .small-chat
         .layout-small-icon

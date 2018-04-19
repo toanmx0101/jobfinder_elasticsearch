@@ -104,23 +104,79 @@
     }
   }
 }
-.m--recruitment-content { padding-top: 120px; }
+.m--recruitment-content { 
+    padding-top: 140px;
+    padding-left: 220px;
+    padding-right: 220px;
+}
 .recruitments {
   width: 100%;
   display: flex;
+  .c-cruitment {
+    width: 40%;
+    display: inline-block;
+  }
+  .c-candidate {
+    width: 30%;
+    display: inline-block;
+    margin-top: 27px;
+    margin-left: 45px;
+    .candidate {
+      position: relative;
+      padding: 14px;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      margin: 13px;
+      cursor: pointer;
+      margin-bottom: 30px;
+      .user-avatar {
+        img {
+          width: 60px;
+          height: 60px;
+          position: absolute;
+          top: -16px;
+          right: 15px;
+          box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        }
+
+      }
+      .user-name {
+        color: #5897fbb8;
+        font-size: 17px;
+        font-weight: 600;
+        margin-bottom: 12px;
+      }
+      .work-position {
+        margin-bottom: 5px;
+      }
+      .current-company {
+        margin-bottom: 10px;
+      }
+      .view-profile {
+        border-radius: 2px;
+      }
+    }
+  }
   .recruitment {
     display: inline-block;
-    width: 25%;
     text-decoration: none;
+    width: 100%;
+    h2 {
+      color: #5897fbb8;
+      font-size: 18px;
+    }
     .m--recruitment, .new-recruitment {
+
       position: relative;
-      height: 228px;
+      height: 140px;
       margin: 13px;
       padding: 10px;
       padding-left: 14px;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
       cursor: pointer;
       border-radius: 4px;
+      &.selected {
+        background: #f3f6f8;
+      }
       &:hover {
         .recruitment-infor {
           visibility: visible;
@@ -129,6 +185,8 @@
       }
       .candidates {
         margin: 10px 0;
+        position: absolute;
+        bottom: 0;
         .candidate {
           display: inline-block;
           width: 30px;
@@ -141,6 +199,7 @@
             border-radius: 50%;
             box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.32)
           }
+
         }
       }
       .recruitment-infor {
@@ -155,8 +214,8 @@
         }
         div { display: inline-block; }
         span {
-          padding: 5px;
-          &:hover { background: #eee; } 
+          padding: 9px 28px;
+          font-size: 15px;
         }
       }
     }

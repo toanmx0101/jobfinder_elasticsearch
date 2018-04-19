@@ -46,25 +46,99 @@
               .a-center-content
                 %a{href: '/login'}
                   %i.fa.fa-tasks.fa-lg{"aria-hidden" => "true"}
-                    %span 3
+                    %span.js-count-noti 3
           %li
-            .a-item-content
-              .a-center-content
-                %a{href: '/messages'}
-                  %i.fa.fa-envelope-o.fa-lg{"aria-hidden" => "true"}
-                    %span 1
-          %li
-            .a-item-content
-              .a-center-content
-                %a{href: '/login'}
-                  %i.fa.fa-flag-o.fa-lg{"aria-hidden" => "true"}
-                    %span 12
-          %li
-            .a-item-content.account-link
+            .a-item-content.message-link
               .a-center-content
                 %a{href: 'javascript:;'}
-                  %i.fa.fa-user-circle-o.fa-lg{"aria-hidden" => "true", style: 'color: #8FD5FE'}
-              .account-dropdown
+                  %i.fa.fa-envelope-o.fa-lg{"aria-hidden" => "true"}
+                    %span.js-count-noti 1
+              .message-dropdown.js-dropdown-content
+                .message-header
+                  %a.see-all Messages
+                  %a.mark-read-all Mark read all
+                %ul
+                  .message-thread
+                    %li
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/profile_image.jpg'}
+                        .message-content
+                          .user-name Nam Di
+                          .message Hiển thị ứng viên bên cạnh khi click vào tin tuyển dụng đó, các ứng viên tiềm năng và từ ng đã xem
+                        .time
+                          16:04
+                    %li
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/avatar-test-1.jpg'}
+                        .message-content
+                          .user-name Anh Tu
+                          .message Hiển thị một list các danh sách tin tuyển dụng 
+                        .time
+                          16:04        
+                    
+                    %li.readed
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/avatar-test-2.jpg'}
+                        .message-content
+                          .user-name Nguyen Thai
+                          .message Thêm trường history vào user, tìm hiểu task recomendation
+                        .time
+                          16:04
+                    %li
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/avatar-test-1.jpg'}
+                        .message-content
+                          .user-name Nguyen Thai
+                          .message Thêm trường history vào user, tìm hiểu task recomendation
+                        .time
+                          16:04
+                    %li.readed
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/avatar-test-3.jpg'}
+                        .message-content
+                          .user-name Nguyen Thai
+                          .message Thêm trường history vào user, tìm hiểu task recomendation
+                        .time
+                          16:04
+                    %li
+                      .message-item 
+                        .user-icon
+                          %img{src: 'images/avatar-test-1.jpg'}
+                        .message-content
+                          .user-name Nguyen Thai
+                          .message Thêm trường history vào user, tìm hiểu task recomendation
+                        .time
+                          16:04
+          %li
+            .a-item-content.notification-link
+              .a-center-content
+                %a{href: 'javascript:;'}
+                  %i.fa.fa-bell.fa-lg{"aria-hidden" => "true"}
+                    %span.js-count-noti
+                      = Notification.count
+              .notification-dropdown.js-dropdown-content
+                .message-header
+                  %a.see-all Notifications
+                  %a.mark-read-all Mark read all
+                %ul
+                  %li.readed
+                    .notification-item 
+                      .user-icon
+                        %img{src: 'images/avatar-test-2.jpg'}
+                      .notification-content
+                        .user-name Nguyen Thai
+                        .time 5 minutes ago 
+          %li
+            .a-item-content.account-link
+              .a-center-content.dropdown-content
+                %a{href: 'javascript:;'}
+                  %i.fa.fa-user-circle-o.fa-lg{"aria-hidden" => "true"}
+              .account-dropdown.js-dropdown-content
                 %ul
                   %li
                     %a{href: '/profile'} My Profile
@@ -83,6 +157,26 @@
                   %span Signout
 
 :javascript
-  $('.account-link').click(function(){
-    $('.account-dropdown').toggle();
+  $('.account-link, .notification-link, .message-link').click(function(){
+    $(this).find(".js-count-noti").empty();
+    $(this).children(".js-dropdown-content").show();
+    $(this).addClass('active');
   });
+  $('.mark-read-all').click(function(){
+    $('.readed').removeClass('readed');
+  });
+  $(document).mouseup(function (e){
+    var container = new Array();
+    container.push($('.account-dropdown'));
+    container.push($('.notification-dropdown'));
+    container.push($('.message-dropdown'));
+    
+    $.each(container, function(key, value) {
+      if (!$(value).is(e.target) // if the target of the click isn't the container...
+        && $(value).has(e.target).length === 0) // ... nor a descendant of the container
+      {
+        $(value).hide();
+        $('.a-item-content').removeClass('active');
+      }
+    });
+  }); 

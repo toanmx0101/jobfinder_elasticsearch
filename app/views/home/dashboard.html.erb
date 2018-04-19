@@ -72,43 +72,105 @@
     </div>
   </div>
   <div class="right-container">
-  </div>
-</div>
-<div class="container">
-  <div class="m--recruitment-content">
-    <div class="recruitments">
-      <% @jobs.each  do |job| %>
-        <%= link_to job, class: 'recruitment' do %>
-          <div class="m--recruitment">
-            <div class="recruitment-title">
-                <h3><%= job.title%></h3>
-                <span><%= job.created_at%></span>
+    <div class="m--recruitment-content ">
+      <div class="recruitments">
+        <div class="c-cruitment">
+          <% @jobs.each  do |job| %>
+            <%= link_to job, class: 'recruitment' do %>
+              <div class="m--recruitment ">
+                <div class="recruitment-title">
+                    <h2><%= job.title%></h2>
+                    <span><%= time_ago_in_words(job.created_at)%></span>
+                </div>
+                <div class="candidates">
+                  <div class="candidate">
+                    <img src="/images/avatar-test-1.jpg">
+                  </div>
+                  <div class="candidate">
+                    <img src="/images/avatar-test-2.jpg">
+                  </div>
+                  <div class="candidate">
+                    <img src="/images/avatar_test_3.jpg">
+                  </div>
+                  <div class="candidate">
+                    <span></span>
+                  </div>
+                </div>
+                <div class="recruitment-infor" style="color: #8FD5FE;width: calc(100% - 24px);">
+                  <div style="float: right;">
+                    <span class="ac-job preview-job">Edit</span>
+                  </div>
+                </div>
+              </div>
+            <% end  %>  
+          <% end  %>
+        </div>
+        <div class="c-candidate">
+          <div class="candidate">
+            <div class="user-avatar">
+              <img src="images/profile_image.jpg">
             </div>
-            <div class="candidates">
-              <div class="candidate">
-                <img src="/images/avatar-test-1.jpg">
-              </div>
-              <div class="candidate">
-                <img src="/images/avatar-test-2.jpg">
-              </div>
-              <div class="candidate">
-                <img src="/images/avatar_test_3.jpg">
-              </div>
-              <div class="candidate">
-                <span></span>
-              </div>
+            <div class="user-name">
+              <span>Nam Nguyen</span>
             </div>
-            <div class="recruitment-infor" styple="color: #8FD5FE;width: calc(100% - 24px);">
-              <div style="float: right;">
-                <span>
-                  <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                </span>
-              </div>
-              
+            <div class="work-position">
+              <span>Ruby on Rails Developer</span>
+            </div>
+            <div class="current-company">
+              <span><i class="fa fa-briefcase" style="margin-right: 7px"></i>Zinza Tecnology Company</span>
+            </div>
+            <span class="view-profile ac-job preview-job">View profile</span>
+          </div>
+          <div class="candidate">
+            <div class="user-avatar">
+              <img src="images/profile_image.jpg">
+            </div>
+            <div class="user-name">
+              <span>Nam Nguyen</span>
+            </div>
+            <div class="work-position">
+              <span>Ruby on Rails Developer</span>
+            </div>
+            <div class="current-company">
+              <span><i class="fa fa-briefcase" style="margin-right: 7px"></i>Zinza Tecnology Company</span>
+            </div>
+            <span class="view-profile ac-job preview-job">View profile</span>
+          </div>
+          <div class="candidate">
+            <div class="user-avatar">
+              <img src="images/profile_image.jpg">
+            </div>
+            <div class="user-name">
+              <span>Nam Nguyen</span>
+            </div>
+            <div class="work-position">
+              <span>Ruby on Rails Developer</span>
+            </div>
+            <div class="current-company">
+              <span><i class="fa fa-briefcase" style="margin-right: 7px"></i>Zinza Tecnology Company</span>
+            </div>
+            <div class="view-profile">
+              <span class=" ac-job preview-job">View profile</span>
             </div>
           </div>
-        <% end  %>  
-      <% end  %>
+          <div class="candidate">
+            <div class="user-avatar">
+              <img src="images/profile_image.jpg">
+            </div>
+            <div class="user-name">
+              <span>Nam Nguyen</span>
+            </div>
+            <div class="work-position">
+              <span>Ruby on Rails Developer</span>
+            </div>
+            <div class="current-company">
+              <span><i class="fa fa-briefcase" style="margin-right: 7px"></i>Zinza Tecnology Company</span>
+            </div>
+            <span class="view-profile ac-job preview-job">View profile</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+<div class="container">
 </div>

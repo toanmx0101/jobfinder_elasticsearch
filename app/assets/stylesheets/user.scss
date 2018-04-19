@@ -1,3 +1,138 @@
-// Place all the styles related to the User controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.active {
+  a {
+    i {
+      color: #8FD5FE;
+    }
+  }
+}
+.account-dropdown, .notification-dropdown, .message-dropdown {
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50px;
+    z-index: 1000;
+    background: white;
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(0,0,0,.1);
+    ul {
+      padding: 0;
+      padding-top: 7px;
+      width: 200px;
+      height: inherit;
+      li {
+        height: initial;
+        display: block;
+        &:hover {
+          background: #f9f9f9!important;
+        }
+        a {
+          padding: 0 17px;
+          text-decoration: none;
+          width: 100%;
+          box-sizing: border-box;
+        }
+      }
+    }
+  }
+.account-dropdown ul li a {
+  padding: 11px 17px;
+}
+.message-dropdown, .notification-dropdown {
+  .message-header {
+    padding: 0 12px;
+    padding-top: 3px;
+    border-bottom: 1px solid #dddddd61;
+    a {
+      padding: 6px;
+      color: #5FA7D1;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .mark-read-all {
+      float: right;
+    }
+  }
+  ul {
+    width: 360px;
+    height: 360px;
+    padding-top: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    overscroll-behavior: contain contain;
+    &:hover, &:active, &:focus {
+      overflow-y: scroll;
+    }
+    &::-webkit-scrollbar-track-piece {
+      background-color: transparent;
+      -webkit-border-radius: 6px;
+    }
+    &::-webkit-scrollbar  {
+      width: 8px;
+      height: 10px;
+      background: transparent;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+      background: #DDDDDD; 
+    }
+    .message-thread {
+      margin-right: -15px;
+      width: 360px;
+
+      direction: ltr;
+      position: relative;
+    }
+    li {
+      border-bottom: 1px solid #dddddd61;
+      &.readed {
+        background: #f9f9f982;
+      }
+      cursor: pointer;
+      a {
+        padding: 14px 17px;
+      }
+      .message-item, .notification-item  {
+        display: flex;
+        padding: 0 12px;
+        position: relative;
+        .user-icon {
+          padding: 6px;
+          height: 40px;
+          img {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+          }
+        }
+        .message-content, .notification-content {
+          width: calc(100% - 95px);
+          padding: 6px;
+          box-sizing: border-box;
+          .user-name {
+            margin-bottom: 4px;
+            font-weight: 600;
+          }
+          .message {
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+        }
+        .time {
+          padding: 6px;
+        }
+        .notification-content {
+          .time {
+            padding: 0;
+          }
+        }
+        .js-count-noti {
+          transition: all 1s ease;
+        }
+      }
+    }
+
+  }
+}

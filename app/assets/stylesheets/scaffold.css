@@ -79,45 +79,14 @@ label { display: block; }
 }
 .nav-list-item li {
   height: 100%;
-  line-height: 46px;
   display: table-cell;
   font-family: 'Raleway', sans-serif;
 }
 .a-item-content {
   position: relative;
   display: inline-block;
-  cursor: pointer;
-}
-.a-item-content .account-dropdown {
-  display: none;
-  position: absolute;
-  right: 10px;
-  top: 50px;
-  z-index: 1000;
-  background: white;
-  border-radius: 3px;
-  box-shadow: 0 0 20px rgba(0,0,0,.1);
 }
 
-.account-dropdown ul {
-  padding: 0;
-  padding-top: 7px;
-  width: 200px;
-  height: 200px;
-}
-.account-dropdown ul li { 
-  height: 38px;
-  line-height: 38px;
-  display: block;
-}
-.account-dropdown ul li:hover {
-  background: #f9f9f9;
-}
-.account-dropdown ul li a {
-  padding: 0 17px;
-  text-decoration: none;
-  width: 100%;
-}
 .a-center-content {
   vertical-align: middle;
   font-size: 15px;
@@ -125,6 +94,7 @@ label { display: block; }
   line-height: 60px;
   font-weight: bold;
 }
+
 .app-icon {
   float: left;
 }
@@ -224,7 +194,6 @@ label { display: block; }
 }
 .c-nav--footer__menu {
   padding-top: 5rem;
-  padding-bottom: 5rem;
 }
 .o-content-container {
   max-width: 76.875rem;
@@ -241,9 +210,16 @@ label { display: block; }
   font-weight: 600;
   font-size: 16px;
 }
+.c-nav-footer__listitem {
+  height: 100%;
+  display: table-cell;
+  padding: 13px 0;
+}
 .c-nav-footer__listitem a {
   text-decoration: none;
   font-size: 14px;
+  height: 100%;
+  display: table-cell;
 }
 .footer-logo {
   width: 80px;

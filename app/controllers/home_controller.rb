@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @notifications = Notification.all.reverse
     if user_signed_in?
       @jobs = current_user.jobs
       render :dashboard

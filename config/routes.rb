@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  get 'notifications/index'
+
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }  
   devise_scope :user do
     get 'login', to: 'users/sessions#new' 
@@ -18,10 +21,12 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'jobs#dashboard'
   get '/new_recruitment', to: 'jobs#new'
   get '/join/details_infor', to: 'user#details_infor'
-  get '/messages', to: 'home#message_thread'
+  get '/messagesss', to: 'home#message_thread'
   get '/profile', to: 'home#user_profile'
   get '/setting', to: 'home#setting'
   get 'appropriate_jobs/', to: 'home#appropriate_jobs'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :messages
+  resources :notifications
+  mount ActionCable.server => '/cable'
 end

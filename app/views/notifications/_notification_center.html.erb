@@ -1,0 +1,16 @@
+  <ul class="notificator" style="padding-top: 120px">
+     <a href="#" id="open_notification">
+      <%= render 'counter', counter: notifications.count %>
+    </a>
+    <div id="notificationContainer">
+      <div id="notificationTitle">Notifications</div>
+      <div id="notificationsBody" class="notifications">
+        <ul id="notificationList">
+          <% @notifications.each do |noti|%>
+            <%= render "notification", notification: noti %>
+          <% end %>
+        </ul>
+      </div>
+      <div id="notificationFooter"></div>
+    </div>
+  </ul>
