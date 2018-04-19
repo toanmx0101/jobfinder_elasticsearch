@@ -6,6 +6,7 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.75);
   z-index: 2;
+  display: none;
 }
 .modal-hello-customer {
   height: 550px;
@@ -103,7 +104,7 @@
     }
   }
 }
-.m--recruitment-content { padding-top: 60px; }
+.m--recruitment-content { padding-top: 120px; }
 .recruitments {
   width: 100%;
   display: flex;
@@ -194,4 +195,84 @@
       h3 { margin: 0;   }
     }
   }
+}
+.left-menu {
+  width: 60px;
+  margin-top: 60px;
+  height: 100%;
+  position: fixed;
+  background: #FFF;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  .sc-menu-items {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 60px;
+    display: flex;
+    .menu-items {
+      display: flex;
+      flex-direction: column;
+      padding-top: 150px;
+      width: 100%;
+      .menu {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1 1 100%;
+        overflow: hidden;
+      }
+      .bottom {
+        align-self: center;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        .c-bottom {
+          flex-shrink: 0;
+          height: 126px;
+          opacity: 1;
+          transition: height 200ms, opacity 200ms;
+        }
+      }
+      .item {
+        flex-shrink: 0;
+        opacity: 1;
+        transition: height 200ms, opacity 200ms;
+        padding: 9px 18px;
+        cursor: pointer;
+        margin: 20px 0;
+      }
+      .item, .bottom-item {
+        .fa {
+          width: 100%;
+          text-align: center;
+          font-size: 1.3333333rem;
+        }
+      }
+      .active {
+        .fa {
+          color: #5FA7D1;
+        }
+        border-right: 2px solid #5FA7D1;
+      }
+      .bottom-item {
+        align-self: center;
+        -webkit-box-flex: 0;
+        flex-grow: 0;
+        padding: 18px;
+        cursor: pointer;
+        .fa {
+          font-size: 1.4333333rem;
+        }
+      }
+    }
+  }
+}
+.right-container {
+  width: calc( 100% - 60px );
+  height: auto;
+  position: absolute;
+  right: 0;
+  background: #FFF;
 }

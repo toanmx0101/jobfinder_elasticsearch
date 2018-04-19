@@ -21,8 +21,9 @@ gem 'font-awesome-rails'
 gem 'select2-rails'
 gem 'jquery-rails'
 gem 'pry'
-gem 'ckeditor'
 gem 'faker'
+gem 'view_source_map'
+gem 'htmlbeautifier'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

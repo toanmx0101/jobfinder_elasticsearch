@@ -1,3 +1,20 @@
+
+<script type="text/javascript">
+  $(window).bind('scroll', function () {
+    if ($(window).scrollTop() > 90) {
+        $('#xxx').addClass('fixed');
+    } else {
+        $('#xxx').removeClass('fixed');
+    }
+});
+</script>
+<style type="text/css">
+  .fixed {
+    position: fixed;
+    width: 323px;
+    top: 70px;
+  }
+</style>
 <%= form_with(model: job, local: true) do |form| %>
   <% if job.errors.any? %>
     <div id="error_explanation">
@@ -13,89 +30,62 @@
   <div class="step-content">
   <div class="st-left-content">
       <div class="x-st-left-content">
-        <div class="tip-of-recruitment" hidden="true">
-          <h3>
-            Tips of Recruiting Employees  
-          </h3>
-          <span>Invest time in developing relationships with university placement offices, recruiters, and executive search firms.</span>
-          <br><br>
-          <span>Enable current staff members to actively participate in industry professional associations and conferences where they are likely to meet candidates you may successfully woo.</span>
-          <div class="close-tip-button">
-            <span>
-              <i class="fa fa-times fa-lg" aria-hidden="true"></i>
-            </span>
-          </div>
-        </div>
+        
         <div class="header-job-create">
-          <h3>TELL US ABOUT YOUR JOB</h3>
+          <h3 class="h3-heading">TELL US ABOUT YOUR JOB</h3>
         </div>
         <div class="form-create-recruitment">
           <div class="c--form-create-recruitment">
             <div class="x1--form-create-recruitment"> 
-              <h3>Job title  *</h3>
-              <%= form.text_field :title, id: :job_title, placeholder: 'Enter your type of your work or job title you hiring for' %>
-            </div>
-            <div class="x1--form-create-recruitment"> 
-              <h3>Describe your job  *</h3>
-              <%= form.text_area :content, id: :job_content, placeholder: 'Example:  We need Ruby on Rails warriors', row: 4 %>
-            </div>
-            <div class="x1--form-create-recruitment"> 
-              <h3>Location  *</h3>
-              <%= form.text_field :location, id: :job_location, placeholder: 'Enter  work\'s location' %>
-            </div>
-            <div class="x1--form-create-recruitment"> 
-              <h3>Company  *</h3>
-              <input type="text" name="" placeholder="Enter company name">
+              <h3 class="h3-heading">Job title  *</h3>
+              <%= form.text_field :title, id: :job_title, placeholder: 'Enter your type of your work or job title you hiring for', autofocus: true %>
             </div>
           </div>
         </div>
         <div class="header-job-create">
-          <h3>WHAT ARE THE JOB REQUIREMENTS?</h3>
+          <h3 class="h3-heading">DESCRIPTION</h3>
         </div>
-        <div class="x2--form-create-recruitment"> 
-          <div class="left-form-group">
-            <div class="c--left-form-group">
-              <div class="x1--form-create-recruitment"> 
-                <h3>Expertience Level  *</h3>
-                <%= form.text_field :experience_level, id: :job_experience_level, placeholder: 'Enter require expertience level' %>
-              </div>
-              
-            </div>
-          </div>
-          
-          <div class="right-form-group">
-            <div class="c--right-form-group">
-              <div class="x1--form-create-recruitment"> 
-                <h3>Language  ( optional )</h3>
-                <%= form.text_field :language, id: :job_language, placeholder: 'Enter require expertience level' %>
-              </div>
-            </div>
-          </div>  
+        <style>
+          .ck-editor__editable {
+              min-height: 300px;
+          }
+        </style>
+        <%= form.text_area :description, id: :description , value: '<h2>About company</h2><p><br></p>
+        <h2>Remuneration</h2>
+        <p><br></p>
+        <h2>Contact</h2>'%>
+        <div class="header-job-create">
+          <h3 class="h3-heading">WHAT ARE THE JOB REQUIREMENTS?</h3>
         </div>
         <div class="x1--form-create-recruitment"> 
-          <h3>About candidate</h3>
-          <%= form.cktext_area :about_candidate, value: '', id: 'sometext'%>
+          <h3 class="h3-heading">About candidate</h3>
+          <%= form.text_area :about_candidate, id: :about_candidate%>
         </div>
         <div class="header-job-create">
-          <h3>THAT DOES THIS JOB PAY?</h3>
+          <h3 class="h3-heading">THAT DOES THIS JOB PAY?</h3>
         </div>
         <div class="x2--form-create-recruitment">
           <div class="left-form-group">
             <div class="c--left-form-group">
               <div class="x1--form-create-recruitment"> 
-                <h3>Job type</h3>
-                <%= form.text_field :job_type, id: :job_job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
+                <h3 class="h3-heading">Job type</h3>
+                <%= form.text_field :type, id: :job_job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
               </div>
             </div>
           </div>
           <div class="right-form-group">
             <div class="c--right-form-group">
               <div class="x1--form-create-recruitment"> 
-                <h3>Payrate *</h3>
+                <h3 class="h3-heading">Payrate *</h3>
                 <%= form.text_field :pay_rate, id: :job_payrate, placeholder: 'Payrate for work'%>
               </div>
             </div>
           </div>  
+        </div>
+        <div class="advance-setting">
+          <div class="c-content">
+            <h3 class="h3-heading">Advance setting</h3>
+          </div>
         </div>
         <div class="header-job-create"></div>
         <div class="form-job-submit">
@@ -105,19 +95,14 @@
       </div>
     </div>
     <div class="st-right-content">
-      <div class="x-st-right-content">
-        
-        <div class="progress-status">
-          <div id="activeBorder" class="active-border">
-            <div id="circle" class="circle">
-                <span class="prec 270" id="prec">0<span style="font-size: 14px;">%</span>
-                </span>
-            </div>
-          </div>
-          <h3>Your Recruitment Completion</h3>
+      <div id="xxx" class="x-st-right-content">
+        <div class="" style="padding: 15px 0; display: flex;">
+          <span class="preview-job ac-job" style="width: 30%;display: inline-block;margin-right: 6px;">Post this job</span>
+          <span class="preview-job ac-job" style="width: 30%;display: inline-block;margin-right: 6px;"><i class="fa fa-eye fa-lg" style="color: #f8bc48;"></i> Preview</span>
+          <span class="preview-job ac-job" style="width: 30%;text-align: center;c">More</span>
         </div>
-        <div class="fill-company-informantion">
-          <h3>Fill full your company information</h3>
+        <div class="fill-company-informantion"> 
+          <h3 class="h3-heading">Fill full your company information</h3>
           <span>Cong ty cua ban van con chua hoan thanh nhieu thong tin. Hay dien du de co the thu hut ung vien hon.</span>
           <div class="company-infor-button">
             <i class="fa fa-info" aria-hidden="true"></i>
@@ -129,7 +114,24 @@
             </span>
           </div>
         </div>
+        <div class="tip-of-recruitment">
+          <h3 class="h3-heading">
+            Tips of Recruiting Employees  
+          </h3>
+          <span>Invest time in developing relationships with university placement offices, recruiters, and executive search firms.</span>
+          <br><br>
+          <span>Enable current staff members to actively participate in industry professional associations and conferences where they are likely to meet candidates you may successfully woo.</span>
+          <div class="close-tip-button">
+            <span>
+              <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
    </div> 
 <% end %>
+<script>
+  var editor1 = ClassicEditor.create( document.querySelector( '#description' ))
+  var editor2 = ClassicEditor.create( document.querySelector( '#about_candidate' ))
+</script>

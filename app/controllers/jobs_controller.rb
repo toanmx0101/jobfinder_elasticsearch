@@ -1,38 +1,27 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy, :update, :edit]
-  # GET /jobs
-  # GET /jobs.json
-  def index
-  end
 
-  def dashboard
-  end
-  
-  # GET /jobs/search
+  def index; end
+
+  def dashboard; end
+
   def search
     s = escape_characters_in_string(params[:q])
     @jobs = Job.search(s).records
     render action: "index"
   end
   
-  # GET /jobs/1
-  # GET /jobs/1.json
   def show
     @random_jobs = Job.order("RANDOM()").limit(4)
   end
 
-  # GET /jobs/new
-  def new
+  def new 
     @job = Job.new
   end
 
-  # GET /jobs/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /jobs
-  # POST /jobs.json
   def create
     @job = current_user.jobs.build(job_params)
 
@@ -47,8 +36,6 @@ class JobsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /jobs/1
-  # PATCH/PUT /jobs/1.json
   def update
     respond_to do |format|
       if @job.update(job_params)
@@ -84,6 +71,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:title, :content, :published_on, :location, :experience_level, :language, :job_type, :pay_rate)
+      params.require(:job).permit(:title, :description, :about_candidate, :type, :pay_rate)
     end
 end

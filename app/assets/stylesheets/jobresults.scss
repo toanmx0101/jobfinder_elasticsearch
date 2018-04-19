@@ -1,7 +1,8 @@
-.job-resul-card { transition: all .6s ease; }
+.job-resul-card { transition: all .3s ease; }
 .filter-result { width: 25%; }
 .results-list-card { width: 75%; }
 .m__job-result-card {
+  width: -webkit-fill-available;
   margin: 0 5px;
   padding: 10px;
   position: relative;
@@ -151,17 +152,27 @@
 }
 .map {
   width: 50%;
-  display: block;
+  display: inline-block;
   margin-bottom: 20px;
 }
-.job-type {
-  float: right;
+.job-views-and-type {
+  display: inline-block;
   width: 100%;
   margin-bottom: 10px;
-  span {
-    padding: 2px 11px;
+  .job-views {
+    float: left;
+    padding: 4px 0;
+  }
+  .job-type {
     float: right;
-    border: 1px solid;
+    padding: 3px 14px;
+    float: right;
+    border: 1px solid #FFF;
+    color: #FFF;
+    font-size: 12px;
+    border-radius: 15px;
+    font-weight: 600;
+    background: #52dd8f;
   }
 }
 .job-title {

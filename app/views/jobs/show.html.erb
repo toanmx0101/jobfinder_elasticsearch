@@ -1,178 +1,164 @@
-<div class="container">
-	<div class="c-job-details">
-		<div class="l-content-jds">
-			<div class="company-images">
-				<img src="https://unsplash.it/1600/800/?image=927">
-				<div class="job-title" >
-					<h3><%= @job.title %></h3>
-					<span style="display: inline-block;position: relative;">
-						<%= @job.created_at.strftime("%b %e") %> BY 
-						<div class="js-user-name"><%= @job.user.username%></div> 
-						<div class="js-chat-or-viewprofile">
-							<ul>
-								<li>
-									<a href="">Chat with me</a>
-								</li>
-								<li>
-									<a href="">View profile</a>
-								</li>
-							</ul>
-						</div>
-						<script type="text/javascript">
-							$('.js-user-name').click(function(){
-							  $('.js-chat-or-viewprofile').toggle();
-							});
-						</script>
-						- 
-						<p class="company-name">SPIT COMPANY</p>
-					</span>
-					<div class="job-description"><%= @job.content %></div>
-				</div>
-			</div>
-		</div>
-		<div class="r-content-jds">
-			<span class="cc-title-jds">Location:</span>
-			<div class="cc-content-jds">
-				<span><%= @job.location %></span>
-			</div>
-			<br>
-			<span style="f">Require skills</span>
-			<div class="cc-content-jds">
-				<span>PHP</span>
-				<span>HTML</span>
-				<span>CSS</span>
-			</div>
-			<br>
-			<% if !@job.experience_level.nil?%>
-				<span class="cc-title-jds">Experience level require:</span>
-				<div class="cc-content-jds">
-					<span><%= @job.experience_level %></span>
-				</div>
-				<br>
-			<% end %>
-			<span class="cc-title-jds"">Language:</span>
-			<div class="cc-content-jds">
-				<span><%= @job.language %></span>
-			</div><br>
-			<div class="cc-title-jds" style="margin-bottom: 12px;">About you:</div>
-			<ul>
-				<li>Proven track record and enthusiasm for complex problem solving utilizing financial modeling and analysis, including great Excel skills</li>
-				<li>Strong capabilities for crafting and presenting analyses and insights to senior executives</li>
-				<li>History of self starting initiatives and an enthusiasm for creating their own work</li> 
-				<li>International experience a plus; you are enthusiastic about working with our partners in both Asia and the US</li> 
-			</ul>
-		</div>
-		<div style="position: absolute;">
-			<span class="apply-now-btn" style="">Apply now!</span>
-		</div>
-	</div>
-	<div class="relate-jobs">
-		<h3 style="font-size: 24px;font-weight: 500;">Relate Jobs</h3>
-		<div class="list-center-content">
-			<% @random_jobs.each do |job| %>
-				<%= link_to job, class: 'job-resul-card grid' do %>
-	        <div class="m__job-result-card">
-	          <div class="content">
-	          	<% if !job.job_type.nil?%>
-		            <div class="job-type">
-		              <span><%= job.job_type%></span>
-		            </div>  
-		          <% end %>
-	            <div class="job-title">
-	              <h3><%= job.title %></h3>
-	            </div>
-	            <div class="job-description">
-	              <span><%= job.content %></span>
-	            </div>
-	            <div class="job-location">
-	              <i class="fa fa-map-marker" aria-hidden="true"></i>
-	              <span><%= job.location %></span>
-	            </div>
-	            <div class="job-salary">
-	              <span>Salary</span>
-	              <h3><%= job.pay_rate %></h3>
-	            </div>
-	            <div class="view-detail-button">
-	              <div class="m--view-detail-button">
-	                <i class="fa fa-paper-plane" aria-hidden="true"></i>
-	                <span>View Details</span>  
-	              </div>
-	            </div>
-	            <div class="social-list-buttons">
-	              <div class="m--social-list-buttons">
-	                <div>
-	                  <span>
-	                    <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-	                  </span>
-	                </div>
-	                <div>
-	                  <span>
-	                    <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-	                  </span>
-	                </div>
-	                <div>
-	                  <span>
-	                    <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-	                  </span>
-	                </div>
-	              </div>
-	            </div>
-	          </div>  
-	          <div class="left-content">
-	            <div class="m--left-content">
-	              <div class="job-location">
-	                <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
-	                <span>Duy Tan, Cau Giay</span>
-	              </div>
-	              <div class="job-require-skills">
-	                <div class="job-require-skills-title">
-	                  <div>
-	                    <h3>Require skills</h3>
-	                  </div>
-	                </div>
-	                <div class="job-require-skills-list">
-	                  <span>PHP</span>
-	                  <span>ASW</span>
-	                  <span>HTML, CSS</span>
-	                  <span>ASW</span>
-	                  <span>ASW</span>
-	                  <span>HTML, CSS</span>
-	                  <span>HTML, CSS</span>
-	                </div>
-	              </div>
-	               <div class="job-require-skills">
-	                <div class="job-require-skills-title">
-	                  <div>
-	                    <h3>Languages</h3>
-	                  </div>
-	                </div>
-	                <div class="job-require-skills-list">
-	                  <span>Vietnamese</span>
-	                  <span>English</span>
-	                </div>
-	              </div>
+<div class="container" style="padding-top: 120px;">
+  <div class="c-job-details">
+    <div class="l-content-jds">
+      <div class="company-images">
+        <img src="https://unsplash.it/1600/800/?image=927">
+        <div class="job-title" >
+          <h3><%= @job.title %></h3>
+          <span style="display: inline-block;position: relative;">
+            <%= @job.created_at.strftime("%b %e") %> BY 
+            <div class="js-user-name"><%= @job.user.username%></div> 
+            <div class="js-chat-or-viewprofile">
+              <ul>
+                <li>
+                  <a href="">Chat with me</a>
+                </li>
+                <li>
+                  <a href="">View profile</a>
+                </li>
+              </ul>
+            </div>
+            <script type="text/javascript">
+              $('.js-user-name').click(function(){
+                $('.js-chat-or-viewprofile').toggle();
+              });
+            </script>
+            - 
+            <p class="company-name">SPIT COMPANY</p>
+          </span>
+          <div class="job-description"><%= raw @job.description %></div>
+          <div class="job-description"><%= raw HtmlBeautifier.beautify(@job.about_candidate.html_safe.html_safe) %></div>
+        </div>
+      </div>
+    </div>
+    <div class="r-content-jds">
+      <span class="cc-title-jds">Location:</span>
+      <div class="cc-content-jds">
+        <span><%= @job.location %></span>
+      </div>
+      <br>
+      <span class="cc-title-jds">Job Type:</span>
+      <div class="cc-content-jds">
+        <span><%= @job.job_type %></span>
+      </div>
+      <br>
+      <span class="cc-title-jds"">Payrate:</span>
+      <div class="cc-content-jds">
+        <span><%= @job.pay_rate %></span>
+      </div><br>
 
-	              <div class="job-salary">
-	                <h3>Salary</h3>
-	                <h3>500 - 1000$</h3>
-	              </div>
-	              <div class="view-detail-button">
-	                <div class="m--view-detail-button" style="margin-left: 10px;">
-	                  <i class="fa fa-paper-plane" aria-hidden="true"></i>
-	                  <span>View Details</span>  
-	                </div>
-	                <div class="m--view-detail-button">
-	                  <i class="fa fa-comment" aria-hidden="true"></i>
-	                  <span>Send mess</span>  
-	                </div>
-	              </div>
-	            </div>
-	            
-	           
-	          </div>
-	        </div>
-	      <% end %>  
+    </div>
+    <div style="position: absolute;">
+      <span class="apply-now-btn" style="">Apply now!</span>
+    </div>
+  </div>
+  <div class="relate-jobs">
+    <h3 style="font-size: 24px;font-weight: 500;">Relate Jobs</h3>
+    <div class="list-center-content">
+      <% @random_jobs.each do |job| %>
+        <%= link_to job, class: 'job-resul-card grid' do %>
+          <div class="m__job-result-card">
+            <div class="content">
+              <% if !job.job_type.nil?%>
+                <div class="job-type">
+                  <span><%= job.job_type%></span>
+                </div>  
+              <% end %>
+              <div class="job-title">
+                <h3><%= job.title %></h3>
+              </div>
+              <div class="job-description">
+                <%= truncate(job.description,  length: 400  )%>
+              </div>
+              <div class="job-location">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span><%= job.location %></span>
+              </div>
+              <div class="job-salary">
+                <span>Salary</span>
+                <h3><%= job.pay_rate %></h3>
+              </div>
+              <div class="view-detail-button">
+                <div class="m--view-detail-button">
+                  <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                  <span>View Details</span>  
+                </div>
+              </div>
+              <div class="social-list-buttons">
+                <div class="m--social-list-buttons">
+                  <div>
+                    <span>
+                      <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                  <div>
+                    <span>
+                      <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            <div class="left-content">
+              <div class="m--left-content">
+                <div class="job-location">
+                  <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                  <span>Duy Tan, Cau Giay</span>
+                </div>
+                <div class="job-require-skills">
+                  <div class="job-require-skills-title">
+                    <div>
+                      <h3>Require skills</h3>
+                    </div>
+                  </div>
+                  <div class="job-require-skills-list">
+                    <span>PHP</span>
+                    <span>ASW</span>
+                    <span>HTML, CSS</span>
+                    <span>ASW</span>
+                    <span>ASW</span>
+                    <span>HTML, CSS</span>
+                    <span>HTML, CSS</span>
+                  </div>
+                </div>
+                 <div class="job-require-skills">
+                  <div class="job-require-skills-title">
+                    <div>
+                      <h3>Languages</h3>
+                    </div>
+                  </div>
+                  <div class="job-require-skills-list">
+                    <span>Vietnamese</span>
+                    <span>English</span>
+                  </div>
+                </div>
+
+                <div class="job-salary">
+                  <h3>Salary</h3>
+                  <h3>500 - 1000$</h3>
+                </div>
+                <div class="view-detail-button">
+                  <div class="m--view-detail-button" style="margin-left: 10px;">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span><%= link_to 'View Details', @job %></span>  
+                  </div>
+                  <div class="m--view-detail-button">
+                    <i class="fa fa-comment" aria-hidden="true"></i>
+                    <span>Send mess</span>  
+                  </div>
+                </div>
+              </div>
+              
+             
+            </div>
+          </div>
+        <% end %>  
       <% end %>
     </div>
-	</div>
+  </div>
 </div> 

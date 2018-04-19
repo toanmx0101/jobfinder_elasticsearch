@@ -6,11 +6,12 @@
     = csrf_meta_tags
     = stylesheet_link_tag    'application'
     = javascript_include_tag 'application'
-    = javascript_include_tag Ckeditor.cdn_url
+    = javascript_include_tag '//cdn.ckeditor.com/ckeditor5/1.0.0-beta.3/classic/ckeditor.js'
   %body
     = render 'partials/header'
     = yield
-    = render 'partials/footer', 'data-turbolinks-track': 'true'
+    - unless user_signed_in?
+      = render 'partials/footer', 'data-turbolinks-track': 'true'
     .widget-container 
       .small-chat
         .layout-small-icon

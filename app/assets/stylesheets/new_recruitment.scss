@@ -1,5 +1,5 @@
 .x-new-recruiments {
-  padding-top: 60px;
+  padding-top: 120px;
   .step-active { border-bottom: 2px solid; }
   .recruitment-step {
     padding: 10px 20px 10px 0;
@@ -54,28 +54,12 @@
   margin-top: 10px;
   display: inline-block;
   width: 100%;
+  .h3-heading {
+  }
   .st-left-content {
     float: left;
     width: 65%;
-    .tip-of-recruitment {
-      position: relative;
-      padding: 12px 15px 15px 12px;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
-      h3 {
-        margin: 0;
-        margin-bottom: 14px;
-      }
-      .close-tip-button {
-        position: absolute;
-        top: 12px;
-        right: 15px;
-        cursor: pointer;
-        &:hover {
-          i { color: #484848; }
-        }
-        i { color: rgba(72, 72, 72, 0.54); }
-      }
-    }
+    
   }
   .st-right-content {
     width: 35%;
@@ -87,6 +71,7 @@
         padding: 12px 15px 5px 12px;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
         margin-bottom: 25px;
+        background: #FFF;
         h3 {
           margin: 0;
           margin-bottom: 14px;
@@ -118,6 +103,7 @@
         text-align: center;
         padding: 25px 15px 20px 12px;
         box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+        background: #FFF;
         .prec{
           top: 40px;
           position: relative;
@@ -200,4 +186,48 @@
     color: #FFF;
     &:hover { background: #8fe5fe; }
   }
+}
+.tip-of-recruitment {
+  position: relative;
+  padding: 12px 15px 15px 12px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  h3 {
+    margin: 0;
+    margin-bottom: 14px;
+  }
+  .close-tip-button {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    cursor: pointer;
+    &:hover {
+      i { color: #484848; }
+    }
+    i { color: rgba(72, 72, 72, 0.54); }
+  }
+}
+.preview-job {
+  color: #FFF;
+}
+.ac-job {
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  border: 0;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 9px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+  background: #8FD5FE;
+  transition: all .6s ease;
+  &:hover {
+    background: #5897fbb8;
+  }
+}
+.ck-toolbar {
+  background: #FFF!important;
+}
+.ck.ck-icon {
+  color: #427AA1!important;
 }

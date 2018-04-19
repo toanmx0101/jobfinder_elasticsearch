@@ -7,10 +7,8 @@
       .asd
         = form_tag search_path, method: 'get' do
           = text_field_tag :q, params[:q], placeholder: 'Search job by keyword'
-
-
     %nav
-      %ul
+      %ul.nav-list-item
         - unless user_signed_in?
           %li
             .a-item-content

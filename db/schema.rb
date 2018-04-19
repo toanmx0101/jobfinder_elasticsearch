@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212093342) do
+ActiveRecord::Schema.define(version: 20180418022550) do
 
   create_table "jobs", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20171212093342) do
     t.integer "view_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_type"
+    t.string "pay_rate"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,6 +53,7 @@ ActiveRecord::Schema.define(version: 20171212093342) do
     t.string "website"
     t.boolean "subcribe_jobfinder"
     t.string "work_position"
+    t.string "view_count"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

@@ -37,7 +37,6 @@ module ElasticsearchJob
         end
       end
     rescue => e
-      Bugsnag.notify(e)
       logger.error(e)
     end
 
@@ -119,7 +118,6 @@ module ElasticsearchJob
       }
     rescue => e
       Rails.logger.error(e)
-      Bugsnag.notify(e)
       {
         body: [],
         total: 0

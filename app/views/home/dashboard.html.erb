@@ -42,21 +42,40 @@
     </div>
   </div>
 </div>
-
-<div class="container">
-  <p id="notice"><%= notice %></p>
-  <div class="m--recruitment-content">
-    <div class="recruitments">
-      <div class="recruitment">
-        <div class="new-recruitment">
-           <div class="m--new-recruitment">
-              <a href="/new_recruitment">
-                 <span class="span-new-recruitment">New recuitment</span>
-              </a>
-           </div>
+<div>
+  <div class="left-menu">
+    <div class="sc-menu-items">
+      <div class="menu-items">
+        <div class="menu">
+          <div class="item active">
+            <span><i class="fa fa-home fa-lg"></i></span>
+          </div>
+          <div class="item">
+            <span><i class="fa  fa-th-list  fa-lg"></i></span>
+          </div>
+          <div class="item ">
+            <span><i class="fa fa-address-card fa-lg"></i></span>
+          </div>
+          <div class="item ">
+            <span><i class="fa fa-folder"></i></i></span>
+          </div>
         </div>
+        <div class="bottom">
+          <div class="c-bottom">
+            <div class="bottom-item">
+              <span><i class="fa fa-question-circle fa-lg"></i></span>
+            </div>
+          </div>
+        </div>
+          
       </div>
     </div>
+  </div>
+  <div class="right-container">
+  </div>
+</div>
+<div class="container">
+  <div class="m--recruitment-content">
     <div class="recruitments">
       <% @jobs.each  do |job| %>
         <%= link_to job, class: 'recruitment' do %>
@@ -64,11 +83,6 @@
             <div class="recruitment-title">
                 <h3><%= job.title%></h3>
                 <span><%= job.created_at%></span>
-            </div>
-            <div class="job-require-skills-list">
-              <span>PHP</span>
-              <span>ASW</span>
-              <span>HTML, CSS</span>
             </div>
             <div class="candidates">
               <div class="candidate">
@@ -84,7 +98,7 @@
                 <span></span>
               </div>
             </div>
-            <div class="recruitment-infor" style="color: #8FD5FE;width: calc(100% - 24px);">
+            <div class="recruitment-infor" styple="color: #8FD5FE;width: calc(100% - 24px);">
               <div style="float: right;">
                 <span>
                   <i class="fa fa-pencil fa-lg" aria-hidden="true"></i>

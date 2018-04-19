@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 60px;">
+<div class="container" style="padding-top: 120px;">
   <div class="result-list-container">
     <div class="filter-result">
       <div class="filters">
@@ -30,7 +30,7 @@
             <h4>Skills</h4>
           </div>
           <div class="clear-filter-div">
-            <span>Clear</span>
+            <span><i class="fa fa-trash"></i></span>
           </div>
 
         </div>
@@ -48,7 +48,7 @@
             <h4>Location</h4>
           </div>
           <div class="clear-filter-div">
-            <span>Clear</span>
+            <span><i class="fa fa-trash"></i></span>
           </div>
 
         </div>
@@ -62,7 +62,7 @@
             <h4>Experience level</h4>
           </div>
           <div class="clear-filter-div">
-            <span>Clear</span>
+            <span><i class="fa fa-trash"></i></span>
           </div>
         </div>
         <select class="js-example-basic-single" name="state">
@@ -97,19 +97,16 @@
         $('.js-example-basic-multiple').select2();
         $('.js-example-basic-single').select2();
         $( ".filter-icon").click(function() {
-          if ($(this).hasClass("grid-choice")) {
-            $('.job-resul-card').addClass("grid")
-            $('.job-resul-card').removeClass("map");
-            $('.job-resul-card').removeClass("list");
-          }
           if ($(this).hasClass("list-choice")) {
+            $( ".filter-icon").removeClass('filter-choice-active')
+            $(this).addClass('filter-choice-active')
             $('.job-resul-card').addClass("list")
             $('.job-resul-card').removeClass("map");
-            $('.job-resul-card').removeClass("grid");
           }
-          if ($(this).hasClass("map-choice")) {
+          if ($(this).hasClass("grid-choice")) {
+            $( ".filter-icon").removeClass('filter-choice-active')
+            $(this).addClass('filter-choice-active')
             $('.job-resul-card').addClass("map")
-            $('.job-resul-card').removeClass("grid");
             $('.job-resul-card').removeClass("list");
           }
         });
@@ -129,9 +126,6 @@
           <div class="filter-icon grid-choice">
             <i class="fa fa-th-large" aria-hidden="true"></i>
           </div>
-          <div class="filter-icon map-choice">
-            <i class="fa fa-location-arrow" aria-hidden="true"></i>
-          </div>
         </div>
       </div>
       <div class="list-cards">
@@ -141,47 +135,15 @@
               <div class="job-resul-card list">
                 <div class="m__job-result-card">
                   <div class="content">
-                    <div class="job-type">
-                      <span>Hourly</span>
+                    <div class="job-views-and-type">
+                      <span class="job-views"><i class="fa fa-eye" style="color: #f8bc48; margin-right: 5px;"></i><%= job.view_count %> views</span>
+                      <span class="job-type">Hourly</span>
                     </div>  
                     <div class="job-title">
                       <h3><%= job.title %></h3>
                     </div>
                     <div class="job-description">
-                      <span><%= job.description %></span>
-                    </div>
-                    <div class="job-location">
-                      <i class="fa fa-map-marker" aria-hidden="true"></i>
-                      <span>Duy Tan, Cau Giay</span>
-                    </div>
-                    <div class="job-salary">
-                      <span>Salary</span>
-                      <h3>500 - 1000$</h3>
-                    </div>
-                    <div class="view-detail-button">
-                      <div class="m--view-detail-button">
-                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                        <span>View Details</span>  
-                      </div>
-                    </div>
-                    <div class="social-list-buttons">
-                      <div class="m--social-list-buttons">
-                        <div>
-                          <span>
-                            <i class="fa fa-bookmark-o fa-lg" aria-hidden="true"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <span>
-                            <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-                          </span>
-                        </div>
-                        <div>
-                          <span>
-                            <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-                          </span>
-                        </div>
-                      </div>
+                      <span><%= truncate(job.description, length: 500) %></span>
                     </div>
                   </div>  
                   <div class="left-content">
@@ -217,35 +179,29 @@
                           <span>English</span>
                         </div>
                       </div>
-
                       <div class="job-salary">
                         <h3>Salary</h3>
                         <h3>500 - 1000$</h3>
                       </div>
                       <div class="view-detail-button">
-                        <div class="m--view-detail-button" style="margin-left: 10px;">
+                        <div class="m--view-detail-button ac-job" style="margin-left: 10px;">
                           <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                          <span>View Details</span>  
+                          <span><%= link_to 'View Details', job %></span>  
                         </div>
-                        <div class="m--view-detail-button">
+                        <div class="m--view-detail-button ac-job" style="">
                           <i class="fa fa-comment" aria-hidden="true"></i>
-                          <span>Send mess</span>  
+                          <span>Send mess</span>
                         </div>
                       </div>
                     </div>
-                    
-                   
                   </div>
                 </div>
               </div>
             <% end %>
           <% end %>  
-          
-         
           </div>
         </div>  
       </div>
-      
     </div>
   </div>
 </div>
