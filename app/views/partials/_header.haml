@@ -45,14 +45,14 @@
             .a-item-content
               .a-center-content
                 %a{href: '/login'}
-                  %i.fa.fa-tasks.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 3
+                  %i.far.fa-list-alt.fa-lg{"aria-hidden" => "true"}
+                    %span.js-count-noti 2
           %li
             .a-item-content.message-link
               .a-center-content
                 %a{href: 'javascript:;'}
-                  %i.fa.fa-envelope-o.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 1
+                  %i.far.fa-envelope.fa-lg{"aria-hidden" => "true"}
+                    %span.js-count-noti 2
               .message-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Messages
@@ -62,7 +62,7 @@
                     %li
                       .message-item 
                         .user-icon
-                          %img{src: 'images/profile_image.jpg'}
+                          %img{src: '/images/profile_image.jpg'}
                         .message-content
                           .user-name Nam Di
                           .message Hiển thị ứng viên bên cạnh khi click vào tin tuyển dụng đó, các ứng viên tiềm năng và từ ng đã xem
@@ -71,7 +71,7 @@
                     %li
                       .message-item 
                         .user-icon
-                          %img{src: 'images/avatar-test-1.jpg'}
+                          %img{src: '/images/avatar-test-1.jpg'}
                         .message-content
                           .user-name Anh Tu
                           .message Hiển thị một list các danh sách tin tuyển dụng 
@@ -81,7 +81,7 @@
                     %li.readed
                       .message-item 
                         .user-icon
-                          %img{src: 'images/avatar-test-2.jpg'}
+                          %img{src: '/images/avatar-test-2.jpg'}
                         .message-content
                           .user-name Nguyen Thai
                           .message Thêm trường history vào user, tìm hiểu task recomendation
@@ -90,7 +90,7 @@
                     %li
                       .message-item 
                         .user-icon
-                          %img{src: 'images/avatar-test-1.jpg'}
+                          %img{src: '/images/avatar-test-1.jpg'}
                         .message-content
                           .user-name Nguyen Thai
                           .message Thêm trường history vào user, tìm hiểu task recomendation
@@ -99,7 +99,7 @@
                     %li.readed
                       .message-item 
                         .user-icon
-                          %img{src: 'images/avatar-test-3.jpg'}
+                          %img{src: '/images/avatar-test-3.jpg'}
                         .message-content
                           .user-name Nguyen Thai
                           .message Thêm trường history vào user, tìm hiểu task recomendation
@@ -108,7 +108,7 @@
                     %li
                       .message-item 
                         .user-icon
-                          %img{src: 'images/avatar-test-1.jpg'}
+                          %img{src: '/images/avatar-test-1.jpg'}
                         .message-content
                           .user-name Nguyen Thai
                           .message Thêm trường history vào user, tìm hiểu task recomendation
@@ -118,26 +118,24 @@
             .a-item-content.notification-link
               .a-center-content
                 %a{href: 'javascript:;'}
-                  %i.fa.fa-bell.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti
-                      = Notification.count
+                  %i.far.fa-bell.fa-lg{"aria-hidden" => "true"}
+                    - count = @notifications.count
+                    %span.js-count-noti.notification{class: "#{"multi-notify" if count >= 10}"}
+                      - if count > 0
+                        #open_notification 
+                          = count
               .notification-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Notifications
                   %a.mark-read-all Mark read all
-                %ul
-                  %li.readed
-                    .notification-item 
-                      .user-icon
-                        %img{src: 'images/avatar-test-2.jpg'}
-                      .notification-content
-                        .user-name Nguyen Thai
-                        .time 5 minutes ago 
+                %ul#notificationList
+                  - @notifications.each do |noti|
+                    = render '/notifications/notification', notification: noti
           %li
             .a-item-content.account-link
               .a-center-content.dropdown-content
                 %a{href: 'javascript:;'}
-                  %i.fa.fa-user-circle-o.fa-lg{"aria-hidden" => "true"}
+                  %i.fa.fa-user-circle.fa-lg{"aria-hidden" => "true"}
               .account-dropdown.js-dropdown-content
                 %ul
                   %li
@@ -158,7 +156,7 @@
 
 :javascript
   $('.account-link, .notification-link, .message-link').click(function(){
-    $(this).find(".js-count-noti").empty();
+    $(this).find("#open_notification").empty();
     $(this).children(".js-dropdown-content").show();
     $(this).addClass('active');
   });
@@ -177,6 +175,7 @@
       {
         $(value).hide();
         $('.a-item-content').removeClass('active');
+        
       }
     });
   }); 

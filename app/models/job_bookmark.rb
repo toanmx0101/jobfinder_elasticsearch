@@ -1,0 +1,2 @@
+class JobBookmark < ApplicationRecord
+end

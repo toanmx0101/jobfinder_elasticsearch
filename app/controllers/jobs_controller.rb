@@ -1,6 +1,7 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create, :destroy, :update, :edit]
+  after_action :notify, only: [:show], if: -> { user_signed_in? && current_user.id != @job.user_id }
 
   def index; end
 
@@ -8,7 +9,8 @@ class JobsController < ApplicationController
 
   def search
     s = escape_characters_in_string(params[:q])
-    @jobs = Job.search(s).records
+
+    @jobs = Job.search_el(params[:page], Job::PER_PAGE , "", [], s)[:body]
     render action: "index"
   end
   
@@ -59,18 +61,23 @@ class JobsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def escape_characters_in_string(string)
       pattern = /(\'|\"|\.|\*|\/|\-|\+|\]|\[|\)|\(|\\)/
       string.gsub(pattern){|match|"\\"  + match}
     end
 
     def set_job
-      @job = Job.find(params[:id])
+      @job = Job.find(params[:id].to_i)
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
       params.require(:job).permit(:title, :description, :about_candidate, :job_type, :pay_rate)
+    end
+
+    def notify
+      notification = Notification.create(recipient_id: @job.user_id,
+                          actor_id: current_user.id,
+                          action: "#{current_user.username} viewed your job: <strong>#{@job.title}</strong>.")
+      notification.update_attribute(:notifiable, @job)
     end
 end

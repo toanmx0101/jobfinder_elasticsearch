@@ -93,46 +93,47 @@
       a {
         padding: 14px 17px;
       }
-      .message-item, .notification-item  {
-        display: flex;
-        padding: 0 12px;
-        position: relative;
-        .user-icon {
-          padding: 6px;
-          height: 40px;
-          img {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-          }
-        }
-        .message-content, .notification-content {
-          width: calc(100% - 95px);
-          padding: 6px;
-          box-sizing: border-box;
-          .user-name {
-            margin-bottom: 4px;
-            font-weight: 600;
-          }
-          .message {
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
-          }
-        }
-        .time {
-          padding: 6px;
-        }
-        .notification-content {
-          .time {
-            padding: 0;
-          }
-        }
-        .js-count-noti {
-          transition: all 1s ease;
-        }
-      }
+      
     }
 
+  }
+}
+.message-item, .notification-item, .applyer-item  {
+  display: flex;
+  padding: 0 12px;
+  position: relative;
+  .user-icon {
+    padding: 6px;
+    height: 40px;
+    img {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+    }
+  }
+  .message-content, .notification-content {
+    width: calc(100% - 95px);
+    padding: 6px;
+    box-sizing: border-box;
+    .user-name {
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .message {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .time {
+    padding: 6px;
+  }
+  .notification-content {
+    .time {
+      padding: 0;
+    }
+  }
+  .js-count-noti {
+    transition: all 1s ease;
   }
 }

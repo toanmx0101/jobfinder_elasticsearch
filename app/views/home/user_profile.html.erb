@@ -2,17 +2,17 @@
   <div class="container " >
     <div class="c-base-user-profile">
       <div class="c-image">
-        <img src="/images/profile_image.jpg">
+      <img src="<%= @user.avatar_url %>">
       </div>
       <div class="c-text">
-        <h2><%= current_user&.username %>   <span>( <%= current_user&.work_position %> )</span></h2>
+        <h2><%= @user&.username %>   <span>( <%= @user&.work_position %> )</span></h2>
         <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
           <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i> 
-          <%= current_user&.location %>
+          <%= @user&.location %>
         </span>
         <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
         <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
-          <%= current_user&.description %>
+          <%= @user&.description %>
         </span>
         <div style="margin-top: 23px;">
           <i class="fa fa-facebook-official fa-lg" aria-hidden="true" style="font-size: 20px;margin-right: 8px;color: #FFF;cursor: pointer;"></i>

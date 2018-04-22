@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :applies
   resources :messages
   get 'notifications/index'
 
@@ -10,13 +11,17 @@ Rails.application.routes.draw do
     get '/join/plan', to: 'users/registrations#plan'
     get '/join/finish', to: 'users/registrations#first_signup_fill_infor'
     put '/user_update', to: 'users/registrations#update'
-    as :user do
-      get 'users/profile', :to => 'devise/registrations#edit', :as => :user_root
-    end
+    # as :user do
+    #   get 'users/profile', :to => 'devise/registrations#edit', :as => :user_root
+    # end
 	end
   root to: 'home#index'
   resources :jobs
 
+  resources :home do
+  end
+  get '/job/#{slug}-#{id}', to: 'jobs#edit'
+  get '/jf/:id', to: 'home#profile', as: :jf
   get '/search', to: 'jobs#search'
   get '/dashboard', to: 'jobs#dashboard'
   get '/new_recruitment', to: 'jobs#new'

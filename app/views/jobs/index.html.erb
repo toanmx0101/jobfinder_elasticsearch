@@ -1,96 +1,112 @@
+
+<script type="text/javascript">
+  $(window).bind('scroll', function () {
+    if ($(window).scrollTop() > 50) {
+      $('.filter-items').addClass('fixed');
+    } else {
+      $('.filter-items').removeClass('fixed');
+    }
+});
+</script>
+<style type="text/css">
+  
+</style>
 <div class="container" style="padding-top: 120px;">
   <div class="result-list-container">
     <div class="filter-result">
-      <div class="filters">
-        <div class="filter-title-div">
-          <h3><span>Filters</span></h3>
+      <div class="filter-items">
+        <div class="filters">
+          <div class="filter-title-div">
+            <h3><span>Filters</span></h3>
+          </div>
+          <div class="clear-filter-div">
+            <div>
+              <span>Clear all filters</span>
+            </div>
+          </div>  
         </div>
-        <div class="clear-filter-div">
-          <div>
-            <span>Clear all filters</span>
-          </div>
-        </div>  
-      </div>
-      <div class="search-title">
-        <div class="skills-header">
-         <div class="filter-title-div"> 
-            <h4>Search job by keyword</h4>
-          </div>
-          <div class="clear-filter-div">
-            <span>Clear</span>
-          </div>
-        </div>  
-          <%= form_tag search_path, method: 'get' do %>
-            <%= text_field_tag :q, params[:q], placeholder: 'Search job by keyword', class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;'%>     
-         <% end %>    
-      </div>
-      <div class="skills">
-        <div class="skills-header">
-          <div class="filter-title-div"> 
-            <h4>Skills</h4>
-          </div>
-          <div class="clear-filter-div">
-            <span><i class="fa fa-trash"></i></span>
-          </div>
+        <div class="search-title">
+          <div class="skills-header">
+           <div class="filter-title-div"> 
+              <h4>Search job by keyword</h4>
+            </div>
+            <div class="clear-filter-div">
+              <span>Clear</span>
+            </div>
+          </div>  
+            <%= form_tag search_path, method: 'get' do %>
+              <%= text_field_tag :q, params[:q], placeholder: 'Search job by keyword', class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;'%>     
+           <% end %>    
+        </div>
+        <div class="skills">
+          <div class="skills-header">
+            <div class="filter-title-div"> 
+              <h4>Skills</h4>
+            </div>
+            <div class="clear-filter-div">
+              <span><i class="fa fa-trash"></i></span>
+            </div>
 
-        </div>
-        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
-          <option value="AL">HTML</option>
-          <option value="WY">CSS</option>
-          <option value="HA">Joomla</option>
-          <option value="FU">PHP</option>
-          <option value="CK">Lua</option>
-        </select>
-      </div>
-      <div class="locations">
-        <div class="skills-header">
-          <div class="filter-title-div"> 
-            <h4>Location</h4>
           </div>
-          <div class="clear-filter-div">
-            <span><i class="fa fa-trash"></i></span>
-          </div>
-
-        </div>
-        <div>
-          <input type="text" name="locations" class="input--text">
-        </div>
-      </div>
-      <div class="Experience level">
-        <div class="skills-header">
-          <div class="filter-title-div"> 
-            <h4>Experience level</h4>
-          </div>
-          <div class="clear-filter-div">
-            <span><i class="fa fa-trash"></i></span>
-          </div>
-        </div>
-        <select class="js-example-basic-single" name="state">
-            <option value="Y1">1 year</option>
-            <option value="Y2">2 years</option>
-            <option value="Y2">3 - 5 years</option>
-            <option value="Y2">5 - 7 years</option>
-            <option value="Y2">7 -10 years</option>
-            <option value="Y2">> 10 years</option>
+          <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+            <option value="AL">HTML</option>
+            <option value="WY">CSS</option>
+            <option value="HA">Joomla</option>
+            <option value="FU">PHP</option>
+            <option value="CK">Lua</option>
           </select>
-      </div>
-      <div class="Languages">
-        <div class="skills-header">
-          <div class="filter-title-div"> 
-            <h4>Languages</h4>
+        </div>
+        <div class="locations">
+          <div class="skills-header">
+            <div class="filter-title-div"> 
+              <h4>Location</h4>
+            </div>
+            <div class="clear-filter-div">
+              <span><i class="fa fa-trash"></i></span>
+            </div>
+
           </div>
-          <div class="clear-filter-div">
-            <span>Clear</span>
+          <div>
+            <input type="text" name="locations" class="input--text">
           </div>
         </div>
-        <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
-          <option value="AL">English</option>
-          <option value="WY">Chinese</option>
-          <option value="HA">France</option>
-          <option value="FU">Vietnamese</option>
-          <option value="CK">Japanese</option>
-        </select>
+        <div class="Experience level">
+          <div class="skills-header">
+            <div class="filter-title-div"> 
+              <h4>Experience level</h4>
+            </div>
+            <div class="clear-filter-div">
+              <span><i class="fa fa-trash"></i></span>
+            </div>
+          </div>
+          <select class="js-example-basic-single" name="state">
+              <option value="Y1">1 year</option>
+              <option value="Y2">2 years</option>
+              <option value="Y2">3 - 5 years</option>
+              <option value="Y2">5 - 7 years</option>
+              <option value="Y2">7 -10 years</option>
+              <option value="Y2">> 10 years</option>
+            </select>
+        </div>
+        <div class="Languages">
+          <div class="skills-header">
+            <div class="filter-title-div"> 
+              <h4>Languages</h4>
+            </div>
+            <div class="clear-filter-div">
+              <span>Clear</span>
+            </div>
+          </div>
+          <select class="js-example-basic-multiple" name="states[]" multiple="multiple" style="width: 100%">
+            <option value="AL">English</option>
+            <option value="WY">Chinese</option>
+            <option value="HA">France</option>
+            <option value="FU">Vietnamese</option>
+            <option value="CK">Japanese</option>
+          </select>
+        </div>
       </div>
+      
     </div>
     <script type="text/javascript">
       $(document).ready(function() {
@@ -113,37 +129,46 @@
       });
     </script>
     <div class="results-list-card">
-      <div class="filter-wireframe">
-        <div class="solf-by">
-          <div>
-            <h3>Price</h3>
+      <div class="ac-filter" style="padding-bottom: 5px;">
+        <div class="filter-wireframe">
+          <div class="solf-by">
+            <div>
+              <h3>Show <%= @jobs.count %> jobs</h3>
+            </div>
           </div>
-        </div>
-        <div class="filter-wireframe-icons-list">
-          <div class="filter-icon list-choice filter-choice-active">
-            <i class="fa fa-th-list" aria-hidden="true"></i>
-          </div>
-          <div class="filter-icon grid-choice">
-            <i class="fa fa-th-large" aria-hidden="true"></i>
+
+          <div class="filter-wireframe-icons-list">
+            <div class="filter-icon grid-choice filter-choice-active">
+              <i class="fa fa-th-large" aria-hidden="true"></i>
+            </div>
+            <div class="filter-icon list-choice ">
+              <i class="fa fa-th-list" aria-hidden="true"></i>
+            </div>
           </div>
         </div>
       </div>
       <div class="list-cards">
         <div class="list-center-content">
-          <% if !@jobs.nil? %>
+        <% if !@jobs.nil? %>
             <% @jobs.each do |job| %>
-              <div class="job-resul-card list">
+              <div class="job-resul-card map">
                 <div class="m__job-result-card">
                   <div class="content">
                     <div class="job-views-and-type">
                       <span class="job-views"><i class="fa fa-eye" style="color: #f8bc48; margin-right: 5px;"></i><%= job.view_count %> views</span>
-                      <span class="job-type">Hourly</span>
+                      <span class="job-type"><%= job.job_type %></span>
                     </div>  
+
                     <div class="job-title">
                       <h3><%= job.title %></h3>
                     </div>
+                    <div class="location">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <%= job&.location%>
+                    </div>
                     <div class="job-description">
-                      <span><%= truncate(job.description, length: 500) %></span>
+                      <% des = job.description.nil? ? job.about_candidate.gsub(/<\/?[^>]*>/, "") : job.description.gsub(/<\/?[^>]*>/, "") %>
+                      <span><%= truncate(des, length: 500) %></span>
                     </div>
                   </div>  
                   <div class="left-content">

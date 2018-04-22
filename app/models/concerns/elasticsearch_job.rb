@@ -47,14 +47,10 @@ module ElasticsearchJob
       number_of_replicas: 0,
       analysis: {
         analyzer: {
-          english_analyzer: {
+          job_analyzer: {
           type: "english",
           tokenizer: "whitespace",
-          stopwords: "_english_",
-          filter: [
-            "lowercase",
-            "type_as_payload"
-          ]
+          char_filter:  [ "html_strip" ]
         }
        }
       }
@@ -62,10 +58,10 @@ module ElasticsearchJob
       mappings dynamic: 'false', _all: {enabled: false} do
         indexes :id, type: 'integer', index: true
         indexes :title, type: 'text', index: true, boost: 3, fielddata: true
-        indexes :description, type: 'text', index: true, boost: 2, fielddata: true
-        indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true
-        indexes :location, type: 'text', index: true
-        indexes :view_count, type: 'text', index: true
+        indexes :description, type: 'text', index: true, boost: 2, fielddata: true, analyzer: 'job_analyzer'
+        indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer'
+        indexes :location, type: 'text', index: true, fielddata: true
+        indexes :view_count, type: 'text', index: true, fielddata: true
       end
     end
 
@@ -149,34 +145,36 @@ module ElasticsearchJob
               } 
             },
             functions: [
-              {
-                filter: { 
-                  match: { 
-                    about_candidate: tags[0][:term]
-                  }
-                },
-                weight: tags[0][:boost]
-              },
-              {
-                filter: { 
-                  match: { 
-                    about_candidate: tags[1][:term]
-                  }
-                },
-                weight: tags[1][:boost]
-              },
-              {
-                filter: {
-                  range: {
-                    view_count: {
-                      from: 0
-                    }
-                  }
-                }, 
-                script_score: {
-                  script: "_score + Math.log(doc.view_count.value)"
-                }
-              }
+              # unless tags.empty?
+              #   {
+              #     filter: { 
+              #       match: { 
+              #         about_candidate: tags[0][:term]
+              #       }
+              #     },
+              #     weight: tags[0][:boost]
+              #   },
+              #   {
+              #     filter: { 
+              #       match: { 
+              #         about_candidate: tags[1][:term]
+              #       }
+              #     },
+              #     weight: tags[1][:boost]
+              #   },
+              # end
+              # {
+              #   filter: {
+              #     range: {
+              #       view_count: {
+              #         from: 0
+              #       }
+              #     }
+              #   }, 
+              #   script_score: {
+              #     script: "_score + Math.log(doc.view_count.value)"
+              #   }
+              # }
             ],
           }
         }

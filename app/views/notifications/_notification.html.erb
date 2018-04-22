@@ -1,4 +1,11 @@
 <li>
-  <%= notification.event %>
-  <span> <%= notification.created_at.strftime("%d %b. %Y") %></span>
+  <div class="notification-item" id="">
+    <div class="user-icon">
+      <img src="<%= notification.actor.avatar_url %>"/>
+    </div>
+    <div class="notification-content">
+      <div class="user-name"><%= notification.actor.username %></div>
+      <div class="time"><%= time_ago_in_words(notification.created_at) %> ago</div>
+    </div>
+  </div>
 </li>

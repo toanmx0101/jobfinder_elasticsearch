@@ -1,0 +1,12 @@
+<div class="applyer-item applyer-item-da">
+  <%= link_to jf_path(candidate), class: "user-icon" do %>
+    <img src="<%= candidate.avatar_url%>">
+  <% end %>
+  <div class="message-content">
+    <%= link_to candidate.username, jf_path(candidate), class: "user-name"%>
+    <div class="message"><%= candidate.work_position%></div>
+  </div>
+  <div class="act-message">
+    <i class="far fa-envelope"></i>
+  </div>
+</div>

@@ -9,7 +9,9 @@
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
   display: inherit;
   transition: all 0.3s linear 0s;
+  border-radius: 4px;
   &:hover { box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3); }
+
 }
 .result-list-container {
   display: -webkit-inline-box;
@@ -30,8 +32,29 @@
   padding: 5px 0;
 }
 .filter-wireframe {
+  padding: 5px 8px 5px 8px;
   margin-left: 20px;
   margin-bottom: 20px;
+}
+.fixed {
+  position: fixed;
+  width: 270px;
+  background: #FFF;
+  top: 75px;
+}
+.fixed-filter-wireframe {
+  position: fixed;
+  width: 790px;
+  background: #FFF;
+  z-index: 2;
+  top: 65px;
+  &.ac-filter {
+    margin-left: 20px;
+  }
+  .filter-wireframe {
+    border-bottom: 2px solid #484848;
+    margin: 0;
+  }
 }
 .filter-wireframe-icons-list {
   display: inline-block;
@@ -45,7 +68,7 @@
   }
   h3, h4 { margin: 0; }
   padding: 5px 0;
-  border-bottom: 2px solid #484848;
+  // border-bottom: 2px solid #484848;
 }
 .filter-icon {
   display: inline-block;
@@ -57,6 +80,7 @@
 .list-cards {
   width: calc(100% - 15px);
   margin-left: 15px;
+  padding: 0 2px;
 }
 .select2-selection--multiple {
   border-radius: 0px!important;
@@ -155,10 +179,16 @@
   display: inline-block;
   margin-bottom: 20px;
 }
+.location {
+  margin-bottom: 10px;
+  .fas {
+    color: #ACACAC;;
+    margin-right: 6px;
+  }
+}
 .job-views-and-type {
   display: inline-block;
   width: 100%;
-  margin-bottom: 10px;
   .job-views {
     float: left;
     padding: 4px 0;
@@ -182,6 +212,7 @@
   padding-bottom: 5px;
   h3 {
     margin: 0;
+    font-size: 18px;
   }
 }
 .require-skills {

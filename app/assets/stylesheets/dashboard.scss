@@ -106,15 +106,16 @@
 }
 .m--recruitment-content { 
     padding-top: 140px;
-    padding-left: 220px;
-    padding-right: 220px;
+    padding-left: 160px;
+    padding-right: 310px;
+
+    height: -webkit-fill-available;
 }
 .recruitments {
   width: 100%;
-  display: flex;
+  display: block;
   .c-cruitment {
-    width: 40%;
-    display: inline-block;
+    display: block;
   }
   .c-candidate {
     width: 30%;
@@ -157,7 +158,7 @@
     }
   }
   .recruitment {
-    display: inline-block;
+    display: block;
     text-decoration: none;
     width: 100%;
     h2 {
@@ -165,7 +166,7 @@
       font-size: 18px;
     }
     .m--recruitment, .new-recruitment {
-
+      background: #FFF;
       position: relative;
       height: 140px;
       margin: 13px;
@@ -256,7 +257,7 @@
   }
 }
 .left-menu {
-  width: 60px;
+  width: 250px;
   margin-top: 60px;
   height: 100%;
   position: fixed;
@@ -269,18 +270,18 @@
     -webkit-box-flex: 1;
     flex-grow: 1;
     flex-shrink: 1;
-    min-width: 60px;
+    min-width: 250px;
     display: flex;
     .menu-items {
       display: flex;
       flex-direction: column;
       padding-top: 150px;
       width: 100%;
+      margin-left: 19px;
       .menu {
         display: flex;
         flex-direction: column;
         position: relative;
-        flex: 1 1 100%;
         overflow: hidden;
       }
       .bottom {
@@ -298,22 +299,65 @@
         flex-shrink: 0;
         opacity: 1;
         transition: height 200ms, opacity 200ms;
-        padding: 9px 18px;
+        padding: 9px 0 9px 18px;
         cursor: pointer;
-        margin: 20px 0;
+        display: flex;
+        position: relative;
+        &:hover {
+         .fa, .far, .fas {
+            color: #8FD5FE;
+          }
+        }
       }
       .item, .bottom-item {
-        .fa {
+        .fa, .fas, .far {
+          color: #ACACAC;
+          font-size: 15px;
+        }
+        .paper-plane {
+          font-size: 14px;
+          position: absolute;
+          top: 16px;
+        }
+        .burn {
+          position: absolute;
+          top: 16px;
+          font-size: 17px;
+        }
+        .file {
+          position: absolute;
+          top: 12px;
+        }
+        .setting {
+          font-size: 15px;
+          position: absolute;
+          top: 12.5px;
+        }
+        .help {
+          font-size: 16px;
+          position: absolute;
+          top: 12.5px;
+        }
+        .user {
+          position: absolute;
+          top: 12px;
+        }
+        p {
+          margin: 0;
+          padding: 3px;
+          margin-left: 28px;
+          font-size: 15px;
           width: 100%;
-          text-align: center;
-          font-size: 1.3333333rem;
         }
       }
       .active {
-        .fa {
-          color: #5FA7D1;
+        .fa, .far, .fas {
+          color: #8FD5FE;
         }
-        border-right: 2px solid #5FA7D1;
+        p {
+          border-right: 2px solid #8FD5FE;
+          color: #5897fbb8;
+        }
       }
       .bottom-item {
         align-self: center;
@@ -329,9 +373,243 @@
   }
 }
 .right-container {
-  width: calc( 100% - 60px );
+  width: calc( 100% - 250px );
   height: auto;
   position: absolute;
   right: 0;
+  background: #FAFAFA;
+}
+.filter-header {
+  display: flex;
+  .title {
+    width: 100%;
+  }
+  .filter-and-create-new {
+    display: flex;
+    a {
+      text-decoration: none;
+    }
+    .pages-job {
+      width: 60px;
+        position: relative;
+          padding: 8px;
+    margin-right: 25px;
+      .next, .prev {
+      }
+      .fas {
+        position: absolute;
+        font-size: 20px;
+        color: #ACACAC;
+        top: 7px;
+      }
+      .fa-angle-left {
+        left: -11px;
+      }
+      .fa-angle-right {
+        right: 3px;
+      }
+    }
+    .filter {
+      position: relative;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      display: flex;
+      background: #FFF;
+      cursor: pointer;
+      padding: 8px 14px 8px 23px;
+      border-radius: 3px;
+      margin-right: 6px;
+      i, p {
+      }
+      i {
+        position: absolute;
+        top: 9px;
+        left: 9px;
+      }
+      div {
+        margin: 0 5px;
+        font-weight: 600;
+      }
+      .create-job {
+        width: 96px;
+        color: #FFF;
+      }
+      .fa-plus {
+        top: 10px;
+        left: 11px;
+        color: #FFF;
+      }
+    }
+    .create-new {
+      background: #8FD5FE;
+    }
+  }
+}
+.filter-header {
+  .filter {
+    .dropdown-filter {
+      position: absolute;
+      top: 37px;
+      right: -7px;
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      background: #FFF;
+      border-radius: 2px;
+      width: 160px;
+      height: inherit;
+      z-index: 10;
+      display: none;
+      div {
+        padding: 12px;
+        margin: 0;
+        &:hover {
+          background: #f9f9f9
+        }
+      }
+    }
+  }
+  .active-filter {
+    .dropdown-filter {
+      display: block;
+    }
+  }
+}
+.table-header {
+  margin-top: 12px;
+  color: #ACACAC;
+}
+.table-header, .table-recruitments {
+  display: flex;
+  padding: 12px;
+
+  .id {
+    width: 5%
+  }
+  .title {
+    width: 27%;
+  }
+  .status {
+    width: 12%;
+  }
+  .publish {
+    width: 12%;
+  }
+  .end {
+    width: 12%;
+  }
+  .description {
+    width: 20%;
+  }
+  .views {
+    width: 10%;
+  }
+  .setting {
+  }
+  .description , .title {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-right: 6px;
+  }
+}
+.table-recruitments {
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
   background: #FFF;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  .views {
+  }
+}
+.grow { 
+}
+
+.grow:hover { background: #f6f9fc; }
+.c-cruitment {
+  .short-details {
+    display: none;
+    background: #FFF;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    margin-bottom: 6px;
+    border-radius: 4px;
+    padding: 12px;
+    .recruiment-short-details {
+      display: flex;
+      height: 100%;
+      .basic-infor, .candidates, .applyers {
+        width: 33%;
+        
+      }
+      .applyers, .basic-infor, .candidates {
+        display: inline-block;
+        margin-right: 12px;
+        h3 {
+          margin: 0;
+          margin-bottom: 5px
+        }
+      }
+    }
+  }
+}
+.applyer-item-da {
+  padding: 0 !important;
+  border: 1px solid #dddddd61;
+  border-radius: 6px;
+  margin-bottom: 3px;
+  .user-icon {
+    cursor: pointer;
+  }
+  .message-content {
+    .user-name {
+      width: fit-content;
+      font-size: 15px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .act-message {
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    .fas, .far {
+      font-size: 1.33333em;
+    }
+    &:hover {
+      .fas, .far {
+        color: #8FD5FE !important;
+      }
+    }
+  }
+}
+.basic-infor {
+  .fas {
+    margin-right: 8px;
+  }
+  .fa-map-pin {
+    margin-right: 9px;
+  }
+  .description {
+    cursor: default;
+  }
+}
+.candidates {
+  margin-right: 6px;
+}
+.dashboard-table-recruitments {
+  &.selected {
+    .short-details {
+      display: block;
+    }
+    .table-recruitments {
+      background: #f6f9fc;
+    }
+  }
+}
+.dashboard-table-recruitments {
+  .fas, .far {
+    color: #717274;
+  }
+}
+.multi-notify {
+  right: -12px!important;
 }

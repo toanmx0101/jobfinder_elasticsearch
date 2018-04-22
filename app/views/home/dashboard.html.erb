@@ -47,37 +47,96 @@
     <div class="sc-menu-items">
       <div class="menu-items">
         <div class="menu">
+          <h3 style="padding: 9px 0 9px 18px;font-size: 17px;">Manage</h3>
           <div class="item active">
-            <span><i class="fa fa-home fa-lg"></i></span>
+            <i class="fa fa-paper-plane fa-lg paper-plane"></i>
+            <p>Dashboard</p>
           </div>
+          <div class="item ">
+            <i class="fa fa-folder file"></i></i>
+            <p>Recruitments</p>
+          </div>
+          <div class="item ">
+            <i class="fa fa-user user"></i>
+            <p>Candidates</p>
+          </div>
+          <div class="item ">
+            <i class="fa fa-burn fa-lg burn"></i>
+            <p>Agents</p>
+          </div>
+        </div>
+        <div class="menu">
+          <h3 style="padding: 9px 0 9px 18px;font-size: 17px;">Setting</h3>
           <div class="item">
-            <span><i class="fa  fa-th-list  fa-lg"></i></span>
+            <i class="fas fa-cog setting"></i>
+            <p>Setting</p>
           </div>
           <div class="item ">
-            <span><i class="fa fa-address-card fa-lg"></i></span>
-          </div>
-          <div class="item ">
-            <span><i class="fa fa-folder"></i></i></span>
+            <i class="fas fa-question-circle help"></i>
+            <p>Help</p>
           </div>
         </div>
-        <div class="bottom">
-          <div class="c-bottom">
-            <div class="bottom-item">
-              <span><i class="fa fa-question-circle fa-lg"></i></span>
-            </div>
-          </div>
-        </div>
-          
       </div>
+
     </div>
   </div>
   <div class="right-container">
     <div class="m--recruitment-content ">
       <div class="recruitments">
+        <div class="c-cruitment-header">
+          <div class="filter-header">
+            <div class="title">
+              <h3 style="font-size: 18px;margin: 0; padding: 8px;">All recruiments</h3>
+            </div>
+            <div class="filter-and-create-new">
+              <div class="pages-job">
+                <%= paginate @jobs, window: 0 %>
+              </div>
+              <div class="filter">
+                <div class="c-filter">
+                  <i class="fas fa-filter"></i>
+                  <div style="    /* padding: 8px 14px 8px 23px; */">Filter</div>
+                </div>
+                <div class="dropdown-filter">
+                  <div class="js-filter-select">Newest</div>
+                  <div class="js-filter-select">Oldest</div>
+                </div>
+              </div>
+              <script type="text/javascript">
+                $('.c-filter').click(function(){
+                  $('.filter').addClass('active-filter');
+                });
+                $('.js-filter-select').click(function(){
+                  $('.active-filter').removeClass('active-filter');
+                });
+              </script>
+              <%= link_to new_recruitment_path do %>
+                <div class="filter create-new" style="padding-left: 26px;">
+                  <i class="fas fa-plus"></i>
+                  <div class="create-job">Create new job</div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <div class="table-header">
+            <div class="id">#</div>
+            <div class="title"><strong>TITLE</strong></div>
+            <div class="views"><strong>VIEWS</strong></div>
+            <div class="description"><strong>DESCRIPTION</strong></div>
+            <div class="status"><strong>STATUS</strong></div>
+            <div class="publish"><strong>PUBLISH</strong></div>
+            <div class="end"><strong>END AT</strong></div>
+          </div>
+        </div>
         <div class="c-cruitment">
           <% @jobs.each  do |job| %>
+            <%= render 'job', job: job %>
+          <% end %>
+
+         <!--  <% @jobs.each  do |job| %>
             <%= link_to job, class: 'recruitment' do %>
-              <div class="m--recruitment ">
+
+              <div class="m--recruitment">
                 <div class="recruitment-title">
                     <h2><%= job.title%></h2>
                     <span><%= time_ago_in_words(job.created_at)%></span>
@@ -90,7 +149,7 @@
                     <img src="/images/avatar-test-2.jpg">
                   </div>
                   <div class="candidate">
-                    <img src="/images/avatar_test_3.jpg">
+                    <img src="/images/avatar-test-3.jpg">
                   </div>
                   <div class="candidate">
                     <span></span>
@@ -103,9 +162,9 @@
                 </div>
               </div>
             <% end  %>  
-          <% end  %>
+          <% end  %> -->
         </div>
-        <div class="c-candidate">
+        <!-- <div class="c-candidate">
           <div class="candidate">
             <div class="user-avatar">
               <img src="images/profile_image.jpg">
@@ -168,9 +227,31 @@
             </div>
             <span class="view-profile ac-job preview-job">View profile</span>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 <div class="container">
 </div>
+<script type="text/javascript">
+  $(document).mouseup(function (e){
+    var container = new Array();
+    container.push($('.filter'));
+    
+    $.each(container, function(key, value) {
+      if (!$(value).is(e.target) // if the target of the click isn't the container...
+        && $(value).has(e.target).length === 0) // ... nor a descendant of the container
+      {
+        $('.active-filter').removeClass('active-filter');
+      }
+    });
+  }); 
+  $('.table-recruitments').click(function(){
+    if ($(this).parent().hasClass('selected') == true) {
+      $(this).parent().removeClass('selected');
+    } else {
+      $('.dashboard-table-recruitments').removeClass('selected');
+      $(this).parent().addClass('selected');  
+    }
+  });
+</script>

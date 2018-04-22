@@ -1,8 +1,14 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs, dependent: :destroy
+  has_many :notifications, dependent: :destroy, class_name: "Notification", foreign_key: "recipient_id"
 
+  serialize :view_history
+  extend FriendlyId
+  friendly_id :username
+
+  def is_recruiter?
+  	return self.user_type == "recruiter"
+  end
 end

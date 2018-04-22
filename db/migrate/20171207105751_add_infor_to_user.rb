@@ -3,7 +3,7 @@ class AddInforToUser < ActiveRecord::Migration[5.1]
     add_column :users, :username, :string
     add_column :users, :phone, :string
     add_column :users, :location, :string
-    add_column :users, :user_type, :integer
+    add_column :users, :user_type, :string
     add_column :users, :linkedin, :string
     add_column :users, :education, :string
     add_column :users, :description, :string

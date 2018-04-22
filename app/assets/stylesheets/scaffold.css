@@ -129,11 +129,18 @@ label { display: block; }
 .a-center-content a i span {
   position: absolute;
   font-weight: 600;
-  right: -8px;
-  top: -17px;
+  right: -10px;
+  top: -11px;
   font-size: 13px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color:  #8FD5FE;
+}
+#open_notificaton {
+  font-family: 'Roboto', sans-serif;
+}
+.a-center-content a i .notification {
+  top: -11px;
+  right: -7px;
 }
 .a-center-content a .li-title:hover {
   border: 2px solid #8FD5FE;
