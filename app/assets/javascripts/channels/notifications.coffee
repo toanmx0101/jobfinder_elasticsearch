@@ -9,3 +9,5 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
     # Called when there's incoming data on the websocket for this channel
     $('#notificationList').prepend "#{data.notification}"
     $('#open_notification').html data.counter
+    if data.counter > 10
+      $('.js-count-noti .notification').addClass 'multi-notify'

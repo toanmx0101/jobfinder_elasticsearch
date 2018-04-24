@@ -1,9 +1,7 @@
 class HomeController < ApplicationController
-  before_action :set_notification, if: -> { user_signed_in? }
 
   
   def index
-    @notifications = Notification.all.reverse
     if user_signed_in? && current_user.is_recruiter?
       @jobs = current_user.jobs.order_by('start_at', 'DESC').page(params[:page])
       render :dashboard
@@ -30,8 +28,5 @@ class HomeController < ApplicationController
   def appropriate_jobs
     @appropricate_jobs = Job.search(current_user.work_position + " " + current_user.description + " " + current_user.experience).records
   end
-  private 
-  def set_notification
-    @notifications = current_user.notifications.reverse
-  end
+  
 end
