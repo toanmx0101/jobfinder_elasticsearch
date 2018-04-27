@@ -77,7 +77,8 @@ class JobsController < ApplicationController
     def notify
       notification = Notification.create(recipient_id: @job.user_id,
                           actor_id: current_user.id,
-                          action: "#{current_user.username} viewed your job: <strong>#{@job.title}</strong>.")
+                          action: "<strong>#{current_user.username}</strong> viewed your job: <strong>#{ @job.title.truncate(40)}</strong>.")
       notification.update_attribute(:notifiable, @job)
+      current_user.view_history.push(@job.id)
     end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422063007) do
+ActiveRecord::Schema.define(version: 20180427023337) do
 
   create_table "applies", force: :cascade do |t|
     t.string "create"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20180422063007) do
     t.string "pay_rate"
     t.datetime "start_at"
     t.datetime "end_at"
+    t.string "background_url"
   end
 
   create_table "messages", force: :cascade do |t|

@@ -1,11 +1,11 @@
 <li>
-  <div class="notification-item" id="">
+  <%= link_to Job.find(notification.notifiable_id), class: "notification-item" do %>
     <div class="user-icon">
       <img src="<%= notification.actor.avatar_url %>"/>
     </div>
     <div class="notification-content">
-      <div class="user-name"><%= notification.actor.username %></div>
+      <div class="notification-action" style="<%= notification.action.length < 80 ? 'margin: 6px 0' : 'line-height: 14px;margin-top: 2px' %>"><%= raw notification.action %></div>
       <div class="time"><%= time_ago_in_words(notification.created_at) %> ago</div>
     </div>
-  </div>
+  <% end %>
 </li>

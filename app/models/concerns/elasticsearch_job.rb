@@ -61,7 +61,7 @@ module ElasticsearchJob
         indexes :description, type: 'text', index: true, boost: 2, fielddata: true, analyzer: 'job_analyzer'
         indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer'
         indexes :location, type: 'text', index: true, fielddata: true
-        indexes :view_count, type: 'text', index: true, fielddata: true
+        indexes :view_count, type: 'integer'
       end
     end
 
@@ -121,61 +121,49 @@ module ElasticsearchJob
     end
 
     def self.create_query(from, size, location, tags = [], keyword_match = nil)
-      view_count_filter ={
-         filter: {
-            range: {
-              view_count: {
-                from: 0
+      view_count_filter = {
+                  function_score: {
+                    field_value_factor: {
+                      field: "view_count",
+                      modifier: "sqrt",
+                      missing: 1
+                    }
+                  }
+                }
+      tag_boost_filter = []
+      unless tags.empty?
+        tags.each do |tag|
+          tag_boost_filter.push({
+            filter: { 
+              match: { 
+                about_candidate: tag[:term]
               }
-            }
-          }, 
-          script_score: {
-            script: "_score + Math.log(doc.view_count.value)"
-          }
-      }
-
+            },
+            weight: tag[:boost]
+          })
+        end
+      end
+      
       {
         size: size,
         query: {
-          function_score: {
-            query: {
+          bool: {
+            must: {
               multi_match: {
                 query: keyword_match,
                 fields: [ "title", "about_candidate", "description", "location" ]
               } 
             },
-            functions: [
-              # unless tags.empty?
-              #   {
-              #     filter: { 
-              #       match: { 
-              #         about_candidate: tags[0][:term]
-              #       }
-              #     },
-              #     weight: tags[0][:boost]
-              #   },
-              #   {
-              #     filter: { 
-              #       match: { 
-              #         about_candidate: tags[1][:term]
-              #       }
-              #     },
-              #     weight: tags[1][:boost]
-              #   },
-              # end
-              # {
-              #   filter: {
-              #     range: {
-              #       view_count: {
-              #         from: 0
-              #       }
-              #     }
-              #   }, 
-              #   script_score: {
-              #     script: "_score + Math.log(doc.view_count.value)"
-              #   }
-              # }
-            ],
+            filter: {
+              bool: {
+                must: view_count_filter,
+                must: {
+                  function_score: {
+                    functions: tag_boost_filter
+                  }
+                }
+              }
+            }
           }
         }
       }

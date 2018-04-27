@@ -112,7 +112,7 @@
     }
   }
   .message-content, .notification-content {
-    width: calc(100% - 95px);
+    width: max-content;
     padding: 6px;
     box-sizing: border-box;
     .user-name {
@@ -129,11 +129,30 @@
     padding: 6px;
   }
   .notification-content {
+    .notification-action {
+      strong:last-child {
+        color: #5FA7D1;
+      }
+    }
     .time {
       padding: 0;
     }
   }
   .js-count-noti {
     transition: all 1s ease;
+  }
+}
+#notificationList {
+  .notification-item {
+    padding: 0 17px;
+  }
+}
+.notification-item {
+  .user-icon {
+    padding: 6px;
+    padding-left: 0;
+    img {
+      border-radius: 50%;
+    }
   }
 }

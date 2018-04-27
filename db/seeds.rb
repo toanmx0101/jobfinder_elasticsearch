@@ -4,13 +4,16 @@ require 'stringex'
 puts "Deleting all  user "
 User.delete_all
 puts "Generate user"
+username  = Faker::Internet.user_name(6).gsub('.', '_')
 
+User.create(email: 'user1@example.com',avatar_url: Faker::Avatar.image(username, "144x144"),  password: 'password',username: 'Avicii',  password_confirmation: 'password', work_position: 'English Language Teacher', description: 'I am a progressive thinker who utilizes creativity, leadership and effective teamwork to design and accomplish solutions that generate the client\'s value. Effective communicator with ability to produce marketing materials that brings value for both clients and end users.')
 
-User.create(email: 'user1@example.com', password: 'password',username: 'Avicii',  password_confirmation: 'password', work_position: 'English Language Teacher', description: 'I am a progressive thinker who utilizes creativity, leadership and effective teamwork to design and accomplish solutions that generate the client\'s value. Effective communicator with ability to produce marketing materials that brings value for both clients and end users.')
-
-
+job_background = ['000000', "99999", "188035", "236709", "239898", "247763", "256219", "256381", "257856", 
+  "270695", "273244", "273254", "301930", "325229", "326410", "356040", "356830", "433154", "585419", "811107", "839934",
+  "416408", "668296", "1011668", "371938", "207731", "942424", "265125", "301871", "441963", "724921", "1011666", "1011667", 
+  "358667", "389819", "417352", "256297", "236093", "373543", "1011665", "625279", "461146", "961250"]
 100.times do |i| 
-  username  = Faker::Internet.user_name(6)
+  username  = Faker::Internet.user_name(6).gsub('.', '_')
   User.create(email: Faker::Internet.safe_email, 
     username: username, 
     avatar_url: Faker::Avatar.image(username, "144x144"), 
@@ -18,13 +21,14 @@ User.create(email: 'user1@example.com', password: 'password',username: 'Avicii',
     password_confirmation: 'password', 
     work_position: Faker::Job.position, 
     description: Faker::Company.bs,
-    user_type: 'normal')
+    user_type: 'normal',
+    view_history: [])
 end
 
 puts "Generate recruitment manager" 
 20.times do |i| 
   User.create(email: 'recruitment_manager_' + i.to_s + '@example.com', 
-    username: Faker::Internet.user_name(6), 
+    username: Faker::Internet.user_name(6).gsub('.', '_'), 
     avatar_url: Faker::Avatar.image("144x144"), 
     password: 'password',  
     password_confirmation: 'password', 
@@ -58,7 +62,8 @@ data_hash.each do |job|
                   job_type: Faker::Job.employment_type, 
                   pay_rate: Faker::Number.between(6, 10).to_s + "0000$ per year",
                   start_at: Faker::Date.between(1.week.ago, Date.today),
-                  end_at: Faker::Date.between(3.month.from_now, Date.today)
+                  end_at: Faker::Date.between(3.month.from_now, Date.today),
+                  background_url: "/images/background-job/pexels-photo-" + job_background.sample + ".jpeg" 
                   )
 end
 
@@ -79,7 +84,8 @@ data_hash.each do |job|
                   job_type: Faker::Job.employment_type, 
                   pay_rate: Faker::Number.between(6, 10).to_s + "0000& per year",
                   start_at: Faker::Date.between(2.week.ago, Date.today),
-                  end_at: Faker::Date.between(3.month.from_now, Date.today)
+                  end_at: Faker::Date.between(3.month.from_now, Date.today),
+                  background_url: "/images/background-job/pexels-photo-" + job_background.sample + ".jpeg" 
                 )
 end
 
@@ -98,7 +104,8 @@ data_hash.each do |job|
               job_type: Faker::Job.employment_type,
               pay_rate: job['salary'],
               start_at: Faker::Date.between(2.week.ago, Date.today),
-              end_at: Faker::Date.between(3.month.from_now, Date.today)
+              end_at: Faker::Date.between(3.month.from_now, Date.today),
+              background_url: "/images/background-job/pexels-photo-" + job_background.sample + ".jpeg" 
     )
 end
   

@@ -121,9 +121,8 @@
                   %i.far.fa-bell.fa-lg{"aria-hidden" => "true"}
                     - count = @notifications.count
                     %span.js-count-noti.notification{class: "#{"multi-notify" if count >= 10}"}
-                      - if count > 0
-                        #open_notification 
-                          = count
+                      #open_notification 
+                        = count > 0 ? count : ''
               .notification-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Notifications
