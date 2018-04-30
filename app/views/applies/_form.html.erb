@@ -1,27 +1,27 @@
-<%= form_with(model: apply, local: true) do |form| %>
-  <% if apply.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(apply.errors.count, "error") %> prohibited this apply from being saved:</h2>
-
-      <ul>
-      <% apply.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :create %>
-    <%= form.text_field :create, id: :apply_create %>
-  </div>
-
-  <div class="field">
-    <%= form.label :destroy %>
-    <%= form.text_field :destroy, id: :apply_destroy %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<%= form_with(model: Apply.new, local: true) do |form| %>
+  <div class="r-c-content-jds" style="background: #8FD5FE;margin-bottom: 20px;">
+    <span class="cc-title-jds" id="applyJob" data-job="<%= job.id %>" style="margin-left: 11px;color: #FFF;">Apply for this job</span>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $("#applyJob").click(function(event){
+    event.preventDefault();
+    job = $(this).attr("data-job");
+    $.ajax({
+      headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+      type: 'POST',
+      url: '/applies',
+      dataType: 'html',
+      data: {
+        job_id: job,
+      },
+      success: function(response) {
+        alert("HIX");
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        alert("HIXXXX");
+      }
+    });
+  });
+</script>

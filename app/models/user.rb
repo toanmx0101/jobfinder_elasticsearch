@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :jobs, dependent: :destroy
   has_many :notifications, dependent: :destroy, class_name: "Notification", foreign_key: "recipient_id"
+  has_many :applies, class_name: "Apply", foreign_key: "applyer_id"
 
   serialize :view_history
   extend FriendlyId
@@ -10,5 +11,9 @@ class User < ApplicationRecord
 
   def is_recruiter?
   	return self.user_type == "recruiter"
+  end
+
+  def have_recruitment?(job)
+    return self.jobs.include?(job)
   end
 end

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: [:message_thread, :profile, :setting, :appropriate_jobs, :appliers]
 
-  
   def index
     if user_signed_in? && current_user.is_recruiter?
       @jobs = current_user.jobs.order_by('start_at', 'DESC').page(params[:page])
@@ -23,6 +23,12 @@ class HomeController < ApplicationController
 
   def setting
   	
+  end
+
+  def appliers
+    if current_user.is_recruiter?
+      @jobs = current_user.jobs
+    end
   end
 
   def appropriate_jobs

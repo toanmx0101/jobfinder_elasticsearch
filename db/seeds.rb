@@ -6,9 +6,11 @@ User.delete_all
 puts "Generate user"
 username  = Faker::Internet.user_name(6).gsub('.', '_')
 
+User.create(email: 'job_finder@example.com',avatar_url: "/images/logo.png",  password: 'password',username: 'JobFinder',  password_confirmation: 'password', work_position: 'Job Finder Admin', description: 'I am boss')
+
 User.create(email: 'user1@example.com',avatar_url: Faker::Avatar.image(username, "144x144"),  password: 'password',username: 'Avicii',  password_confirmation: 'password', work_position: 'English Language Teacher', description: 'I am a progressive thinker who utilizes creativity, leadership and effective teamwork to design and accomplish solutions that generate the client\'s value. Effective communicator with ability to produce marketing materials that brings value for both clients and end users.')
 
-job_background = ['000000', "99999", "188035", "236709", "239898", "247763", "256219", "256381", "257856", 
+job_background = ["000000", "99999", "188035", "236709", "239898", "247763", "256219", "256381", "257856", 
   "270695", "273244", "273254", "301930", "325229", "326410", "356040", "356830", "433154", "585419", "811107", "839934",
   "416408", "668296", "1011668", "371938", "207731", "942424", "265125", "301871", "441963", "724921", "1011666", "1011667", 
   "358667", "389819", "417352", "256297", "236093", "373543", "1011665", "625279", "461146", "961250"]

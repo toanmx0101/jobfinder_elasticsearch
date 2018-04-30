@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :set_notification, if: -> { user_signed_in? }
   private 
   def set_notification
-    @notifications = current_user.notifications.reverse
+    @notifications = current_user.notifications.includes(:actor).reverse
   end
 end

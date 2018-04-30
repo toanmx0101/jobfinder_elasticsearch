@@ -9,13 +9,24 @@ class JobsController < ApplicationController
 
   def search
     s = escape_characters_in_string(params[:q])
-
-    @jobs = Job.search_el(params[:page], Job::PER_PAGE , "", [], s)[:body]
+    location = params[:location].present? ? params[:location] : ""
+    job_type = params[:job_type].present? ? params[:job_type] : ""
+    salary = params[:salary].present? ? params[:salary] : ""
+    tags = []
+    # search params (page, limit, location, job_type, salary, tags = [], keyword_match = nil)
+    @jobs = Job.search_el(params[:page], Job::PER_PAGE , 
+                          location,
+                          job_type,
+                          salary,
+                          tags, 
+                          s )[:body]
     render action: "index"
   end
   
   def show
     @random_jobs = Job.order("RANDOM()").limit(4)
+    @more_jobs = @job.user.jobs.limit(5)
+    @people_may_know = User.limit(3)
   end
 
   def new 
@@ -67,11 +78,12 @@ class JobsController < ApplicationController
     end
 
     def set_job
-      @job = Job.find(params[:id].to_i)
+      @job = Job.includes(:user).find(params[:id].to_i)
+
     end
 
     def job_params
-      params.require(:job).permit(:title, :description, :about_candidate, :job_type, :pay_rate)
+      params.require(:job).permit(:title, :description, :about_candidate, :job_type, :location, :salary)
     end
 
     def notify
@@ -79,6 +91,5 @@ class JobsController < ApplicationController
                           actor_id: current_user.id,
                           action: "<strong>#{current_user.username}</strong> viewed your job: <strong>#{ @job.title.truncate(40)}</strong>.")
       notification.update_attribute(:notifiable, @job)
-      current_user.view_history.push(@job.id)
     end
 end

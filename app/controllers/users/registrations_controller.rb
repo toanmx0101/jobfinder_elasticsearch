@@ -1,6 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  after_action :notify, :first_signup_fill_infor
+
+
   def plan
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
   end
@@ -8,39 +11,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def first_signup_fill_infor
   end
 
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  private
 
-  # POST /resource
-  # def create
-  #   super
-  # end
-
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # PUT /resource
-  # def update
-  #   super
-  # end
-
-  # DELETE /resource
-  # def destroy
-  #   super
-  # end
-
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+  def notify
+    @admin = User.find(125)
+    
+  end
 
   protected
 

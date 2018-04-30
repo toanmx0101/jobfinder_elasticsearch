@@ -2,7 +2,7 @@
   .header-content
     .web-logo
       %a{href:'/'}
-        %img{ src: '/images/logo'}
+        %img{ src: '/images/logo.png'}
     .form-search-header
       .asd
         = form_tag search_path, method: 'get' do
@@ -46,74 +46,28 @@
               .a-center-content
                 %a{href: '/login'}
                   %i.far.fa-list-alt.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 2
+                    %span.js-count-noti 
           %li
             .a-item-content.message-link
               .a-center-content
                 %a{href: 'javascript:;'}
                   %i.far.fa-envelope.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 2
+                    %span.js-count-noti 
               .message-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Messages
                   %a.mark-read-all Mark read all
                 %ul
                   .message-thread
-                    %li
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/profile_image.jpg'}
-                        .message-content
-                          .user-name Nam Di
-                          .message Hiển thị ứng viên bên cạnh khi click vào tin tuyển dụng đó, các ứng viên tiềm năng và từ ng đã xem
-                        .time
-                          16:04
-                    %li
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/avatar-test-1.jpg'}
-                        .message-content
-                          .user-name Anh Tu
-                          .message Hiển thị một list các danh sách tin tuyển dụng 
-                        .time
-                          16:04        
-                    
-                    %li.readed
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/avatar-test-2.jpg'}
-                        .message-content
-                          .user-name Nguyen Thai
-                          .message Thêm trường history vào user, tìm hiểu task recomendation
-                        .time
-                          16:04
-                    %li
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/avatar-test-1.jpg'}
-                        .message-content
-                          .user-name Nguyen Thai
-                          .message Thêm trường history vào user, tìm hiểu task recomendation
-                        .time
-                          16:04
-                    %li.readed
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/avatar-test-3.jpg'}
-                        .message-content
-                          .user-name Nguyen Thai
-                          .message Thêm trường history vào user, tìm hiểu task recomendation
-                        .time
-                          16:04
-                    %li
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/avatar-test-1.jpg'}
-                        .message-content
-                          .user-name Nguyen Thai
-                          .message Thêm trường history vào user, tìm hiểu task recomendation
-                        .time
-                          16:04
+                    / %li
+                    /   .message-item 
+                    /     .user-icon
+                    /       %img{src: '/images/profile_image.jpg'}
+                    /     .message-content
+                    /       .user-name Nam Di
+                    /       .message Hiển thị ứng viên bên cạnh khi click vào tin tuyển dụng đó, các ứng viên tiềm năng và từ ng đã xem
+                    /     .time
+                    /       16:04
           %li
             .a-item-content.notification-link
               .a-center-content
@@ -127,9 +81,10 @@
                 .message-header
                   %a.see-all Notifications
                   %a.mark-read-all Mark read all
-                %ul#notificationList
+                %ul#notificationList{data_user: current_user.id}
                   - @notifications.each do |noti|
                     = render '/notifications/notification', notification: noti
+                }
           %li
             .a-item-content.account-link
               .a-center-content.dropdown-content

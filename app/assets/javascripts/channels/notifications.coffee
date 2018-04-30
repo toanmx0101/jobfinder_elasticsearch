@@ -7,7 +7,8 @@ App.notifications = App.cable.subscriptions.create "NotificationsChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    $('#notificationList').prepend "#{data.notification}"
-    $('#open_notification').html data.counter
-    if data.counter > 10
-      $('.js-count-noti .notification').addClass 'multi-notify'
+    if parseInt($('#notificationList').attr("data_user")) == parseInt(data.recipient_id)
+      $('#notificationList').prepend "#{data.notification}"
+      $('#open_notification').html data.counter
+      if data.counter > 10
+        $('.js-count-noti .notification').addClass 'multi-notify'

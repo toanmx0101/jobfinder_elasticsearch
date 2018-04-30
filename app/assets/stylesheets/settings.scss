@@ -24,7 +24,7 @@
 	    .c-profile-setting {
 	    	padding-left: 12px;
 	    }
-	    .fa {
+	    .fa, .far, .fas {
 	    	color: #484848;
     		margin-top: 13px;
     		font-size: 21px;
@@ -37,7 +37,7 @@
     }
     .is-active {
     	border-right: 4px solid #8FD5FE;
-    	h3, .fa {
+    	h3, .fa, .far, .fas {
     		color: #5AACFB
     	}
     }

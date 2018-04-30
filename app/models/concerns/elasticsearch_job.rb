@@ -48,19 +48,21 @@ module ElasticsearchJob
       analysis: {
         analyzer: {
           job_analyzer: {
-          type: "english",
+          type: "standard",
           tokenizer: "whitespace",
-          char_filter:  [ "html_strip" ]
+          stopwords: "_english_",
+          char_filter:  [ "html_strip", "lowercase" ]
         }
        }
       }
     } do
       mappings dynamic: 'false', _all: {enabled: false} do
         indexes :id, type: 'integer', index: true
-        indexes :title, type: 'text', index: true, boost: 3, fielddata: true
+        indexes :title, type: 'text', index: true, boost: 5, fielddata: true
         indexes :description, type: 'text', index: true, boost: 2, fielddata: true, analyzer: 'job_analyzer'
         indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer'
         indexes :location, type: 'text', index: true, fielddata: true
+        indexes :job_type, type: 'text', index: true, fielddata: true
         indexes :view_count, type: 'integer'
       end
     end
@@ -68,10 +70,12 @@ module ElasticsearchJob
     def self.create_index!(name:)
       client = __elasticsearch__.client
 
+      client.indices.delete index: name
       client.indices.create(
         index: name,
         body: {settings: settings.to_hash, mappings: mappings.to_hash}
       )
+      Job.import
     end
 
     def as_indexed_json(_options = {})
@@ -87,10 +91,10 @@ module ElasticsearchJob
       job_attrs
     end
 
-    def self.search_el(page, limit, location, tags = [], keyword_match = nil)
+    def self.search_el(page, limit, location, job_type, salary, tags = [], keyword_match = nil)
       page = page.to_i
       from = (page > 0 ? page - 1 : page) * limit
-      search_definition = create_query(from, limit, location, tags, keyword_match)
+      search_definition = create_query(from, limit, location, job_type, salary, tags, keyword_match)
       res = search_elasticsearch(search_definition)
       res[:from] = from
       res
@@ -100,16 +104,19 @@ module ElasticsearchJob
       response = __elasticsearch__.search(search_definition)
       hits = response.to_a
       jobs_ids = []
+      jobs_score = []
       hits.each do |elm|
         jobs_ids.push(elm.id)
+        jobs_score.push({job_id: elm.id, job_score: elm._score})
       end
       body = if jobs_ids.present?
-               Job.where(id: jobs_ids)
+               Job.find(*jobs_ids)
              else
                []
              end
       {
         body: body,
+        jobs_score: jobs_score,
         total: response.results.total
       }
     rescue => e
@@ -120,22 +127,58 @@ module ElasticsearchJob
       }
     end
 
-    def self.create_query(from, size, location, tags = [], keyword_match = nil)
+    def self.create_query(from, size, location, job_type, salary, tags = [], keyword_match = nil)
       view_count_filter = {
-                  function_score: {
-                    field_value_factor: {
-                      field: "view_count",
-                      modifier: "sqrt",
-                      missing: 1
+                  filter: {
+                    range: {
+                      view_count: {
+                        gte: 0
+                      }
                     }
+                  },
+                  script_score: {
+                    script: "_score + Math.log(doc.view_count.value)"
                   }
-                }
+               }
+      location_filter = {
+        filter: {
+          match: {
+            location: {
+              query: location,
+              fuzziness: "AUTO"
+            }
+          }
+        },
+        weight: 2
+      }
+      salary_filter = {
+        filter: {
+          match: {
+            salary: {
+              query: salary,
+              fuzziness: "AUTO"
+            }
+          }
+        },
+        weight: 1
+      }
+      job_type_filter = {
+        filter: {
+          match: {
+            job_type: {
+              query: job_type,
+              fuzziness: "AUTO"
+            }
+          }
+        },
+        weight: 2
+      }
       tag_boost_filter = []
       unless tags.empty?
         tags.each do |tag|
           tag_boost_filter.push({
             filter: { 
-              match: { 
+              term: { 
                 about_candidate: tag[:term]
               }
             },
@@ -143,24 +186,73 @@ module ElasticsearchJob
           })
         end
       end
-      
+      tag_boost_filter.push(view_count_filter)
+      tag_boost_filter.push(location_filter)
+      tag_boost_filter.push(salary_filter)
+      tag_boost_filter.push(job_type_filter)
       {
         size: size,
         query: {
-          bool: {
-            must: {
+          function_score: {
+            query: {
               multi_match: {
                 query: keyword_match,
-                fields: [ "title", "about_candidate", "description", "location" ]
-              } 
+                fuzziness: "AUTO",
+                fields: ["title", "about_candidate", "description"]
+              }
             },
-            filter: {
-              bool: {
-                must: view_count_filter,
-                must: {
-                  function_score: {
-                    functions: tag_boost_filter
-                  }
+            functions: tag_boost_filter
+          }
+        },
+        highlight: {
+          pre_tags: ["<strong>"],
+          post_tags: ["</strong>"],
+          fields: {
+            description: {}
+          }
+        }
+      }
+    end
+
+    def self.generate_tags(work_position)
+      search_definition = create_query_agg_keywords(work_position)
+      res = search_agg_elasticsearch(search_definition)
+      res
+    end
+
+    def self.search_agg_elasticsearch(search_definition)
+      response = __elasticsearch__.search(search_definition)
+      keywords = response.aggregations.sample.keywords.buckets
+      tags = []
+      keywords.each do |keyword|
+        tags.push(keyword[:key])
+      end
+      tags
+    rescue => e
+      Rails.logger.error(e)
+      {
+        tags: []
+      }
+    end
+
+    def self.create_query_agg_keywords(work_position)
+      {
+        query: {
+          multi_match: {
+            query: work_position,
+            fields: [ "description","about_candidate" ]
+          }
+        },
+        size: 2,
+        aggs: {
+          sample: {
+            sampler: {
+              shard_size: 2000
+            },
+            aggs: {
+              keywords: {
+                significant_terms: {
+                  field: "about_candidate"
                 }
               }
             }

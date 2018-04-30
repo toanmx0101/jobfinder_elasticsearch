@@ -1,0 +1,65 @@
+<div class="job-resul-card map">
+  <div class="m__job-result-card">
+    <div class="content">
+      <div class="job-views-and-type">
+        <span class="job-views"><i class="fa fa-eye" style="color: #f8bc48; margin-right: 5px;"></i><%= job.view_count %> views</span>
+        <span class="job-type"><%= job.job_type %></span>
+      </div>  
+      <%= link_to job do %>
+        <div class="job-title">
+          <h3><%= job.title %></h3>
+        </div>
+      <% end %>
+      <div class="location">
+        <i class="fas fa-map-marker-alt"></i>
+        <%= job&.location%>
+      </div>
+      <div class="job-description">
+        <% des = job.description.nil? ? job.about_candidate.gsub(/<\/?[^>]*>/, "") : job.description.gsub(/<\/?[^>]*>/, "") %>
+        <span><%= truncate(des, length: 500) %></span>
+      </div>
+    </div>  
+    <div class="left-content">
+      <div class="m--left-content">
+        <div class="job-location">
+          <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+          <span><%= job.location%></span>
+        </div>
+        <div class="job-require-skills">
+          <div class="job-require-skills-title">
+            <div>
+              <h3>Require skills</h3>
+            </div>
+          </div>
+          <div class="job-require-skills-list">
+          </div>
+        </div>
+         <div class="job-require-skills">
+          <div class="job-require-skills-title">
+            <div>
+              <h3>Languages</h3>
+            </div>
+          </div>
+          <div class="job-require-skills-list">
+            <span>Vietnamese</span>
+            <span>English</span>
+          </div>
+        </div>
+        <div class="job-salary">
+          <h3>Salary</h3>
+          <h3>500 - 1000$</h3>
+        </div>
+        <div class="view-detail-button">
+          <div class="m--view-detail-button ac-job" style="margin-left: 10px;">
+            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+            <span><%= link_to 'View Details', job %></span>  
+          </div>
+          <div class="m--view-detail-button ac-job" style="">
+            <i class="fa fa-comment" aria-hidden="true"></i>
+            <span>Send mess</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

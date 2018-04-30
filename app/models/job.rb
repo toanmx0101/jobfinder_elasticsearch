@@ -1,7 +1,10 @@
 class Job < ActiveRecord::Base
-  belongs_to :user
   include ElasticsearchJob
   extend FriendlyId
+  acts_as_url :title, url_attribute: :slug, sync: true
+
+  belongs_to :user
+  has_many :applies
 
   PER_PAGE = 10
   paginates_per PER_PAGE
@@ -9,7 +12,6 @@ class Job < ActiveRecord::Base
   scope :order_by, ->(order_culumn, order_type) { reorder(order_culumn + ' ' + order_type) }
 
   friendly_id :title, use: [:slugged, :finders]
-  acts_as_url :title, url_attribute: :slug, sync: true
 
   def to_param
     "#{id}-#{slug}"

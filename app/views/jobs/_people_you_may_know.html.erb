@@ -1,0 +1,24 @@
+<div class="people-you-may-know">
+  <h3>People you may know</h3>
+  <div class="list-people">
+    <content>
+      <% people_may_know.each do |people| %>
+        <div class="item">
+          <div class="user-icon">
+            <img src="<%= people.avatar_url%>">
+          </div>
+          <div class="basic-infor">
+            <div class="content">
+              <div class="username">
+                <strong>
+                  <%= people.username %>
+                </strong>
+              </div>
+              <div class="work-position"><%= people.work_position %></div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </content>
+  </div>
+</div>

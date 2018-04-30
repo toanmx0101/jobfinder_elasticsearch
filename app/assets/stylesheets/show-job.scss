@@ -125,3 +125,83 @@
     font-size: 15px;
   }
 }
+.people-you-may-know {
+  margin-left: 25px;
+  margin-top: 40px;
+  h3 {
+    font-size: 18px;
+  }
+  .list-people{
+    .item{
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      padding: 8px;
+      margin-bottom: 8px;
+      .user-icon{
+        height: 42px;
+        display: inline-block;
+        img {
+          height: 42px;
+          border-radius: 12px;
+        }
+      }
+      .basic-infor {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 6px;
+        margin-left: 6px;
+        .username {
+          strong {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+.more-from-recruiter {
+  margin-left: 25px;
+  margin-top: 40px;
+  h3 {
+    font-size: 18px;
+    a {
+      color: #8FD5FE;
+      text-decoration: none;      
+    }
+  }
+  .list-jobs-from-recruiter {
+    .item {
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+      padding: 10px;
+      margin-bottom: 8px;
+      display: block;
+      text-decoration: none;
+      .basic-infor {
+        margin-left: 2px;
+        margin-top: 2px;
+        .limit {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+        .title {
+          font-weight: 600;
+          font-size: 15px;
+          margin-bottom: 6px;
+        }
+        .locations {
+          .fas {
+            color: #ACACAC;
+          }
+        }
+        .salary {
+          .fas {
+            color: #8FD5FE;
+            margin-left: 3px;
+          }
+        }
+      }
+    }
+  }
+}

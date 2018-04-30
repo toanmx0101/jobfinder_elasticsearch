@@ -1,0 +1,19 @@
+<div class="more-from-recruiter">
+  <h3>
+    More from
+    <%= link_to user.username, jf_path(user)%>
+  </h3>
+  <div class="list-jobs-from-recruiter">
+    <content>
+      <% jobs.each do |job| %>
+        <%= link_to job, class: "item" do%>
+            <div class="basic-infor">
+              <div class="title limit"><%= job.title %></div>
+              <div class="locations"><i class="fas fa-map-signs"></i><%= job.location %></div>
+              <div class="salary limit"><i class="fas fa-dollar-sign"></i><%= job.pay_rate %></div>
+          </div>
+        <% end %> 
+      <% end %>
+    </content>
+  </div>
+</div>
