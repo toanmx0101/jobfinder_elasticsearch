@@ -1,0 +1,135 @@
+<%= render "dashboard_left_menu", page: "rc-messages" %>
+<div class="right-container">
+  <div class="m--recruitment-content ">
+    <div class="recruitments">
+      <div class="message-threads">
+        <div class="c-message-threads">
+          <div class="c-message-thread c-message-thread__left-content">
+            <div class="c-message-thread__header">
+              <h2 >Messages</h2>
+              <i class="fa fa-pencil fa-lg" aria-hidden="true" style="">
+                <!-- <span class="tooltiptext">Create new message</span> -->
+              </i>
+            </div>
+            <div class="message-search-form" >
+              <input type="text" name="" placeholder="Search message">
+            </div>
+            <div class="sender-listitem">
+              <div class="sender-item active-sender-item">
+                <div class="sender-header">
+                  <span class="sender-name">Việt Anh <i class="fa fa-circle" aria-hidden="true"></i></span>
+                  <span class="send-time">2 hours ago<i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                </div>
+                <div class="sender-sort-sumary">
+                  <span><%= truncate("Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.", :length => 60) %></span>
+                </div>
+              </div>
+              <div class="sender-item">
+                <div class="sender-header">
+                  <span class="sender-name">Elastic<i class="fa fa-circle" aria-hidden="true"></i></span>
+                  <span class="send-time">8 hours ago<i class="fa fa-envelope-open-o" aria-hidden="true"></i></span>
+                </div>
+                <div class="sender-sort-sumary">
+                  <span><%= truncate("Take maps in #Kibana to a whole new level with customized regions...", :length => 60) %></span>
+                </div>
+              </div>
+              <div class="sender-item">
+                <div class="sender-header">
+                  <span class="sender-name">Duy Do</span>
+                  <span class="send-time">1 hour ago<i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                </div>
+                <div class="sender-sort-sumary">
+                  <span><%= truncate("Anh em nào ở LA biết về ELK và muốn về đội của Elon Musk thì ứng tuyển thử nhé", :length => 60) %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c-message-thread c-message-thread__right-content">
+            <div class="o-message-thread_list-mess">
+              <div class="message-search">
+                <div class="message-search-form" style="display: flow-root;font-size: 20px;">
+                </div>
+              </div>
+              <div id="thread_content" class="message-thread-content" style="">
+                <div class="message-item sender-mess-item">
+                  <div class="sender-mess-item__content">
+                    <div class="sender-mess-item__avatar">
+                      <span class="sender-mess-name">Việt Anh <i class="fa fa-circle" aria-hidden="true"></i></span>
+                      <span class="sender-mess-time">6:42 PM</span>
+                    </div>
+                    <div class="sender-mess-item__text short-mess-text">
+                      Hello Toàn,
+                    </div>
+                    <div class="sender-mess-item__text short-mess-text">
+                      Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+                    </div>
+                    <div class="sender-mess-item__text short-mess-text">
+                      Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+                    </div>
+                    <div class="sender-mess-item__text short-mess-text">
+                      Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+                    </div>
+                  </div>
+                  <div class="sender-mess-item__content" style="">
+                    <div class="sender-mess-item__content_right">
+                      <div class="sender-mess-item__avatar item__avatar_right">
+                        <span class="sender-mess-name">Toanmx<i class="fa fa-circle" aria-hidden="true"></i></span>
+                        <span class="sender-mess-time">6:42 PM</span>
+                      </div>
+                    </div>
+                    <div class="sender-mess-item__content_right">
+                      <div class="sender-mess-item__text short-mess-text right-mess-text">Dạ vâng em chào anh ạ</div>
+                    </div>
+                  </div>
+                  <div class="sender-mess-item__content" style="">
+                    <div class="sender-mess-item__avatar">
+                      <span class="sender-mess-name">Việt Anh <i class="fa fa-circle" aria-hidden="true"></i></span>
+                      <span class="sender-mess-time">6:45 PM</span>
+                    </div>
+                    <div class="sender-mess-item__text medium-mess-text">
+                      Anh là Việt Anh phụ trách bộ phận tuyển dụng của Hirayama Việt Nam.
+                    </div>
+                    <div class="sender-mess-item__text long-mess-text">
+                      Hàng năm bên anh tổ chức tuyển dụng các bạn Hedspi sang Tokyo - Nhật Bản làm việc tại công ty IC ( Information Creative ). Năm nay các bác bên IC cũng muốn nhận các bạn tốt nghiệp năm 2018.
+                      Hiện IC cũng đang có 9 anh chị các khóa Hedspi trước em đang làm việc.
+                      Anh gửi em thông tin tuyển dụng và thông tin công ty để em tham khảo.
+                      http://hirayamavietnam.com.vn/tokyo-tuyen-dung-ky-su-2018-lam-viec-tai-nhat/
+                    </div>
+                  </div>
+                  <div class="sender-mess-item__content last-mess" style="">
+                    <div class="sender-mess-item__content_right">
+                      <div class="sender-mess-item__avatar item__avatar_right">
+                        <span class="sender-mess-name">Toanmx<i class="fa fa-circle" aria-hidden="true"></i></span>
+                        <span class="sender-mess-time">6:49 PM</span>
+                      </div>
+                    </div>
+                    <div class="sender-mess-item__content_right ">
+                      <div class="sender-mess-item__text medium-mess-text right-mess-text">Toàn ơi, nếu ứng tuyển đợt này, em gửi trước giúp anh CV để anh cập nhật cho các bác nhé.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="message-form">
+                <input class="message-input" type="text" placeholder="Type a message here...">
+              </div>
+            </div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
+  $('.sender-item').click(function(){
+    $('.sender-item').removeClass('active-sender-item');
+    $(this).addClass('active-sender-item')
+  });
+  $(".message-input").on('keyup', function (e) {
+    if (e.keyCode == 13) {
+      $('.last-mess').append("<div class='sender-mess-item__content_right'><div class='sender-mess-item__text right-mess-text'>" + $(this).val()  + "</div></div>");
+      $('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
+      $(this).val("");
+    }
+  });
+</script>

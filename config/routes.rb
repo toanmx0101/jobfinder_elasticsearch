@@ -7,19 +7,19 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }  
   devise_scope :user do
     get 'login', to: 'users/sessions#new' 
-	  get 'join', to: 'users/registrations#new'
+    get 'join', to: 'users/registrations#new'
     get '/join/plan', to: 'users/registrations#plan'
     get '/join/finish', to: 'users/registrations#first_signup_fill_infor'
     put '/user_update', to: 'users/registrations#update'
-    # as :user do
-    #   get 'users/profile', :to => 'devise/registrations#edit', :as => :user_root
-    # end
-	end
+  end
   root to: 'home#index'
   resources :jobs
 
-  resources :home do
-  end
+  get :appliers, to: 'home#appliers'
+  get :interviews, to: 'home#interviews'
+  get :candidates, to: 'home#candidates'
+  get :rc_messages, to: 'home#rc_messages'
+
   get '/job/#{slug}-#{id}', to: 'jobs#edit'
   get '/jf/:id', to: 'home#profile', as: :jf
   get '/search', to: 'jobs#search'

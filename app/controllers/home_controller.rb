@@ -27,8 +27,22 @@ class HomeController < ApplicationController
 
   def appliers
     if current_user.is_recruiter?
-      @jobs = current_user.jobs
+      @applies = Apply.includes(:applyer).includes(:job).where(job_id: current_user.jobs)
+    else 
+      redirect_to root_path
     end
+  end
+
+  def interviews
+    
+  end
+
+  def candidates
+    
+  end
+
+  def rc_messages
+
   end
 
   def appropriate_jobs
