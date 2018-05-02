@@ -108,8 +108,20 @@
     padding-top: 140px;
     padding-left: 160px;
     padding-right: 310px;
-
     height: -webkit-fill-available;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1600px) {
+  .m--recruitment-content { 
+    padding-top: 100px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: -webkit-fill-available;
+  }
+  .menu-items {
+    padding-top: 30px!important;
+  }
+
 }
 .recruitments {
   width: 100%;
@@ -256,6 +268,8 @@
     }
   }
 }
+
+
 .left-menu {
   width: 250px;
   margin-top: 60px;

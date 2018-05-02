@@ -45,8 +45,6 @@
     </div>
   </div>
   <div class="c-cruitment">
-      <% binding.pry %>
-    
     <% jobs.each  do |job| %>
       <%= render 'job', job: job, applyers: job.applyers %>
     <% end %>
