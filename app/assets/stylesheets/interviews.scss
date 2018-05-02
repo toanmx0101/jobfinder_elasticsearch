@@ -1,0 +1,150 @@
+.recruitments {
+  .c-interviews {
+
+  }
+  .c-interviews {
+    position: relative;
+    .c-it-content {
+      min-height: 422px;
+      max-height: 562px;
+      display: block;
+      white-space: nowrap;
+      overflow-x: scroll; 
+      overflow-y: hidden;
+      padding: 0;
+
+      &::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+        -webkit-border-radius: 6px;
+      }
+      &::-webkit-scrollbar  {
+        width: 8px;
+        height: 10px;
+        background: transparent;
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 12px;
+        border-radius: 10px;
+        background: #DDDDDD; 
+      }
+    }
+    .day-interviews {
+      width: 301px;
+      background: white;
+      display: inline-block;
+      margin-right: 12px;
+      border-radius: 8px;
+      vertical-align: top;
+      margin-bottom: 10px;
+      .it-content {
+        padding: 15px;
+        .line {
+          width: 38px;
+          height: 4px;
+          margin-top: 14px;
+          margin-bottom: 18px;
+          border-radius: 11px;
+          background-color: #DDD;
+        }
+        .today {
+          width: 72px;
+          background-color: #2890ff;
+        }
+        .list-interviews-in-days {
+
+          .item {
+            border-radius: 8px;
+            border: 1px solid #DCE1E4;
+            margin-bottom: 14px;
+            transition: all .5s ease;
+            cursor: pointer;
+            &:last-child{
+              margin-bottom: 0;
+            }
+            .content {
+              height: 100%;
+              padding: 12px;
+              box-sizing: border-box;
+              .interview-time {
+                font-size: 15px;
+                color: #5c6061;
+                margin-bottom: 8px
+              }
+              .title {
+                font-weight: 700;
+                font-size: 17px;
+                margin-bottom: 20px;
+                color: #717171;
+              }
+              .actions {
+                margin-bottom: 0;
+                .far, .fas {
+                  vertical-align: middle;
+                  font-size: 14px;
+                  color: #5897fbb8;
+                  padding: 11px;
+                  border: 1px solid #d2e8fe;
+                  border-radius: 3px;
+                  position: relative;
+                }
+                .fa-link {
+                  float: right;
+                  &::before {
+                    position: absolute;
+                    top: 4px;
+                    left: 4.5px;
+                  }
+                }
+                .fa-user {
+                  &::before {
+                    position: absolute;
+                    top: 4px;
+                    left: 4px;
+                  }
+                }
+                .fa-pencil-alt {
+                  float: right;
+                  margin-right: 3px;
+                  &::before {
+                    position: absolute;
+                    top: 4px;
+                    left: 5px;
+                  }
+                }
+                .fa-envelope {
+                  &::before {
+                    position: absolute;
+                    top: 4px;
+                    left: 4px;
+                  }
+                }
+              }
+            }
+            &:hover {
+              border: 1px solid transparent;
+              background-color: #5897fbb8;
+              .interview-time, .title, .actions {
+                color: white;
+              }
+              .far, .fas {
+                &::before {
+                  color: white;
+                }
+              }
+            }
+          }
+        }
+      }
+      .itv-day-header {
+        display: flex;
+        .day {
+          font-size: 25px;
+          font-weight: 400;
+          margin-right: 6px;
+        }
+      }
+    } 
+  }
+  
+}

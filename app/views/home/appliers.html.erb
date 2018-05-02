@@ -29,7 +29,7 @@
                   <% end %>
                   <div class="user">
                     <%= link_to jf_path(apply.applyer), class: "user-name" do %>
-                      <strong><%= apply.applyer.username %></strong>
+                      <strong style="color: #717171;"><%= apply.applyer.username %></strong>
                     <% end %>
                     <div class=email><%= apply.applyer.email %></div> 
                     <div class="applier-actions">
@@ -41,7 +41,7 @@
 
                 <div class="job">
                   <%= link_to apply.job, class: "title" do %>
-                    <strong><%= apply.job.title %></strong>
+                    <strong style="color: #717171;"><%= apply.job.title %></strong>
                   <% end %>
                   <div class="orther-applyer">
                     <div class="applyer-list">
@@ -54,7 +54,10 @@
                       <div class="user-avatar">
                         <img src="images/logo.png">
                       </div>
-                      <div style="display: inline-block;margin: auto;color: #5897fbb8">4 more appliers</div>
+                      <div class="user-avatar">
+                        <img src="images/logo.png">
+                      </div>
+                      <div style="display: inline-block;margin: auto;color: #5897fbb8">4 more</div>
                     </div>
                   </div>
                 </div>
