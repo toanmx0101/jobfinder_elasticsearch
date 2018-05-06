@@ -156,3 +156,37 @@
     }
   }
 }
+li {
+  .message-item {
+    display: flex;
+    .user-icon {
+      height: 42px;
+      display: flex;
+      padding: 12px;
+      margin: auto 0;
+      img {
+        margin: auto 0;
+        height: 42px;
+      }
+    }
+    .message-content {
+      width: calc(100% - 114px);
+      padding: 12px 0;
+      .user-name {
+        margin-bottom: 6px;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .message {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .time {
+      float: right;
+      padding-right: 12px;
+      padding-top: 12px;
+    }
+  }
+}

@@ -8,10 +8,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def message_thread
-    
-  end
-
   def user_profile
     @user = current_user
   end
@@ -19,10 +15,6 @@ class HomeController < ApplicationController
   def profile
     @user = User.friendly.find(params[:id])
     render :user_profile
-  end
-
-  def setting
-  	
   end
 
   def appliers
@@ -33,20 +25,28 @@ class HomeController < ApplicationController
     end
   end
 
-  def interviews
-    
-  end
-
-  def candidates
-    
-  end
-
-  def rc_messages
-
-  end
-
   def appropriate_jobs
-    @appropricate_jobs = Job.search(current_user.work_position + " " + current_user.description + " " + current_user.experience).records
+    tags = Job.generate_tags(current_user.work_position)
+    current_user.update_attribute(:tags, tags)
+    location = current_user.location.present? ? current_user.location : ""
+    experience = current_user.experience.present? ? current_user.experience : ""
+    job_type = ""
+    salary = ""
+    @appropricate_jobs = Job.search_el(1, Job::PER_PAGE , 
+                          location,
+                          job_type,
+                          salary,
+                          tags, 
+                          current_user.work_position + experience )[:body]
   end
-  
+
+  def setting;  end
+
+  def interviews; end
+
+  def candidates; end
+
+  def rc_messages; end
+
+  def message_thread; end
 end

@@ -1,0 +1,78 @@
+.c-cs-form-search {
+  width: 25%;
+  .c-cs-search-options {
+    display: flex;
+    .text-search , .search-from-jobs {
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .text-search {
+      border-radius: 3px 0 0 3px;
+      color: white;
+      background: #2890ff;
+    }
+    .search-from-jobs {
+      border: 1px solid #D4D4D9;
+      border-radius: 0 3px 3px 0;
+    }
+  }
+}
+.c-candidates {
+  display: flex;
+}
+.c-cs-candidates-results {
+  width: 50%;
+  .c-cs-content-res {
+    margin: 20px;
+    padding: 12px 20px;
+    background-color: white;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    .candidate-item {
+      border-bottom: 1px solid #EEE;
+      height: 64px;
+      padding: 8px;
+      display: flex;
+      .content {
+        display: inherit;
+        .user-icon {
+          height: 64px;
+          img {
+            height: 64px;
+            width: 64px;
+            border-radius: 8px;
+          }
+        }
+        .user-infor {
+          padding: 12px;
+          width: 100%;
+          .username {
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+        .view-profile {
+          margin: auto 0;
+          border-radius: 3px;
+          padding: 6px 20px;
+          color: white;
+          background: #2890ff;
+        }
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+}
+.c-cs-advertisment {
+  width: 25%;
+}
+.c-cs-advertisment {
+  border-radius: 3px;
+  margin-top: 20px;
+  img {
+    width: 100%;
+    border-radius: 4px;
+  }  
+}

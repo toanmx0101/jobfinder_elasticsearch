@@ -4,40 +4,18 @@ module ElasticsearchJob
   included do
     include Elasticsearch::Model
 
-    after_commit on: [:create, :update] do
-      create_or_update_index
+    after_commit on: [:create] do
+      __elasticsearch__.index_document
+    end
+
+    after_commit on: [:update] do
+      __elasticsearch__.update_document
     end
 
     after_commit on: :destroy do
       if Elasticsearch.elasticsearch_enable? && __elasticsearch__.client.transport.connections.present?
         __elasticsearch__.delete_document rescue nil
       end
-    end
-
-    def create_or_update_index(reindex = false)
-      if Elasticsearch.elasticsearch_enable? &&
-         __elasticsearch__.client.transport.connections.present? &&
-         after_publish?
-        if (status_previously_changed? && available?) || (viewable_previously_changed? && viewable)
-          __elasticsearch__.index_document
-        elsif viewable_previously_changed? && !viewable
-          __elasticsearch__.delete_document rescue nil
-        else
-          begin
-            if organizer_id_previously_changed? || staff_id_previously_changed? || manager_id_previously_changed? || area_id_previously_changed? || start_at_previously_changed?
-              __elasticsearch__.index_document
-            elsif reindex
-              __elasticsearch__.index_document
-            else
-              __elasticsearch__.update_document
-            end
-          rescue
-            __elasticsearch__.index_document
-          end
-        end
-      end
-    rescue => e
-      logger.error(e)
     end
 
     index_name "jobs"
@@ -225,7 +203,7 @@ module ElasticsearchJob
       keywords = response.aggregations.sample.keywords.buckets
       tags = []
       keywords.each do |keyword|
-        tags.push(keyword[:key])
+        tags.push({term: keyword[:key], boost: keyword[:score].round(2)})
       end
       tags
     rescue => e
@@ -233,6 +211,19 @@ module ElasticsearchJob
       {
         tags: []
       }
+    end
+
+    def self.work_position_tags_analyzer(work_position)
+      search_definition = {
+                            analyzer: 'job_analyzer',
+                            text: work_position
+                          }
+      response = __elasticsearch__.client.indices.analyze(index: Job.index_name, body: search_definition )
+      terms = []
+      response['tokens'].each do |token|
+        terms.push(token['token'])
+      end
+      terms
     end
 
     def self.create_query_agg_keywords(work_position)
@@ -252,7 +243,10 @@ module ElasticsearchJob
             aggs: {
               keywords: {
                 significant_terms: {
-                  field: "about_candidate"
+                  field: "about_candidate",
+                  min_doc_count: 20,
+                  size: 10,
+                  exclude: Job.work_position_tags_analyzer(work_position)
                 }
               }
             }

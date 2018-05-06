@@ -66,24 +66,10 @@
                 <%= f.text_field :website, class: 'form-control' %>
               </div>
             </div>
-
             <div class="c--step__experience" style="float: right;margin-left: 15px;">
               <div class="field">
-                <div class="field-header" style="display: flex">
-                  <%= f.label "Your Skills", style: 'width: 100%' %>
-                  <i class="fa fa-plus fa-lg" aria-hidden="true" style="margin-top: 2px; cursor: pointer;"></i>                  
-                </div>
-              </div>
-              <div class="field">
-                <div class="field-header" style="display: flex">
-                  <%= f.label "Your education", style: 'width: 100%' %>
-                  <i class="fa fa-plus fa-lg" aria-hidden="true" style="margin-top: 2px; cursor: pointer;"></i>                  
-                </div>
-                <div style="margin-left: 25px;">
-                  <div class="sub-field" style="display: flex;">
-                    <%= f.text_field :education, class: 'form-control form-multi sub-form-multi' %>
-                  </div>
-                </div>
+                <%= f.label "Education"%><br />
+                <%= f.text_area :education, class: 'form-control' %>
               </div>
               <div class="field">
                 <%= f.label "Experience level"%><br />

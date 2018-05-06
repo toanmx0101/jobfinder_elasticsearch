@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :applies, class_name: "Apply", foreign_key: "applyer_id"
 
   serialize :view_history
+  serialize :tags
+
   extend FriendlyId
   friendly_id :username
 

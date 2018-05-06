@@ -1,5 +1,92 @@
 <%= render "dashboard_left_menu", page: "candidate" %>
 <div class="right-container">
   <div class="m--recruitment-content ">
+    <div class="recruitments">
+      <div class="c-appliers-header" style="margin-bottom: 26px;display: block;">
+        <div class="filter-header">
+          <div style="margin: auto 0;">
+            <h3 style="font-size: 18px;margin: 0; padding: 8px;">Candidates</h3>
+          </div>
+        </div>
+      </div>
+      <div class="c-candidates">
+        <div class="c-cs-form-search">
+          <div class="c-cs-search-options">
+            <div class="text-search">
+              Search
+            </div>
+            <div class="search-from-jobs">
+              From my jobs
+            </div>  
+          </div>
+          <div class="c-cs-search-filter">
+            <%= form_tag search_path, method: 'get' do %>
+              <div class="search-title">
+                <div class="skills-header">
+                 <div class="filter-title-div"> 
+                    <h4>User name</h4>
+                  </div>
+                </div>  
+                  <%= text_field_tag :q, params[:q], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+              </div>
+              <div class="locations">
+                <div class="skills-header">
+                  <div class="filter-title-div"> 
+                    <h4>Candidate skills</h4>
+                  </div>
+                </div>
+                <div>
+                  <%= text_field_tag :location, params[:location], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                </div>
+              </div>
+            <% end %>   
+          </div>
+        </div>
+        <div class="c-cs-candidates-results">
+          <div class="c-cs-content-res">
+            <div class="candidate-item">
+              <div class="content">
+                <div class="user-icon">
+                  <img src="/images/logo.png">
+                </div>
+                <div class="user-infor">
+                  <div class="username">Tung</div>
+                  <div>Product Management</div>
+                </div>
+                <div class="view-profile">View</div>
+              </div>
+            </div>
+            <div class="candidate-item">
+              <div class="content">
+                <div class="user-icon">
+                  <img src="/images/logo.png">
+                </div>
+                <div class="user-infor">
+                  <div class="username">Tung</div>
+                  <div>Product Management</div>
+                </div>
+                <div class="view-profile">View</div>
+              </div>
+            </div>
+            <div class="candidate-item">
+              <div class="content">
+                <div class="user-icon">
+                  <img src="/images/logo.png">
+                </div>
+                <div class="user-infor">
+                  <div class="username">Tung</div>
+                  <div>Product Management</div>
+                </div>
+                <div class="view-profile">View</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="c-cs-advertisment">
+          <img src="/images/jobs_finder.png">
+        </div>
+      </div>
+    </div>
   </div>
 </div>

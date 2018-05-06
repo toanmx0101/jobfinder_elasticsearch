@@ -1,6 +1,13 @@
 .job-resul-card { transition: all .3s ease; }
 .filter-result { width: 25%; }
 .results-list-card { width: 75%; }
+.appropricate-jobs-list {
+  display: grid;
+  grid-template-columns: auto auto;
+  .map {
+    width: inherit;
+  }
+}
 .m__job-result-card {
   width: -webkit-fill-available;
   margin: 0 5px;
