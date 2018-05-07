@@ -1,6 +1,8 @@
 .recruitments {
-  .c-interviews {
-
+  .filter-header {
+    a {
+      text-decoration: none;
+    }
   }
   .c-interviews {
     position: relative;
@@ -147,4 +149,63 @@
     } 
   }
   
+}
+.c-new-interviews {
+  display: flex;
+}
+.c-new-interviews-form {
+  background-color: white;
+  width: 67%;
+  margin: 20px;
+  border-radius: 6px;
+  margin-left: 5px;
+}
+.c-n-i-add-interviewer {
+  background-color: white;
+  width: 33%;
+  margin: 20px;
+  border-radius: 6px;
+  height: fit-content;
+}
+.c-n-i-content {
+  padding: 16px;
+
+  .timepick {
+    display: grid;
+    margin-top: 17px;
+    grid-template-columns: auto auto auto auto;
+     input {
+      width: 91%;
+     }
+  }
+  label {
+    font-weight: 600;
+    color: #ACACAC;
+    margin-bottom: 6px;
+  }
+  input {
+    border-radius: 3px;
+    border: 1px solid #DDD;
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .interview-time {
+    margin-top: 17px;
+    i {
+      color: #33CBA1;
+      margin-right: 6px;
+    }
+  }
+}
+.action-create-inteview {
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 15px;
+  background: #2890ff;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  margin-top: 12px;
 }

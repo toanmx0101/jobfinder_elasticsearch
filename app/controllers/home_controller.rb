@@ -49,4 +49,8 @@ class HomeController < ApplicationController
   def rc_messages; end
 
   def message_thread; end
+
+  def new_interviews
+    
+  end
 end

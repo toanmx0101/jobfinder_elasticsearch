@@ -6,10 +6,12 @@
         <div class="filter-header">
           <div style="margin: auto 0; display: flex;">
             <h3 style="font-size: 18px;margin: 0; padding: 8px;">Interviews</h3>
-            <div style="cursor: pointer;margin: auto 12px; padding: 6px 12px;background: #2890ff;color: white;border-radius: 3px;">
-              <i class="fas fa-plus" style="font-size: 9px;margin-right: 4px;"></i>
-              Create new
-            </div>
+            <%= link_to interviews_new_path  do %>
+              <div style="cursor: pointer;margin: auto 12px; padding: 6px 12px;background: #2890ff;color: white;border-radius: 3px;text-decoration: none;">
+                <i class="fas fa-plus" style="font-size: 9px;margin-right: 4px;"></i>
+                Create new                
+              </div>
+            <% end %>
           </div>
           <div class="filter-appliers">
             <div class="fitler">
