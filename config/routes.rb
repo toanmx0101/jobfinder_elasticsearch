@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :interviews
   resources :applies
   resources :messages
   get 'notifications/index'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
 
   get :appliers, to: 'home#appliers'
   get :interviews, to: 'home#interviews'
+  get 'interviews/new', to: 'home#new_interviews'
   get :candidates, to: 'home#candidates'
   get :rc_messages, to: 'home#rc_messages'
 

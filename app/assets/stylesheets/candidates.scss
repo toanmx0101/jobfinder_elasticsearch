@@ -6,10 +6,14 @@
       padding: 6px 12px;
       cursor: pointer;
     }
+    .active-search-option {
+      background: #2890ff;
+      color: white;
+    }
     .text-search {
       border-radius: 3px 0 0 3px;
-      color: white;
-      background: #2890ff;
+      border: 1px solid #D4D4D9;
+      border-right: 0;
     }
     .search-from-jobs {
       border: 1px solid #D4D4D9;
@@ -28,41 +32,7 @@
     background-color: white;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    .candidate-item {
-      border-bottom: 1px solid #EEE;
-      height: 64px;
-      padding: 8px;
-      display: flex;
-      .content {
-        display: inherit;
-        .user-icon {
-          height: 64px;
-          img {
-            height: 64px;
-            width: 64px;
-            border-radius: 8px;
-          }
-        }
-        .user-infor {
-          padding: 12px;
-          width: 100%;
-          .username {
-            font-size: 16px;
-            font-weight: 600;
-          }
-        }
-        .view-profile {
-          margin: auto 0;
-          border-radius: 3px;
-          padding: 6px 20px;
-          color: white;
-          background: #2890ff;
-        }
-      }
-      &:last-child {
-        border: 0;
-      }
-    }
+    
   }
 }
 .c-cs-advertisment {
@@ -73,6 +43,89 @@
   margin-top: 20px;
   img {
     width: 100%;
+    height: inherit;
     border-radius: 4px;
   }  
+}
+.candidate-item {
+  border-bottom: 1px solid #EEE;
+  height: 64px;
+  padding: 8px;
+  display: flex;
+  .content {
+    display: inherit;
+    .user-icon {
+      height: 64px;
+      img {
+        height: 64px;
+        width: 64px;
+        border-radius: 8px;
+      }
+    }
+    .user-infor {
+      padding: 12px;
+      width: 100%;
+      .username {
+        font-size: 16px;
+        font-weight: 600;
+      }
+    }
+    .view-profile {
+      margin: auto 0;
+      border-radius: 3px;
+      padding: 6px 20px;
+      color: white;
+      background: #2890ff;
+    }
+  }
+  &:last-child {
+    border: 0;
+  }
+}
+.pick-list-jobs {
+  display: none;
+  margin-top: 24px;
+  label {
+    font-weight: 600;
+    color: #ACACAC;
+    margin-bottom: 6px;
+  }
+  input {
+    border-radius: 3px;
+    border: 1px solid #DDD;
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+.p-l-j-content {
+  overflow-y: scroll;
+  height: 350px;
+  margin-top: 12px;
+  &:hover, &:active, &:focus {
+    overflow-y: scroll;
+    }
+  &::-webkit-scrollbar-track-piece {
+    background-color: transparent;
+    -webkit-border-radius: 6px;
+  }
+  &::-webkit-scrollbar  {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #DDDDDD; 
+  }
+}
+.p-l-j-job {
+  padding: 12px;
+  background: white;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }

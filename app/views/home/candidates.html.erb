@@ -12,7 +12,7 @@
       <div class="c-candidates">
         <div class="c-cs-form-search">
           <div class="c-cs-search-options">
-            <div class="text-search">
+            <div class="text-search active-search-option">
               Search
             </div>
             <div class="search-from-jobs">
@@ -20,26 +20,100 @@
             </div>  
           </div>
           <div class="c-cs-search-filter">
-            <%= form_tag search_path, method: 'get' do %>
+            <%= form_tag candidates_path, method: 'get' do %>
               <div class="search-title">
                 <div class="skills-header">
                  <div class="filter-title-div"> 
-                    <h4>User name</h4>
+                    <h4 style="color: #ACACAC;">User name</h4>
                   </div>
                 </div>  
-                  <%= text_field_tag :q, params[:q], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                  <%= text_field_tag :user_name, params[:user_name], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
               </div>
               <div class="locations">
                 <div class="skills-header">
                   <div class="filter-title-div"> 
-                    <h4>Candidate skills</h4>
+                    <h4  style="color: #ACACAC;">Work position</h4>
                   </div>
                 </div>
                 <div>
-                  <%= text_field_tag :location, params[:location], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                  <%= text_field_tag :work_position, params[:work_position], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                </div>
+              </div>
+              <div class="locations">
+                <div class="skills-header">
+                  <div class="filter-title-div"> 
+                    <h4  style="color: #ACACAC;">Candidate skills</h4>
+                  </div>
+                </div>
+                <div>
+                  <%= text_field_tag :skills, params[:skills], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
                 </div>
               </div>
             <% end %>   
+          </div>
+          <div class="pick-list-jobs">
+            <div class="title">
+              <label>Type title or ID</label>
+              <input type="text" name="title">
+            </div>
+            <div class="p-l-j-content">
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+              <div class="p-l-j-job">
+                <div class="p-l-j-job-title" style="font-size: 15px;">
+                  Cave Tran duy hung
+                </div>
+                <div class="publish">
+                  # 1019
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="c-cs-candidates-results">
@@ -90,3 +164,17 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $('.text-search').on('click', function(){
+    $('.pick-list-jobs').hide();
+    $('.c-cs-search-filter').show();
+    $('.search-from-jobs').removeClass('active-search-option')
+    $('.text-search').addClass('active-search-option')
+  });
+  $('.search-from-jobs').on('click', function(){
+    $('.pick-list-jobs').show();
+    $('.c-cs-search-filter').hide();
+    $('.search-from-jobs').addClass('active-search-option')
+    $('.text-search').removeClass('active-search-option')
+  });
+</script>
