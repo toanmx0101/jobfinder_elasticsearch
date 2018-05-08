@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :jobs, dependent: :destroy
   has_many :notifications, dependent: :destroy, class_name: "Notification", foreign_key: "recipient_id"
   has_many :applies, class_name: "Apply", foreign_key: "applyer_id"
+  has_many :meetings,  class_name: "Interview", foreign_key: "recruiter_id"
+  has_many :interviews,  class_name: "Interview", foreign_key: "interviewer_id"
 
   serialize :view_history
   serialize :tags

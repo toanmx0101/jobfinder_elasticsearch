@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :interviews
+  resources :interviews, except: [:index, :new, :show]
   resources :applies
   resources :messages
   get 'notifications/index'

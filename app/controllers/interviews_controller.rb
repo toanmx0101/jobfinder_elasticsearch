@@ -1,26 +1,24 @@
 class InterviewsController < ApplicationController
-  before_action :set_interview, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @interviews = Interview.all
-  end
+  before_action :set_interview, only: [ :edit, :update, :destroy]
 
   def show
-  end
-
-  def new
-    @interview = Interview.new
   end
 
   def edit
   end
 
   def create
-    @interview = Interview.new(interview_params)
-
+    start_at = Time.zone.parse(interview_params[:day] + ' ' +  interview_params[:hour] + ':' + interview_params[:minute])
+    @interview = current_user.meetings.build(title: interview_params[:title],
+                                             description: interview_params[:description],
+                                             duration: interview_params[:duration],
+                                             start_at: start_at,
+                                             interviewer_id: interview_params[:interviewer_id],
+                                             job_id: interview_params[:job_id]
+                                             )
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
+        format.html { redirect_to interviews_path, notice: 'Interview was successfully created.' }
         format.json { render :show, status: :created, location: @interview }
       else
         format.html { render :new }
@@ -32,7 +30,7 @@ class InterviewsController < ApplicationController
   def update
     respond_to do |format|
       if @interview.update(interview_params)
-        format.html { redirect_to @interview, notice: 'Interview was successfully updated.' }
+        format.html { redirect_to interviews_path, notice: 'Interview was successfully updated.' }
         format.json { render :show, status: :ok, location: @interview }
       else
         format.html { render :edit }
@@ -55,6 +53,6 @@ class InterviewsController < ApplicationController
     end
 
     def interview_params
-      params.fetch(:interview, {})
+      params.require(:interview).permit(:title, :description, :interviewer_id, :job_id, :duration, :day, :hour, :minute)
     end
 end

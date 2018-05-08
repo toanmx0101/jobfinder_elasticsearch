@@ -58,6 +58,6 @@ class HomeController < ApplicationController
   def message_thread; end
 
   def new_interviews
-    
+    @interview = Interview.new
   end
 end

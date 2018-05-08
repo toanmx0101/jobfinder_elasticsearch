@@ -152,6 +152,9 @@
 }
 .c-new-interviews {
   display: flex;
+  form {
+    display: flex;
+  }
 }
 .c-new-interviews-form {
   background-color: white;
@@ -201,11 +204,86 @@
 .action-create-inteview {
   padding: 10px;
   text-align: center;
-  border-radius: 6px;
+  border-radius: 4px;
   font-size: 15px;
   background: #2890ff;
   font-weight: 600;
   color: white;
   cursor: pointer;
   margin-top: 12px;
+}
+.dropdown-menu {
+  display: block!important;
+}
+.bootstrap-datetimepicker-widget {
+  position: absolute;
+  top: 0;
+  margin-top: 12px;
+  ul {
+    padding: 0;
+    background-color: white;
+    box-shadow: 0 1px 5px 0 rgba(0,0,0,.1);
+
+    li {
+      list-style-type: none;
+    }
+    > li {
+    }
+  }
+  .table-condensed {
+    padding: 0 5px;
+    padding-top: 5px;
+  }
+  tr {
+    .picker-switch {
+      text-align: center;
+      font-size: 16px;
+      padding: 6px 0;
+    }  
+  }
+  tr {
+    .prev {
+      font-family: Font Awesome\ 5 Free;
+      cursor: pointer;
+      padding: 6px;
+      float: left;
+      &::before {
+        content: "\f060";
+      }
+    }
+    .next {
+      font-family: Font Awesome\ 5 Free;
+      cursor: pointer;
+      padding: 6px;
+      float: right;
+      &::before {
+        content: "\f061";
+      }
+    }
+  }
+  td {
+    .month {
+      padding: 0 12px;
+    }
+  }
+  tr {
+    .dow {
+      &:first-child {
+        padding-left: 7px;
+      }
+    }
+    .old, .new {
+      color: #ACACAC;
+    }
+    .day {
+      cursor: pointer;
+    }
+    .today {
+      color: #2890ff;
+      font-weight: 600;
+    }
+    .disabled {
+      color: #ACACAC;
+    }
+  }
 }
