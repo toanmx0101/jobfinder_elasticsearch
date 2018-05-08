@@ -44,7 +44,14 @@ class HomeController < ApplicationController
 
   def interviews; end
 
-  def candidates; end
+  def candidates
+
+  end
+
+  def simple_search_jobs
+    response_to do |format|
+    end
+  end
 
   def rc_messages; end
 

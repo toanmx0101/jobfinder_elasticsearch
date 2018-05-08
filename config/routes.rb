@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :interviews
   resources :applies
   resources :messages
   get 'notifications/index'
