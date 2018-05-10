@@ -190,3 +190,38 @@ li {
     }
   }
 }
+.search-history {
+  position: absolute;
+  z-index: 3;
+  width: 300px;
+  top: 54px;
+  text-align: 0;
+  background: white;
+  transition-delay: .25s;
+  display: none;
+  .s-h-content {
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    background: white;
+    border-radius: 4px;
+    .s-h-list-items {
+      margin-top: 6px;
+      .h-item {
+        font-weight: 600;
+        padding: 8px 6px;
+        cursor: pointer;
+        &:hover {
+          background: #f5f5f5;
+          border-radius: 3px;
+        }
+      }
+    }
+  }
+}
+.main-seach-job {
+  &:focus {
+    ~ .search-history {
+      display: block;
+    }
+  }
+}

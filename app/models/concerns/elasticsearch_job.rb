@@ -83,6 +83,7 @@ module ElasticsearchJob
       hits = response.to_a
       jobs_ids = []
       jobs_score = []
+      binding.pry
       hits.each do |elm|
         jobs_ids.push(elm.id)
         jobs_score.push({job_id: elm.id, job_score: elm._score})
@@ -187,6 +188,14 @@ module ElasticsearchJob
           post_tags: ["</strong>"],
           fields: {
             description: {}
+          }
+        },
+        aggs: {
+          genres: {
+            terms: { 
+             field: "location",
+             size: 10
+            }
           }
         }
       }

@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  after_action :notify, :first_signup_fill_infor
 
   def plan
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)

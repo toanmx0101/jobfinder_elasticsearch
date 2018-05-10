@@ -6,7 +6,15 @@
     .form-search-header
       .asd
         = form_tag search_path, method: 'get' do
-          = text_field_tag :q, params[:q], placeholder: 'Search job by keyword'
+          = text_field_tag :q, params[:q], placeholder: 'Search job by keyword', autocomplete: 'off', class: 'main-seach-job'
+      .search-history
+        .s-h-content
+          .s-h-header
+            %span Recent searches
+          .s-h-list-items
+            .h-item Finace
+
+
     %nav
       %ul.nav-list-item
         - unless user_signed_in?
@@ -28,7 +36,7 @@
           %li
             .a-item-content
               .a-center-content
-                %a{href: '/login'} 
+                %a{href: '/join'} 
                   %span.li-title Become A Employ
           %li
             .a-item-content
