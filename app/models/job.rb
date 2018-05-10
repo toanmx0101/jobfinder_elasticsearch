@@ -5,7 +5,7 @@ class Job < ActiveRecord::Base
 
   belongs_to :user
   has_many :applies
-  has_many :applyers, through: :applies, source: :applyer
+  has_many :applyers, through: :applies, source: 'applyer'
 
   PER_PAGE = 10
   paginates_per PER_PAGE

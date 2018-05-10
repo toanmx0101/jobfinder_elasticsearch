@@ -27,7 +27,7 @@
                     <h4 style="color: #ACACAC;">User name</h4>
                   </div>
                 </div>  
-                  <%= text_field_tag :user_name, params[:user_name], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                  <%= text_field_tag :user_name, params[:user_name], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
               </div>
               <div class="locations">
                 <div class="skills-header">
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div>
-                  <%= text_field_tag :work_position, params[:work_position], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                  <%= text_field_tag :work_position, params[:work_position], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
                 </div>
               </div>
               <div class="locations">
@@ -46,7 +46,7 @@
                   </div>
                 </div>
                 <div>
-                  <%= text_field_tag :skills, params[:skills], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }"%>
+                  <%= text_field_tag :skills, params[:skills], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
                 </div>
               </div>
             <% end %>   
@@ -54,65 +54,29 @@
           <div class="pick-list-jobs">
             <div class="title">
               <label>Type title or ID</label>
-              <input type="text" name="title">
+              <input type="text" name="title" class="input--text" id="inputSimpleSearchJob">
             </div>
-            <div class="p-l-j-content">
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
-              <div class="p-l-j-job">
-                <div class="p-l-j-job-title" style="font-size: 15px;">
-                  Cave Tran duy hung
-                </div>
-                <div class="publish">
-                  # 1019
-                </div>
-              </div>
+            <script type="text/javascript">
+              $('#inputSimpleSearchJob').on('input', function(){
+                if ($('#inputSimpleSearchJob').val().length > 2) {
+                  $.ajax({
+                    type: 'GET',
+                    url: '/simple_search_job',
+                    data: {title: $('#inputSimpleSearchJob').val()},
+                    dataType: 'json',
+                    success: function(data) {
+                      $('.job-search-results').empty();
+                      data.forEach(function(item){
+                        $('.job-search-results').append('<div class="p-l-j-job"><div class="id"># ' + item.id + '</div><div class="p-l-j-job-title">' + item.title + '</div></div>')
+                      });
+                    }
+                  });
+                } else {
+                  $('.job-search-results').empty();
+                }
+              });
+            </script>
+            <div class="p-l-j-content job-search-results">
             </div>
           </div>
         </div>
@@ -130,32 +94,7 @@
                 <div class="view-profile">View</div>
               </div>
             </div>
-            <div class="candidate-item">
-              <div class="content">
-                <div class="user-icon">
-                  <img src="/images/logo.png">
-                </div>
-                <div class="user-infor">
-                  <div class="username">Tung</div>
-                  <div>Product Management</div>
-                </div>
-                <div class="view-profile">View</div>
-              </div>
-            </div>
-            <div class="candidate-item">
-              <div class="content">
-                <div class="user-icon">
-                  <img src="/images/logo.png">
-                </div>
-                <div class="user-infor">
-                  <div class="username">Tung</div>
-                  <div>Product Management</div>
-                </div>
-                <div class="view-profile">View</div>
-              </div>
-            </div>
           </div>
-          
         </div>
         <div class="c-cs-advertisment">
           <img src="/images/jobs_finder.png">

@@ -154,6 +154,7 @@
   display: flex;
   form {
     display: flex;
+    width: 100%;
   }
 }
 .c-new-interviews-form {
@@ -184,13 +185,20 @@
   label {
     font-weight: 600;
     color: #ACACAC;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    .fa-search {
+      display: none;
+      float: right;
+      cursor: pointer;
+      margin-top: 2px;
+    }
   }
   input {
     border-radius: 3px;
     border: 1px solid #DDD;
-    padding: 6px;
     width: 100%;
+    padding: 8px;
+    font-size: 15px;
     box-sizing: border-box;
   }
   .interview-time {
@@ -285,5 +293,80 @@
     .disabled {
       color: #ACACAC;
     }
+  }
+}
+.interviewer-search-results {
+  margin-top: 12px;
+  display: block;
+  width: 100%;
+  padding:  0;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  
+  .content {
+    padding-right: 12px!important;
+    &:first-child {
+      padding-top: 12px;
+    }
+    &:last-child {
+      padding-bottom: 12px;
+    }
+  }
+  .fa-plus-square {
+    color: #ACACAC;
+    &:hover {
+      color: rgb(51, 203, 161);
+    }
+  }
+  .content {
+    display: flex;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+}
+.selected-interviewer {
+  .content {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+}
+.job-search-results {
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  margin-top: 12px;
+}
+.job-search-result {
+  padding: 12px;
+  padding-top: 0;
+  .id {
+    font-weight: 600;
+    font-size: 15px;
+    i {
+      float: right;
+      margin-top: 3px;
+      font-size: 20px;
+
+      &:hover {
+        color: rgb(51, 203, 161);
+      }
+    }
+  }
+  .p-l-j-job-title {
+    font-size: 16px;
+    margin-top: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &:last-child {
+    padding-bottom: 12px;
+  }
+  &:first-child {
+    padding-top: 12px;
+  }
+}
+.job-selected-link {
+  .job-search-result {
+    padding: 0px 4px;
   }
 }

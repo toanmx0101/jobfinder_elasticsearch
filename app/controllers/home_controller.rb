@@ -42,14 +42,33 @@ class HomeController < ApplicationController
 
   def setting;  end
 
-  def interviews; end
+  def interviews
+    @days = current_user.meetings.where(start_at: DateTime.now.beginning_of_week..DateTime.now.end_of_week).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
+    @days = @days.sort_by{|day, _interviews| day }
+    # if params[:ref] == 'week'
+    # end
+  end
 
   def candidates
 
   end
 
-  def simple_search_jobs
-    response_to do |format|
+  def simple_search_job
+    jobs = current_user.jobs.where("title LIKE '%#{params[:title]}%' OR id=#{params[:title].to_i}")
+    if params[:limit].present?
+      jobs = jobs.limit(2)
+    end
+    respond_to do |format|
+      format.json { render json: jobs.to_json( only: [:id, :title] ), status: :ok }
+    end
+  end
+
+  def simple_search_user
+    users = User.where("username LIKE '%#{params[:username]}%' OR id=#{params[:username].to_i}").limit(2)
+    respond_to do |format|
+      format.html
+      format.js {}
+      format.json { render json: users.to_json( only: [:username, :id, :work_position, :avatar_url] ), status: :ok }
     end
   end
 

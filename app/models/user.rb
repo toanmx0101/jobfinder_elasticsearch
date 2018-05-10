@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :applies, class_name: "Apply", foreign_key: "applyer_id"
   has_many :meetings,  class_name: "Interview", foreign_key: "recruiter_id"
   has_many :interviews,  class_name: "Interview", foreign_key: "interviewer_id"
-
+  has_many :appliers, through: :jobs, source: 'User'
   serialize :view_history
   serialize :tags
 

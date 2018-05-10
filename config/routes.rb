@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/profile', to: 'home#user_profile'
   get '/setting', to: 'home#setting'
   get 'appropriate_jobs/', to: 'home#appropriate_jobs'
+  get '/simple_search_user', to: 'home#simple_search_user'
+  get '/simple_search_job', to: 'home#simple_search_job'
 
   resources :messages
   resources :notifications

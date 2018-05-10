@@ -15,8 +15,7 @@
           </div>
           <div class="filter-appliers">
             <div class="fitler">
-              <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px;background: #2890ff;color: white">Day</div>
-              <div>Week</div>
+              <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px;background: #2890ff;color: white">Week</div>
               <div style="border-radius: 0 3px 3px 0">Month</div>
             </div>
           </div>
@@ -24,132 +23,33 @@
       </div>
       <div class="c-interviews">
         <ul class="c-it-content">
+          <% @days.each do |interviews| %>
             <li class="day-interviews">
               <div class="it-content">
                 <div class="itv-day-header">
-                  <div class="day">01</div>
-                  <div style="">Sunday</div>
+                  <div class="day"><%= DateTime.parse(interviews.first).strftime("%d") %></div>
+                  <div style=""><%= DateTime.parse(interviews.first).strftime("%A") %></div>
                 </div>
-                <div class="line "></div>
+                <div class="line <%= 'today' if DateTime.parse(interviews.first).today?%>"></div>
                 <div class="list-interviews-in-days">
-                  <div class="item">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-envelope"></i>
+                  <% interviews.second.each do |interview| %>
+                    <div class="item">
+                      <div class="content">
+                        <div class="interview-time">At <%= interview.start_at.strftime("%h:%m")%></div>
+                        <div class="title"><%= interview.title %></div>
+                        <div class="actions">
+                          <i class="fas fa-link"></i>
+                          <i class="far fa-user"></i>
+                          <i class="fas fa-pencil-alt"></i>
+                          <i class="far fa-envelope"></i>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="item">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item" style="margin-bottom: 0">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                      </div>
-                    </div>
-                  </div>
-
+                  <% end %>  
                 </div>
               </div>
             </li>
-            <li class="day-interviews">
-              <div class="it-content">
-                <div class="itv-day-header">
-                  <div class="day">02</div>
-                  <div style="">Monday</div>
-                </div>
-                <div class="line today"></div>
-                <div class="list-interviews-in-days">
-                  <div class="item">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-envelope"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="day-interviews">
-              <div class="it-content">
-                <div class="itv-day-header">
-                  <div class="day">03</div>
-                  <div style="">Tuesday</div>
-                </div>
-                <div class="line"></div>
-                <div class="list-interviews-in-days">
-                  <div class="item">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-envelope"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="content">
-                      <div class="interview-time">11:00 - 13:00</div>
-                      <div class="title">Daily report</div>
-                      <div class="actions">
-                        <i class="fas fa-link"></i>
-                        <i class="far fa-user"></i>
-                        <i class="fas fa-pencil-alt"></i>
-                        <i class="far fa-envelope"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="day-interviews">
-              <div class="it-content">
-                <div class="itv-day-header">
-                  <div class="day">04</div>
-                  <div style="">Wednesday</div>
-                </div>
-                <div class="line"></div>
-                <div class="list-interviews-in-days">
-                </div>
-              </div>
-            </li>
-            <li class="day-interviews">
-              <div class="it-content">
-                <div class="itv-day-header">
-                  <div class="day">05</div>
-                  <div style="">Thursday</div>
-                </div>
-                <div class="line"></div>
-                <div class="list-interviews-in-days">
-                </div>
-              </div>
-            </li>
+          <% end %>
         </ul>
       </div>
     </div>
