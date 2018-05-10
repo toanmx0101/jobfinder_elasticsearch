@@ -43,14 +43,21 @@ class HomeController < ApplicationController
   def setting;  end
 
   def interviews
-    @days = current_user.meetings.where(start_at: DateTime.now.beginning_of_week..DateTime.now.end_of_week).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
+    if params[:ref] == 'week'
+      range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
+    elsif params[:ref] == 'month'
+      range = DateTime.now.beginning_of_month..DateTime.now.end_of_month
+    end
+    
+    @days = current_user.meetings.where(start_at: range).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
     @days = @days.sort_by{|day, _interviews| day }
-    # if params[:ref] == 'week'
-    # end
   end
 
   def candidates
-
+    username = params[:username].present? ? params[:username] : ""
+    skills = params[:skills].present? ? params[:skills] : ""
+    work_position = params[:work_position].present? ? params[:work_position] : ""
+    @users = User.search_el(username, skills, location)
   end
 
   def simple_search_job

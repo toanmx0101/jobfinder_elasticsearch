@@ -15,8 +15,12 @@
           </div>
           <div class="filter-appliers">
             <div class="fitler">
-              <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px;background: #2890ff;color: white">Week</div>
-              <div style="border-radius: 0 3px 3px 0">Month</div>
+              <%= link_to interviews_path(ref: 'week')  do %>
+                <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px;background: #2890ff;color: white">Week</div>
+              <% end %>
+              <%= link_to interviews_path(ref: 'month')  do %>
+                <div style="border-radius: 0 3px 3px 0">Month</div>
+              <% end %>
             </div>
           </div>
         </div>

@@ -122,11 +122,8 @@
 }
 .p-l-j-job {
   padding: 12px;
-  background: white;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  padding-bottom: 0;
   .id {
     font-weight: 600;
     color: #717171;
@@ -134,4 +131,7 @@
 }
 .p-l-j-job-title {
   font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

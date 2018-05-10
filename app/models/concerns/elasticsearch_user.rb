@@ -17,6 +17,10 @@ module ElasticsearchUser
         __elasticsearch__.delete_document rescue nil
       end
     end
+    # nêu ra vấn đề tìm kiếm  phuonwg pháp, 
+    # chương 2 tổng quan hệ thống thành phần yêu cầu chức ăng. 
+    # implement explement, solution exprementtation   neu ra ket qua dua ra cac truwong hop
+    # kết luận
 
     index_name "users"
 

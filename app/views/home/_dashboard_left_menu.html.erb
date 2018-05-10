@@ -21,12 +21,12 @@
             <p>Candidates</p>
           </div>  
         </a>
-        <a href="/interviews">
+        <%= link_to interviews_path(ref: 'week')  do %>
           <div class="item meeting">
             <i class="fa fa-burn fa-lg burn"></i>
             <p>Interviews</p>
           </div>
-        </a>
+        <% end %>
         <a href="/rc_messages">
           <div class="item rc-messages">
             <i class="fas fa-envelope mes"></i>
