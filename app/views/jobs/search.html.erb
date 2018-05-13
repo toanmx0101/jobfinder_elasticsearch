@@ -17,24 +17,22 @@
         <div class="filter-wireframe">
           <div class="solf-by">
             <div>
-              <h3>Show <%= @jobs.count %> jobs of <%= @total_results %></h3>
+              <h3 class="results-total-count">Show <%= @jobs.count %> jobs of <%= @total_results %></h3>
             </div>
           </div>
-          <div class="filter-wireframe-icons-list">
-            <div class="filter-icon grid-choice filter-choice-active">
-              <i class="fa fa-th-large" aria-hidden="true"></i>
-            </div>
-            <div class="filter-icon list-choice ">
-              <i class="fa fa-th-list" aria-hidden="true"></i>
-            </div>
+          <div class="search-results-paginate" style="float: right;">
+            <%= paginate @jobs, window: 0 %>
           </div>
         </div>
+
       </div>
+      
+      
       <div class="list-cards">
         <div class="list-center-content">
           <% if @jobs.present? %>
             <% @jobs.each do |job| %>
-              <%= render 'job', job: job %>
+              <%= render 'job', job: job, score: @jobs_score.detect{ |e| e[:job_id] == job.id.to_s }[:job_score].round(2) %>
             <% end %>
           <% end %>  
         </div>

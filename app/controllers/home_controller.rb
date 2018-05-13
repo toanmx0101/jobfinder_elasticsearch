@@ -57,7 +57,6 @@ class HomeController < ApplicationController
     username = params[:username].present? ? params[:username] : ""
     skills = params[:skills].present? ? params[:skills] : ""
     work_position = params[:work_position].present? ? params[:work_position] : ""
-    @users = User.search_el(username, skills, location)
   end
 
   def simple_search_job

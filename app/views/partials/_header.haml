@@ -3,10 +3,11 @@
     .web-logo
       %a{href:'/'}
         %img{ src: '/images/logo.png'}
-    .form-search-header
-      .asd
-        = form_tag search_path, method: 'get' do
-          = text_field_tag :q, params[:q], placeholder: 'Search job by keyword', autocomplete: 'off', class: 'main-seach-job'
+    - if !current_page?('/search')
+      .form-search-header
+        .asd
+          = form_tag search_path, method: 'get' do
+            = text_field_tag :q, params[:q], placeholder: 'Search job by keyword', autocomplete: 'off', class: 'main-seach-job'
       .search-history
         .s-h-content
           .s-h-header

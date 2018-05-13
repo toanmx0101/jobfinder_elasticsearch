@@ -48,4 +48,4 @@
   transition: color 250ms ease-in;
 }
 .credits__link:hover, .credits__link:focus { color: rgb(191, 137, 135); }
-.search-title { margin-top: 14px; }
+.search-title { margin-bottom: 20px; }

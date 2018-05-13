@@ -8,19 +8,36 @@ class JobsController < ApplicationController
   def dashboard; end
 
   def search
+    per_page = 10
     s = escape_characters_in_string(params[:q])
-    location = params[:location].present? ? params[:location] : ""
-    job_type = params[:job_type].present? ? params[:job_type] : ""
+    location = params[:location].present? ? params[:location] : nil
+    job_type = params[:job_type].present? ? params[:job_type] : nil
     salary = params[:salary].present? ? params[:salary] : ""
     tags = []
     # search params (page, limit, location, job_type, salary, tags = [], keyword_match = nil)
-    @jobs = Job.search_el(params[:page], Job::PER_PAGE , 
+    results = Job.search_el(params[:page], Job::PER_PAGE , 
                           location,
                           job_type,
                           salary,
                           tags, 
-                          s )[:body]
-    render action: "index"
+                          s)
+    @jobs = Kaminari.paginate_array(results[:body],
+                                      total_count: results[:total],
+                                      offset: results[:from],
+                                      limit: per_page
+                                      ).page(params[:page]).per(per_page)
+    @jobs_score = results[:jobs_score]
+    @common_locations = results[:common_locations]
+    @common_job_types = results[:common_job_types]
+    @total_results = results[:total]
+    respond_to do |format|
+      format.html
+      format.json { render json: { jobs: @jobs.as_json,
+                                   jobs_score: @jobs_score.as_json,
+                                   common_locations: @common_locations,
+                                   common_job_types: @common_job_types,
+                                   total_results: @total_results } }
+    end
   end
   
   def show
