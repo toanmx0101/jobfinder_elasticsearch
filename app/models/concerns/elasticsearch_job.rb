@@ -105,9 +105,11 @@ module ElasticsearchJob
       end
       jobs_ids = []
       jobs_score = []
+      highlight = []
       hits.each do |elm|
         jobs_ids.push(elm.id)
         jobs_score.push({job_id: elm.id, job_score: elm._score})
+        # highlight.push({job_id: elm.id, highlight: elm.})
       end
       body = if jobs_ids.present?
                Job.find(*jobs_ids)
@@ -220,9 +222,11 @@ module ElasticsearchJob
         highlight: {
           pre_tags: ["<strong>"],
           post_tags: ["</strong>"],
-          fields: {
-            description: {}
-          }
+          fields: [
+            { description: {} },
+            { about_candidate: {} },
+            { title: {} }
+          ]
         },
         aggs: {
           locations: {

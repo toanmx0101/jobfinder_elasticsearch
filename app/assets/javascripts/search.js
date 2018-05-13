@@ -1,3 +1,17 @@
+var $paginate
+
+var defaultOpts = {
+    visiblePages: 3
+  }
+$( document ).on('turbolinks:load', function() {
+  var totalPages = Math.ceil($('#pagination').attr('value')/10)
+  defaultOpts["totalPages"] = totalPages
+  $paginate = $('#pagination')
+  $paginate.twbsPagination(defaultOpts);
+  $paginate.on('page', function(evt, page) {
+    handleClickCheckbox(evt, page)
+  })
+});
 function getListLocationChecked() {
   var locations = []
   $('.common-locations:checked').each(function() {
@@ -5,6 +19,7 @@ function getListLocationChecked() {
   });
   return locations;
 }
+
 function getListJobTypeChecked() {
   var job_types = []
   $('.common-jobtypes:checked').each(function() {
@@ -12,7 +27,8 @@ function getListJobTypeChecked() {
   });
   return job_types;
 }
-function handleClickCheckbox(event) {
+
+function handleClickCheckbox(event, page) {
   var text = $('.input--text').val();
   var job_type = getListJobTypeChecked()
   var locations = getListLocationChecked()
@@ -28,16 +44,26 @@ function handleClickCheckbox(event) {
     path += locations_params
   }
   window.history.pushState('a', 'a', path);
+  job_page = 0
+  if (typeof(page) != 'undefined') {
+    job_page = page;
+    var url = new URL(window.location.href);
+    if (url.searchParams.get("location[]") != null) {
+      locations = url.searchParams.get("location[]").split(",");
+    }
+  }
   $.ajax({
     type: 'GET',
     url: '/search',
     data: { q: text,
-            location: getListLocationChecked(),
-            job_type: getListJobTypeChecked()
+            location: locations,
+            job_type: job_type,
+            page: job_page
           },
     dataType: 'json',
     success: function(data) {
       console.log(data);
+      
       $('.list-center-content').empty();
       if (locations.length == 0) {
         $('.job-location-checkbox').empty();
@@ -57,6 +83,16 @@ function handleClickCheckbox(event) {
         $('.results-total-count').text('Show ' + data['total_results'] + ' of ' + data['total_results'] + ' results')
       } else {
         $('.results-total-count').text('Show 10 of ' + data['total_results'] + ' results')
+      }
+      if ($(event).attr("class") == "common-jobtypes" || $(event).attr("class") == "common-locations") {
+        $paginate.twbsPagination('destroy');
+        $paginate.twbsPagination($.extend({}, defaultOpts, {
+          startPage: 1,
+          totalPages: Math.ceil(data['total_results']/10)
+        }));
+        $paginate.on('page', function(evt, page) {
+          handleClickCheckbox(evt, page)
+        })
       }
       if ($(event).attr("class") != "common-jobtypes") {
         $(".common-jobtypes").each(function(){
@@ -79,3 +115,4 @@ function showData(job, data) {
   }
   $('.list-center-content').append('<div class="job-resul-card map"><div class="m__job-result-card"><div class="content"><div class="job-views-and-type"><span class="job-views"><i class="fa fa-eye" style="color: #f8bc48; margin-right: 5px;"></i>'+ job['view_count'] + ' views</span> <span class="job-type">' + job['job_type'] + '</span></div><a href="/jobs/'+ job['id'] +'-' + job['slug'] + '"><div class="job-title"><h3>' + job['title'] + '</h3></div></a><div class="location"><i class="fas fa-map-marker-alt"></i>' + job['location'] + '<div style="float: right">Score ' + data['jobs_score'].find(item => item.job_id === job['id'].toString())['job_score'].toFixed(2) + '</div></div><a href="/jobs/'+ job['id'] +'-' + job['slug'] + '"><div class="job-description"><span>' + description + '</span></div></a></div></div></div>')        
 }
+

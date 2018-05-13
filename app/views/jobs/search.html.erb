@@ -20,9 +20,9 @@
               <h3 class="results-total-count">Show <%= @jobs.count %> jobs of <%= @total_results %></h3>
             </div>
           </div>
-          <div class="search-results-paginate" style="float: right;">
-            <%= paginate @jobs, window: 0 %>
-          </div>
+          <nav aria-label="Page navigation">
+            <ul class="pagination" id="pagination" value="<%= @total_results %>"></ul>
+          </nav>
         </div>
 
       </div>

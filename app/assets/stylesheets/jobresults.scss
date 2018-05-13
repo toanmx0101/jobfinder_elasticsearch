@@ -42,6 +42,8 @@
   padding: 5px 8px 5px 8px;
   margin-left: 20px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 .fixed {
   position: fixed;
@@ -369,5 +371,39 @@
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+}
+.pagination {
+  display: inline-block;
+  padding: 0;
+  .page-item {
+    display: inline-block;
+    border: 1px solid #D4D4D9;
+    border-right: 0;
+    a {
+      padding: 6px 12px;
+      display: inline-block;
+      text-decoration: none;
+    }
+    &.active {
+      background: #2890ff;
+      a {
+        color: white;
+        font-weight: 600;
+      }
+    }
+    &.first {
+      border-radius: 3px 0 0 3px;
+    }
+    &.last {
+     border-radius: 0 3px 3px 0; 
+     border-right: 1px solid #D4D4D9;
+    }
+    &.disabled {
+      a {
+        cursor: not-allowed;
+        color: #484848;
+      }
+    }
   }
 }
