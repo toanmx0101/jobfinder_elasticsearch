@@ -21,11 +21,12 @@ class JobsController < ApplicationController
                           salary,
                           tags, 
                           s)
-    @jobs = Kaminari.paginate_array(results[:body],
-                                      total_count: results[:total],
-                                      offset: results[:from],
-                                      limit: per_page
-                                      ).page(params[:page]).per(per_page)
+    res_jobs = results[:body].is_a?(Job) ? [results[:body]] : results[:body]
+    @jobs = Kaminari.paginate_array(res_jobs,
+                                        total_count: results[:total],
+                                        offset: results[:from],
+                                        limit: per_page
+                                        ).page(params[:page]).per(per_page)
     @jobs_score = results[:jobs_score]
     @common_locations = results[:common_locations]
     @common_job_types = results[:common_job_types]
