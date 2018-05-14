@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  # after_action :notify, only: [:first_signup_fill_infor]
 
   def plan
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
@@ -27,6 +28,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     notification = Notification.create(recipient_id: current_user,
                           actor_id: @admin.id,
                           action: "We found jobs that you maybe interested in.")
+    
   end
 
   protected
@@ -49,5 +51,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def after_update_path_for(resource)
     resource.work_position == nil ? '/join/finish' : root_path
+  end
+
+  def after_inactive_sign_up_path_for(resource)
+    '/join/plan' # Or :prefix_to_your_route
   end
 end

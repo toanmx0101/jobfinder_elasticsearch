@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :meetings,  class_name: "Interview", foreign_key: "recruiter_id"
   has_many :interviews,  class_name: "Interview", foreign_key: "interviewer_id"
   has_many :appliers, through: :jobs, source: 'User'
+  has_many :messages
+  has_many :conversations, foreign_key: :sender_id
+   
+
   serialize :view_history
   serialize :tags
 

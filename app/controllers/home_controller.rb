@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_action :authenticate_user!, only: [:message_thread, :profile, :setting, :appropriate_jobs, :appliers]
+  before_action :authenticate_user!, only: [:message_thread, :profile, :setting, :appropriate_jobs, :appliers, :rc_messages]
 
   def index
     if user_signed_in? && current_user.is_recruiter?
@@ -43,12 +43,11 @@ class HomeController < ApplicationController
   def setting;  end
 
   def interviews
-    if params[:ref] == 'week'
-      range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
-    elsif params[:ref] == 'month'
+    if params[:ref] == 'month'
       range = DateTime.now.beginning_of_month..DateTime.now.end_of_month
+    else
+      range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
     end
-    
     @days = current_user.meetings.where(start_at: range).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
     @days = @days.sort_by{|day, _interviews| day }
   end
@@ -78,7 +77,17 @@ class HomeController < ApplicationController
     end
   end
 
-  def rc_messages; end
+  def rc_messages
+    @conversations = current_user.conversations.includes(:receiver).order(updated_at: :desc)
+    if params[:id].blank?
+      @recent_conversation = @conversations.first
+    else
+      @recent_conversation = Conversation.includes(:receiver).find(params[:id])
+    end
+    @sended_messages = @recent_conversation.messages.order(created_at: :desc)
+    @received_messages = Conversation.find_by(sender_id: @recent_conversation.receiver_id, receiver_id: current_user.id).messages.includes(:user).order(created_at: :desc)
+    @list_messages = (@sended_messages + @received_messages).sort_by{|mes| mes.created_at }
+  end
 
   def message_thread; end
 

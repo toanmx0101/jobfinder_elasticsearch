@@ -55,7 +55,6 @@
               .a-center-content
                 %a{href: '/login'}
                   %i.far.fa-list-alt.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 
           %li
             .a-item-content.message-link
               .a-center-content
@@ -66,17 +65,7 @@
                 .message-header
                   %a.see-all Messages
                   %a.mark-read-all Mark read all
-                %ul
-                  .message-thread
-                    %li
-                      .message-item 
-                        .user-icon
-                          %img{src: '/images/profile_image.jpg'}
-                        .message-content
-                          .user-name Nam Di
-                          .message Hiển thị ứng viên bên cạnh khi click vào 
-                        .time
-                          16:04
+                %ul#messageList{data_user: current_user.id}
           %li
             .a-item-content.notification-link
               .a-center-content
@@ -93,7 +82,6 @@
                 %ul#notificationList{data_user: current_user.id}
                   - @notifications.each do |noti|
                     = render '/notifications/notification', notification: noti
-                }
           %li
             .a-item-content.account-link
               .a-center-content.dropdown-content

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180508122301) do
+ActiveRecord::Schema.define(version: 20180514091705) do
 
   create_table "applies", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20180508122301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "company_logo"
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer "receiver_id"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_id", "sender_id"], name: "index_conversations_on_receiver_id_and_sender_id", unique: true
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
   end
 
   create_table "interviews", force: :cascade do |t|
@@ -72,9 +82,16 @@ ActiveRecord::Schema.define(version: 20180508122301) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "conversation_id"
+    t.string "content"
+    t.string "message_type"
+    t.datetime "read_at"
+    t.string "link"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "notifications", force: :cascade do |t|

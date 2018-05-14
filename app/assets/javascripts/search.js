@@ -75,11 +75,7 @@ function handleClickCheckbox(event, page) {
       data['jobs'].forEach(function(job){
         showData(job, data);
       });
-      if (parseInt(data['total_results']) < 10) { 
-        $('.results-total-count').text('Show ' + data['total_results'] + ' of ' + data['total_results'] + ' results')
-      } else {
-        $('.results-total-count').text('Show 10 of ' + data['total_results'] + ' results')
-      }
+      $('.results-total-count').text('Total ' + data['total_results'] + ' results')
       if ($(event).attr("class") == "common-jobtypes" || $(event).attr("class") == "common-locations") {
         $paginate.twbsPagination('destroy');
         $paginate.twbsPagination($.extend({}, defaultOpts, {

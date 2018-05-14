@@ -76,8 +76,7 @@ module ElasticsearchJob
         about_candidate: about_candidate,
         job_type: job_type,
         location: location,
-        view_count: view_count,
-        score: _score
+        view_count: view_count
       }
 
       job_attrs

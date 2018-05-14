@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   get :interviews, to: 'home#interviews'
   get 'interviews/new', to: 'home#new_interviews'
   get :candidates, to: 'home#candidates'
-  get :rc_messages, to: 'home#rc_messages'
-
+  get '/rc_messages/:id', to: 'home#rc_messages'
+  get '/rc_messages', to: 'home#rc_messages'
   get '/job/#{slug}-#{id}', to: 'jobs#edit'
   get '/jf/:id', to: 'home#profile', as: :jf
   get '/search', to: 'jobs#search'
@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   get 'appropriate_jobs/', to: 'home#appropriate_jobs'
   get '/simple_search_user', to: 'home#simple_search_user'
   get '/simple_search_job', to: 'home#simple_search_job'
-
   resources :messages
   resources :notifications
   mount ActionCable.server => '/cable'

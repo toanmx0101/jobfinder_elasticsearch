@@ -17,7 +17,7 @@
         <div class="filter-wireframe">
           <div class="solf-by">
             <div>
-              <h3 class="results-total-count">Show <%= @jobs.count %> jobs of <%= @total_results %></h3>
+              <h3 class="results-total-count">Total <%= @total_results %> results</h3>
             </div>
           </div>
           <nav aria-label="Page navigation">
@@ -26,8 +26,6 @@
         </div>
 
       </div>
-      
-      
       <div class="list-cards">
         <div class="list-center-content">
           <% if @jobs.present? %>
