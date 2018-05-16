@@ -1,5 +1,5 @@
 $( document ).on('turbolinks:load', function() {
-  $('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
+$('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
   $('.sender-item').click(function(){
     $('.sender-item').removeClass('active-sender-item');
     $(this).addClass('active-sender-item')
@@ -23,6 +23,15 @@ $( document ).on('turbolinks:load', function() {
         }
       });
     }
-
   });
+  // $(".message-input").on('focus', function(){
+  //   $('#thread_content').attr('data-status', 'read')
+  //   $.ajax({
+  //     type: 'PATCH',
+  //     url: '/conversation'
+  //     data: {
+  //       id: $('#thread_content').attr('data-conversation')
+  //     }
+  //   })
+  // });
 });

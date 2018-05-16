@@ -25,10 +25,51 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(window).bind('scroll', function () {
+    if ($(window).scrollTop() >  280) {
+      $('#userProfileNavigation').addClass('nav-fixed');
+    } else {
+      $('#userProfileNavigation').removeClass('nav-fixed');
+    }
+  });
+</script>
 <div class="container">
+  <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
+    <div class="u-p-n-items selected">
+      <div class="u-p-n-item-link" id="firstLink">
+        About
+      </div>
+    </div>
+    <div class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Messages
+      </div>
+    </div>
+    <div class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Interviews
+      </div>
+    </div>
+    <div class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Notifications
+      </div>
+    </div>
+   <div class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Suggest jobs
+      </div>
+    </div>
+    <div class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Settings
+      </div>
+    </div>
+  </div>
   <div class="details-user-profile">
     <div class="c-details-user-profile">
-      <div class="o-profile" style="margin-top: -45px;">
+      <div class="o-profile" >
         <div class="profile">
           <div class="c-of--profile">
             <h3>Experience</h3>
@@ -134,7 +175,5 @@
         <span style="margin-left: 25px;color: #2ca5ec;cursor: pointer;">Mess with me</span>
       </div>
     </div>
-  </div>
-  <div class="details-user-profile">
   </div>
 </div>

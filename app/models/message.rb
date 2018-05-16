@@ -4,6 +4,6 @@ class Message < ApplicationRecord
   belongs_to :conversation, touch: true
 
   def message_notify
-    MessageBroadcastJob.perform_later(1, self)
+    MessageBroadcastJob.perform_later(current.user.conversations.unread_messages.count, self)
   end
 end

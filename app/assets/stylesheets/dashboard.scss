@@ -450,10 +450,10 @@
 }
 .right-container {
   width: calc( 100% - 250px );
-  height: auto;
+  height: 100%;
   position: absolute;
   right: 0;
-  background: #FAFAFA;
+  background: #f9f9f9;
 }
 .filter-header {
   display: flex;

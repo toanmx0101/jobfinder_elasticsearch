@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   root to: 'home#index'
   resources :jobs
-
+  resources :conversations , only: [:update, :create, :destroy]
   get :appliers, to: 'home#appliers'
   get :interviews, to: 'home#interviews'
   get 'interviews/new', to: 'home#new_interviews'

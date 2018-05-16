@@ -5,6 +5,9 @@ class Conversation < ApplicationRecord
 
   validates :sender_id, uniqueness: { scope: :receiver_id }
 
+  scope :unread_conversations,-> { where status: 'unread' }
+  scope :read_conversations,-> { where status: 'read' }
+
   def opposed_user(user)
     user == receiver ? sender : receiver
   end

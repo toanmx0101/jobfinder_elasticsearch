@@ -15,10 +15,12 @@ class MessagesController < ApplicationController
   def edit; end
 
   def create
+
     @message = current_user.messages.build(message_params)
 
     respond_to do |format|
       if @message.save
+        @message.conversation.update_attributes(status: 'unread')
         format.html { redirect_to @message, notice: 'Message was successfully created.' }
         format.json { render json: {},status: :created }
       else

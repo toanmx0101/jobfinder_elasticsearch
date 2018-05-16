@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_message
-    
+    @conversations = current_user.conversations.includes(:receiver).limit(10)
   end
 end

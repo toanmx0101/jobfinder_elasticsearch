@@ -60,12 +60,16 @@
               .a-center-content
                 %a{href: 'javascript:;'}
                   %i.far.fa-envelope.fa-lg{"aria-hidden" => "true"}
-                    %span.js-count-noti 
+                    %span.js-count-noti
+                      #open_notification
               .message-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Messages
                   %a.mark-read-all Mark read all
                 %ul#messageList{data_user: current_user.id}
+                  - @conversations.each do |con|
+                    = render 'conversations/conversation', conversation: con
+
           %li
             .a-item-content.notification-link
               .a-center-content
@@ -108,11 +112,12 @@
 :javascript
   $('.account-link, .notification-link, .message-link').click(function(){
     $(this).find("#open_notification").empty();
-    $(this).children(".js-dropdown-content").show();
+    $(this).children(".js-dropdown-content").toggle();
+    alert($('.js-dropdown-content').is(':visible'))
     $(this).addClass('active');
   });
   $('.mark-read-all').click(function(){
-    $('.readed').removeClass('readed');
+    $('.readed').removeClass('read');
   });
   $(document).mouseup(function (e){
     var container = new Array();
@@ -126,7 +131,6 @@
       {
         $(value).hide();
         $('.a-item-content').removeClass('active');
-        
       }
     });
   }); 

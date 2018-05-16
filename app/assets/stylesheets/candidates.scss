@@ -99,8 +99,9 @@
 }
 .p-l-j-content {
   overflow-y: scroll;
-  height: 350px;
+  max-height: 330px;
   margin-top: 12px;
+  
   &:hover, &:active, &:focus {
     overflow-y: scroll;
     }
@@ -119,15 +120,26 @@
     border-radius: 10px;
     background: #DDDDDD; 
   }
+  &:first-child {
+    margin-top: 12px;
+  }
+  &:last-child {
+    margin-bottom: 12px;
+  }
 }
 .p-l-j-job {
-  padding: 12px;
+  padding: 10px 12px;
   cursor: pointer;
-  padding-bottom: 0;
   .id {
     font-weight: 600;
     color: #717171;
   }
+  &:hover {
+    background: #F9f9f9;
+  }
+  &:active {
+    background: #F9f9f9;
+  } 
 }
 .p-l-j-job-title {
   font-size: 15px;

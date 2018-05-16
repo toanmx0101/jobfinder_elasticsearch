@@ -36,7 +36,7 @@
                 <div class="message-search-form" style="display: flow-root;font-size: 20px;">
                 </div>
               </div>
-              <div id="thread_content" class="message-thread-content" data_user="<%= current_user.id %>" data-conversation="<%= @recent_conversation.id %>">
+              <div id="thread_content" class="message-thread-content" data_user="<%= current_user.id %>" data-conversation="<%= @recent_conversation.id %>" data-status="<%= @recent_conversation.status %>">
                 <div class="message-item sender-mess-item">
                   <% @list_messages.each do |mes| %>
                     <% if mes.user_id == current_user.id %>

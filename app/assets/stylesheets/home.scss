@@ -74,11 +74,10 @@
   }
 }
 .base-user-profile {
-  height: 350px;
+  height: 250px;
   background: linear-gradient(to right, #353F60 , #6C6C93 );
   .c-base-user-profile {
     display: flex;
-    padding-top: 60px; 
     color: #FCFDFE;
     h2 {
       color: #FCFDFE;
@@ -117,7 +116,6 @@
   .c-contact-user-profile {
     width: 30%;
     height: 300px;
-    margin-top: -45px;
     .contact-text {
       padding: 32px;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);

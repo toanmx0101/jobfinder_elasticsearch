@@ -9,3 +9,5 @@ App.notifications = App.cable.subscriptions.create "MessagesChannel",
     # Called when there's incoming data on the websocket for this channel
     if parseInt($('#thread_content').attr("data_user")) == parseInt(data.id)
       $('#thread_content .sender-mess-item').append "#{data.message}"
+      $('#thread_content').scrollTop($('#thread_content')[0].scrollHeight);
+      $('#open_notification').html '1'
