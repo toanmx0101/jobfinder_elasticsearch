@@ -15,9 +15,8 @@ class MessagesController < ApplicationController
   def edit; end
 
   def create
-
     @message = current_user.messages.build(message_params)
-
+    @message.message_type = :normal
     respond_to do |format|
       if @message.save
         @message.conversation.update_attributes(status: 'unread')

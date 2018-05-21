@@ -7,7 +7,9 @@ $( document ).on('turbolinks:load', function() {
   });
 });
 $(document).ready(function (){
-  $('html, body').animate({
-      scrollTop: $("#userProfileNavigation").offset().top - 61
-  }, 500);
-  });
+  if ($("#userProfileNavigation").length > 0) {
+    $('html, body').animate({
+        scrollTop: $("#userProfileNavigation").offset().top - 61
+    }, 500);
+  }
+});

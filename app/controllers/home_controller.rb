@@ -43,7 +43,7 @@ class HomeController < ApplicationController
   def setting;  end
 
   def interviews
-    if params[:ref] == 'month'
+    if params[:ref].present? && params[:ref] == 'month'
       range = DateTime.now.beginning_of_month..DateTime.now.end_of_month
     else
       range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
@@ -53,9 +53,20 @@ class HomeController < ApplicationController
   end
 
   def candidates
-    username = params[:username].present? ? params[:username] : ""
-    skills = params[:skills].present? ? params[:skills] : ""
-    work_position = params[:work_position].present? ? params[:work_position] : ""
+    @candidates = []
+    if params[:job_id].present?
+      @job = Job.find_by(id: params[:job_id])
+      @candidates = User.find_candidates_by_job(@jobs)
+    elsif params[:username].present? || params[:skills].present? || params[:work_position].present?
+      username = params[:username].present? ? params[:username] : ""
+      skills = params[:skills].present? ? params[:skills] : ""
+      work_position = params[:work_position].present? ? params[:work_position] : ""
+      @candidates = User.find_candidates_by_params(username, skills, work_position)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: @candidates.to_json( only: [:id, :username, :description, :experience, :avatar_url]) }
+    end
   end
 
   def simple_search_job
@@ -81,15 +92,14 @@ class HomeController < ApplicationController
     @conversations = current_user.conversations.includes(:receiver).order(updated_at: :desc)
     if params[:id].blank?
       @recent_conversation = @conversations.first
+      redirect_to "/rc_messages/" + @recent_conversation.id.to_s
     else
       @recent_conversation = Conversation.includes(:receiver).find(params[:id])
     end
-    @sended_messages = @recent_conversation.messages.order(created_at: :desc)
-    @received_messages = Conversation.find_by(sender_id: @recent_conversation.receiver_id, receiver_id: current_user.id).messages.includes(:user).order(created_at: :desc)
-    @list_messages = (@sended_messages + @received_messages).sort_by{|mes| mes.created_at }
+    @sended_messages ||= @recent_conversation.messages.order(created_at: :desc)
+    @received_messages ||= Conversation.find_by(sender_id: @recent_conversation.receiver_id, receiver_id: current_user.id).messages.includes(:user).order(created_at: :desc)
+    @list_messages ||= (@sended_messages + @received_messages).sort_by{|mes| mes.created_at }
   end
-
-  def message_thread; end
 
   def new_interviews
     @interview = Interview.new

@@ -91,14 +91,14 @@
       }
       cursor: pointer;
       a {
-        padding: 14px 17px;
+        padding: 6px 17px;
       }
       
     }
 
   }
 }
-.notification-item, .applyer-item  {
+.notification-item, .applyer-item,  {
   display: flex;
   padding: 0 12px;
   position: relative;
@@ -144,7 +144,7 @@
 }
 #notificationList {
   .notification-item {
-    padding: 0 17px;
+    padding: 6px 17px;
   }
 }
 .notification-item {

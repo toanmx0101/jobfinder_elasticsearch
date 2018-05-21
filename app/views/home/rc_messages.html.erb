@@ -16,17 +16,23 @@
             </div>
             <div class="sender-listitem">
               <% @conversations.each do |conversation| %>
-                <div class="sender-item active-sender-item">
-                  <div class="sender-header">
-                    <span class="sender-name"><%= conversation.receiver.username %><i class="fa fa-circle" aria-hidden="true"></i></span>
-                    <span class="send-time">
-                      <%= time_ago_in_words(conversation.updated_at) %> ago
-                    <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                <%= link_to "/rc_messages/" + conversation.id.to_s do %>
+                  <div class="sender-item active-sender-item">
+                    <div class="sender-header">
+                      <span class="sender-name"><%= conversation.receiver.username %><i class="fa fa-circle" aria-hidden="true"></i></span>
+                      <span class="send-time">
+                        <%= time_ago_in_words(conversation.updated_at) %> ago
+                      <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="sender-sort-sumary">
+                      <% if @received_messages.blank? %>
+                        <span><%= truncate(@sended.first.content, :length => 60) %></span>
+                      <% else %>
+                        <span><%= truncate(@received_messages.first.content, :length => 60) %></span>
+                      <% end %>
+                    </div>
                   </div>
-                  <div class="sender-sort-sumary">
-                    <span><%= truncate(@received_messages.first.content, :length => 60) %></span>
-                  </div>
-                </div>
+                <% end %>  
               <% end %>
             </div>
           </div>
@@ -39,29 +45,18 @@
               <div id="thread_content" class="message-thread-content" data_user="<%= current_user.id %>" data-conversation="<%= @recent_conversation.id %>" data-status="<%= @recent_conversation.status %>">
                 <div class="message-item sender-mess-item">
                   <% @list_messages.each do |mes| %>
-                    <% if mes.user_id == current_user.id %>
-                      <div class="sender-mess-item__content" style="">
-                        <div class="sender-mess-item__content_right">
-                          <div class="sender-mess-item__avatar item__avatar_right">
-                            <!-- <span class="sender-mess-time"><%= mes.created_at.strftime("%H:%M") %></span> -->
-                          </div>
-                        </div>
-                        <div class="sender-mess-item__content_right">
-                          <div class="sender-mess-item__text right-mess-text"><%= mes.content %></div>
-                        </div>
-                      </div>
-                    <% else %>
-                      <div class="sender-mess-item__content">
-                        <!-- <div class="sender-mess-item__avatar">
-                          <span class="sender-mess-time"><%= mes.created_at.strftime("%H:%M") %></span>
-                        </div> -->
-                        <div class="sender-mess-item__content_right">
-                          <img src="<%= mes.user.avatar_url %>"/>
-                          <div class="sender-mess-item__text short-mess-text"><%= mes.content %></div>
-                          </div>
-                      </div>
+                    <% if mes.normal? %>
+                      <% if mes.user_id == current_user.id %>
+                        <%= render 'messages/sent_message', mes: mes, recent_conversation: @recent_conversation %>
+                      <% else %>
+                        <%= render 'messages/received_message', mes: mes, recent_conversation: @recent_conversation %>
+                      <% end %>
+                    <% elsif mes.suggest_link? %>
+                      <%= render 'messages/suggest_message' %>
+                    <% elsif mes.interview_invite? %>
+                      <%= render 'messages/interview_invite_message' %>
                     <% end %>
-                  <% end %>    
+                  <% end %>
                 </div>
               </div>
               <div class="message-form">

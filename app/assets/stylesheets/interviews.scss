@@ -342,6 +342,9 @@
 .job-search-result {
   padding: 12px;
   padding-top: 0;
+  a {
+    display: block;
+  }
   .id {
     font-weight: 600;
     font-size: 15px;

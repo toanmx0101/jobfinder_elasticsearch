@@ -4,13 +4,16 @@ var defaultOpts = {
     visiblePages: 3
   }
 $( document ).on('turbolinks:load', function() {
-  var totalPages = Math.ceil($('#pagination').attr('value')/10)
-  defaultOpts["totalPages"] = totalPages
-  $paginate = $('#pagination')
-  $paginate.twbsPagination(defaultOpts);
-  $paginate.on('page', function(evt, page) {
-    handleClickCheckbox(evt, page)
-  })
+  if ($('#pagination').length > 0) {
+    var totalPages = Math.ceil($('#pagination').attr('value')/10)
+    defaultOpts["totalPages"] = totalPages
+    $paginate = $('#pagination')
+    $paginate.twbsPagination(defaultOpts);
+    $paginate.on('page', function(evt, page) {
+      handleClickCheckbox(evt, page)
+    })
+  }
+  
 });
 function getListLocationChecked() {
   var locations = []

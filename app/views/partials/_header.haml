@@ -14,8 +14,6 @@
             %span Recent searches
           .s-h-list-items
             .h-item Finace
-
-
     %nav
       %ul.nav-list-item
         - unless user_signed_in?
@@ -60,8 +58,10 @@
               .a-center-content
                 %a{href: 'javascript:;'}
                   %i.far.fa-envelope.fa-lg{"aria-hidden" => "true"}
+                    - c_count = @conversations.count
                     %span.js-count-noti
                       #open_notification
+                        = c_count > 0 ? c_count : ''
               .message-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Messages
@@ -108,29 +108,4 @@
               .a-center-content
                 = link_to(destroy_user_session_path, method: :delete) do
                   %span Signout
-
-:javascript
-  $('.account-link, .notification-link, .message-link').click(function(){
-    $(this).find("#open_notification").empty();
-    $(this).children(".js-dropdown-content").toggle();
-    alert($('.js-dropdown-content').is(':visible'))
-    $(this).addClass('active');
-  });
-  $('.mark-read-all').click(function(){
-    $('.readed').removeClass('read');
-  });
-  $(document).mouseup(function (e){
-    var container = new Array();
-    container.push($('.account-dropdown'));
-    container.push($('.notification-dropdown'));
-    container.push($('.message-dropdown'));
-    
-    $.each(container, function(key, value) {
-      if (!$(value).is(e.target) // if the target of the click isn't the container...
-        && $(value).has(e.target).length === 0) // ... nor a descendant of the container
-      {
-        $(value).hide();
-        $('.a-item-content').removeClass('active');
-      }
-    });
-  }); 
+  

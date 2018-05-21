@@ -1,5 +1,5 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!, only: [:update]
+  before_action :authenticate_user!, only: [:update, :update_all_conversations]
 
   def update
     @conversation = Conversation.find(params[:id])
@@ -11,6 +11,14 @@ class ConversationsController < ApplicationController
       end
     end
   end
+
+  def update_all_conversations
+    Conversation.where(id: current_user.conversations).update_all(status: 'read')
+    respond_to do |format|
+      format.json { render json: {}, status: :ok }
+    end
+  end
+
   private
     def message_params
       params.permit(:id)
