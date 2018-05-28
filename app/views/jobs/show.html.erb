@@ -30,8 +30,6 @@
                   $('.js-chat-or-viewprofile').toggle();
                 });
               </script>
-              - 
-              <p class="company-name">SPIT COMPANY</p>
             </span>
           </div>
         </div>
@@ -43,7 +41,9 @@
       </div>
     </div>
     <div class="r-content-jds">
-      <%=  render "action_apply_and_share", job: @job%>
+      <% if user_signed_in? && !current_user.is_recruiter?%>
+        <%=  render "action_apply_and_share", job: @job%>
+      <% end %>
       <h3 style="font-size: 18px; margin-left: 25px;margin-top: 40px;">Job URL</h3>
       <div class="r-c-content-jds" style="box-shadow: none;padding: 0;">
         <input type="" name="" value="http://localhost:3000/jobs/<%= @job.to_param%>">

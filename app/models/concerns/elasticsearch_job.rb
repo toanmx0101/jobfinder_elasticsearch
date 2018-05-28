@@ -282,7 +282,7 @@ module ElasticsearchJob
         query: {
           multi_match: {
             query: work_position,
-            fields: [ "description","about_candidate" ]
+            fields: [ "about_candidate" ]
           }
         },
         size: 2,
@@ -295,7 +295,6 @@ module ElasticsearchJob
               keywords: {
                 significant_terms: {
                   field: "about_candidate",
-                  min_doc_count: 20,
                   size: 10,
                   exclude: Job.work_position_tags_analyzer(work_position)
                 }
