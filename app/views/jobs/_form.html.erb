@@ -50,10 +50,7 @@
               min-height: 300px;
           }
         </style>
-        <%= form.text_area :description, id: :description , value: '<h2>About company</h2><p><br></p>
-        <h2>Remuneration</h2>
-        <p><br></p>
-        <h2>Contact</h2>'%>
+        <%= form.text_area :description, id: :description , value: ''%>
         <div class="header-job-create">
           <h3 class="h3-heading">WHAT ARE THE JOB REQUIREMENTS?</h3>
         </div>
@@ -69,7 +66,7 @@
             <div class="c--left-form-group">
               <div class="x1--form-create-recruitment"> 
                 <h3 class="h3-heading">Job type</h3>
-                <%= form.text_field :type, id: :job_job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
+                <%= form.text_field :job_type, id: :job_type, placeholder: 'Hourly, Fulltime, Parttime, Remote?'%>
               </div>
             </div>
           </div>
@@ -82,11 +79,6 @@
             </div>
           </div>  
         </div>
-        <div class="advance-setting">
-          <div class="c-content">
-            <h3 class="h3-heading">Advance setting</h3>
-          </div>
-        </div>
         <div class="header-job-create"></div>
         <div class="form-job-submit">
           <span class="submit"><%= form.submit %></span>
@@ -96,24 +88,6 @@
     </div>
     <div class="st-right-content">
       <div id="xxx" class="x-st-right-content">
-        <div class="" style="padding: 15px 0; display: flex;">
-          <span class="preview-job ac-job" style="width: 30%;display: inline-block;margin-right: 6px;">Post this job</span>
-          <span class="preview-job ac-job" style="width: 30%;display: inline-block;margin-right: 6px;"><i class="fa fa-eye fa-lg" style="color: #f8bc48;"></i> Preview</span>
-          <span class="preview-job ac-job" style="width: 30%;text-align: center;c">More</span>
-        </div>
-        <div class="fill-company-informantion"> 
-          <h3 class="h3-heading">Fill full your company information</h3>
-          <span>Cong ty cua ban van con chua hoan thanh nhieu thong tin. Hay dien du de co the thu hut ung vien hon.</span>
-          <div class="company-infor-button">
-            <i class="fa fa-info" aria-hidden="true"></i>
-          </div>
-          <div class="fill-button">
-            <span>
-              <i class="fa fa-paper-plane" aria-hidden="true"></i>
-              Let go!
-            </span>
-          </div>
-        </div>
         <div class="tip-of-recruitment">
           <h3 class="h3-heading">
             Tips of Recruiting Employees  
@@ -134,4 +108,7 @@
 <script>
   var editor1 = ClassicEditor.create( document.querySelector( '#description' ))
   var editor2 = ClassicEditor.create( document.querySelector( '#about_candidate' ))
+  function submitForm() {
+    $( ".submit" ).trigger( "click" );
+  }
 </script>

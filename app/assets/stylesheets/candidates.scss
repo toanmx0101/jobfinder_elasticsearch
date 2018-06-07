@@ -160,9 +160,11 @@
 .active-cs {
   display: block;
 }
-.candidate-profile {
+.cc-profiles {
   width: 30%;
-  margin-top: 12px;
+}
+.candidate-profile {
+  display: none;
   .c-p-content {
     padding: 12px;
     background: white;
@@ -180,7 +182,6 @@
       .score {
         position: absolute;
         right: 0;
-        width: 30px;
         height: 30px;
         border-radius: 15px;
         padding: 0 15px;
@@ -211,6 +212,9 @@
         border-radius: 5px;
         font-size: 14px;
         cursor: pointer;
+        a {
+          color: #484848;
+        }
       }
       .c-p-mes {
         display: inline-block;

@@ -12,7 +12,7 @@
         </span>
         <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
         <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
-          <%= @user&.description %>
+          <%= raw @user&.description %>
         </span>
       </div>
     </div>
@@ -27,48 +27,51 @@
     }
   });
 </script>
+
 <div class="container">
-  <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
-    <div class="u-p-n-items selected">
-      <div class="u-p-n-item-link" id="firstLink">
-        About
+  <% if user_signed_in? && @user == current_user %>
+    <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
+      <div class="u-p-n-items selected">
+        <div class="u-p-n-item-link" id="firstLink">
+          About
+        </div>
+      </div>
+      <div class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Messages
+        </div>
+      </div>
+      <div class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Interviews
+        </div>
+      </div>
+      <div class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Notifications
+        </div>
+      </div>
+     <div class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Suggest jobs
+        </div>
+      </div>
+      <div class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Settings
+        </div>
       </div>
     </div>
-    <div class="u-p-n-items">
-      <div class="u-p-n-item-link">
-        Messages
-      </div>
-    </div>
-    <div class="u-p-n-items">
-      <div class="u-p-n-item-link">
-        Interviews
-      </div>
-    </div>
-    <div class="u-p-n-items">
-      <div class="u-p-n-item-link">
-        Notifications
-      </div>
-    </div>
-   <div class="u-p-n-items">
-      <div class="u-p-n-item-link">
-        Suggest jobs
-      </div>
-    </div>
-    <div class="u-p-n-items">
-      <div class="u-p-n-item-link">
-        Settings
-      </div>
-    </div>
-  </div>
-  <div class="details-user-profile">
+
+  <% end %>
+  <div class="details-user-profile" style="<%= 'margin-top: -30px ' if user_signed_in? && @user != current_user%>">
     <div class="c-details-user-profile">
       <div class="o-profile" >
         <div class="profile">
           <div class="c-of--profile">
             <h3>Experience</h3>
-            <h4><%= @user&.experience_level %> experience</h4>
             <div>
-              <%= @user&.experience%>
+              <%= raw @user&.experience%>
             </div>
           </div>
         </div>
@@ -78,7 +81,7 @@
         <div class="profile">
           <div class="c-of--profile" style="">
             <h3>Education</h3>
-            <%= @user&.education %>
+            <%= raw @user&.education %>
           </div>
         </div>
       </div>

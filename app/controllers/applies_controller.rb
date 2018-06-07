@@ -1,7 +1,7 @@
 class AppliesController < ApplicationController
   before_action :set_apply, only: [:destroy]
   before_action :authenticate_user!
-  after_action :notify, only: [:create], if: -> { user_signed_in? && current_user.id != @job.user_id && @apply.id.present? }
+  after_action :notify, only: [:create], if: -> { user_signed_in? && (current_user.id != @job.user_id) && @apply.id.present? }
 
   def index
     @applies = current_user.applies

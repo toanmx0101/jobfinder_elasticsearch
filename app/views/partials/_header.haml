@@ -49,10 +49,17 @@
                 %a{href: '/new_recruitment'}
                   %i.fa.fa-plus.fa-lg{"aria-hidden" => "true"}
           %li
-            .a-item-content
+            .a-item-content.message-link
               .a-center-content
-                %a{href: '/login'}
+                %a{href: 'javascript:;'}
                   %i.far.fa-list-alt.fa-lg{"aria-hidden" => "true"}
+              .message-dropdown.js-dropdown-content
+                .message-header
+                  %a.see-all Meetings
+                  %a.mark-read-all 
+                %ul#meetingsList{data_user: current_user.id}
+                  - current_user.meetings.each do |interview|
+                    = render 'interviews/interview', interview: interview
           %li
             .a-item-content.message-link
               .a-center-content

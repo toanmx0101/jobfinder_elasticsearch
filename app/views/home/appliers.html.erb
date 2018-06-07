@@ -8,12 +8,13 @@
             <h3 style="font-size: 18px;margin: 0; padding: 8px;">Appliers</h3>
           </div>
           <div class="filter-appliers">
+            <div class="pages-job">
+              <%= paginate @applies, window: 0 %>
+            </div>
             <div class="fitler">
               <div class="all selected" style="padding: 6px 18px; ">All</div>
               <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px">Meeting Scheduled</div>
-              <div>Passed</div>
               <div>No Schedule</div>
-              <div style="border-radius: 0 3px 3px 0">Failed</div>
             </div>
           </div>
         </div>
@@ -23,7 +24,8 @@
         <div class="c-appliers">
           <% f_apply.each do |apply| %>
               <div class="applier">
-                <div class="applier-info">
+                <div>
+                  <div class="applier-info">
                   <%= link_to jf_path(apply.applyer), class: "user-avatar" do %>
                     <img src="<%= apply.applyer.avatar_url %>">
                   <% end %>
@@ -41,29 +43,29 @@
 
                 <div class="job">
                   <%= link_to apply.job, class: "title" do %>
-                    <strong style="color: #717171;"><%= apply.job.title %></strong>
+                    <strong style="color: #717171;">JOB:  <%= apply.job.title %></strong>
                   <% end %>
                   <div class="orther-applyer">
                     <div class="applyer-list">
-                      <div class="user-avatar">
-                        <img src="images/logo.png">
-                      </div>
-                      <div class="user-avatar">
-                        <img src="images/logo.png">
-                      </div>
-                      <div class="user-avatar">
-                        <img src="images/logo.png">
-                      </div>
-                      <div class="user-avatar">
-                        <img src="images/logo.png">
-                      </div>
-                      <div style="display: inline-block;margin: auto;color: #5897fbb8">4 more</div>
+                      <% apply.job.applies.each do |ap|%>
+                        <div class="user-avatar">
+                          <img src="<%= ap.applyer.avatar_url%>">
+                        </div>
+                      <% end %>
+                      <% if  apply.job.applies.count > 4 %>
+                        <div style="display: inline-block;margin: auto;color: #5897fbb8"><%=  apply.job.applies.count -4 %> more</div>
+                      <% end %>
                     </div>
                   </div>
                 </div>
                 <div class="view-details">
-                  <strong>View Details</strong>
+                  <%= link_to jf_path(apply.applyer), class: "user-name" do %>
+                      <strong>View Profile</strong>
+                    <% end %>
+                  
                 </div>
+                </div>
+                
               </div>
           <% end %>
         </div>

@@ -1,5 +1,5 @@
 <%= render "dashboard_left_menu", page: "candidate" %>
-<div class="right-container">
+<div class="right-container" style="margin-bottom: 20px;">
   <div class="m--recruitment-content ">
     <div class="recruitments">
       <div class="c-appliers-header" style="margin-bottom: 26px;display: block;">
@@ -27,7 +27,7 @@
                     <h4 style="color: #ACACAC;">User name</h4>
                   </div>
                 </div>  
-                  <%= text_field_tag :user_name, params[:user_name], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
+                  <%= text_field_tag :username, params[:username], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
               </div>
               <div class="locations">
                 <div class="skills-header">
@@ -67,7 +67,7 @@
                     success: function(data) {
                       $('.job-search-results').empty();
                       data.forEach(function(item){
-                        $('.job-search-results').append('<div class="p-l-j-job" onclick="handleClickPLJJOB(this)"><div class="id"># ' + item.id + '</div><div class="p-l-j-job-title">' + item.title + '</div></div>')
+                        $('.job-search-results').append('<div class="p-l-j-job" data-job="' + item.id + '" onclick="handleClickPLJJOB(this)"><div class="id"># ' + item.id + '</div><div class="p-l-j-job-title">' + item.title + '</div></div>')
                       });
                     }
                   });
@@ -83,87 +83,100 @@
             </div>
           </div>
         </div>
+
         <div class="c-cs-candidates-results">
-          <% @candidates.each do |candidate| %>
-            <div class="c-cs-content-res">
-                <div class="candidate-item">
-                  <div class="content">
-                    <div class="user-icon">
-                      <img src="<%= candidate.avatar_url%>">
+          <div>
+            <nav aria-label="Page navigation">
+              <ul class="pagination" id="candidatePagination" value="<%= @total_results %>" style="margin: 0px 20px;"></ul>
+            </nav>
+          </div>
+          <div class="results-candidate">
+            <% @candidates.each do |candidate| %>
+              <div class="c-cs-content-res">
+                  <div class="candidate-item">
+                    <div class="content">
+                      <div class="user-icon">
+                        <img src="<%= candidate.avatar_url%>">
+                      </div>
+                      <div class="user-infor">
+                        <div class="username"><%= candidate.username %></div>
+                        <div><%= candidate.work_position %></div>
+                      </div>
+                      <div class="view-profile" data-user="<%= candidate.id%>">View</div>
                     </div>
-                    <div class="user-infor">
-                      <div class="username"><%= candidate.username %></div>
-                      <div><%= candidate.work_position %></div>
-                    </div>
-                    <div class="view-profile">View</div>
+                  </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="cc-profiles">
+          <% @candidates.each do |user| %>
+            <div class="candidate-profile" id="candidate<%= user.id%>">
+              <div class="c-p-content">
+                <div>
+                  <div class="c-p-user-profile">
+                    <img class="" src="<%= user.avatar_url %>"/>
+                    <div class="score">Score <%= @user_score.detect{ |e| e[:user_id] == user.id.to_s }[:user_score].round(2)%></div>
                   </div>
                 </div>
+                <div>
+                  <div class="c-p-username"><%= user.username %></div>
+                  <div style="text-align: center;"><%= user.work_position %></div>
+                  <div class="c-p-link">
+                    <div class="c-p-view"><%= link_to "View profile", jf_path(user), target: "_blank"%> </div>
+                    <div class="c-p-mes">Send message</div>
+                  </div>
+                  <div class="c-p-tags">
+                    <h2>Tags</h2>
+                    <div>
+                      <% if user.tags.present? %>
+                        <% user.tags.each do |tag|%>
+                          <div class="c-p-tag-item"><%= tag["term"] %></div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  </div>
+                   <div class="c-p-experience">
+                    <h2> Description</h2>
+                    <div class="c-p-experience-short-content">
+                      <%= raw user.description %>
+                    </div>
+                  </div>
+                  <div class="c-p-experience">
+                    <h2> Experience</h2>
+                    <div class="c-p-experience-short-content">
+                      <%= raw user.experience %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>
-        <!-- <div class="c-cs-advertisment">
-          <img src="/images/jobs_finder.png">
-        </div> -->
-        <div class="candidate-profile">
-          <div class="c-p-content">
-            <div>
-              <div class="c-p-user-profile">
-                <img class="" src="/images/logo.png"/>
-                <div class="score">12.5</div>
-              </div>
-            </div>
-            <div>
-              <div class="c-p-username">ToanMX</div>
-              <div style="text-align: center;">UI/UX Engineer</div>
-              <div class="c-p-link">
-                <div class="c-p-view">View profile</div>
-                <div class="c-p-mes">Send message</div>
-              </div>
-              <div class="c-p-tags">
-                <h2>Tags</h2>
-                <div>
-                  <div class="c-p-tag-item">Web</div>
-                  <div class="c-p-tag-item">Web</div>
-                  <div class="c-p-tag-item">Web</div>
-                </div>
-              </div>
-              <div class="c-p-experience">
-                <h2> Experience</h2>
-                <div class="c-p-experience-short-content">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the lead.
-                  <div class="c-p-experience-more-content">More</div>
-                  <div class="c-p-experience-content">Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </div>
-                </div>
-              </div>
-              <div class="c-p-experience">
-                <h2> Description</h2>
-                <div class="c-p-experience-short-content">
-                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the lead.
-                  <div class="c-p-experience-more-content">More</div>
-                  <div class="c-p-experience-content">Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like). </div>
-                </div>
-              </div>
-            </div>
-        </div>
+        
       </div>
     </div>
   </div>
 </div>
+
 <script type="text/javascript">
+  $('.view-profile').on('click', function(){
+    $('.candidate-profile').hide()
+    $('#candidate' + $(this).data('user')).show();
+  });
   $('.text-search').on('click', function(){
+    $('.results-candidate').empty()
     $('.pick-list-jobs').hide();
     $('.c-cs-search-filter').show();
     $('.search-from-jobs').removeClass('active-search-option')
     $('.text-search').addClass('active-search-option')
   });
   $('.search-from-jobs').on('click', function(){
+    $('.results-candidate').empty()
     $('.pick-list-jobs').show();
     $('.c-cs-search-filter').hide();
     $('.search-from-jobs').addClass('active-search-option')
     $('.text-search').removeClass('active-search-option')
   });
-  function handleClickPLJJOB(event) {
-    $('.p-l-j-job').removeClass('selected');
-    $(event).addClass('selected');
-  }
 </script>

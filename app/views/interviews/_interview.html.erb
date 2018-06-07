@@ -1,0 +1,11 @@
+<li>
+  <%= link_to "/interviews/" + interview.id.to_s, class: "notification-item" do %>
+    <div class="user-icon">
+      <img src="<%= interview.recruiter.id %>"/>
+    </div>
+    <div class="message-content">
+      <div class="user-name"><%= interview.recruiter.username%></div>
+      <div class="message"></div>
+    </div>
+  <% end %>
+</li>
