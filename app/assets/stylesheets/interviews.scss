@@ -54,7 +54,23 @@
           background-color: #2890ff;
         }
         .list-interviews-in-days {
-
+          overflow-y: scroll;
+          max-height: 458px;
+          &::-webkit-scrollbar-track-piece {
+            background-color: transparent;
+            -webkit-border-radius: 6px;
+          }
+          &::-webkit-scrollbar  {
+            width: 0px;
+            height: 0px;
+            background: transparent;
+            background-color: transparent;
+          }
+          &::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 12px;
+            border-radius: 10px;
+            background: #DDDDDD; 
+          }
           .item {
             border-radius: 8px;
             border: 1px solid #DCE1E4;

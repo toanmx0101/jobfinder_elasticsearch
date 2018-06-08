@@ -22,6 +22,7 @@
       </div>
       <div class="list-cards">
         <div class="list-center-content">
+
           <% if @jobs.present? %>
             <% @jobs.each do |job| %>
               <%= render 'job', job: job, score: @jobs_score.detect{ |e| e[:job_id] == job.id.to_s }[:job_score].round(2) %>

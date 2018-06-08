@@ -3,7 +3,12 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in? && current_user.is_recruiter?
-      @jobs = current_user.jobs.order_by('start_at', 'DESC').page(params[:page])
+      if params[:q].present? 
+        @jobs = current_user.jobs.where("title LIKE '%#{params[:q]}%' OR id=#{params[:q].to_i}")
+      else
+        @jobs = current_user.jobs
+      end
+      @jobs = @jobs.order_by('start_at', 'DESC').page(params[:page])
       render :dashboard
     end
   end
@@ -19,7 +24,7 @@ class HomeController < ApplicationController
 
   def appliers
     if current_user.is_recruiter?
-      @applies = Apply.includes(:applyer).includes(:job).where(job_id: current_user.jobs)
+      @applies = Apply.includes(:applyer).includes(:job).where(job_id: current_user.jobs).page(params[:page])
     else 
       redirect_to root_path
     end
@@ -56,16 +61,25 @@ class HomeController < ApplicationController
     @candidates = []
     if params[:job_id].present?
       @job = Job.find_by(id: params[:job_id])
-      @candidates = User.find_candidates_by_job(@jobs)
+      results = User.find_candidates_by_job(params[:page], 5, @job)
+
+      @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
+      @total_results = results[:total]
+      @user_score = results[:user_score]
     elsif params[:username].present? || params[:skills].present? || params[:work_position].present?
       username = params[:username].present? ? params[:username] : ""
       skills = params[:skills].present? ? params[:skills] : ""
       work_position = params[:work_position].present? ? params[:work_position] : ""
-      @candidates = User.find_candidates_by_params(username, skills, work_position)
+
+      results = User.find_candidates_by_params(params[:page], 5, username, work_position, skills)
+
+      @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
+      @total_results = results[:total]
+      @user_score = results[:user_score]
     end
     respond_to do |format|
       format.html
-      format.json { render json: @candidates.to_json( only: [:id, :username, :description, :experience, :avatar_url]) }
+      format.json { render json: { candidates: @candidates.as_json( only: [:id, :username, :work_position, :description, :experience, :avatar_url, :tags]), user_score: @user_score, total_results: @total_results } }
     end
   end
 

@@ -14,7 +14,10 @@ job_background = ["000000", "99999", "188035", "236709", "239898", "247763", "25
   "270695", "273244", "273254", "301930", "325229", "326410", "356040", "356830", "433154", "585419", "811107", "839934",
   "416408", "668296", "1011668", "371938", "207731", "942424", "265125", "301871", "441963", "724921", "1011666", "1011667", 
   "358667", "389819", "417352", "256297", "236093", "373543", "1011665", "625279", "461146", "961250"]
-100.times do |i| 
+
+
+
+20.times do |i| 
   username  = Faker::Internet.user_name(6).gsub('.', '_')
   User.create(email: Faker::Internet.safe_email, 
     username: username, 
@@ -26,6 +29,7 @@ job_background = ["000000", "99999", "188035", "236709", "239898", "247763", "25
     user_type: 'normal',
     view_history: [])
 end
+
 
 puts "Generate recruitment manager" 
 20.times do |i| 
@@ -129,4 +133,47 @@ data_hash.each do |company|
     )
 end
 
+puts "Delete applies"
+Apply.delete_all
+puts "Generate interview"
+500.times do |i|
+  applyer_id = User.where(user_type: 'normal').map(&:id).sample
+  Apply.create(applyer_id: applyer_id, job_id: Job.all.sample.id)
+end
 
+puts "Delete inteviews"
+Interview.delete_all
+puts "Generate interview"
+
+500.times do |i|
+  recruiter_id = User.where(user_type: 'recruiter').map(&:id).sample
+  interviewer_id = User.where(user_type: 'normal').map(&:id).sample
+  job_id = Job.where(user_id: recruiter_id).map(&:id).sample
+  Interview.create(
+    title: Faker::Job.title + ' - ' +Faker::Job.position + 'Interview',
+    recruiter_id: recruiter_id,
+    interviewer_id: interviewer_id,
+    job_id: job_id,
+    start_at: Faker::Time.between(3.week.from_now, Date.today, :day),
+    duration: '1 hour'
+    )
+end
+
+puts "Generate real profile"
+file = File.read('lib/assets/real_profile_user.json')
+data_hash = JSON.parse(file)
+data_hash.each do |u|
+  username  = Faker::Internet.user_name(6).gsub('.', '_')
+  User.create(email: Faker::Internet.safe_email, 
+    username: username, 
+    avatar_url: Faker::Avatar.image(username, "144x144"), 
+    password: 'password',  
+    password_confirmation: 'password', 
+    work_position: u['work_position'], 
+    description: u['description'],
+    experience: u['experience'],
+    education: u['education'],
+    user_type: 'normal',
+    view_history: [],
+    tags: Job.generate_tags(u['work_position']))
+end

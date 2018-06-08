@@ -1,6 +1,16 @@
-<h1>Editing Job</h1>
+<div class="container">
+  <div class="x-new-recruiments">
+    <h2 style="margin: 0;font-size: xx-large;color: #8FD5FE;">Editing Job</h2>
+    <div class="create-recruitment-steps">
+    </div>
+  </div>
+  <%= render 'form', job: @job  %>
+  
+</div>
+<%= render "/partials/footer"%>
 
-<%= render 'form', job: @job %>
-
-<%= link_to 'Show', @job %> |
-<%= link_to 'Back', jobs_path %>
+<script type="text/javascript">
+  $('.close-tip-button span .fa').click(function(){
+    $('.tip-of-recruitment').hide();
+  });
+</script>

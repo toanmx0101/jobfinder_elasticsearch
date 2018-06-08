@@ -105,15 +105,13 @@ module ElasticsearchJob
       jobs_ids = []
       jobs_score = []
       highlight = []
+      body = []
       hits.each do |elm|
         jobs_ids.push(elm.id)
         jobs_score.push({job_id: elm.id, job_score: elm._score})
+        body.push(Job.find(elm.id))
       end
-      body = if jobs_ids.present?
-               Job.find(*jobs_ids)
-             else
-               []
-             end
+
       {
         body: body,
         jobs_score: jobs_score,

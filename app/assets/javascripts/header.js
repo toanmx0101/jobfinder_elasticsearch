@@ -1,6 +1,5 @@
 $( document ).on('turbolinks:load', function() {
   $('.account-link, .notification-link, .message-link').click(function(){
-    $(this).find("#open_notification").empty();
     $(this).children(".js-dropdown-content").toggle();
     $(this).addClass('active');
     if ($(this).attr('class') == 'message-link') {

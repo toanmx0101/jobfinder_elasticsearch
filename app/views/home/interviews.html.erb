@@ -39,7 +39,7 @@
                   <% interviews.second.each do |interview| %>
                     <div class="item">
                       <div class="content">
-                        <div class="interview-time">At <%= interview.start_at.strftime("%h:%m")%></div>
+                        <div class="interview-time">At <%= interview.start_at.strftime("%H:%M")%></div>
                         <div class="title"><%= interview.title %></div>
                         <div class="actions">
                           <i class="fas fa-link"></i>
