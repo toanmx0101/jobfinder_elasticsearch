@@ -3,7 +3,7 @@
 <div class="container" >
   <div class="c-job-details">
     <div class="l-content-jds">
-      <div class="company-images">        
+      <div class="company-images">
         <div class="job-title" style="display: flex">
           <div class="company-img" style="display: flex;">
             <img src="<%= Company.all.sample.company_logo %>" style="width: 90px;max-height: 90px; border-radius: 4px;margin: auto;">
@@ -13,8 +13,8 @@
             <div class="job-description" style="margin-top: 20px;">At <strong><%= @job.location %></strong></div>
             <div class="job-description"><%= raw @job.job_type + "  -  " +@job.pay_rate %></div>
             <span style="display: inline-block;position: relative;">
-              <%= @job.created_at.strftime("%b %e") %> BY 
-              <div class="js-user-name"><%= @job.user.username%></div> 
+              <%= @job.created_at.strftime("%b %e") %> BY
+              <div class="js-user-name"><%= @job.user.username%></div>
               <div class="js-chat-or-viewprofile">
                 <ul>
                   <li>
@@ -33,7 +33,7 @@
             </span>
           </div>
         </div>
-        <div class="job-title" style="margin-top: 60px;">  
+        <div class="job-title" style="margin-top: 60px;">
           <h3 style="font-size: 24px;font-weight: 500;margin-bottom: 20px;">About</h3>
           <div class="job-description"><%= raw @job.description %></div>
           <div class="job-description"><%= raw HtmlBeautifier.beautify(@job.about_candidate.html_safe.html_safe) %></div>
@@ -52,5 +52,4 @@
     </div>
   </div>
 </div>
-<%= render "similar_job" %>
 <%= render "/partials/footer"%>

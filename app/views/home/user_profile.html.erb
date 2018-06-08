@@ -7,7 +7,7 @@
       <div class="c-text">
         <h2><%= @user&.username %>   <span>( <%= @user&.work_position %> )</span></h2>
         <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
-          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i> 
+          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i>
           <%= @user&.location %>
         </span>
         <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
@@ -29,21 +29,21 @@
 </script>
 <div class="container">
   <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
-    <div class="u-p-n-items selected">
+    <%= link_to  profile_path, class: 'u-p-n-items selected' do %>
       <div class="u-p-n-item-link" id="firstLink">
         About
       </div>
-    </div>
-    <div class="u-p-n-items">
+    <%end%>
+    <%= link_to  messages_path, class: 'u-p-n-items' do %>
       <div class="u-p-n-item-link">
         Messages
       </div>
-    </div>
-    <div class="u-p-n-items">
+    <%end%>
+    <%= link_to  interviews_path, class: 'u-p-n-items' do %>
       <div class="u-p-n-item-link">
         Interviews
       </div>
-    </div>
+    <% end %>
     <div class="u-p-n-items">
       <div class="u-p-n-item-link">
         Notifications

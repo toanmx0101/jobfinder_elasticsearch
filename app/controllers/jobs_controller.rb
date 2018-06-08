@@ -15,11 +15,11 @@ class JobsController < ApplicationController
     salary = params[:salary].present? ? params[:salary] : ""
     tags = []
     # search params (page, limit, location, job_type, salary, tags = [], keyword_match = nil)
-    results = Job.search_el(params[:page], Job::PER_PAGE , 
+    results = Job.search_el(params[:page], Job::PER_PAGE ,
                           location,
                           job_type,
                           salary,
-                          tags, 
+                          tags,
                           s)
     res_jobs = results[:body].is_a?(Job) ? [results[:body]] : results[:body]
     @jobs = Kaminari.paginate_array(res_jobs,
@@ -40,14 +40,16 @@ class JobsController < ApplicationController
                                    total_results: @total_results } }
     end
   end
-  
+
   def show
     @random_jobs = Job.order("RANDOM()").limit(4)
-    @more_jobs = @job.user.jobs.limit(5)
-    @people_may_know = User.limit(3)
+    @more_jobs = @job.user.jobs.sample(5)
+    if user_signed_in?
+      @applied = Apply.exists?(applyer_id: current_user.id, job_id: @job.id)
+    end
   end
 
-  def new 
+  def new
     @job = Job.new
   end
 

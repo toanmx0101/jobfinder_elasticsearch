@@ -1,13 +1,22 @@
 <%= form_with(model: Apply.new, local: true) do |form| %>
-  <div class="r-c-content-jds" style="background: #8FD5FE;margin-bottom: 20px;">
-    <span class="cc-title-jds" id="applyJob" data-job="<%= job.id %>" style="margin-left: 11px;color: #FFF;">Apply for this job</span>
+  <div class="r-c-content-jds <%= 'disabled' if @applied  %>" style="">
+    <span class="cc-title-jds <%= 'disabled' if @applied  %>" id="applyJob" data-job="<%= job.id %>" style="margin-left: 11px;color: #FFF;"><%= @applied ? 'You have applied' : 'Apply for this job'%></span>
   </div>
 <% end %>
-
+<style type="text/css">
+  .disabled {
+    background-color: #DDD!important;
+    cursor: not-allowed;
+    color: #484848!important;
+  }
+</style>
 <script type="text/javascript">
   $("#applyJob").click(function(event){
     event.preventDefault();
     job = $(this).attr("data-job");
+    if ($(this).hasClass('disabled')) {
+      return
+    }
     $.ajax({
       headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
       type: 'POST',
@@ -17,10 +26,15 @@
         job_id: job,
       },
       success: function(response) {
-        alert("HIX");
+        alert("Your apply was sent.");
+        $('.r-c-content-jds').addClass('disabled')
+        $('.cc-title-jds').addClass('disabled')
+        $('#applyJob').click(false);
+        $('.cc-title-jds').html('You have applied')
+
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        alert("HIXXXX");
+        alert("Your apply is error. Please update your profile.");
       }
     });
   });
