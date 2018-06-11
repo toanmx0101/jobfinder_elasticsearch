@@ -1,6 +1,164 @@
-<h1>Editing Interview</h1>
+<%= render "home/dashboard_left_menu", page: "meeting" %>
+<div class="right-container">
+  <div class="m--recruitment-content ">
+    <div class="recruitments">
+      <div class="c-appliers-header" style="display: block;">
+        <div class="filter-header">
+          <div style="margin: auto 0; display: flex;">
+            <%= link_to interviews_path do %>
+              <h3 style="font-size: 18px;margin: 0; padding: 8px;color: #484848;">Interviews</h3>
+            <% end %>
+            <i class="fas fa-angle-right" style="font-size: 20px;padding: 7px 0;"></i>
+            <h3 style="font-size: 18px;margin: 0; padding: 8px;color: #2890ff;">Edit</h3>
+          </div>
+        </div>
+      </div>
+      <div class="c-new-interviews">
+        <%= form_with(model: @interview, local: true) do |form| %>
+          <div class="c-new-interviews-form">
+            <div class="c-n-i-content">
+              <div class="title">
+                <label>TITLE</label>
+                <%= form.text_field :title, id: :title, required: true, autocomplete: 'off' %>
+              </div>
+              <div class="timepick">
+                <div class="title" style="position: relative;">
+                  <label>DAY</label>
+                  <%= form.text_field :day, id: :day, autocomplete: 'off' %>
+                </div>
+                <script>
+                  $( function() {
+                    var date = new Date();
+                    date.setDate(date.getDate()-1);
+                    $( "#day" ).datetimepicker({
+                        format: 'MMMM DD, YYYY',
+                        defaultDate: new Date(),
+                        minDate: date
+                    });
+                  } );
+                </script>
+                <div class="Hour">
+                  <label>AT HOUR</label>
+                  <%= form.text_field :hour, id: :hour, value: Time.now.hour, required: true, autocomplete: 'off' %>
+                </div>
 
-<%= render 'form', interview: @interview %>
+                <div class="title">
+                  <label>MINUTE</label>
+                  <%= form.text_field :minute, id: :minute, value: Time.now.strftime('%M'), required: true, autocomplete: 'off' %>
+                </div>
+                <script type="text/javascript">
+                  $('#day, #hour, #minute').on('input',function(){
+                    $('.interview-time span').text('This inteview will take place on the 13th Novemver 2017 from 10:00am during');
+                  });
+                </script>
+                <div class="title">
+                  <label>DURATION</label>
+                  <%= form.text_field :duration, id: :duration, value: '1h', required: true, autocomplete: 'off' %>
+                </div>
+              </div>
+              <div class="interview-time">
+                <i class="fas fa-check-square"></i>
+                <span>This inteview will take place on the 13th Novemver 2017 from 10:00am until  1:00pm</span>
+              </div>
+              <div class="title" style="margin-top: 27px">
+                <label>LOCATION</label>
+                <%= form.text_field :location, id: :location, autocomplete: 'off' %>
+              </div>
+              <div class="title" style="margin-top: 27px">
+                <label>DESCRIPTION</label>
+                <%= form.text_area :description, id: :description ,rows: 4, style: "border-radius: 3px;width: 100%;border: 1px solid #DDD; padding: 6px;box-sizing: border-box;"%>
+              </div>
+            </div>
+          </div>
+          <div class="c-n-i-add-interviewer">
+            <div class="c-n-i-content">
+              <div class="title">
+                <div class="title">
+                  <label>ADD INTERVIEWER <i class="fas fa-search fa-search-user" ></i></label>
+                  <input type="text" name="username" id="inputSimpleSearchUser" autocomplete="off">
+                  <div class="interviewer-search-results candidate-item" style="height: initial;">
+                  </div>
+                </div>
+                <script type="text/javascript">
+                  $('#inputSimpleSearchUser').on('input', function(){
+                    if ($('#inputSimpleSearchUser').val().length > 1) {
+                      $.ajax({
+                        type: 'GET',
+                        url: '/simple_search_user',
+                        data: {username: $('#inputSimpleSearchUser').val()},
+                        dataType: 'json',
+                        success: function(data) {
+                          $('.interviewer-search-results').empty();
+                          data.forEach(function(item){
+                            $('.interviewer-search-results').append('<div class="content"><div class="user-icon"><img src="' + item.avatar_url + '"></div><div class="user-infor"><div class="username">' + item.username + '</div><div>'+ item.work_position +'</div></div><div style="display: flex;margin: auto;"><i class="far fa-plus-square fa-2x" onclick="addInterview(\''+item.username+'\',\''+item.work_position+'\', \'' + item.avatar_url + '\', \'' +item.id+ '\')" style="cursor: pointer;"></i></div></div>');
+                          });
+                        }
+                      });
+                    } else {
+                      $('.interviewer-search-results').empty();
+                    }
+                  });
+                  function addInterview(name, work_position, avatar_url, id) {
+                    $('.selected-interviewer').empty();
+                    $('.selected-interviewer').append('<div class="content"><div class="user-icon"><img src="'+avatar_url+'"></div><div class="user-infor"><div class="username">'+name+'</div><div>'+work_position+'</div></div><div class="view-profile" style="display: flex;padding: 6px 10px;"><i class="fas fa-check" style="margin-right: 5px;margin-top: 2px;"></i>Mail</div></div><input id="interviewer_id" value="'+id+'" type="hidden" name="interview[interviewer_id]">');
+                    $('.interviewer-search-results').empty();
+                    $('#inputSimpleSearchUser').val('');
+                    $('#inputSimpleSearchUser').hide();
+                    $('.fa-search-user').show();
+                  }
+                  $('.fa-search-user').on('click', function(){
+                    $('#inputSimpleSearchUser').show();
+                    $(this).hide();
+                  });
+                </script>
+                <div class="candidate-item selected-interviewer">
+                </div>
+              </div>
+              <div class="title">
+                <div class="title">
+                  <label>ADD JOB <i class="fas fa-search fa-search-job"></i></label>
+                  <input type="text" name="" autocomplete="off" id="inputSimpleSearchJobInterview">
+                </div>
+                <script type="text/javascript">
+                  $('#inputSimpleSearchJobInterview').on('input', function(){
+                    if ($('#inputSimpleSearchJobInterview').val().length > 2) {
+                      $.ajax({
+                        type: 'GET',
+                        url: '/simple_search_job',
+                        data: {title: $('#inputSimpleSearchJobInterview').val(), limit: true},
+                        dataType: 'json',
+                        success: function(data) {
+                          $('.job-search-results').empty();
+                          data.forEach(function(item){
+                            $('.job-search-results').append('<div class="job-search-result"><div class="id"># ' + item.id + '<i class="far fa-plus-square fa-lg" style="cursor: pointer" onclick="addJobLink(\'' + item.id + '\', \'' + item.title +'\')"></i></div><div class="p-l-j-job-title">' + item.title + '</div></div>')
+                          });
+                        }
+                      });
+                    } else {
+                      $('.job-search-results').empty();
+                    }
+                  });
+                  function addJobLink(id, title) {
+                    $('#inputSimpleSearchJobInterview').hide();
+                    $('.job-search-results').hide();
+                    $('.job-selected-link').append('<div class="job-search-result"><div class="id"># '+ id +'</div><div class="p-l-j-job-title">' + title + '</div></div><input id="job_id" value="'+id+'" type="hidden" name="interview[job_id]">')
+                    $('.fa-search-job').show();
+                  }
+                </script>
+                <div class="job-search-results" >
 
-<%= link_to 'Show', @interview %> |
-<%= link_to 'Back', interviews_path %>
+                </div>
+                <div class="job-selected-link">
+
+                </div>
+              </div>
+              <div class="action-create-inteview">
+                <%= form.submit 'Create interview', style: 'background: transparent;border: 0;padding: 0; color: white;font-weight: 600;font-size: 15px;cursor: pointer' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

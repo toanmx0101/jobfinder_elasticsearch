@@ -155,8 +155,8 @@ module ElasticsearchJob
       unless tags.empty?
         tags.each do |tag|
           tag_boost_filter.push({
-            filter: { 
-              term: { 
+            filter: {
+              term: {
                 about_candidate: tag[:term]
               }
             },
@@ -167,8 +167,8 @@ module ElasticsearchJob
       match_location =  []
       if location && location.length > 0
         location.each do |lo|
-          match_location.push({ 
-                                match: { 
+          match_location.push({
+                                match: {
                                   location: {
                                     query: lo,
                                     boost: 3
@@ -206,7 +206,7 @@ module ElasticsearchJob
                         should: match_location,
                         must: match_job_type
                       }
-                     
+
                     }
                   }
                 ]
@@ -226,15 +226,42 @@ module ElasticsearchJob
         },
         aggs: {
           locations: {
-            terms: { 
+            terms: {
              field: "location",
              size: 10
             }
           },
           job_types: {
-            terms: { 
+            terms: {
              field: "job_type",
              size: 10
+            }
+          }
+        }
+      }
+    end
+
+    def self.simple_match_jobs_query(work_position)
+      search_definition = create_simple_match_jobs_query(work_position)
+
+
+      response = __elasticsearch__.search(search_definition)
+      hits = response.to_a
+
+      jobs_id = []
+      hits.each do |j|
+        jobs_id.push(j.id.to_i)
+      end
+      jobs_id
+    end
+
+    def self.create_simple_match_jobs_query(work_position)
+      {
+        query: {
+          match: {
+            title: {
+              query: work_position,
+              fuzziness: "AUTO"
             }
           }
         }
@@ -302,5 +329,6 @@ module ElasticsearchJob
         }
       }
     end
+
   end
 end

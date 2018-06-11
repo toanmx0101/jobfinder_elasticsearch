@@ -1,0 +1,137 @@
+<div class="base-user-profile" style="padding-top: 120px;">
+  <div class="container " >
+    <div class="c-base-user-profile">
+      <div class="c-image">
+        <img src="<%= current_user.avatar_url %>">
+      </div>
+      <div class="c-text">
+        <h2><%= current_user&.username %>   <span>( <%= current_user&.work_position %> )</span></h2>
+        <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
+          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i>
+          <%= current_user&.location %>
+        </span>
+        <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
+        <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
+          <%= raw current_user&.description %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(window).bind('scroll', function () {
+    if ($(window).scrollTop() >  280) {
+      $('#userProfileNavigation').addClass('nav-fixed');
+    } else {
+      $('#userProfileNavigation').removeClass('nav-fixed');
+    }
+  });
+</script>
+
+<div class="container">
+  <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
+    <a href="/profile" class="u-p-n-items ">
+      <div class="u-p-n-item-link" id="firstLink">
+        About
+      </div>
+    </a>
+    <a href="/conversations" class="u-p-n-items selected">
+      <div class="u-p-n-item-link">
+        Messages
+      </div>
+    </a>
+    <a href="/my_interviews" class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Interviews
+      </div>
+    </a>
+    <a href="/appropriate_jobs" class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Suggest jobs
+      </div>
+    </a>
+    <a href="/setting"  class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Settings
+      </div>
+    </a>
+  </div>
+  <div class="" style="margin-top: 36px;">
+    <div class="">
+      <div class="recruitments">
+        <div class="message-threads">
+          <div class="c-message-threads">
+            <div class="c-message-thread c-message-thread__left-content" style="width: 35%;">
+              <div class="c-message-thread__header">
+                <h2 >Messages</h2>
+                <i class="fa fa-pencil fa-lg" aria-hidden="true" style="">
+                  <!-- <span class="tooltiptext">Create new message</span> -->
+                </i>
+              </div>
+              <div class="message-search-form" >
+                <input type="text" name="" placeholder="Search message">
+              </div>
+              <div class="sender-listitem">
+                <% @conversations.each do |conversation| %>
+                    <%= link_to "/rc_messages/" + conversation.id.to_s do %>
+                    <div class="sender-item active-sender-item">
+                      <div class="sender-header">
+                        <span class="sender-name"><%= conversation.receiver.username %><i class="fa fa-circle" aria-hidden="true"></i></span>
+                        <span class="send-time">
+                          <%= time_ago_in_words(conversation.updated_at) %> ago
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                      </div>
+                      <div class="sender-sort-sumary">
+                        <% if conversation.messages.empty? %>
+                          <span><%= truncate(Conversation.find_by(sender_id: conversation.receiver_id, receiver_id: conversation.sender_id).messages.first.content, :length => 60) %></span>
+                        <% elsif conversation.messages.present? %>
+                          <span><%= truncate(conversation.messages.first.content, :length => 60) %></span>
+                        <% end %>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="c-message-thread c-message-thread__right-content" style="width: 65%;">
+              <div class="o-message-thread_list-mess">
+                <div class="message-search">
+                  <div class="message-search-form" style="display: flow-root;font-size: 20px;">
+                  </div>
+                </div>
+                <div id="thread_content" class="message-thread-content" data_user="<%= current_user.id %>" data-conversation="<%= @recent_conversation.id %>" data-status="<%= @recent_conversation.status %>">
+                  <div class="message-item sender-mess-item">
+                    <% @list_messages.each do |mes| %>
+                      <% if mes.normal? %>
+                        <% if mes.user_id == current_user.id %>
+                          <%= render 'messages/sent_message', mes: mes, recent_conversation: @recent_conversation %>
+                        <% else %>
+                          <%= render 'messages/received_message', mes: mes, recent_conversation: @recent_conversation %>
+                        <% end %>
+                      <% elsif mes.suggest_link? %>
+                        <% if mes.user_id == current_user.id %>
+                          <%= render 'messages/suggest_message' %>
+                        <% end %>
+                      <% elsif mes.interview_invite? %>
+                        <% if mes.user_id == current_user.id %>
+                          <%= render 'messages/interview_invite_message', isSent: true, message: mes, interview: mes.interview %>
+                        <% else %>
+                          <%= render 'messages/interview_invite_message', isSent: false, message: mes, interview: mes.interview %>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="message-form">
+                  <input class="message-input" type="text" placeholder="Type a message here..." style="background-color: #dadada;box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "/partials/footer"%>

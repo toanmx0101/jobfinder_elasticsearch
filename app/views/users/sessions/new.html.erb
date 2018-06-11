@@ -6,25 +6,33 @@
         <img src="/images/logo.png">
       </div>
       <h2>Log in to Jobfinder</h2>
-
+      <% flash.each do |key, value| %>
+        <div class="alert alert-alert" style="display: flex;padding: 12px;border: 1px solid #b96f6f;border-radius: 3px;">
+          <a href="#" data-dismiss="alert" class="close" style="font-size: 26px;">×</a>
+          <ul style="padding-left: 10px">
+            <li style="list-style-type: none;padding-left: 10px;">
+              Invalid Email or password.
+            </li>
+          </ul>
+        </div>
+      <% end %>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
-        <div class="auth-form-body">
-          <div class="field">
-            <%= f.label :email, class: 'login_field' %>
-            <%= f.email_field :email, autofocus: true, class: 'input-block form-control ' %>
-          </div>
+          <div class="auth-form-body">
+            <div class="field">
+              <%= f.label :email, class: 'login_field' %>
+              <%= f.email_field :email, autofocus: true, class: 'input-block form-control ' %>
+            </div>
 
-          <div class="field">
-            <%= f.label :password, class: 'login_field' %>
-            <%= f.password_field :password, autocomplete: "off", class: 'input-block form-control ' %>
-          </div>
+            <div class="field">
+              <%= f.label :password, class: 'login_field' %>
+              <%= f.password_field :password, autocomplete: "off", class: 'input-block form-control ' %>
+            </div>
 
-          <div class="actions">
-            <%= f.submit "Log in" %>
+            <div class="actions">
+              <%= f.submit "Log in" %>
+            </div>
           </div>
-        </div>
-
       <% end %>
       <span class="sign-up-invite">
         New to Jobfinder?

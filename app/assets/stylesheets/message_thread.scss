@@ -32,7 +32,7 @@
     .active-sender-item {
       background: white;
       border-left: 2px solid #8FD5FE;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
       &:hover { background: #FFF; }
     }
     .sender-header {
@@ -74,7 +74,7 @@
     &::-webkit-scrollbar-thumb {
       -webkit-border-radius: 10px;
       border-radius: 10px;
-      background: #DDDDDD; 
+      background: #DDDDDD;
     }
     .sender-mess-item { margin-right: 14px; padding: 12px 0;}
     .sender-mess-item__avatar { margin-bottom: 7px; }
@@ -87,7 +87,7 @@
       font-size: 16px;
       border-radius: 20px;
 
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15)
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3)
     }
     .short-mess-text { width: inherit; float: left;    margin-bottom: 7px;}
     .medium-mess-text { width: inherit;  }
@@ -158,6 +158,8 @@
     font-size: 14px;
     line-height: 14px;
     border-radius: 6px;
+    background-color: #dadada;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
   }
   .message-attachment {
     display: flex;
@@ -189,7 +191,12 @@
 }
 .interview-invite {
   min-width: 320px;
-  float: left;
+  &.f-left {
+    float: left;
+  }
+  &.f-right {
+    float: right;
+  }
   .c-interview-invite {
     border-radius: 8px;
     margin-bottom: 14px;
@@ -197,7 +204,8 @@
     cursor: pointer;
     background: white;
     display: flex;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+
     .i-i-time {
       width: 68px;
       margin-top: 30px;
@@ -237,7 +245,7 @@
         margin-top: 12px;
         .i-a {
           text-align: center;
-          padding: 6px 0; 
+          padding: 6px 0;
           font-weight: 600;
         }
         .i-a-yes {

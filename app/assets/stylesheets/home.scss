@@ -3,7 +3,7 @@
   /*background-image: url(https://assets-cdn.github.com/images/modules/site/heroes/simple-codelines.svg);*/
   background-repeat: no-repeat;
   background-size: cover;
-  border-bottom: 1px solid #eee;  
+  border-bottom: 1px solid #eee;
   .container {
     height: 550px;
   }
@@ -30,7 +30,7 @@
     }
   }
   h2 {
-    line-height: 35px;    
+    line-height: 35px;
     font-size: xx-large;
     color: #8FD5FE;
   }
@@ -42,7 +42,7 @@
   span {
     padding: 15px 30px;
     font-size: 18px;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     font-weight: bold;
     color: #8FD5FE;
@@ -66,7 +66,7 @@
   margin: 50px 80px;
   .culture {
     padding: 40px;
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
     h2 {
       margin-top: 0;
       color: #8FD5FE;
@@ -75,7 +75,7 @@
 }
 .base-user-profile {
   height: 250px;
-  background: linear-gradient(to right, #353F60 , #6C6C93 );
+  background: linear-gradient(to right, #64A1FF , #6C6C93 );
   .c-base-user-profile {
     display: flex;
     color: #FCFDFE;
@@ -118,7 +118,7 @@
     height: 300px;
     .contact-text {
       padding: 32px;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
       background: #FFF;
       border-radius: 7px;
     }
@@ -130,7 +130,7 @@
   z-index: 1000;
   padding-left: 164px;
   padding-top: 32px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
   margin-bottom: 22px;
 }
 .profile {

@@ -25,14 +25,14 @@
                       <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                     </div>
                     <div class="sender-sort-sumary">
-                      <% if @received_messages.blank? %>
-                        <span><%= truncate(@sended.first.content, :length => 60) %></span>
-                      <% else %>
-                        <span><%= truncate(@received_messages.first.content, :length => 60) %></span>
+                      <% if conversation.messages.empty? %>
+                        <span><%= truncate(Conversation.find_by(sender_id: conversation.receiver_id, receiver_id: conversation.sender_id).messages.first.content, :length => 60) %></span>
+                      <% elsif conversation.messages.present? %>
+                        <span><%= truncate(conversation.messages.first.content, :length => 60) %></span>
                       <% end %>
                     </div>
                   </div>
-                <% end %>  
+                <% end %>
               <% end %>
             </div>
           </div>
@@ -52,9 +52,15 @@
                         <%= render 'messages/received_message', mes: mes, recent_conversation: @recent_conversation %>
                       <% end %>
                     <% elsif mes.suggest_link? %>
-                      <%= render 'messages/suggest_message' %>
+                      <% if mes.user_id == current_user.id %>
+                        <%= render 'messages/suggest_message' %>
+                      <% end %>
                     <% elsif mes.interview_invite? %>
-                      <%= render 'messages/interview_invite_message' %>
+                      <% if mes.user_id == current_user.id %>
+                        <%= render 'messages/interview_invite_message', isSent: true, message: mes, interview: mes.interview %>
+                      <% else %>
+                        <%= render 'messages/interview_invite_message', isSent: false, message: mes, interview: mes.interview %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>
@@ -64,7 +70,7 @@
               </div>
             </div>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   </div>

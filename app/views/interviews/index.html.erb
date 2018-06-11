@@ -1,0 +1,128 @@
+<div class="base-user-profile" style="padding-top: 120px;">
+  <div class="container " >
+    <div class="c-base-user-profile">
+      <div class="c-image">
+        <img src="<%= current_user.avatar_url %>">
+      </div>
+      <div class="c-text">
+        <h2><%= current_user&.username %>   <span>( <%= current_user&.work_position %> )</span></h2>
+        <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
+          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i>
+          <%= current_user&.location %>
+        </span>
+        <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
+        <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
+          <%= raw current_user&.description %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+
+<div class="container">
+  <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
+    <a href="/profile" class="u-p-n-items ">
+      <div class="u-p-n-item-link" id="firstLink">
+        About
+      </div>
+    </a>
+    <a href="/conversations" class="u-p-n-items ">
+      <div class="u-p-n-item-link">
+        Messages
+      </div>
+    </a>
+    <a href="/my_interviews" class="u-p-n-items selected">
+      <div class="u-p-n-item-link">
+        Interviews
+      </div>
+    </a>
+    <a href="/appropriate_jobs" class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Suggest jobs
+      </div>
+    </a>
+    <a href="/setting"  class="u-p-n-items">
+      <div class="u-p-n-item-link">
+        Settings
+      </div>
+    </a>
+  </div>
+  <div class="incoming-interviews" style="margin-top: 40px;">
+    <div class="inner-incoming-interviews">
+
+      <div>
+        <div class="sender-mess-item__content_right" style="width: 32%;display: inline-block;margin-right: 6px;">
+          <div class="interview-invite" style="float: none;">
+            <div class="c-interview-invite">
+              <div class="i-i-time">
+                <div class="m">June</div>
+                <div class="d">20</div>
+                <div class="wday">Monday</div>
+              </div>
+              <div class="i-i-content">
+                <div class="i-tt">Invitation to Interview </div>
+                <div class="i-job">Job: </div>
+                <div class="i-time">When: </div>
+                <div class="i-location">At: </div>
+                <div class="i-actions">
+                  <div class="i-a i-a-yes">Yes</div>
+                  <div class="i-a i-a-maybe">Maybe</div>
+                  <div class="i-a i-a-no">No</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sender-mess-item__content_right" style="width: 33%;display: inline-block;">
+          <div class="interview-invite" style="float: none;">
+            <div class="c-interview-invite">
+              <div class="i-i-time">
+                <div class="m">June</div>
+                <div class="d">20</div>
+                <div class="wday">Monday</div>
+              </div>
+              <div class="i-i-content">
+                <div class="i-tt">Invitation to Interview </div>
+                <div class="i-job">Job: </div>
+                <div class="i-time">When: </div>
+                <div class="i-location">At: </div>
+                <div class="i-actions">
+                  <div class="i-a i-a-yes">Yes</div>
+                  <div class="i-a i-a-maybe">Maybe</div>
+                  <div class="i-a i-a-no">No</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sender-mess-item__content_right" style="width: 33%;display: inline-block;margin-left: 4px;">
+          <div class="interview-invite" style="float: none;">
+            <div class="c-interview-invite">
+              <div class="i-i-time">
+                <div class="m">June</div>
+                <div class="d">20</div>
+                <div class="wday">Monday</div>
+              </div>
+              <div class="i-i-content">
+                <div class="i-tt">Invitation to Interview </div>
+                <div class="i-job">Job: </div>
+                <div class="i-time">When: </div>
+                <div class="i-location">At: </div>
+                <div class="i-actions">
+                  <div class="i-a i-a-yes">Yes</div>
+                  <div class="i-a i-a-maybe">Maybe</div>
+                  <div class="i-a i-a-no">No</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "/partials/footer"%>

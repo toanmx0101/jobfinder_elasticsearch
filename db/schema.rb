@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180517092911) do
+ActiveRecord::Schema.define(version: 20180610104510) do
 
   create_table "applies", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180517092911) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "location"
   end
 
   create_table "job_bookmarks", force: :cascade do |t|
@@ -91,6 +92,7 @@ ActiveRecord::Schema.define(version: 20180517092911) do
     t.integer "message_type"
     t.datetime "read_at"
     t.string "link"
+    t.integer "interview_id"
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end

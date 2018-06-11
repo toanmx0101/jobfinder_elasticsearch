@@ -39,6 +39,7 @@
           <div class="job-description"><%= raw HtmlBeautifier.beautify(@job.about_candidate.html_safe.html_safe) %></div>
         </div>
       </div>
+
     </div>
     <div class="r-content-jds">
       <% if user_signed_in? && !current_user.is_recruiter?%>
@@ -49,6 +50,30 @@
         <input type="" name="" value="http://localhost:3000/jobs/<%= @job.to_param%>">
       </div>
       <%= render "more_jobs", user: @job.user, jobs: @more_jobs %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div style="margin-top: 20px;">
+    <div class="similar-jobs-header">
+      <h2>User also viewed</h2>
+    </div>
+    <div class="user-also-viewed">
+      <div class="inner-jobs-list">
+        <% @user_also_viewed.each do |s_j|%>
+          <div class="similar-job">
+            <%= link_to  s_j do %>
+              <img src="<%= s_j.background_url %>" style="height: 100px;width: 300px;">
+            <% end %>
+            <div class="similar-job-content">
+              <%= link_to s_j.title, s_j, class: 'job-title', style: 'font-size: 17px' %>
+              <div class="job-view-count"></div>
+              <div class="locations"><i class="fas fa-map-signs"></i><%= s_j.location %></div>
+              <div class="salary limit"><i class="fas fa-dollar-sign"></i><%= s_j.pay_rate %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ class Job < ActiveRecord::Base
   belongs_to :user
   has_many :applies
   has_many :applyers, through: :applies, source: 'applyer'
+  has_many :interviews
 
   PER_PAGE = 10
   paginates_per PER_PAGE
@@ -19,6 +20,6 @@ class Job < ActiveRecord::Base
   end
 
   def find_candidates
-    
+
   end
 end

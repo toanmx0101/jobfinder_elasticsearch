@@ -1,17 +1,19 @@
 <div class="sender-mess-item__content_right">
-  <img src="/images/logo.png">
-  <div class="interview-invite">
+  <% if !isSent %>
+    <img src="<%= message.user.avatar_url%>">
+  <% end %>
+  <div class="interview-invite <%= isSent ? 'f-right' : 'f-left' %>">
     <div class="c-interview-invite">
       <div class="i-i-time">
-        <div class="m">June</div>
-        <div class="d">20</div>
-        <div class="wday">Monday</div>
+        <div class="m"><%= interview&.start_at.strftime("%b") %></div>
+        <div class="d"><%= interview&.start_at.strftime("%d") %></div>
+        <div class="wday"><%= interview&.start_at.strftime("%a") %></div>
       </div>
       <div class="i-i-content">
-        <div class="i-tt">Invitation to Interview </div>
-        <div class="i-job">Job: </div>
-        <div class="i-time">When: </div>
-        <div class="i-location">At: </div>
+        <div class="i-tt"><%= interview&.title %></div>
+        <div class="i-job">Job: <%= interview&.job.title %></div>
+        <div class="i-time">When: <b style="font-size: 15px"><%= interview&.start_at.strftime("%H:%M%p") %></b></div>
+        <div class="i-location">At: <b><%= interview&.location %></b></div>
         <div class="i-actions">
           <div class="i-a i-a-yes">Yes</div>
           <div class="i-a i-a-maybe">Maybe</div>

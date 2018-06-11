@@ -47,9 +47,13 @@ class JobsController < ApplicationController
     if user_signed_in?
       @applied = Apply.exists?(applyer_id: current_user.id, job_id: @job.id)
     end
+    @user_also_viewed =User.get_similar_jobs_by_history(@job.id)[:body]
+    if @user_also_viewed.empty?
+      @user_also_viewed = Job.find(Job.simple_match_jobs_query(@job.title).first(5))
+    end
   end
 
-  def new
+  def newy
     @job = Job.new
   end
 

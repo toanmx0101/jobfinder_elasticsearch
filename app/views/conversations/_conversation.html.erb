@@ -1,11 +1,11 @@
 <li>
-  <%= link_to "/rc_messages/" + conversation.id.to_s, class: "notification-item" do %>
+  <%= link_to "/conversations/" + conversation.id.to_s, class: "notification-item" do %>
     <div class="user-icon">
       <img src="<%= conversation.receiver.avatar_url %>"/>
     </div>
     <div class="message-content">
       <div class="user-name"><%= conversation.receiver.username%></div>
-      <div class="message"><%= Conversation.find_by(receiver_id: conversation.sender_id, sender_id: conversation.receiver_id).messages.first.content %></div>
+      <div class="message"><%=  %></div>
     </div>
   <% end %>
 </li>

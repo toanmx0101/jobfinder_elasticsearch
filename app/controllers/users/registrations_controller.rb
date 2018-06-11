@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:work_position, :description, :experience, :website, :specialities, :education, :experience_level, :language])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:work_position, :description, :experience, :website, :specialities, :education, :experience_level, :language, :user_type])
   end
 
   def update_resource(resource, params)

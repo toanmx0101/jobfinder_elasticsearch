@@ -1,29 +1,70 @@
-<div style="padding-top: 120px">
-<p id="notice"><%= notice %></p>
-
-<h1>Messages</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.body %></td>
-        <td><%= link_to 'Show', message %></td>
-        <td><%= link_to 'Edit', edit_message_path(message) %></td>
-        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Message', new_message_path %>
+<div class="right-container">
+  <div class="m--recruitment-content ">
+    <div class="recruitments">
+      <div class="message-threads">
+        <div class="c-message-threads">
+          <div class="c-message-thread c-message-thread__left-content">
+            <div class="c-message-thread__header">
+              <h2 >Messages</h2>
+              <i class="fa fa-pencil fa-lg" aria-hidden="true" style="">
+                <!-- <span class="tooltiptext">Create new message</span> -->
+              </i>
+            </div>
+            <div class="message-search-form" >
+              <input type="text" name="" placeholder="Search message">
+            </div>
+            <div class="sender-listitem">
+              <% @conversations.each do |conversation| %>
+                <%= link_to "/conversations/" + conversation.id.to_s do %>
+                  <div class="sender-item active-sender-item">
+                    <div class="sender-header">
+                      <span class="sender-name"><%= conversation.receiver.username %><i class="fa fa-circle" aria-hidden="true"></i></span>
+                      <span class="send-time">
+                        <%= time_ago_in_words(conversation.updated_at) %> ago
+                      <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+                    </div>
+                    <div class="sender-sort-sumary">
+                      <% if @received_messages.blank? %>
+                        <span><%= truncate(@sended.first.content, :length => 60) %></span>
+                      <% else %>
+                        <span><%= truncate(@received_messages.first.content, :length => 60) %></span>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="c-message-thread c-message-thread__right-content">
+            <div class="o-message-thread_list-mess">
+              <div class="message-search">
+                <div class="message-search-form" style="display: flow-root;font-size: 20px;">
+                </div>
+              </div>
+              <div id="thread_content" class="message-thread-content" data_user="<%= current_user.id %>" data-conversation="<%= @recent_conversation.id %>" data-status="<%= @recent_conversation.status %>">
+                <div class="message-item sender-mess-item">
+                  <% @list_messages.each do |mes| %>
+                    <% if mes.normal? %>
+                      <% if mes.user_id == current_user.id %>
+                        <%= render 'messages/sent_message', mes: mes, recent_conversation: @recent_conversation %>
+                      <% else %>
+                        <%= render 'messages/received_message', mes: mes, recent_conversation: @recent_conversation %>
+                      <% end %>
+                    <% elsif mes.suggest_link? %>
+                      <%= render 'messages/suggest_message' %>
+                    <% elsif mes.interview_invite? %>
+                      <%= render 'messages/interview_invite_message' %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="message-form">
+                <input class="message-input" type="text" placeholder="Type a message here...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

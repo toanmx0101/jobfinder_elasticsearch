@@ -75,7 +75,7 @@
     &::-webkit-scrollbar-thumb {
       -webkit-border-radius: 10px;
       border-radius: 10px;
-      background: #DDDDDD; 
+      background: #DDDDDD;
     }
     .message-thread {
       margin-right: -15px;
@@ -93,7 +93,7 @@
       a {
         padding: 6px 17px;
       }
-      
+
     }
 
   }
@@ -201,7 +201,7 @@ li {
   transition-delay: .25s;
   display: none;
   .s-h-content {
-    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
     padding: 8px;
     background: white;
     border-radius: 4px;
@@ -232,7 +232,7 @@ li {
   background: white;
   border-radius: 3px;
   margin-bottom: 12px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
   background-color: white;
   z-index: 2;
   .u-p-n-items {

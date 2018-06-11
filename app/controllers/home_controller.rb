@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     if user_signed_in? && current_user.is_recruiter?
-      if params[:q].present? 
+      if params[:q].present?
         @jobs = current_user.jobs.where("title LIKE '%#{params[:q]}%' OR id=#{params[:q].to_i}")
       else
         @jobs = current_user.jobs
@@ -25,9 +25,10 @@ class HomeController < ApplicationController
   def appliers
     if current_user.is_recruiter?
       @applies = Apply.includes(:applyer).includes(:job).where(job_id: current_user.jobs).page(params[:page])
-    else 
+    else
       redirect_to root_path
     end
+
   end
 
   def appropriate_jobs
@@ -37,50 +38,62 @@ class HomeController < ApplicationController
     experience = current_user.experience.present? ? current_user.experience : ""
     job_type = ""
     salary = ""
-    @appropricate_jobs = Job.search_el(1, Job::PER_PAGE , 
+    results = Job.search_el(1, Job::PER_PAGE ,
                           location,
                           job_type,
                           salary,
-                          tags, 
-                          current_user.work_position + experience )[:body]
+                          tags,
+                          current_user.work_position + experience )
+    @appropricate_jobs = results[:body]
+    @jobs_score = results[:jobs_score]
   end
 
   def setting;  end
 
   def interviews
-    if params[:ref].present? && params[:ref] == 'month'
-      range = DateTime.now.beginning_of_month..DateTime.now.end_of_month
+    if current_user.is_recruiter?
+      if params[:ref].present? && params[:ref] == 'month'
+        range = DateTime.now.beginning_of_month..DateTime.now.end_of_month
+      else
+        range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
+      end
+      @days = current_user.meetings.where(start_at: range).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
+      @days = @days.sort_by{|day, _interviews| day }
     else
-      range = DateTime.now.beginning_of_week..DateTime.now.end_of_week
+      redirect_to root_path
     end
-    @days = current_user.meetings.where(start_at: range).group_by{|meeting| meeting.start_at.strftime("%Y-%m-%d")}
-    @days = @days.sort_by{|day, _interviews| day }
+
   end
 
   def candidates
-    @candidates = []
-    if params[:job_id].present?
-      @job = Job.find_by(id: params[:job_id])
-      results = User.find_candidates_by_job(params[:page], 5, @job)
+    if current_user.is_recruiter?
+      @candidates = []
+      if params[:job_id].present?
+        @job = Job.find_by(id: params[:job_id])
+        results = User.find_candidates_by_job(params[:page], 5, @job)
 
-      @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
-      @total_results = results[:total]
-      @user_score = results[:user_score]
-    elsif params[:username].present? || params[:skills].present? || params[:work_position].present?
-      username = params[:username].present? ? params[:username] : ""
-      skills = params[:skills].present? ? params[:skills] : ""
-      work_position = params[:work_position].present? ? params[:work_position] : ""
+        @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
+        @total_results = results[:total]
+        @user_score = results[:user_score]
+      elsif params[:username].present? || params[:skills].present? || params[:work_position].present?
+        username = params[:username].present? ? params[:username] : ""
+        skills = params[:skills].present? ? params[:skills] : ""
+        work_position = params[:work_position].present? ? params[:work_position] : ""
 
-      results = User.find_candidates_by_params(params[:page], 5, username, work_position, skills)
+        results = User.find_candidates_by_params(params[:page], 5, username, work_position, skills)
 
-      @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
-      @total_results = results[:total]
-      @user_score = results[:user_score]
+        @candidates = results[:body].is_a?(User) ? [results[:body]] : results[:body]
+        @total_results = results[:total]
+        @user_score = results[:user_score]
+      end
+      respond_to do |format|
+        format.html
+        format.json { render json: { candidates: @candidates.as_json( only: [:id, :username, :work_position, :description, :experience, :avatar_url, :tags]), user_score: @user_score, total_results: @total_results } }
+      end
+    else
+      redirect_to root_path
     end
-    respond_to do |format|
-      format.html
-      format.json { render json: { candidates: @candidates.as_json( only: [:id, :username, :work_position, :description, :experience, :avatar_url, :tags]), user_score: @user_score, total_results: @total_results } }
-    end
+
   end
 
   def simple_search_job
@@ -103,19 +116,46 @@ class HomeController < ApplicationController
   end
 
   def rc_messages
-    @conversations = current_user.conversations.includes(:receiver).order(updated_at: :desc)
-    if params[:id].blank?
-      @recent_conversation = @conversations.first
-      redirect_to "/rc_messages/" + @recent_conversation.id.to_s
+    if current_user.is_recruiter?
+      @conversations = current_user.conversations.includes(:receiver).order(updated_at: :desc)
+      if params[:id].blank?
+        @recent_conversation = @conversations.first
+        redirect_to "/rc_messages/" + @recent_conversation.id.to_s
+      else
+        @recent_conversation = Conversation.includes(:receiver).find(params[:id])
+      end
+      @sended_messages ||= @recent_conversation.messages.order(created_at: :desc)
+      @received_messages ||= Conversation.find_by(sender_id: @recent_conversation.receiver_id, receiver_id: current_user.id).messages.includes(:user).order(created_at: :desc)
+      @list_messages ||= (@sended_messages + @received_messages).sort_by{|mes| mes.created_at }
     else
-      @recent_conversation = Conversation.includes(:receiver).find(params[:id])
+      redirect_to root_path
     end
-    @sended_messages ||= @recent_conversation.messages.order(created_at: :desc)
-    @received_messages ||= Conversation.find_by(sender_id: @recent_conversation.receiver_id, receiver_id: current_user.id).messages.includes(:user).order(created_at: :desc)
-    @list_messages ||= (@sended_messages + @received_messages).sort_by{|mes| mes.created_at }
   end
 
   def new_interviews
-    @interview = Interview.new
+    if current_user.is_recruiter?
+      @interview = Interview.new
+    else
+      redirect_to root_path
+    end
+  end
+
+  def pricing
+
+  end
+
+  def feedbacks
+
+  end
+
+  def send_mail_to
+    if current_user.conversations.exists?(sender_id: current_user.id, receiver_id: params[:receiver_id])
+      conversation = current_user.conversations.find_by(sender_id: params[:sender_id], receiver_id: params[:receiver_id])
+      redirect_to conversation
+    else
+      Conversation.create(sender_id: params[:receiver_id], receiver_id: current_user.id)
+      conversation = Conversation.create(sender_id: current_user.id, receiver_id: params[:receiver_id])
+      redirect_to conversation
+    end
   end
 end

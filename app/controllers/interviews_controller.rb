@@ -1,6 +1,10 @@
 class InterviewsController < ApplicationController
   before_action :set_interview, only: [ :edit, :update, :destroy]
 
+  def index
+    @interviews = current_user.meetings
+  end
+
   def show
   end
 
@@ -18,6 +22,9 @@ class InterviewsController < ApplicationController
                                              )
     respond_to do |format|
       if @interview.save
+        if interview_params[:sendmail]
+          sendInterviewInvite
+        end
         format.html { redirect_to interviews_path, notice: 'Interview was successfully created.' }
         format.json { render :show, status: :created, location: @interview }
       else
@@ -53,6 +60,19 @@ class InterviewsController < ApplicationController
     end
 
     def interview_params
-      params.require(:interview).permit(:title, :description, :interviewer_id, :job_id, :duration, :day, :hour, :minute)
+      params.require(:interview).permit(:title, :description, :interviewer_id, :job_id, :duration, :day, :hour, :minute, :sendmail)
+    end
+
+    def sendInterviewInvite
+      if !Conversation.exists?(sender_id: current_user.id, receiver_id: @interview.interviewer_id)
+        Conversation.create(sender_id: @interview.interviewer_id, receiver_id: current_user.id, status: 'unread')
+        conversation = Conversation.create(sender_id: current_user.id, receiver_id: @interview.interviewer_id, status: 'read')
+        message = current_user.messages.build(conversation_id: conversation.id, content: @interview.title + "\n" + @interview.description, interview_id: @interview.id ,message_type: :interview_invite)
+        message.save!
+      else
+        conversation = Conversation.find_by(sender_id: current_user.id, receiver_id: @interview.interviewer_id)
+        message = current_user.messages.build(conversation_id: conversation.id, content: @interview.title + "\n" + @interview.description, interview_id: @interview.id ,message_type: :interview_invite)
+        message.save!
+      end
     end
 end

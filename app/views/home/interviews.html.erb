@@ -9,17 +9,17 @@
             <%= link_to interviews_new_path  do %>
               <div style="cursor: pointer;margin: auto 12px; padding: 6px 12px;background: #2890ff;color: white;border-radius: 3px;text-decoration: none;">
                 <i class="fas fa-plus" style="font-size: 9px;margin-right: 4px;"></i>
-                Create new                
+                Create new
               </div>
             <% end %>
           </div>
-          <div class="filter-appliers">
+          <div class="filter-inteviews">
             <div class="fitler">
               <%= link_to interviews_path(ref: 'week')  do %>
-                <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px;background: #2890ff;color: white">Week</div>
+                <div class="filter-week <%= 'selected' if params[:ref] == 'week' %>" style="">Week</div>
               <% end %>
               <%= link_to interviews_path(ref: 'month')  do %>
-                <div style="border-radius: 0 3px 3px 0">Month</div>
+                <div class="filter-month <%= 'selected' if params[:ref] == 'month' %>" style="">Month</div>
               <% end %>
             </div>
           </div>
@@ -42,14 +42,45 @@
                         <div class="interview-time">At <%= interview.start_at.strftime("%H:%M")%></div>
                         <div class="title"><%= interview.title %></div>
                         <div class="actions">
-                          <i class="fas fa-link"></i>
-                          <i class="far fa-user"></i>
-                          <i class="fas fa-pencil-alt"></i>
-                          <i class="far fa-envelope"></i>
+                          <%= link_to jf_path(interview.interviewer), class: 'far fa-user' do %>
+                          <% end %>
+                          <%= link_to interview.job, class: 'fas fa-link' do %>
+                          <%end%>
+                          <%= link_to edit_interview_path(interview), class: 'fas fa-pencil-alt' do%>
+                          <% end %>
+                        </div>
+                      </div>
+                      <div class="detail-interview">
+                        <div class="detail-interview-content">
+                        <h3 style="margin: 6px 0; font-size: 17px;padding-bottom: 10px;border-bottom: 1px solid;">Interview details</h3>
+
+                          <div style="height: 50px;">
+                            <div style="display: inline-block;float: left;">
+                              <span class="interview-span"><b>Duration</b></span>
+                              <div class="interview-location interview-span"><%= interview&.duration %></div>
+
+                            </div>
+                            <div style="display: inline-block;float: right;">
+                              <span class="interview-span"><b>Location</b></span>
+                              <div class="interview-location interview-span"><%= interview&.location %></div>
+                            </div>
+                          </div>
+
+
+                          <span class="interview-span"><b>Description</b></span>
+                          <div class="interview-description interview-span" style="        padding-bottom: 10px;border-bottom: 1px solid;"><%= interview&.description %></div>
+                          <span class="interview-span"><b>Interviewer</b></span>
+                          <div style="display: flex;" class="interview-span">
+                            <img src="<%= interview&.interviewer.avatar_url %>" style="width: 40px;height: 40px;border-radius: 5px">
+                            <div class="interviewer" style="margin: auto 10px"><%= interview&.interviewer.username %></div>
+                          </div>
+                          <span class="interview-span"><b>Job</b></span>
+                          <div class="interview-job"><%= interview.job.title %></div>
                         </div>
                       </div>
                     </div>
-                  <% end %>  
+
+                  <% end %>
                 </div>
               </div>
             </li>

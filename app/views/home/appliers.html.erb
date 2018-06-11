@@ -19,8 +19,8 @@
           </div>
         </div>
       </div>
-      
-      <% @applies.each_slice(4) do |f_apply| %>
+
+      <% @applies.each_slice(3) do |f_apply| %>
         <div class="c-appliers">
           <% f_apply.each do |apply| %>
               <div class="applier">
@@ -33,9 +33,9 @@
                     <%= link_to jf_path(apply.applyer), class: "user-name" do %>
                       <strong style="color: #717171;"><%= apply.applyer.username %></strong>
                     <% end %>
-                    <div class=email><%= apply.applyer.email %></div> 
+                    <div class=email><%= apply.applyer.email %></div>
                     <div class="applier-actions">
-                      <div style="color: #5897fbb8">Mail</div>
+                      <a href="/send_mail_to?receiver_id=<%= apply.applyer.id%>" style="color: #5897fbb8" >Mail</a>
                       <div style="float: right;color: #5897fbb8">Arrange Interview</div>
                     </div>
                   </div>
@@ -62,10 +62,10 @@
                   <%= link_to jf_path(apply.applyer), class: "user-name" do %>
                       <strong>View Profile</strong>
                     <% end %>
-                  
+
                 </div>
                 </div>
-                
+
               </div>
           <% end %>
         </div>

@@ -41,7 +41,7 @@ class AppliesController < ApplicationController
       applyer_notification = Notification.create(recipient_id: @apply.applyer_id,
                           actor_id: current_user.id,
                           action: "<strong>You</strong> have just applied <strong>#{ @job.title.truncate(40)}</strong>.")
-      recruiter_notification.update_attribute(:notifiable, @apply)    
-      applyer_notification.update_attribute(:notifiable, @job)    
+      recruiter_notification.update_attribute(:notifiable, @apply)
+      applyer_notification.update_attribute(:notifiable, @job)
     end
 end

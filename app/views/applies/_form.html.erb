@@ -1,6 +1,6 @@
 <%= form_with(model: Apply.new, local: true) do |form| %>
-  <div class="r-c-content-jds <%= 'disabled' if @applied  %>" style="">
-    <span class="cc-title-jds <%= 'disabled' if @applied  %>" id="applyJob" data-job="<%= job.id %>" style="margin-left: 11px;color: #FFF;"><%= @applied ? 'You have applied' : 'Apply for this job'%></span>
+  <div class="r-c-content-jds <%= 'disabled' if @applied  %>" style="" id="applyJob" data-job="<%= job.id %>" >
+    <span class="cc-title-jds <%= 'disabled' if @applied  %>" style="margin-left: 11px;color: #FFF;"><%= @applied ? 'You have applied' : 'Apply for this job'%></span>
   </div>
 <% end %>
 <style type="text/css">

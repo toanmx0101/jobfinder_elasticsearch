@@ -4,7 +4,7 @@
       <div class="job-views-and-type">
         <span class="job-views"><i class="fa fa-eye" style="color: #f8bc48; margin-right: 5px;"></i><%= job.view_count %> views</span>
         <span class="job-type"><%= job.job_type %></span>
-      </div>  
+      </div>
       <%= link_to job do %>
         <div class="job-title">
           <h3><%= job.title %></h3>
@@ -14,7 +14,7 @@
         <i class="fas fa-map-marker-alt"></i>
         <%= job&.location%>
         <div style="float: right;">
-          Score <%=  %>
+          Score <%=  score%>
         </div>
       </div>
       <%= link_to job do %>
@@ -23,6 +23,6 @@
           <span><%= truncate(des, length: 500) %></span>
         </div>
       <% end %>
-    </div>  
+    </div>
   </div>
 </div>

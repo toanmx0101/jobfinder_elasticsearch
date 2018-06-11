@@ -25,18 +25,18 @@
           %li
             .a-item-content
               .a-center-content
-                %a{href: '/login'}
+                %a{href: '/pricing'}
                   %span.li-title Pricing
           %li
             .a-item-content
               .a-center-content
-                %a{href: '/login'}
-                  %span.li-title About Us
+                %a{href: '/feedbacks'}
+                  %span.li-title Feedbacks
           %li
             .a-item-content
               .a-center-content
                 %a{href: '/join'}
-                  %span.li-title Become A Employ
+                  %span.li-title Become A Member
           %li
             .a-item-content
               .a-center-content
@@ -57,9 +57,9 @@
               .message-dropdown.js-dropdown-content
                 .message-header
                   %a.see-all Meetings
-                  %a.mark-read-all 
+                  %a.mark-read-all
                 %ul#meetingsList{data_user: current_user.id}
-                  - current_user.meetings.each do |interview|
+                  - current_user.interviews.includes(:recruiter).each do |interview|
                     = render 'interviews/interview', interview: interview
           %li
             .a-item-content.message-link
@@ -68,7 +68,7 @@
                   %i.far.fa-envelope.fa-lg{"aria-hidden" => "true"}
                     - c_count = @conversations.count
                     %span.js-count-noti
-                      #open_notification
+                      #open_messages
                         = c_count > 0 ? c_count : ''
               .message-dropdown.js-dropdown-content
                 .message-header

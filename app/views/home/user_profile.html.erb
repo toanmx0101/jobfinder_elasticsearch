@@ -31,36 +31,31 @@
 <div class="container">
   <% if user_signed_in? && @user == current_user %>
     <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
-      <div class="u-p-n-items selected">
+      <a href="/profile" class="u-p-n-items selected">
         <div class="u-p-n-item-link" id="firstLink">
           About
         </div>
-      </div>
-      <div class="u-p-n-items">
+      </a>
+      <a href="/conversations" class="u-p-n-items">
         <div class="u-p-n-item-link">
           Messages
         </div>
-      </div>
-      <div class="u-p-n-items">
+      </a>
+      <a href="/my_interviews" class="u-p-n-items">
         <div class="u-p-n-item-link">
           Interviews
         </div>
-      </div>
-      <div class="u-p-n-items">
-        <div class="u-p-n-item-link">
-          Notifications
-        </div>
-      </div>
-     <div class="u-p-n-items">
+      </a>
+      <a href="/appropriate_jobs" class="u-p-n-items">
         <div class="u-p-n-item-link">
           Suggest jobs
         </div>
-      </div>
-      <div class="u-p-n-items">
+      </a>
+      <a href="/setting"  class="u-p-n-items">
         <div class="u-p-n-item-link">
           Settings
         </div>
-      </div>
+      </a>
     </div>
 
   <% end %>
@@ -93,12 +88,29 @@
           <span style="font-weight: bold;">Language</span>
         </div>
         <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.language %></span>
+
+        <div style="margin-top: 12px;margin-bottom: 3px;">
+          <i class="fas fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;">Phonenumber</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.language %></span>
+        <div style="margin-top: 12px;margin-bottom: 3px;">
+          <i class="fas fa-link" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;">Website</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.website %></span>
+        <div style="margin-top: 12px;margin-bottom: 3px;">
+          <i class="far fa-map" aria-hidden="true" style="margin-right: 10px;"></i>
+          <span style="font-weight: bold;">Hanoi</span>
+        </div>
+        <span style="margin-left: 25px;color: #2ca5ec;"></span>
         <div style="margin-top: 12px;margin-bottom: 3px;">
           <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 10px;"></i>
-          <span style="font-weight: bold;cursor: pointer;">Send love to me</span>
+          <span style=";color: #2ca5ec;cursor: pointer;">Mess with me</span>
         </div>
-        <span style="margin-left: 25px;color: #2ca5ec;cursor: pointer;">Mess with me</span>
+
       </div>
     </div>
   </div>
 </div>
+<%= render "/partials/footer"%>

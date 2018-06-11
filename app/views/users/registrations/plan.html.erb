@@ -50,25 +50,17 @@
       </div>
       <div class="right-step-menu">
       	<%= form_for(current_user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-				  <div class="m--step-two">
+				  <div class="m--step-two" >
 						<h2>Choose your plan</h2>
-						<div>
+						<div style="margin: 30px 0;">
 						  <div class="radio-choice">
-						  	<%= f.radio_button :user_type, 'candidate', :checked => true %> 
-						    <label for="contactChoice1">Candidate: just seek jobs</label>  
+						  	<%= f.radio_button :user_type, 'normal', :checked => true %>
+						    <label for="contactChoice1">Candidate: just seek jobs</label>
 						  </div>
 						  <div class="radio-choice">
-						  	<%= f.radio_button :user_type, 'employer' %> 
+						  	<%= f.radio_button :user_type, 'recruiter' %>
 						    <label for="contactChoice2">Employers: Company create recruiment</label>
-						  </div>              
-						</div>
-						<div class="radio-choice send-mails-jobfinder" style="margin: 30px 0;border-top: 1px solid;">
-						  <input type="checkbox" name="subcribe_jobfinder" value="subcribe_jobfinder">
-						  <label style="font-weight: bold;">
-						    Send me update from Jobfinder News
-						  </label> 
-						  <br>
-						  <span style="margin-left: 32px;">Unsubcribe anytime in your email preferences</span>
+						  </div>
 						</div>
 						<div class="actions">
 					    <%= f.submit "Continue", style: 'cursor: pointer' %>

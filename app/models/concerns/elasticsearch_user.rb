@@ -54,6 +54,7 @@ module ElasticsearchUser
         indexes :language, type: 'text'
         indexes :work_position, type: 'text', term_vector: 'with_positions_offsets_payloads'
         indexes :education, type: 'text', analyzer: 'job_analyzer', term_vector: 'with_positions_offsets_payloads'
+        indexes :history, type: 'long'
       end
     end
 
@@ -79,7 +80,8 @@ module ElasticsearchUser
         view_count: view_count,
         education: education,
         work_position: work_position,
-        username: username
+        username: username,
+        history: view_history
       }
 
       user_attrs
@@ -197,7 +199,54 @@ module ElasticsearchUser
         }
       }
     end
+
+    def self.get_similar_jobs_by_history(job_id)
+      search_definition = create_query_get_similar_jobs(job_id)
+      res = search_similar_jobs_elasticsearch(search_definition)
+      res
+    end
+
+    def self.create_query_get_similar_jobs(job_id)
+      {
+        query: {
+          terms: {
+            history: [job_id]
+          }
+        },
+        size: 0,
+        aggs: {
+          popularHistories: {
+            terms: {
+              field: "history",
+              size: 5
+            }
+          }
+        }
+      }
+    end
+
+    def self.search_similar_jobs_elasticsearch(search_definition)
+      response = __elasticsearch__.search(search_definition)
+      keywords = response.aggregations.popularHistories.buckets
+      similar_jobs = []
+      keywords.each do |keyword|
+        similar_jobs.push(keyword[:key].to_i)
+      end
+      body = if similar_jobs.present?
+               Job.find(*similar_jobs)
+             else
+               []
+             end
+      {
+        body: body
+      }
+    rescue => e
+      Rails.logger.error(e)
+      {
+        tags: []
+      }
+    end
   end
 
-  
+
 end

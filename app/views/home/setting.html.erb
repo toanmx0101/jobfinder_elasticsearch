@@ -1,7 +1,65 @@
+<div class="base-user-profile" style="padding-top: 120px;">
+  <div class="container " >
+    <div class="c-base-user-profile">
+      <div class="c-image">
+        <img src="<%= current_user.avatar_url %>">
+      </div>
+      <div class="c-text">
+        <h2><%= current_user&.username %>   <span>( <%= current_user&.work_position %> )</span></h2>
+        <span style="font-size: inherit;font-weight: normal;margin-left: 3px;"">
+          <i class="fa fa-map-marker" aria-hidden="true" style="margin-right: 2px;"></i>
+          <%= current_user&.location %>
+        </span>
+        <span style="width: 82px;display: block;margin-top: 19px;padding-bottom: 3px;margin-bottom: 4px;">About</span>
+        <span style="width: 63%;display: block;font-size: inherit;font-weight: normal;">
+          <%= raw current_user&.description %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(window).bind('scroll', function () {
+    if ($(window).scrollTop() >  280) {
+      $('#userProfileNavigation').addClass('nav-fixed');
+    } else {
+      $('#userProfileNavigation').removeClass('nav-fixed');
+    }
+  });
+</script>
+
 <div class="container">
+    <div class="details-user-profile user-profile-navigation" id="userProfileNavigation">
+      <a href="/profile" class="u-p-n-items ">
+        <div class="u-p-n-item-link" id="firstLink">
+          About
+        </div>
+      </a>
+      <a href="/conversations" class="u-p-n-items ">
+        <div class="u-p-n-item-link">
+          Messages
+        </div>
+      </a>
+      <a href="/my_interviews" class="u-p-n-items ">
+        <div class="u-p-n-item-link">
+          Interviews
+        </div>
+      </a>
+      <a href="/appropriate_jobs" class="u-p-n-items">
+        <div class="u-p-n-item-link">
+          Suggest jobs
+        </div>
+      </a>
+      <a href="/setting"  class="u-p-n-items selected">
+        <div class="u-p-n-item-link">
+          Settings
+        </div>
+      </a>
+    </div>
+    <div class="container">
   <div class="settings">
     <div class="settings-menu">
-      <div class="settings-menu-header">
+      <div class="" style="margin-bottom: 40px;">
         <h2>Settings</h2>
       </div>
       <div class="setting profile-setting  is-active ">
@@ -11,60 +69,95 @@
           <span>Change the name,update your skills, education</span>
         </div>
       </div>
-      <div class="setting profile-setting">
+      <a href="/setting/password" class="setting profile-setting">
         <i class="fas fa-unlock-alt fa-2x"></i>
         <div class="c-profile-setting">
           <h3>Password</h3>
           <span>Change your password</span>
         </div>
-      </div>
+      </a>
       <div class="setting profile-setting">
         <i aria-hidden="true" class="fa fa-flag fa-2x" style=";"></i>
         <div class="c-profile-setting">
           <h3>Notifications</h3>
-          <span>Change the name,update your skills, education</span>
+          <span></span>
         </div>
       </div>
       <div class="setting profile-setting">
         <i aria-hidden="true" class="fa fa-paper-plane fa-2x" style=";"></i>
         <div class="c-profile-setting">
           <h3>Plan</h3>
-          <span>Change the name,update your skills, education</span>
+          <span></span>
         </div>
       </div>
-      
+
        <div class="setting profile-setting">
         <i class="far fa-comment-alt fa-2x"></i>
         <div class="c-profile-setting">
           <h3>Messages</h3>
-          <span>Change the name,update your skills, education</span>
+          <span></span>
         </div>
       </div>
     </div>
     <div class="settings-content">
       <div class="c-settings-content">
-        <div>
-          <h3>Change password</h3>  
-          <span>Change</span>
-        </div>
-        <div class="form-change-password">
-          <span>Current Password</span>
-          <input type="text" name="">
-          <span>New password</span>
-          <input type="text" name="">
-          <span>Confirm new password</span>
-          <input type="text" name="">
-          <div class="form-submit" style="margin-top: 14px;">
-            <span>Submit</span>
+        <%= form_for(current_user, as: :user, url: registration_path(:user), html: { method: :put, style: 'width: 100%;'} ) do |f| %>
+          <h2>Edit your profile</h2>
+          <div class="m--step-three" style="display: flex">
+            <div class="" style=";margin-right: 15px;width: 100%">
+              <div class="field">
+                <%= f.label "Your Position"%><br />
+                <%= f.text_field :work_position, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "About you" %><br />
+                <%= f.text_area :description, class: 'form-control', id: 'description', rows: '4' %>
+              </div>
+              <div class="field">
+                <%= f.label "Your Past Experiences" %><br />
+                <%= f.text_area :experience, class: 'form-control', id: 'experience',  rows: '4' %>
+              </div>
+              <div class="field">
+
+                <%= f.label "Linkedin ( optional )"%><br />
+                <%= f.text_field :website, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "Education"%><br />
+                <%= f.text_area :education, class: 'form-control', id: 'education' %>
+              </div>
+              <div class="field">
+                <%= f.label "Your language"%><br />
+                <%= f.text_field :language, class: 'form-control' %>
+              </div>
+              <div class="actions">
+                <%= f.submit "Continue", style: 'cursor: pointer' %>
+              </div>
+            </div>
+            <div class="" style=";margin-left: 15px;">
+            <style type="text/css">
+              .ck-editor__editable {
+                  min-height: 200px;
+              }
+            </style>
+            </div>
           </div>
-        </div>
-      </div>
+        <% end %>
     </div>
   </div>
 </div>
+</div>
+<%= render "/partials/footer"%>
+
+
 <script type="text/javascript">
   $('.setting').click(function(){
     $('.setting').removeClass('is-active');
     $(this).addClass('is-active');
   });
+</script>
+<script>
+  var editor1 = ClassicEditor.create( document.querySelector( '#description' ))
+  var editor2 = ClassicEditor.create( document.querySelector( '#experience' ))
+  var editor3 = ClassicEditor.create( document.querySelector( '#education' ))
 </script>

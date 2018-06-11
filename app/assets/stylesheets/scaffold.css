@@ -6,7 +6,7 @@ body, input {
 }
 header {
   height: 60px;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
   z-index: 3;
   position: fixed;
   width: 100%;
@@ -194,7 +194,7 @@ label { display: block; }
   box-sizing: border-box;
   background-color: #f6f9fc;
 }
-.asd form  input:focus { 
+.asd form  input:focus {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,.1);
 }
 .c-nav {
@@ -215,7 +215,7 @@ label { display: block; }
 }
 .c-nav-footer__list {
   display: grid;
-  padding: 0; 
+  padding: 0;
 }
 .c-nav-footer__block span{
   font-weight: 600;
@@ -236,7 +236,7 @@ label { display: block; }
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.15)
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3)
 }
 .show {display:block;}
 .widget-container {position: absolute;}
