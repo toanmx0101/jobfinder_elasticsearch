@@ -74,9 +74,22 @@
                 <%= f.label "Your language"%><br />
                 <%= f.text_field :language, class: 'form-control' %>
               </div>
+              <div class="field">
+                <%= f.label "Phonnumber"%><br />
+                <%= f.text_field :phone, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "Website"%><br />
+                <%= f.text_field :website, class: 'form-control' %>
+              </div>
+              <div class="field">
+                <%= f.label "Address"%><br />
+                <%= f.text_field :location, class: 'form-control' %>
+              </div>
               <div class="actions">
                 <%= f.submit "Continue", style: 'cursor: pointer' %>
               </div>
+
             </div>
             <div class="" style=";margin-left: 15px;">
             <style type="text/css">
@@ -85,7 +98,7 @@
               }
             </style>
             </div>
-          </div>  
+          </div>
         <% end %>
       </div>
     </div>

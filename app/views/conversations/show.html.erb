@@ -111,7 +111,9 @@
                         <% end %>
                       <% elsif mes.suggest_link? %>
                         <% if mes.user_id == current_user.id %>
-                          <%= render 'messages/suggest_message' %>
+                          <%= render 'messages/suggest_message', isSent: true %>
+                        <% else %>
+                          <%= render 'messages/suggest_message', isSent: false %>
                         <% end %>
                       <% elsif mes.interview_invite? %>
                         <% if mes.user_id == current_user.id %>
