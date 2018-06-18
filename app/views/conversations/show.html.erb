@@ -74,19 +74,25 @@
               </div>
               <div class="sender-listitem">
                 <% @conversations.each do |conversation| %>
-                    <%= link_to "/rc_messages/" + conversation.id.to_s do %>
-                    <div class="sender-item active-sender-item">
+                    <%= link_to "/conversations/" + conversation.id.to_s do %>
+                    <div class="sender-item <%= 'active-sender-item' if conversation.id.to_s == params[:id]%>">
                       <div class="sender-header">
-                        <span class="sender-name"><%= conversation.receiver.username %><i class="fa fa-circle" aria-hidden="true"></i></span>
+                        <span class="sender-name"><%= conversation.receiver.username %></span>
                         <span class="send-time">
                           <%= time_ago_in_words(conversation.updated_at) %> ago
                         <i class="fa fa-envelope-o" aria-hidden="true"></i></span>
                       </div>
                       <div class="sender-sort-sumary">
                         <% if conversation.messages.empty? %>
-                          <span><%= truncate(Conversation.find_by(sender_id: conversation.receiver_id, receiver_id: conversation.sender_id).messages.first.content, :length => 60) %></span>
+                          <% if Conversation.find_by(sender_id: conversation.receiver_id, receiver_id: conversation.sender_id).messages.present? %>
+                            <span><%= truncate(Conversation.find_by(sender_id: conversation.receiver_id, receiver_id: conversation.sender_id).messages.first.content, :length => 60) %></span>
+                          <% else %>
+                            <span></span>
+                          <% end %>
                         <% elsif conversation.messages.present? %>
                           <span><%= truncate(conversation.messages.first.content, :length => 60) %></span>
+                        <% else %>
+                          <span></span>
                         <% end %>
                       </div>
                     </div>
@@ -137,3 +143,4 @@
   </div>
 </div>
 <%= render "/partials/footer"%>
+

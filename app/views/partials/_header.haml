@@ -59,7 +59,7 @@
                   %a.see-all Meetings
                   %a.mark-read-all
                 %ul#meetingsList{data_user: current_user.id}
-                  - current_user.interviews.includes(:recruiter).each do |interview|
+                  - current_user.meetings.includes(:recruiter).each do |interview|
                     = render 'interviews/interview', interview: interview
           %li
             .a-item-content.message-link

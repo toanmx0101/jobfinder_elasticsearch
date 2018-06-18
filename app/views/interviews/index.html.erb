@@ -55,72 +55,30 @@
     <div class="inner-incoming-interviews">
 
       <div>
-        <div class="sender-mess-item__content_right" style="width: 32%;display: inline-block;margin-right: 6px;">
-          <div class="interview-invite" style="float: none;">
-            <div class="c-interview-invite">
-              <div class="i-i-time">
-                <div class="m">June</div>
-                <div class="d">20</div>
-                <div class="wday">Monday</div>
-              </div>
-              <div class="i-i-content">
-                <div class="i-tt">Invitation to Interview </div>
-                <div class="i-job">Job: </div>
-                <div class="i-time">When: </div>
-                <div class="i-location">At: </div>
-                <div class="i-actions">
-                  <div class="i-a i-a-yes">Yes</div>
-                  <div class="i-a i-a-maybe">Maybe</div>
-                  <div class="i-a i-a-no">No</div>
+        <% @interviews.each do |interview| %>
+          <div class="sender-mess-item__content_right" style="width: 32%;display: inline-block;margin-right: 6px;">
+            <div class="interview-invite" style="float: none;">
+              <div class="c-interview-invite">
+                <div class="i-i-time">
+                  <div class="m"><%= interview.start_at.strftime("%b") %></div>
+                  <div class="d"><%= interview.start_at.strftime("%d") %></div>
+                  <div class="wday"><%= interview.start_at.strftime("%A") %></div>
+                </div>
+                <div class="i-i-content">
+                  <div class="i-tt"><%= interview.title %></div>
+                  <div class="i-job">Job: <%= interview.job.title %></div>
+                  <div class="i-time">When: <%= interview.start_at.strftime("%H:%M%p") %></div>
+                  <div class="i-location">At: <%= interview.location %> </div>
+                  <div class="i-actions">
+                    <div class="i-a i-a-yes">Yes</div>
+                    <div class="i-a i-a-maybe">Maybe</div>
+                    <div class="i-a i-a-no">No</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="sender-mess-item__content_right" style="width: 33%;display: inline-block;">
-          <div class="interview-invite" style="float: none;">
-            <div class="c-interview-invite">
-              <div class="i-i-time">
-                <div class="m">June</div>
-                <div class="d">20</div>
-                <div class="wday">Monday</div>
-              </div>
-              <div class="i-i-content">
-                <div class="i-tt">Invitation to Interview </div>
-                <div class="i-job">Job: </div>
-                <div class="i-time">When: </div>
-                <div class="i-location">At: </div>
-                <div class="i-actions">
-                  <div class="i-a i-a-yes">Yes</div>
-                  <div class="i-a i-a-maybe">Maybe</div>
-                  <div class="i-a i-a-no">No</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="sender-mess-item__content_right" style="width: 33%;display: inline-block;margin-left: 4px;">
-          <div class="interview-invite" style="float: none;">
-            <div class="c-interview-invite">
-              <div class="i-i-time">
-                <div class="m">June</div>
-                <div class="d">20</div>
-                <div class="wday">Monday</div>
-              </div>
-              <div class="i-i-content">
-                <div class="i-tt">Invitation to Interview </div>
-                <div class="i-job">Job: </div>
-                <div class="i-time">When: </div>
-                <div class="i-location">At: </div>
-                <div class="i-actions">
-                  <div class="i-a i-a-yes">Yes</div>
-                  <div class="i-a i-a-maybe">Maybe</div>
-                  <div class="i-a i-a-no">No</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

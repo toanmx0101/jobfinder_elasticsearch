@@ -13,7 +13,7 @@ $( document ).on('turbolinks:load', function() {
       $.ajax({
         type: 'GET',
         url: '/candidates',
-        data: { 
+        data: {
                 username: $('#username').val(),
                 work_position: $('#work_position').val(),
                 skills: $('#skills').val(),
@@ -25,7 +25,7 @@ $( document ).on('turbolinks:load', function() {
           $('.cc-profiles').empty();
 
           data['candidates'].forEach(function(candidate){
-            var pro =  '<div class="candidate-profile" id="candidate'+ candidate.id + '"><div class="c-p-content"><div><div class="c-p-user-profile"><img class="" src="'+ candidate.avatar_url +'"/><div class="score">Score </div></div></div><div><div class="c-p-username">' + candidate.username +'</div><div style="text-align: center;">'+candidate.work_position+'</div><div class="c-p-link"><div class="c-p-view"><a href="/jf/' + candidate.username + '" target="_blank">View profile</a></div><div class="c-p-mes">Send message</div></div><div class="c-p-tags"><h2>Tags</h2><div>'
+            var pro =  '<div class="candidate-profile" id="candidate'+ candidate.id + '"><div class="c-p-content"><div><div class="c-p-user-profile"><img class="" src="'+ candidate.avatar_url +'"/><div class="score">Score </div></div></div><div><div class="c-p-username">' + candidate.username +'</div><div style="text-align: center;">'+candidate.work_position+'</div><div class="c-p-link"><div class="c-p-view"><a href="/jf/' + candidate.username + '" target="_blank">View profile</a></div><a class="c-p-mes" href="/send_mail_to?receiver_id=<%= apply.applyer.id%>" style="color: #5897fbb8" >Send message</a></div><div class="c-p-tags"><h2>Tags</h2><div>'
             if (candidate['tags']) {
               candidate['tags'].forEach(function(tag){
                 pro = pro + '<div class="c-p-tag-item">' + tag["term"] + '</div>'
@@ -57,7 +57,7 @@ function handleClickPLJJOB(event) {
   $.ajax({
     type: 'GET',
     url: '/candidates',
-    data: { 
+    data: {
             job_id: $('.selected').data('job')
           },
     dataType: 'json',
@@ -73,7 +73,7 @@ function handleClickPLJJOB(event) {
       })
       $('.results-candidate').empty();
       $('.cc-profiles').empty();
-      
+
       data['candidates'].forEach(function(candidate){
         var pro =  '<div class="candidate-profile" id="candidate'+ candidate.id + '"><div class="c-p-content"><div><div class="c-p-user-profile"><img class="" src="'+ candidate.avatar_url +'"/><div class="score">Score </div></div></div><div><div class="c-p-username">' + candidate.username +'</div><div style="text-align: center;">'+candidate.work_position+'</div><div class="c-p-link"><div class="c-p-view"><a href="/jf/' + candidate.username + '" target="_blank">View profile</a></div><div class="c-p-mes">Send message</div></div><div class="c-p-tags"><h2>Tags</h2><div>'
         if (candidate['tags']) {

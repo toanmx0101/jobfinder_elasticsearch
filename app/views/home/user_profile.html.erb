@@ -91,8 +91,9 @@
 
         <div style="margin-top: 12px;margin-bottom: 3px;">
           <i class="fas fa-phone" aria-hidden="true" style="margin-right: 10px;"></i>
-          <span style="font-weight: bold;">Phonenumber</span>
+          <span style="font-weight: bold;">Phone</span>
         </div>
+        <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.phone %></span>
         <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.language %></span>
         <div style="margin-top: 12px;margin-bottom: 3px;">
           <i class="fas fa-link" aria-hidden="true" style="margin-right: 10px;"></i>
@@ -101,16 +102,44 @@
         <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.website %></span>
         <div style="margin-top: 12px;margin-bottom: 3px;">
           <i class="far fa-map" aria-hidden="true" style="margin-right: 10px;"></i>
-          <span style="font-weight: bold;">Hanoi</span>
+          <span style="font-weight: bold;">Location</span>
         </div>
-        <span style="margin-left: 25px;color: #2ca5ec;"></span>
-        <div style="margin-top: 12px;margin-bottom: 3px;">
-          <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 10px;"></i>
-          <span style=";color: #2ca5ec;cursor: pointer;">Mess with me</span>
-        </div>
-
+        <span style="margin-left: 25px;color: #2ca5ec;"><%= @user&.location %></span>
+        <% if user_signed_in? && @user != current_user %>
+          <div style="margin-top: 12px;margin-bottom: 3px;">
+            <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 10px;"></i>
+            <span style=";"></span>
+            <a href="/send_mail_to?receiver_id=<%= @user.id%>" style="color: #2ca5ec;cursor: pointer;" >Mess with me</a>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+<% if user_signed_in? && @user == current_user %>
+  <div class="container">
+    <div style="margin-top: 20px;">
+      <div class="similar-jobs-header">
+        <h2>Recommend base your view history</h2>
+      </div>
+      <div class="user-also-viewed">
+        <div class="inner-jobs-list">
+          <% @user_also_viewed.each do |s_j|%>
+            <div class="similar-job">
+              <%= link_to  s_j do %>
+                <img src="<%= s_j.background_url %>" style="height: 100px;width: 300px;">
+              <% end %>
+              <div class="similar-job-content">
+                <%= link_to s_j.title, s_j, class: 'job-title', style: 'font-size: 17px' %>
+                <div class="job-view-count"></div>
+                <div class="locations"><i class="fas fa-map-signs"></i><%= s_j.location %></div>
+                <div class="salary limit"><i class="fas fa-dollar-sign"></i><%= s_j.pay_rate %></div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 <%= render "/partials/footer"%>

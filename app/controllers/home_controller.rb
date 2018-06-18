@@ -15,6 +15,10 @@ class HomeController < ApplicationController
 
   def user_profile
     @user = current_user
+    @user_also_viewed = User.get_similar_jobs_by_history(current_user.view_history)[:body]
+    if @user_also_viewed.empty?
+      @user_also_viewed = Job.find(Job.simple_match_jobs_query(@job.title).first(5))
+    end
   end
 
   def profile
@@ -32,20 +36,25 @@ class HomeController < ApplicationController
   end
 
   def appropriate_jobs
-    tags = Job.generate_tags(current_user.work_position)
-    current_user.update_attribute(:tags, tags)
-    location = current_user.location.present? ? current_user.location : ""
-    experience = current_user.experience.present? ? current_user.experience : ""
-    job_type = ""
-    salary = ""
-    results = Job.search_el(1, Job::PER_PAGE ,
-                          location,
-                          job_type,
-                          salary,
-                          tags,
-                          current_user.work_position + experience )
-    @appropricate_jobs = results[:body]
-    @jobs_score = results[:jobs_score]
+    if current_user.experience.present?
+      tags = User.get_value_terms(current_user.experience)
+      current_user.update_attribute(:tags, tags)
+      location = ""
+      experience = current_user.experience.present? ? current_user.experience : ""
+      job_type = ""
+      salary = ""
+      results = Job.search_el(1, Job::PER_PAGE ,
+                            location,
+                            job_type,
+                            salary,
+                            tags,
+                            current_user.work_position )
+      @appropricate_jobs = results[:body]
+      @jobs_score = results[:jobs_score]
+    else
+      redirect_to root_path
+    end
+
   end
 
   def setting;  end

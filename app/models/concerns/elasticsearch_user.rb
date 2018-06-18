@@ -26,10 +26,9 @@ module ElasticsearchUser
       analysis: {
         analyzer: {
           job_analyzer: {
-            type: "standard",
-            tokenizer: "whitespace",
+            tokenizer: "standard",
             stopwords: "_english_",
-            char_filter:  [ "html_strip", "lowercase" ]
+            char_filter:  [ "html_strip" ]
           },
           name_analyzer: {
             tokenizer: "name_tokenizer"
@@ -38,7 +37,7 @@ module ElasticsearchUser
         tokenizer: {
           name_tokenizer: {
             type: "pattern",
-            pattern: "_|\\."
+            pattern: "_|\\.|-"
           }
         }
       }
@@ -46,8 +45,8 @@ module ElasticsearchUser
       mappings dynamic: 'false', _all: {enabled: false} do
         indexes :id, type: 'integer', index: true
         indexes :username, type: 'text', index: true, fielddata: true, analyzer: 'name_analyzer'
-        indexes :description, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer', term_vector: 'with_positions_offsets_payloads'
-        indexes :experience, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer', term_vector: 'with_positions_offsets_payloads'
+        indexes :description, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer', term_vector: 'with_positions_offsets_payloads', store: true
+        indexes :experience, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer', term_vector: 'with_positions_offsets_payloads', store: true
         indexes :location, type: 'text', index: true, fielddata: true
         indexes :view_count, type: 'integer'
         indexes :experience_level, type: 'integer'
@@ -210,7 +209,7 @@ module ElasticsearchUser
       {
         query: {
           terms: {
-            history: [job_id]
+            history: job_id
           }
         },
         size: 0,
@@ -246,7 +245,42 @@ module ElasticsearchUser
         tags: []
       }
     end
+
+    def self.get_value_terms(experience)
+      search_definition = create_query_get_term_value(experience)
+      res = get_term_vectors_elasticsearch(search_definition)
+      res
+    end
+
+    def self.create_query_get_term_value(experience)
+      {
+        doc: {
+          experience: experience
+        },
+        term_statistics: true,
+        field_statistics: true,
+        positions: false,
+        offsets: false,
+        filter: {
+          max_num_terms: 20,
+          min_term_freq: 1,
+          min_doc_freq: 1
+        },
+        fields: ["experience"],
+        per_field_analyzer: {
+          experience: "job_analyzer"
+        }
+      }
+    end
+
+    def self.get_term_vectors_elasticsearch(search_definition)
+      response = __elasticsearch__.client.termvectors(index: 'users', type: 'user', body: search_definition )
+      terms_vectors = response['term_vectors']['experience']['terms']
+      terms = []
+      terms_vectors.each do |term_vector|
+        terms.push({:term => term_vector.first, :boost => term_vector.second['score']})
+      end
+      terms
+    end
   end
-
-
 end

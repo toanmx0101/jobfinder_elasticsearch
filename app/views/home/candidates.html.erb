@@ -23,15 +23,15 @@
             <%= form_tag candidates_path, method: 'get' do %>
               <div class="search-title">
                 <div class="skills-header">
-                 <div class="filter-title-div"> 
+                 <div class="filter-title-div">
                     <h4 style="color: #ACACAC;">User name</h4>
                   </div>
-                </div>  
+                </div>
                   <%= text_field_tag :username, params[:username], class: 'input--text', autofocus: 'true',onfocus: 'this.value = this.value;', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
               </div>
               <div class="locations">
                 <div class="skills-header">
-                  <div class="filter-title-div"> 
+                  <div class="filter-title-div">
                     <h4  style="color: #ACACAC;">Work position</h4>
                   </div>
                 </div>
@@ -41,7 +41,7 @@
               </div>
               <div class="locations">
                 <div class="skills-header">
-                  <div class="filter-title-div"> 
+                  <div class="filter-title-div">
                     <h4  style="color: #ACACAC;">Candidate skills</h4>
                   </div>
                 </div>
@@ -49,7 +49,7 @@
                   <%= text_field_tag :skills, params[:skills], class: 'input--text', onkeydown: "if (event.keyCode == 13) { this.form.submit(); return false; }", autocomplete: "off"%>
                 </div>
               </div>
-            <% end %>   
+            <% end %>
           </div>
           <div class="pick-list-jobs <%= 'active-cs' if params[:job_id].present? %>">
             <div class="title">
@@ -125,7 +125,7 @@
                   <div style="text-align: center;"><%= user.work_position %></div>
                   <div class="c-p-link">
                     <div class="c-p-view"><%= link_to "View profile", jf_path(user), target: "_blank"%> </div>
-                    <div class="c-p-mes">Send message</div>
+                    <a class="c-p-mes" href="/send_mail_to?receiver_id=<%= user.id%>" style="color: #5897fbb8" >Send message</a>
                   </div>
                   <div class="c-p-tags">
                     <h2>Tags</h2>
@@ -154,7 +154,7 @@
             </div>
           <% end %>
         </div>
-        
+
       </div>
     </div>
   </div>

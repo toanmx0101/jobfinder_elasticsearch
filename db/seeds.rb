@@ -141,25 +141,25 @@
 #   Apply.create(applyer_id: applyer_id, job_id: Job.all.sample.id)
 # end
 
-puts "Delete inteviews"
-Interview.delete_all
-puts "Generate interview"
+# puts "Delete inteviews"
+# Interview.delete_all
+# puts "Generate interview"
 
-500.times do |i|
-  recruiter_id = User.where(user_type: 'recruiter').map(&:id).sample
-  interviewer_id = User.where(user_type: 'normal').map(&:id).sample
-  job_id = Job.where(user_id: recruiter_id).map(&:id).sample
-  Interview.create(
-    title: Faker::Job.title + ' - ' +Faker::Job.position + 'Interview',
-    recruiter_id: recruiter_id,
-    interviewer_id: interviewer_id,
-    job_id: job_id,
-    start_at: Faker::Time.between(3.week.from_now, Date.today, :day),
-    duration: '1 hour',
-    description: Faker::Lorem.sentence,
-    location: Faker::Address.street_address
-    )
-end
+# 500.times do |i|
+#   recruiter_id = User.where(user_type: 'recruiter').map(&:id).sample
+#   interviewer_id = User.where(user_type: 'normal').map(&:id).sample
+#   job_id = Job.where(user_id: recruiter_id).map(&:id).sample
+#   Interview.create(
+#     title: Faker::Job.title + ' - ' +Faker::Job.position + 'Interview',
+#     recruiter_id: recruiter_id,
+#     interviewer_id: interviewer_id,
+#     job_id: job_id,
+#     start_at: Faker::Time.between(3.week.from_now, Date.today, :day),
+#     duration: '1 hour',
+#     description: Faker::Lorem.sentence,
+#     location: Faker::Address.street_address
+#     )
+# end
 
 # puts "Generate real profile"
 # file = File.read('lib/assets/real_profile_user.json')
@@ -181,12 +181,16 @@ end
 # end
 # puts "sample history"
 
-# User.all.each do |u|
-#   if u.work_position
-#     u.view_history  = Job.simple_match_jobs_query(u.work_position)
-#     u.save
-#   end
-# end
+User.all.each do |u|
+  # u.phone = Faker::PhoneNumber.phone_number
+  # u.location = Faker::Address.street_address
+  # u.website = Faker::Internet.url
+  u.language = 'English'
+  if u.experience
+    u.tags = User.get_value_terms(u.experience)
+    u.save
+  end
+end
 
 # puts "Delete all message and conversation"
 # Conversation.delete_all

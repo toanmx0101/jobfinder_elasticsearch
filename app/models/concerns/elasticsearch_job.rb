@@ -48,9 +48,9 @@ module ElasticsearchJob
     } do
       mappings dynamic: 'false', _all: {enabled: false} do
         indexes :id, type: 'integer', index: true
-        indexes :title, type: 'text', index: true, boost: 5, fielddata: true
-        indexes :description, type: 'text', index: true, boost: 2, fielddata: true, analyzer: 'job_analyzer'
-        indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer'
+        indexes :title, type: 'text', index: true, boost: 5, fielddata: true, store: true
+        indexes :description, type: 'text', index: true, boost: 2, fielddata: true, analyzer: 'job_analyzer', store: true, term_vector: "with_positions_offsets_payloads"
+        indexes :about_candidate, type: 'text', index: true, boost: 3, fielddata: true, analyzer: 'job_analyzer', store: true, term_vector: "with_positions_offsets_payloads"
         indexes :location, type: 'text', index: true, fielddata: true, analyzer: 'location_analyzer'
         indexes :job_type, type: 'text', index: true, fielddata: true, analyzer: 'job_type_analyzer'
         indexes :view_count, type: 'integer'
@@ -156,7 +156,7 @@ module ElasticsearchJob
         tags.each do |tag|
           tag_boost_filter.push({
             filter: {
-              term: {
+              match: {
                 about_candidate: tag[:term]
               }
             },
@@ -194,7 +194,6 @@ module ElasticsearchJob
                   {
                     multi_match: {
                       query: keyword_match,
-                      fuzziness: "AUTO",
                       fields: ["title", "about_candidate", "description"]
                     }
                   }
@@ -307,7 +306,7 @@ module ElasticsearchJob
         query: {
           multi_match: {
             query: work_position,
-            fields: [ "about_candidate" ]
+            fields: [ "title" ]
           }
         },
         size: 2,
@@ -319,7 +318,7 @@ module ElasticsearchJob
             aggs: {
               keywords: {
                 significant_terms: {
-                  field: "about_candidate",
+                  field: "title",
                   size: 10,
                   exclude: Job.work_position_tags_analyzer(work_position)
                 }

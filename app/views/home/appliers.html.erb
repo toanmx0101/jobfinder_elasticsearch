@@ -11,11 +11,6 @@
             <div class="pages-job">
               <%= paginate @applies, window: 0 %>
             </div>
-            <div class="fitler">
-              <div class="all selected" style="padding: 6px 18px; ">All</div>
-              <div style="border-left: 1px solid #D4D4D9;border-radius: 3px 0 0 3px">Meeting Scheduled</div>
-              <div>No Schedule</div>
-            </div>
           </div>
         </div>
       </div>
@@ -36,7 +31,6 @@
                     <div class=email><%= apply.applyer.email %></div>
                     <div class="applier-actions">
                       <a href="/send_mail_to?receiver_id=<%= apply.applyer.id%>" style="color: #5897fbb8" >Mail</a>
-                      <div style="float: right;color: #5897fbb8">Arrange Interview</div>
                     </div>
                   </div>
                 </div>
